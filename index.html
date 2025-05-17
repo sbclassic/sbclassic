@@ -5,19 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SB CLASSIC</title>
   <style>
-    /* Brand colors */
     :root {
       --deep-gold: #bfa153;
       --blue-black: #101820;
       --white: #fff;
       --gray-light: #f5f5f5;
     }
+
     body {
       margin: 0;
       font-family: 'Georgia', serif;
       background: var(--white);
       color: var(--blue-black);
     }
+
     header {
       display: flex;
       align-items: center;
@@ -29,9 +30,11 @@
       top: 0;
       z-index: 1000;
     }
+
     header img.logo {
       height: 50px;
     }
+
     nav a {
       margin-left: 1.5rem;
       text-decoration: none;
@@ -39,17 +42,21 @@
       font-weight: 600;
       font-size: 1rem;
     }
+
     nav a:hover {
       color: var(--deep-gold);
     }
+
     main {
       max-width: 900px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
+
     h1, h2 {
       color: var(--deep-gold);
     }
+
     footer {
       background: var(--blue-black);
       color: var(--white);
@@ -58,23 +65,30 @@
       font-size: 0.9rem;
       margin-top: 3rem;
     }
+
     footer a {
       color: var(--deep-gold);
       text-decoration: none;
       margin: 0 0.5rem;
     }
+
     footer a:hover {
       text-decoration: underline;
     }
+
     @media (max-width: 600px) {
       header {
         flex-direction: column;
+        align-items: flex-start;
       }
+
       nav {
         margin-top: 0.5rem;
       }
+
       nav a {
-        margin: 0 0.75rem;
+        margin: 0 0.75rem 0 0;
+        display: inline-block;
       }
     }
   </style>
@@ -82,11 +96,7 @@
 <body>
   <header>
     <a href="index.html">
-      <img
-        src="https://drive.google.com/uc?export=view&id=1DnkdfmwIQPqvCNXejt1PX19g20kLNSo5"
-        alt="SB CLASSIC Logo"
-        class="logo"
-      />
+      <img src="logo.png" alt="SB CLASSIC Logo" class="logo" />
     </a>
     <nav>
       <a href="index.html">HOME</a>
@@ -99,21 +109,13 @@
   <main>
     <h1>About SB CLASSIC</h1>
     <p>
-      <!-- Paste your About page text below -->
-      <!-- From your Google Doc: -->
-      SB CLASSIC is a distinguished men’s fashion brand dedicated to offering
-      timeless style with unmatched quality. We believe in the power of
-      dressing well to express confidence, elegance, and class.
+      SB CLASSIC is a distinguished men’s fashion brand dedicated to offering timeless style with unmatched quality. We believe in the power of dressing well to express confidence, elegance, and class.
     </p>
     <p>
-      Our collection includes finely crafted suits, shirts, shoes, and
-      accessories designed for the modern gentleman who values sophistication
-      and comfort.
+      Our collection includes finely crafted suits, shirts, shoes, and accessories designed for the modern gentleman who values sophistication and comfort.
     </p>
     <p>
-      At SB CLASSIC, every detail matters — from the cut and fabric to the fit
-      and finish. Our mission is to help men elevate their style with pieces
-      that stand the test of time.
+      At SB CLASSIC, every detail matters — from the cut and fabric to the fit and finish. Our mission is to help men elevate their style with pieces that stand the test of time.
     </p>
     <p>
       Experience style with class — experience SB CLASSIC.
@@ -122,13 +124,10 @@
 
   <footer>
     <p>
-      Contact us: +233260928990 | sbclassics@icloud.com
-      <br />
-      Follow us on
-      <a href="https://instagram.com/sb_classic_" target="_blank"
-        >Instagram</a
-      >,
-      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a>,
+      Contact us: +233260928990 | sbclassics@icloud.com<br />
+      Follow us on 
+      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a>, 
+      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a>, 
       and WhatsApp.
     </p>
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
