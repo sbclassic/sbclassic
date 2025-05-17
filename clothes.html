@@ -5,146 +5,161 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SB CLASSIC - Clothes</title>
 <style>
+  :root {
+    --deep-gold: #bfa153;
+    --blue-black: #101820;
+    --white: #ffffff;
+  }
+
   body {
-    font-family: Arial, sans-serif;
-    background: #fff;
-    color: #111;
     margin: 0;
-    padding: 0 20px 40px;
+    font-family: 'Georgia', serif;
+    background: var(--white);
+    color: var(--blue-black);
   }
+
   header {
-    background: #bfa153;
-    color: #fff;
-    padding: 20px 0;
     text-align: center;
-    font-size: 1.5rem;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  nav a {
+    margin: 0 15px;
+    color: var(--blue-black);
+    text-decoration: none;
     font-weight: bold;
+    font-size: 1rem;
   }
-  .products-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin: 30px 0;
+
+  nav a:hover {
+    color: var(--deep-gold);
   }
-  .product-card {
-    width: 280px;
+
+  main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  h1 {
+    font-weight: 300;
+    font-size: 2rem;
+    color: var(--deep-gold);
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+  .product {
     border: 1px solid #ddd;
     border-radius: 6px;
-    padding: 15px;
-    box-shadow: 0 2px 6px #ccc;
+    padding: 1rem;
+    margin-bottom: 2rem;
     text-align: center;
-    background: #fff;
   }
-  .product-card img.main-img {
-    width: 100%;
+
+  .product img {
+    max-width: 100%;
     height: auto;
-    border-radius: 4px;
+    border-radius: 6px;
   }
+
   .product-name {
-    margin: 15px 0 8px;
     font-weight: bold;
-    font-size: 1.1rem;
-    color: #222;
+    font-size: 1.3rem;
+    margin-top: 0.5rem;
   }
+
   .product-price {
-    color: #bfa153;
-    font-weight: bold;
-    margin-bottom: 12px;
+    color: var(--deep-gold);
+    font-weight: 600;
+    margin: 0.5rem 0;
   }
+
   .color-swatches {
     display: flex;
     justify-content: center;
     gap: 10px;
     margin-top: 10px;
   }
-  .color-swatches img {
+
+  .swatch {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    border: 2px solid transparent;
+    border: 2px solid #ddd;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: border-color 0.3s;
   }
-  .color-swatches img:hover {
-    box-shadow: 0 0 6px #bfa153aa;
-    transform: scale(1.1);
+
+  .swatch:hover {
+    border-color: var(--deep-gold);
   }
-  .color-swatches img.selected {
-    border-color: #bfa153;
-    transform: scale(1.15);
-  }
+
 </style>
 </head>
 <body>
+<header>
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="clothes.html">CLOTHES</a>
+    <a href="shoes.html">SHOES</a>
+    <a href="accessories.html">ACCESSORIES</a>
+  </nav>
+</header>
 
-<header>SB CLASSIC - Clothes</header>
+<main>
+  <h1>Clothes</h1>
 
-<div class="products-container">
-
-  <!-- Elegant 2pcs Sets -->
-  <div class="product-card" data-product="Elegant 2pcs sets" data-price="1980">
-    <img class="main-img" src="https://drive.google.com/uc?export=view&id=1He9Z4xpCbefvuO_3CTpLub1vwR2QVpFa" alt="Elegant 2pcs sets - Apricot" />
+  <!-- Elegant 2pcs Sets - 3 colors -->
+  <section class="product" id="elegant-2pcs-sets">
+    <img id="elegant-img" src="https://drive.google.com/uc?export=view&id=1He9Z4xpCbefvuO_3CTpLub1vwR2QVpFa" alt="Elegant 2pcs sets Apricot" />
     <div class="product-name">Elegant 2pcs Sets</div>
     <div class="product-price">GHS 1,980</div>
-    <div class="color-swatches" aria-label="Color options for Elegant 2pcs Sets">
-      <img src="https://drive.google.com/uc?export=view&id=1He9Z4xpCbefvuO_3CTpLub1vwR2QVpFa" alt="Apricot" title="Apricot" class="selected" />
-      <img src="https://drive.google.com/uc?export=view&id=1XhASveMNkHs8hD6wbiIaD2hZa-8oHedM" alt="Blue Black" title="Blue Black" />
-      <img src="https://drive.google.com/uc?export=view&id=1jTECEDHAAOnKDYSiQPgonB2NhhP2gnSW" alt="Black" title="Black" />
+    <div class="color-swatches">
+      <div class="swatch" title="Apricot" style="background:#f5c1a1;" onclick="changeImage('elegant-img', '1He9Z4xpCbefvuO_3CTpLub1vwR2QVpFa')"></div>
+      <div class="swatch" title="Blue Black" style="background:#101820;" onclick="changeImage('elegant-img', '1XhASveMNkHs8hD6wbiIaD2hZa-8oHedM')"></div>
+      <div class="swatch" title="Black" style="background:#000000;" onclick="changeImage('elegant-img', '1jTECEDHAAOnKDYSiQPgonB2NhhP2gnSW')"></div>
     </div>
-  </div>
+  </section>
 
-  <!-- Simple Classy Jackets -->
-  <div class="product-card" data-product="Simple Classy Jackets" data-price="899">
-    <img class="main-img" src="https://drive.google.com/uc?export=view&id=1A2bstxwabfK-FfrPABdqBipTXjw9Sm4W" alt="Simple Classy Jackets - Color 1" />
+  <!-- Simple Classy Jackets - 8 colors -->
+  <section class="product" id="simple-classy-jackets">
+    <img id="jackets-img" src="https://drive.google.com/uc?export=view&id=1A2bstxwabfK-FfrPABdqBipTXjw9Sm4W" alt="Simple Classy Jackets Color 1" />
     <div class="product-name">Simple Classy Jackets</div>
     <div class="product-price">GHS 899</div>
-    <div class="color-swatches" aria-label="Color options for Simple Classy Jackets">
-      <img src="https://drive.google.com/uc?export=view&id=1A2bstxwabfK-FfrPABdqBipTXjw9Sm4W" alt="Color 1" title="Color 1" class="selected" />
-      <img src="https://drive.google.com/uc?export=view&id=1JAJBajj_ry5a0q2gRFPlLoYh0JZQWhwv" alt="Color 2" title="Color 2" />
-      <img src="https://drive.google.com/uc?export=view&id=14wEqIk7YY0RdvRcvw0Q6xZRelb0TjiMC" alt="Color 3" title="Color 3" />
-      <img src="https://drive.google.com/uc?export=view&id=1B6uQwbHUSkvalKG2Zfko1euhrniktLGY" alt="Color 4" title="Color 4" />
-      <img src="https://drive.google.com/uc?export=view&id=1N4qnqjBIKUd9cuNHnWKlsbyyTC446QTw" alt="Color 5" title="Color 5" />
-      <img src="https://drive.google.com/uc?export=view&id=1mQKSRC3PuQ_AwbdfdhNrxXvRwQJDRlMp" alt="Color 6" title="Color 6" />
-      <img src="https://drive.google.com/uc?export=view&id=1pThFTWCXSgE0VDVu4lkBDmCSYGmxDkkQ" alt="Color 7" title="Color 7" />
-      <img src="https://drive.google.com/uc?export=view&id=1NXpzB6X3J2I_C7Bv6aPIPBJ7_GVRHbE8" alt="Color 8" title="Color 8" />
+    <div class="color-swatches">
+      <div class="swatch" title="Color 1" style="background:#bfa153;" onclick="changeImage('jackets-img', '1A2bstxwabfK-FfrPABdqBipTXjw9Sm4W')"></div>
+      <div class="swatch" title="Color 2" style="background:#101820;" onclick="changeImage('jackets-img', '1JAJBajj_ry5a0q2gRFPlLoYh0JZQWhwv')"></div>
+      <div class="swatch" title="Color 3" style="background:#6c6c6c;" onclick="changeImage('jackets-img', '14wEqIk7YY0RdvRcvw0Q6xZRelb0TjiMC')"></div>
+      <div class="swatch" title="Color 4" style="background:#333333;" onclick="changeImage('jackets-img', '1B6uQwbHUSkvalKG2Zfko1euhrniktLGY')"></div>
+      <div class="swatch" title="Color 5" style="background:#222222;" onclick="changeImage('jackets-img', '1N4qnqjBIKUd9cuNHnWKlsbyyTC446QTw')"></div>
+      <div class="swatch" title="Color 6" style="background:#111111;" onclick="changeImage('jackets-img', '1mQKSRC3PuQ_AwbdfdhNrxXvRwQJDRlMp')"></div>
+      <div class="swatch" title="Color 7" style="background:#444444;" onclick="changeImage('jackets-img', '1pThFTWCXSgE0VDVu4lkBDmCSYGmxDkkQ')"></div>
+      <div class="swatch" title="Color 8" style="background:#555555;" onclick="changeImage('jackets-img', '1NXpzB6X3J2I_C7Bv6aPIPBJ7_GVRHbE8')"></div>
     </div>
-  </div>
+  </section>
 
-  <!-- Fashion Versatile Polo Shirt -->
-  <div class="product-card" data-product="Fashion Versatile Polo Shirt" data-price="790">
-    <img class="main-img" src="https://drive.google.com/uc?export=view&id=1qb-R83oaMmCz5btN08Ge_uHcD0ynEJPR" alt="Fashion Versatile Polo Shirt - Color 1" />
+  <!-- Fashion Versatile Polo Shirt - 5 colors -->
+  <section class="product" id="fashion-polo-shirt">
+    <img id="polo-img" src="https://drive.google.com/uc?export=view&id=1qb-R83oaMmCz5btN08Ge_uHcD0ynEJPR" alt="Fashion Versatile Polo Shirt Color 1" />
     <div class="product-name">Fashion Versatile Polo Shirt</div>
     <div class="product-price">GHS 790</div>
-    <div class="color-swatches" aria-label="Color options for Fashion Versatile Polo Shirt">
-      <img src="https://drive.google.com/uc?export=view&id=1qb-R83oaMmCz5btN08Ge_uHcD0ynEJPR" alt="Color 1" title="Color 1" class="selected" />
-      <img src="https://drive.google.com/uc?export=view&id=1C13OXSSdnBPHLFX-ggC6RHaF_hZInusO" alt="Color 2" title="Color 2" />
-      <img src="https://drive.google.com/uc?export=view&id=1gwHZR6rGw0x6yHF_DJwZJfVXOJ6qobVQ" alt="Color 3" title="Color 3" />
-      <img src="https://drive.google.com/uc?export=view&id=1fIrURvr5fGycWCjO8pWTYSG_49C6MGRB" alt="Color 4" title="Color 4" />
-      <img src="https://drive.google.com/uc?export=view&id=1S8Jm46p53utAsORr-8i8fh3-6sLXgQDf" alt="Color 5" title="Color 5" />
+    <div class="color-swatches">
+      <div class="swatch" title="Color 1" style="background:#a1a1a1;" onclick="changeImage('polo-img', '1qb-R83oaMmCz5btN08Ge_uHcD0ynEJPR')"></div>
+      <div class="swatch" title="Color 2" style="background:#777777;" onclick="changeImage('polo-img', '1C13OXSSdnBPHLFX-ggC6RHaF_hZInusO')"></div>
+      <div class="swatch" title="Color 3" style="background:#555555;" onclick="changeImage('polo-img', '1gwHZR6rGw0x6yHF_DJwZJfVXOJ6qobVQ')"></div>
+      <div class="swatch" title="Color 4" style="background:#333333;" onclick="changeImage('polo-img', '1fIrURvr5fGycWCjO8pWTYSG_49C6MGRB')"></div>
+      <div class="swatch" title="Color 5" style="background:#111111;" onclick="changeImage('polo-img', '1S8Jm46p53utAsORr-8i8fh3-6sLXgQDf')"></div>
     </div>
-  </div>
-
-</div>
+  </section>
+</main>
 
 <script>
-  // Color swatch click behavior: swap main image & highlight selected swatch
-  document.querySelectorAll('.product-card').forEach(card => {
-    const mainImg = card.querySelector('img.main-img');
-    const swatches = card.querySelectorAll('.color-swatches img');
-
-    swatches.forEach(swatch => {
-      swatch.addEventListener('click', () => {
-        // Update main image src and alt to swatch clicked
-        mainImg.src = swatch.src;
-        mainImg.alt = swatch.alt;
-
-        // Update selected swatch
-        swatches.forEach(s => s.classList.remove('selected'));
-        swatch.classList.add('selected');
-      });
-    });
-  });
+  // Function to change product image when swatch clicked
+  function changeImage(imgId, fileId) {
+    document.getElementById(imgId).src = `https://drive.google.com/uc?export=view&id=${fileId}`;
+  }
 </script>
 
 </body>
