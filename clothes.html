@@ -1,158 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Clothes - SB CLASSIC</title>
-  <style>
-    :root {
-      --deep-gold: #bfa153;
-      --blue-black: #101820;
-      --white: #ffffff;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Georgia', serif;
-      background: var(--white);
-      color: var(--blue-black);
-    }
-
-    header {
-      text-align: center;
-      padding: 20px;
-      border-bottom: 1px solid #ddd;
-    }
-
-    header img.logo {
-      height: 80px;
-      display: block;
-      margin: 0 auto;
-    }
-
-    nav {
-      margin-top: 10px;
-    }
-
-    nav a {
-      margin: 0 15px;
-      color: var(--blue-black);
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: var(--deep-gold);
-    }
-
-    h1 {
-      text-align: center;
-      color: var(--deep-gold);
-      margin-top: 30px;
-    }
-
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 2rem;
-    }
-
-    .product-card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 15px;
-      width: 250px;
-      text-align: center;
-      box-shadow: 0 0 8px rgba(0,0,0,0.05);
-    }
-
-    .product-card img {
-      width: 100%;
-      height: auto;
-      border-radius: 6px;
-    }
-
-    .product-card h3 {
-      margin: 10px 0 5px;
-      color: var(--blue-black);
-    }
-
-    .product-card p {
-      margin: 0;
-      color: var(--deep-gold);
-      font-weight: bold;
-    }
-
-    footer {
-      background: var(--blue-black);
-      color: var(--white);
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      color: var(--deep-gold);
-      margin: 0 5px;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SB CLASSIC - Clothes</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    color: #111;
+    margin: 0;
+    padding: 0 20px 40px;
+  }
+  header {
+    background: #bfa153;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px 0;
+  }
+  .product-card {
+    width: 280px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 15px;
+    box-shadow: 0 2px 6px #ccc;
+    text-align: center;
+    background: #fff;
+  }
+  .product-card img.main-img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  .product-name {
+    margin: 15px 0 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #222;
+  }
+  .product-price {
+    color: #bfa153;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  .color-swatches {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .color-swatches img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .color-swatches img:hover {
+    box-shadow: 0 0 6px #bfa153aa;
+    transform: scale(1.1);
+  }
+  .color-swatches img.selected {
+    border-color: #bfa153;
+    transform: scale(1.15);
+  }
+</style>
 </head>
 <body>
-  <header>
-    <a href="index.html">
-      <img src="logo.png" alt="SB CLASSIC Logo" class="logo" />
-    </a>
-    <nav>
-      <a href="index.html">HOME</a>
-      <a href="clothes.html">CLOTHES</a>
-      <a href="shoes.html">SHOES</a>
-      <a href="accessories.html">ACCESSORIES</a>
-    </nav>
-  </header>
 
-  <h1>Clothes Collection</h1>
-  <div class="products">
-    <div class="product-card">
-      <img src="images/Clothes/navy_suit.jpg" alt="Navy Blue Suit">
-      <h3>Navy Blue Suit</h3>
-      <p>GHS 960</p>
-    </div>
-    <div class="product-card">
-      <img src="images/Clothes/tuxedo.jpg" alt="Black Tuxedo">
-      <h3>Black Tuxedo</h3>
-      <p>GHS 1,980</p>
-    </div>
-    <div class="product-card">
-      <img src="images/Clothes/white_shirt.jpg" alt="White Shirt">
-      <h3>White Shirt</h3>
-      <p>GHS 1,980</p>
-    </div>
-    <div class="product-card">
-      <img src="images/Clothes/IMG_8853.jpeg" alt="Elegant 2pcs Set">
-      <h3>Elegant 2pcs Set</h3>
-      <p>GHS 1,980</p>
+<header>SB CLASSIC - Clothes</header>
+
+<div class="products-container">
+
+  <!-- Elegant 2pcs Sets -->
+  <div class="product-card" data-product="Elegant 2pcs sets" data-price="1980">
+    <img class="main-img" src="https://drive.google.com/uc?export=view&id=1He9Z4xpCbefvuO_3CTpLub1vwR2QVpFa" alt="Elegant 2pcs sets - Apricot" />
+    <div class="product-name">Elegant 2pcs Sets</div>
+    <div class="product-price">GHS 1,980</div>
+    <div class="color-swatches" aria-label="Color options for Elegant 2pcs Sets">
+      <img src="https://drive.google.com/uc?export=view&id=1He9Z4xpCbefvuO_3CTpLub1vwR2QVpFa" alt="Apricot" title="Apricot" class="selected" />
+      <img src="https://drive.google.com/uc?export=view&id=1XhASveMNkHs8hD6wbiIaD2hZa-8oHedM" alt="Blue Black" title="Blue Black" />
+      <img src="https://drive.google.com/uc?export=view&id=1jTECEDHAAOnKDYSiQPgonB2NhhP2gnSW" alt="Black" title="Black" />
     </div>
   </div>
 
-  <footer>
-    <p>Contact: +233260928990 | sbclassics@icloud.com</p>
-    <p>
-      Follow us on:
-      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
-      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
-      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
-    </p>
-    <p>© 2025 SB CLASSIC. All rights reserved.</p>
-  </footer>
+  <!-- Simple Classy Jackets -->
+  <div class="product-card" data-product="Simple Classy Jackets" data-price="899">
+    <img class="main-img" src="https://drive.google.com/uc?export=view&id=1A2bstxwabfK-FfrPABdqBipTXjw9Sm4W" alt="Simple Classy Jackets - Color 1" />
+    <div class="product-name">Simple Classy Jackets</div>
+    <div class="product-price">GHS 899</div>
+    <div class="color-swatches" aria-label="Color options for Simple Classy Jackets">
+      <img src="https://drive.google.com/uc?export=view&id=1A2bstxwabfK-FfrPABdqBipTXjw9Sm4W" alt="Color 1" title="Color 1" class="selected" />
+      <img src="https://drive.google.com/uc?export=view&id=1JAJBajj_ry5a0q2gRFPlLoYh0JZQWhwv" alt="Color 2" title="Color 2" />
+      <img src="https://drive.google.com/uc?export=view&id=14wEqIk7YY0RdvRcvw0Q6xZRelb0TjiMC" alt="Color 3" title="Color 3" />
+      <img src="https://drive.google.com/uc?export=view&id=1B6uQwbHUSkvalKG2Zfko1euhrniktLGY" alt="Color 4" title="Color 4" />
+      <img src="https://drive.google.com/uc?export=view&id=1N4qnqjBIKUd9cuNHnWKlsbyyTC446QTw" alt="Color 5" title="Color 5" />
+      <img src="https://drive.google.com/uc?export=view&id=1mQKSRC3PuQ_AwbdfdhNrxXvRwQJDRlMp" alt="Color 6" title="Color 6" />
+      <img src="https://drive.google.com/uc?export=view&id=1pThFTWCXSgE0VDVu4lkBDmCSYGmxDkkQ" alt="Color 7" title="Color 7" />
+      <img src="https://drive.google.com/uc?export=view&id=1NXpzB6X3J2I_C7Bv6aPIPBJ7_GVRHbE8" alt="Color 8" title="Color 8" />
+    </div>
+  </div>
+
+  <!-- Fashion Versatile Polo Shirt -->
+  <div class="product-card" data-product="Fashion Versatile Polo Shirt" data-price="790">
+    <img class="main-img" src="https://drive.google.com/uc?export=view&id=1qb-R83oaMmCz5btN08Ge_uHcD0ynEJPR" alt="Fashion Versatile Polo Shirt - Color 1" />
+    <div class="product-name">Fashion Versatile Polo Shirt</div>
+    <div class="product-price">GHS 790</div>
+    <div class="color-swatches" aria-label="Color options for Fashion Versatile Polo Shirt">
+      <img src="https://drive.google.com/uc?export=view&id=1qb-R83oaMmCz5btN08Ge_uHcD0ynEJPR" alt="Color 1" title="Color 1" class="selected" />
+      <img src="https://drive.google.com/uc?export=view&id=1C13OXSSdnBPHLFX-ggC6RHaF_hZInusO" alt="Color 2" title="Color 2" />
+      <img src="https://drive.google.com/uc?export=view&id=1gwHZR6rGw0x6yHF_DJwZJfVXOJ6qobVQ" alt="Color 3" title="Color 3" />
+      <img src="https://drive.google.com/uc?export=view&id=1fIrURvr5fGycWCjO8pWTYSG_49C6MGRB" alt="Color 4" title="Color 4" />
+      <img src="https://drive.google.com/uc?export=view&id=1S8Jm46p53utAsORr-8i8fh3-6sLXgQDf" alt="Color 5" title="Color 5" />
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Color swatch click behavior: swap main image & highlight selected swatch
+  document.querySelectorAll('.product-card').forEach(card => {
+    const mainImg = card.querySelector('img.main-img');
+    const swatches = card.querySelectorAll('.color-swatches img');
+
+    swatches.forEach(swatch => {
+      swatch.addEventListener('click', () => {
+        // Update main image src and alt to swatch clicked
+        mainImg.src = swatch.src;
+        mainImg.alt = swatch.alt;
+
+        // Update selected swatch
+        swatches.forEach(s => s.classList.remove('selected'));
+        swatch.classList.add('selected');
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
