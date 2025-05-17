@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Checkout - SB CLASSIC</title>
   <style>
     :root {
@@ -12,106 +12,119 @@
     }
 
     body {
-      font-family: 'Georgia', serif;
       margin: 0;
+      font-family: 'Georgia', serif;
       background: var(--white);
       color: var(--blue-black);
+      padding: 1rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     header {
       text-align: center;
-      padding: 20px;
-      background: var(--white);
+      padding: 20px 0;
       border-bottom: 1px solid #ddd;
+      margin-bottom: 1rem;
     }
 
     header img.logo {
       height: 90px;
-      margin: 0 auto;
-      display: block;
-    }
-
-    nav a {
-      margin: 0 10px;
-      color: var(--blue-black);
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: var(--deep-gold);
-    }
-
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
     }
 
     h1 {
-      text-align: center;
       color: var(--deep-gold);
+      text-align: center;
+      margin-bottom: 1rem;
       font-weight: normal;
     }
 
+    .summary {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+    }
+
+    .summary h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+      color: var(--blue-black);
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .summary-total {
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+      margin-top: 10px;
+      text-align: right;
+    }
+
     form {
-      background: #f9f9f9;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
     }
 
     label {
-      display: block;
-      margin-top: 1rem;
+      margin-top: 12px;
+      margin-bottom: 5px;
       font-weight: bold;
     }
 
-    input, textarea {
-      width: 100%;
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
       padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
       font-size: 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      width: 100%;
     }
 
-    button {
-      margin-top: 2rem;
+    button.pay-btn {
+      margin-top: 20px;
       background: var(--deep-gold);
-      color: #fff;
-      padding: 12px 25px;
       border: none;
+      color: white;
+      font-weight: bold;
+      padding: 12px;
+      font-size: 1.1rem;
       border-radius: 6px;
-      font-size: 1rem;
       cursor: pointer;
     }
 
-    button:hover {
+    button.pay-btn:hover {
       background: #a88e48;
     }
 
-    .summary {
+    .confirmation {
+      text-align: center;
+      padding: 20px;
+      background-color: #e6ffe6;
+      border: 1px solid #33cc33;
+      color: #2a7a2a;
+      border-radius: 6px;
       margin-top: 2rem;
-      font-weight: bold;
+      display: none;
     }
 
     footer {
-      background: var(--blue-black);
-      color: var(--white);
-      font-size: 0.9rem;
+      margin-top: 3rem;
       text-align: center;
-      padding: 1.5rem;
-      margin-top: 4rem;
-    }
-
-    footer a {
-      color: var(--deep-gold);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
+      font-size: 0.9rem;
+      color: var(--blue-black);
+      border-top: 1px solid #ddd;
+      padding: 1rem 0;
     }
   </style>
 </head>
@@ -120,37 +133,35 @@
     <a href="index.html">
       <img src="logo.png" alt="SB CLASSIC Logo" class="logo" />
     </a>
-    <nav>
-      <a href="index.html">HOME</a>
-      <a href="clothes.html">CLOTHES</a>
-      <a href="shoes.html">SHOES</a>
-      <a href="accessories.html">ACCESSORIES</a>
-    </nav>
   </header>
 
-  <main>
-    <h1>Checkout</h1>
+  <h1>Checkout</h1>
 
-    <form>
-      <label for="fullname">Full Name</label>
-      <input type="text" id="fullname" name="fullname" required />
+  <div class="summary" id="order-summary">
+    <h2>Order Summary</h2>
+    <!-- Products summary will be injected here -->
+    <div id="summary-items"></div>
+    <div class="summary-total" id="summary-total">Total: GHS 0</div>
+  </div>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required />
+  <form id="checkout-form">
+    <label for="fullname">Full Name</label>
+    <input type="text" id="fullname" name="fullname" required />
 
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" name="phone" required />
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" required />
 
-      <label for="address">Delivery Address</label>
-      <textarea id="address" name="address" rows="4" required></textarea>
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" pattern="[0-9+]{9,15}" required placeholder="+233XXXXXXXXX" />
 
-      <div class="summary">
-        Order Total: GHS 1,899
-      </div>
+    <button type="submit" class="pay-btn">Pay Now</button>
+  </form>
 
-      <button type="submit">Pay with Flutterwave</button>
-    </form>
-  </main>
+  <div class="confirmation" id="confirmation-message">
+    <h2>Payment Successful!</h2>
+    <p>Thank you for your purchase. Your order has been received and is being processed.</p>
+    <a href="index.html">Return to Home</a>
+  </div>
 
   <footer>
     CONTACT: +233260928990 | sbclassics@icloud.com <br/>
@@ -159,5 +170,105 @@
     <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a>
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
+
+  <!-- Flutterwave inline JS (https://developer.flutterwave.com/docs/flutterwave-standard) -->
+  <script src="https://checkout.flutterwave.com/v3.js"></script>
+
+  <script>
+    const cart = JSON.parse(localStorage.getItem('sbclassicCart')) || [];
+
+    const summaryItemsEl = document.getElementById('summary-items');
+    const summaryTotalEl = document.getElementById('summary-total');
+    const form = document.getElementById('checkout-form');
+    const confirmationMessage = document.getElementById('confirmation-message');
+
+    function renderOrderSummary() {
+      if (cart.length === 0) {
+        summaryItemsEl.innerHTML = '<p>Your cart is empty. Please add some products before checkout.</p>';
+        form.style.display = 'none';
+        summaryTotalEl.style.display = 'none';
+        return;
+      }
+
+      let total = 0;
+      summaryItemsEl.innerHTML = '';
+
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
+        const div = document.createElement('div');
+        div.className = 'summary-item';
+        div.innerHTML = `
+          <span>${item.name} x${item.quantity}</span>
+          <span>GHS ${itemTotal.toLocaleString()}</span>
+        `;
+        summaryItemsEl.appendChild(div);
+      });
+
+      summaryTotalEl.textContent = 'Total: GHS ' + total.toLocaleString();
+      form.style.display = 'flex';
+      summaryTotalEl.style.display = 'block';
+    }
+
+    // Run on page load
+    renderOrderSummary();
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+
+      const fullname = form.fullname.value.trim();
+      const email = form.email.value.trim();
+      const phone = form.phone.value.trim();
+
+      if (!fullname || !email || !phone) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      // Calculate total amount in kobo (smallest currency unit)
+      const amountGhs = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      const amountKobo = amountGhs * 100;
+
+      // Flutterwave payment integration
+      FlutterwaveCheckout({
+        public_key: "FLWPUBK_TEST-xxxxxxxxxxxxxxxxxxxxxxxxxxxx-X", // Replace with your public key
+        tx_ref: "SBCLASSIC_" + Date.now(),
+        amount: amountGhs,
+        currency: "GHS",
+        payment_options: "card,mobilemoney,ussd",
+        customer: {
+          email: email,
+          phonenumber: phone,
+          name: fullname,
+        },
+        customizations: {
+          title: "SB CLASSIC",
+          description: "Payment for your SB CLASSIC order",
+          logo: "https://sbclassic.com/logo.png" // Replace with your logo URL or remove
+        },
+        callback: function (data) {
+          if (data.status === "successful") {
+            // Payment successful
+            confirmationMessage.style.display = 'block';
+            form.style.display = 'none';
+            summaryTotalEl.style.display = 'none';
+            summaryItemsEl.style.display = 'none';
+            localStorage.removeItem('sbclassicCart'); // Clear cart
+          } else {
+            alert("Payment was not successful. Please try again.");
+          }
+        },
+        onclose: function () {
+          // User closed the payment modal
+        }
+      });
+    });
+  </script>
 </body>
 </html>
