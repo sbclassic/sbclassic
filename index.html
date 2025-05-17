@@ -180,33 +180,26 @@
       Experience style with class — experience SB CLASSIC.
     </p>
 
-  <section class="products-section">
-  <h2>Featured Clothes</h2>
-  <div class="products-grid">
-    <div class="product-card">
-      <img src="clothes/elegant_2pcs_apricot.jpeg" alt="Elegant 2pcs Set Apricot" class="product-image" />
-      <div class="product-info">
-        <h3>Elegant 2pcs Set – Apricot</h3>
-        <p>Price: GHS 1,980</p>
-      </div>
-    </div>
+  <div class="container">
 
-    <div class="product-card">
-      <img src="clothes/elegant_2pcs_black.jpeg" alt="Elegant 2pcs Set Black" class="product-image" />
-      <div class="product-info">
-        <h3>Elegant 2pcs Set – Black</h3>
-        <p>Price: GHS 1,980</p>
-      </div>
+  <div class="product-card">
+    <h3>Elegant 2pcs Set</h3>
+    <p>Price: GHS 1,980</p>
+    <img id="elegant-img" src="https://raw.githubusercontent.com/sbclassic/sbclassic/main/clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set" width="300" style="border-radius: 6px; margin-bottom: 15px;">
+    <div class="color-options">
+      <img src="https://raw.githubusercontent.com/sbclassic/sbclassic/main/clothes/elegant_2pcs_set_apricot.jpeg" alt="Apricot" width="80">
+      <img src="https://raw.githubusercontent.com/sbclassic/sbclassic/main/clothes/elegant_2pcs_set_blueblack.jpeg" alt="Blue Black" width="80">
+      <img src="https://raw.githubusercontent.com/sbclassic/sbclassic/main/clothes/elegant_2pcs_set_black.jpeg" alt="Black" width="80">
     </div>
-
-    <div class="product-card">
-      <img src="clothes/elegant_2pcs_blueblack.jpeg" alt="Elegant 2pcs Set Blue Black" class="product-image" />
-      <div class="product-info">
-        <h3>Elegant 2pcs Set – Blue Black</h3>
-        <p>Price: GHS 1,980</p>
-      </div>
+    <div class="swatches" style="margin-top: 10px;">
+      <span class="swatch active" style="background:#bfa153;" onclick="document.getElementById('elegant-img').src='https://raw.githubusercontent.com/sbclassic/sbclassic/main/clothes/elegant_2pcs_set_apricot.jpeg'; this.classList.add('active'); removeActive(this);"></span>
+      <span class="swatch" style="background:#222;" onclick="document.getElementById('elegant-img').src='https://raw.githubusercontent.com/sbclassic/sbclassic/main/clothes/elegant_2pcs_set_blueblack.jpeg'; this.classList.add('active'); removeActive(this);"></span>
+      <span class="swatch" style="background:#000;" onclick="document.getElementById('elegant-img').src='https://raw.githubusercontent.com/sbclassic/sbclassic/main/clothes/elegant_2pcs_set_black.jpeg'; this.classList.add('active'); removeActive(this);"></span>
     </div>
   </div>
+      }
+    });
+  }
 </section>
   </main>
 
