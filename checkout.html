@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Checkout - SB CLASSIC</title>
+  <style>
+    :root {
+      --deep-gold: #bfa153;
+      --blue-black: #101820;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      margin: 0;
+      background: var(--white);
+      color: var(--blue-black);
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background: var(--white);
+      border-bottom: 1px solid #ddd;
+    }
+
+    header img.logo {
+      height: 90px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    nav a {
+      margin: 0 10px;
+      color: var(--blue-black);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--deep-gold);
+    }
+
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--deep-gold);
+      font-weight: normal;
+    }
+
+    form {
+      background: #f9f9f9;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 2rem;
+      background: var(--deep-gold);
+      color: #fff;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #a88e48;
+    }
+
+    .summary {
+      margin-top: 2rem;
+      font-weight: bold;
+    }
+
+    footer {
+      background: var(--blue-black);
+      color: var(--white);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    footer a {
+      color: var(--deep-gold);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">
+      <img src="logo.png" alt="SB CLASSIC Logo" class="logo" />
+    </a>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="clothes.html">CLOTHES</a>
+      <a href="shoes.html">SHOES</a>
+      <a href="accessories.html">ACCESSORIES</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Checkout</h1>
+
+    <form>
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" name="fullname" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required />
+
+      <label for="address">Delivery Address</label>
+      <textarea id="address" name="address" rows="4" required></textarea>
+
+      <div class="summary">
+        Order Total: GHS 1,899
+      </div>
+
+      <button type="submit">Pay with Flutterwave</button>
+    </form>
+  </main>
+
+  <footer>
+    CONTACT: +233260928990 | sbclassics@icloud.com <br/>
+    <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
+    <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
+    <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a>
+    <p>© 2025 SB CLASSIC. All rights reserved.</p>
+  </footer>
+</body>
+</html>
