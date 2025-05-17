@@ -19,21 +19,27 @@
       color: var(--blue-black);
     }
 
-    <header>
-  <a href="index.html" style="display: block; text-align: center; margin-bottom: 1rem;">
-    <img src="logo.png" alt="SB CLASSIC Logo" class="logo" />
-  </a>
-  <nav style="text-align: center;">
-    <a href="index.html">HOME</a>
-    <a href="products.html">PRODUCTS</a>
-    <a href="about.html">ABOUT</a>
-    <a href="contact.html">CONTACT</a>
-  </nav>
-</header>
+    header {
+      padding: 1rem 2rem;
+      background: var(--white);
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      text-align: center;
+    }
+
+    header img.logo {
+      height: 100px;
+      object-fit: contain;
+    }
+
+    nav {
+      margin-top: 1rem;
     }
 
     nav a {
-      margin-left: 1.5rem;
+      margin: 0 1rem;
       text-decoration: none;
       color: var(--blue-black);
       font-weight: 600;
@@ -74,18 +80,9 @@
     }
 
     @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav {
-        margin-top: 0.5rem;
-      }
-
       nav a {
-        margin: 0 0.75rem 0 0;
         display: inline-block;
+        margin: 0 0.75rem;
       }
     }
   </style>
