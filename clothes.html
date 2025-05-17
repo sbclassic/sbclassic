@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SB CLASSIC - Clothes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clothes - SB CLASSIC</title>
   <style>
     :root {
       --deep-gold: #bfa153;
       --blue-black: #101820;
       --white: #ffffff;
-      --swatch-size: 25px;
     }
 
     body {
@@ -17,143 +16,126 @@
       background: var(--white);
       color: var(--blue-black);
       margin: 0;
-      padding: 1rem;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+      padding: 0;
     }
 
-    h1 {
-      color: var(--deep-gold);
-      font-weight: 300;
+    header {
       text-align: center;
-      margin-bottom: 1rem;
+      padding: 20px;
+      border-bottom: 1px solid #ccc;
     }
 
-    .product {
-      border-bottom: 1px solid #ddd;
-      padding: 1rem 0;
+    nav a {
+      margin: 0 15px;
+      color: var(--blue-black);
+      text-decoration: none;
+      font-weight: bold;
     }
 
-    .product h3 {
-      margin: 0 0 0.5rem 0;
+    nav a:hover {
+      color: var(--deep-gold);
     }
 
-    .product-images img {
-      max-width: 250px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      margin-right: 1rem;
-      vertical-align: middle;
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
     }
 
-    .color-swatches {
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .product-card img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      margin-bottom: 15px;
+    }
+
+    .swatches {
       margin-top: 10px;
     }
 
     .swatch {
-      display: inline-block;
-      width: var(--swatch-size);
-      height: var(--swatch-size);
+      width: 25px;
+      height: 25px;
       border-radius: 50%;
-      margin-right: 8px;
-      border: 2px solid transparent;
+      display: inline-block;
+      margin: 0 5px;
+      border: 2px solid #ddd;
       cursor: pointer;
-      transition: border-color 0.3s;
     }
 
-    .swatch:hover,
     .swatch.active {
-      border-color: var(--deep-gold);
+      border: 3px solid var(--deep-gold);
     }
 
-    /* Specific colors for swatches */
-    .apricot { background-color: #fbceb1; }
-    .blue-black { background-color: #0d1321; }
-    .black { background-color: #000000; }
-    .white { background-color: #ffffff; border: 1px solid #ccc; }
-    .brown { background-color: #6f4e37; }
-    .green { background-color: #0f5132; }
-    .red { background-color: #a00000; }
-    .yellow { background-color: #f7df1e; }
-    .gray { background-color: #888888; }
-    .navy { background-color: #001f3f; }
-    .olive { background-color: #3d9970; }
-
+    h2 {
+      color: var(--deep-gold);
+    }
   </style>
 </head>
 <body>
+  <header>
+    <h1>SB CLASSIC - Clothes</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="clothes.html">Clothes</a>
+      <a href="shoes.html">Shoes</a>
+      <a href="accessories.html">Accessories</a>
+    </nav>
+  </header>
 
-  <h1>Clothes Collection</h1>
+  <div class="container">
 
-  <!-- Elegant 2pcs Sets -->
- <div class="product-card">
-  <h3>Elegant 2pcs Sets</h3>
-  <p>Price: GHS 1,980</p>
-  <div class="color-swatches">
-    <img src="https://drive.google.com/uc?export=view&id=1jTECEDHAAOnKDYSiQPgonB2NhhP2gnSW" alt="Apricot color" />
-    <img src="https://drive.google.com/uc?export=view&id=1He9Z4xpCbefvuO_3CTpLub1vwR2QVpFa" alt="Blue Black color" />
-    <img src="https://drive.google.com/uc?export=view&id=1XhASveMNkHs8hD6wbiIaD2hZa-8oHedM" alt="Black color" />
+    <!-- Elegant 2pcs Sets -->
+    <div class="product-card">
+      <h2>Elegant 2pcs Sets</h2>
+      <p>Price: GHS 1,980</p>
+      <img id="elegant-set-img" src="https://drive.google.com/uc?export=view&id=1jTECEDHAAOnKDYSiQPgonB2NhhP2gnSW" alt="Elegant Set" />
+      <div class="swatches">
+        <span class="swatch active" style="background:#444;" onclick="document.getElementById('elegant-set-img').src='https://drive.google.com/uc?export=view&id=1jTECEDHAAOnKDYSiQPgonB2NhhP2gnSW'"></span>
+        <span class="swatch" style="background:#222;" onclick="document.getElementById('elegant-set-img').src='https://drive.google.com/uc?export=view&id=1He9Z4xpCbefvuO_3CTpLub1vwR2QVpFa'"></span>
+        <span class="swatch" style="background:#000;" onclick="document.getElementById('elegant-set-img').src='https://drive.google.com/uc?export=view&id=1XhASveMNkHs8hD6wbiIaD2hZa-8oHedM'"></span>
+      </div>
+    </div>
+
+    <!-- Simple Classy Jackets -->
+    <div class="product-card">
+      <h2>Simple Classy Jackets</h2>
+      <p>Price: GHS 899</p>
+      <img id="jacket-img" src="https://drive.google.com/uc?export=view&id=1A2bstxwabfK-FfrPABdqBipTXjw9Sm4W" alt="Jacket" />
+      <div class="swatches">
+        <span class="swatch active" style="background:#555;" onclick="document.getElementById('jacket-img').src='https://drive.google.com/uc?export=view&id=1A2bstxwabfK-FfrPABdqBipTXjw9Sm4W'"></span>
+        <span class="swatch" style="background:#222;" onclick="document.getElementById('jacket-img').src='https://drive.google.com/uc?export=view&id=1JAJBajj_ry5a0q2gRFPlLoYh0JZQWhwv'"></span>
+        <span class="swatch" style="background:#000;" onclick="document.getElementById('jacket-img').src='https://drive.google.com/uc?export=view&id=14wEqIk7YY0RdvRcvw0Q6xZRelb0TjiMC'"></span>
+        <span class="swatch" style="background:#1a1a1a;" onclick="document.getElementById('jacket-img').src='https://drive.google.com/uc?export=view&id=1B6uQwbHUSkvalKG2Zfko1euhrniktLGY'"></span>
+        <span class="swatch" style="background:#111;" onclick="document.getElementById('jacket-img').src='https://drive.google.com/uc?export=view&id=1N4qnqjBIKUd9cuNHnWKlsbyyTC446QTw'"></span>
+        <span class="swatch" style="background:#333;" onclick="document.getElementById('jacket-img').src='https://drive.google.com/uc?export=view&id=1mQKSRC3PuQ_AwbdfdhNrxXvRwQJDRlMp'"></span>
+        <span class="swatch" style="background:#444;" onclick="document.getElementById('jacket-img').src='https://drive.google.com/uc?export=view&id=1pThFTWCXSgE0VDVu4lkBDmCSYGmxDkkQ'"></span>
+        <span class="swatch" style="background:#666;" onclick="document.getElementById('jacket-img').src='https://drive.google.com/uc?export=view&id=1NXpzB6X3J2I_C7Bv6aPIPBJ7_GVRHbE8'"></span>
+      </div>
+    </div>
+
+    <!-- Polo Shirt -->
+    <div class="product-card">
+      <h2>Fashion Versatile Polo Shirt</h2>
+      <p>Price: GHS 790</p>
+      <img id="polo-img" src="https://drive.google.com/uc?export=view&id=1qb-R83oaMmCz5btN08Ge_uHcD0ynEJPR" alt="Polo" />
+      <div class="swatches">
+        <span class="swatch active" style="background:#222;" onclick="document.getElementById('polo-img').src='https://drive.google.com/uc?export=view&id=1qb-R83oaMmCz5btN08Ge_uHcD0ynEJPR'"></span>
+        <span class="swatch" style="background:#555;" onclick="document.getElementById('polo-img').src='https://drive.google.com/uc?export=view&id=1C13OXSSdnBPHLFX-ggC6RHaF_hZInusO'"></span>
+        <span class="swatch" style="background:#666;" onclick="document.getElementById('polo-img').src='https://drive.google.com/uc?export=view&id=1gwHZR6rGw0x6yHF_DJwZJfVXOJ6qobVQ'"></span>
+        <span class="swatch" style="background:#444;" onclick="document.getElementById('polo-img').src='https://drive.google.com/uc?export=view&id=1fIrURvr5fGycWCjO8pWTYSG_49C6MGRB'"></span>
+        <span class="swatch" style="background:#111;" onclick="document.getElementById('polo-img').src='https://drive.google.com/uc?export=view&id=1S8Jm46p53utAsORr-8i8fh3-6sLXgQDf'"></span>
+      </div>
+    </div>
+
   </div>
-</div>
-
-  <!-- Simple Classy Jackets -->
-  <div class="product" id="simple-classy-jackets">
-    <h3>Simple Classy Jackets - GHS 899</h3>
-    <div class="product-images" id="jackets-images">
-      <img src="https://drive.google.com/uc?export=view&id=1A2bstxwabfK-FfrPABdqBipTXjw9Sm4W" alt="Simple Classy Jacket Color 1" />
-    </div>
-    <div class="color-swatches">
-      <span class="swatch apricot active" data-img="1A2bstxwabfK-FfrPABdqBipTXjw9Sm4W" title="Color 1"></span>
-      <span class="swatch blue-black" data-img="1JAJBajj_ry5a0q2gRFPlLoYh0JZQWhwv" title="Color 2"></span>
-      <span class="swatch black" data-img="14wEqIk7YY0RdvRcvw0Q6xZRelb0TjiMC" title="Color 3"></span>
-      <span class="swatch brown" data-img="1B6uQwbHUSkvalKG2Zfko1euhrniktLGY" title="Color 4"></span>
-      <span class="swatch navy" data-img="1N4qnqjBIKUd9cuNHnWKlsbyyTC446QTw" title="Color 5"></span>
-      <span class="swatch olive" data-img="1mQKSRC3PuQ_AwbdfdhNrxXvRwQJDRlMp" title="Color 6"></span>
-      <span class="swatch red" data-img="1pThFTWCXSgE0VDVu4lkBDmCSYGmxDkkQ" title="Color 7"></span>
-      <span class="swatch gray" data-img="1NXpzB6X3J2I_C7Bv6aPIPBJ7_GVRHbE8" title="Color 8"></span>
-    </div>
-  </div>
-
-  <!-- Fashion Versatile Polo Shirt -->
-  <div class="product" id="versatile-polo-shirt">
-    <h3>Fashion Versatile Polo Shirt - GHS 790</h3>
-    <div class="product-images" id="polo-images">
-      <img src="https://drive.google.com/uc?export=view&id=1qb-R83oaMmCz5btN08Ge_uHcD0ynEJPR" alt="Polo Shirt Color 1" />
-    </div>
-    <div class="color-swatches">
-      <span class="swatch apricot active" data-img="1qb-R83oaMmCz5btN08Ge_uHcD0ynEJPR" title="Color 1"></span>
-      <span class="swatch blue-black" data-img="1C13OXSSdnBPHLFX-ggC6RHaF_hZInusO" title="Color 2"></span>
-      <span class="swatch black" data-img="1gwHZR6rGw0x6yHF_DJwZJfVXOJ6qobVQ" title="Color 3"></span>
-      <span class="swatch brown" data-img="1fIrURvr5fGycWCjO8pWTYSG_49C6MGRB" title="Color 4"></span>
-      <span class="swatch white" data-img="1S8Jm46p53utAsORr-8i8fh3-6sLXgQDf" title="Color 5"></span>
-    </div>
-  </div>
-
-  <script>
-    function setupSwatches(productId) {
-      const product = document.getElementById(productId);
-      const swatches = product.querySelectorAll('.swatch');
-      const imgContainer = product.querySelector('.product-images img');
-
-      swatches.forEach(swatch => {
-        swatch.addEventListener('click', () => {
-          // Remove active class from all
-          swatches.forEach(s => s.classList.remove('active'));
-          // Set active on clicked swatch
-          swatch.classList.add('active');
-          // Change image src to the swatch's data-img
-          const newImgSrc = "https://drive.google.com/uc?export=view&id=" + swatch.getAttribute('data-img');
-          imgContainer.src = newImgSrc;
-        });
-      });
-    }
-
-    // Setup swatches for each product
-    setupSwatches('elegant-2pcs-sets');
-    setupSwatches('simple-classy-jackets');
-    setupSwatches('versatile-polo-shirt');
-  </script>
-
 </body>
 </html>
