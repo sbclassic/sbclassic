@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Contact Us - SB CLASSIC</title>
+  <title>SB CLASSIC</title>
   <style>
     :root {
       --deep-gold: #bfa153;
@@ -47,55 +47,73 @@
     }
 
     main {
-      max-width: 800px;
+      max-width: 900px;
       margin: 2rem auto;
       padding: 0 1rem;
       text-align: center;
     }
 
-    h1 {
-      color: var(--deep-gold);
+    main h1 {
+      font-weight: 300;
       font-size: 2rem;
       margin-bottom: 0.5rem;
+      color: var(--deep-gold);
+      line-height: 1.3;
+      letter-spacing: 1px;
     }
 
-    p {
-      font-size: 1rem;
+    main h2.slogan {
+      font-weight: 400;
+      font-size: 1.2rem;
+      margin-top: 0;
       color: var(--blue-black);
+      font-style: italic;
     }
 
-    form {
-      margin-top: 2rem;
+    .products-section {
+      margin-top: 3rem;
       text-align: left;
     }
 
-    label {
-      display: block;
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
       margin-top: 1rem;
-      font-weight: bold;
     }
 
-    input, textarea {
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s ease;
+      background: #fff;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 4px 15px rgba(191, 161, 83, 0.5);
+    }
+
+    .product-image {
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-family: Georgia, serif;
+      height: 220px;
+      object-fit: cover;
     }
 
-    button {
-      margin-top: 1.5rem;
-      background: var(--blue-black);
-      color: var(--white);
-      padding: 10px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
+    .product-info {
+      padding: 15px;
     }
 
-    button:hover {
-      background: var(--deep-gold);
+    .product-info h3 {
+      margin: 0 0 8px 0;
+      font-size: 1.1rem;
+      color: var(--deep-gold);
+    }
+
+    .product-info p {
+      margin: 0;
+      font-weight: 600;
       color: var(--blue-black);
     }
 
@@ -123,10 +141,16 @@
       font-weight: 500;
       font-size: 1rem;
     }
+
+    @media (max-width: 600px) {
+      nav a {
+        display: inline-block;
+        margin: 10px;
+      }
+    }
   </style>
 </head>
 <body>
-
   <header>
     <a href="index.html">
       <img src="logo.png" alt="SB CLASSIC Logo" class="logo" />
@@ -134,8 +158,8 @@
     <nav>
       <a href="index.html">HOME</a>
       <a href="about.html">ABOUT</a>
-      <a href="contacts.html">CONTACTS</a>
-      <a href="clothes.html">CLOTHES</a>
+       <a href="contacts.html">CONTACTS</a>
+       <a href="clothes.html">CLOTHES</a>
       <a href="shoes.html">SHOES</a>
       <a href="accessories.html">ACCESSORIES</a>
       <a href="products.html">PRODUCTS</a>
@@ -143,29 +167,56 @@
   </header>
 
   <main>
-    <h1>Contact SB CLASSIC</h1>
-    <p>We’d love to hear from you. Reach out with any questions or feedback.</p>
+    <h1>Welcome to SB CLASSIC</h1>
+    <h2 class="slogan">...Style with Class</h2>
+   
+  <div class="container">
 
-    <form action="mailto:sbclassics@icloud.com" method="POST" enctype="text/plain">
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required>
-
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
-
-      <button type="submit">Send Message</button>
-    </form>
+  <div class="product-card">
+    <h3>Elegant 2pcs Set</h3>
+    <p>Price: GHS 1,980</p>
+    <img id="elegant-img" src="https://raw.githubusercontent.com/sbclassic/sbclassic/main/clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set" width="300" style="border-radius: 6px; margin-bottom: 15px;">
+    <div class="color-options">
+      <img src="https://raw.githubusercontent.com/sbclassic/sbclassic/main/clothes/elegant_2pcs_set_apricot.jpeg" alt="Apricot" width="80">
+      <img src="https://raw.githubusercontent.com/sbclassic/sbclassic/main/clothes/elegant_2pcs_set_blueblack.jpeg" alt="Blue Black" width="80">
+      <img src="https://raw.githubusercontent.com/sbclassic/sbclassic/main/clothes/elegant_2pcs_set_black.jpeg" alt="Black" width="80">
+    </div>
+    <div class="swatches" style="margin-top: 10px;">
+      <span class="swatch active" style="background:#bfa153;" onclick="document.getElementById('elegant-img').src='https://raw.githubusercontent.com/sbclassic/sbclassic/main/clothes/elegant_2pcs_set_apricot.jpeg'; this.classList.add('active'); removeActive(this);"></span>
+      <span class="swatch" style="background:#222;" onclick="document.getElementById('elegant-img').src='https://raw.githubusercontent.com/sbclassic/sbclassic/main/clothes/elegant_2pcs_set_blueblack.jpeg'; this.classList.add('active'); removeActive(this);"></span>
+      <span class="swatch" style="background:#000;" onclick="document.getElementById('elegant-img').src='https://raw.githubusercontent.com/sbclassic/sbclassic/main/clothes/elegant_2pcs_set_black.jpeg'; this.classList.add('active'); removeActive(this);"></span>
+    </div>
+  </div>
   </main>
 
   <footer>
-    <p>
-      SB CLASSIC is a distinguished Ghana-based men’s fashion brand dedicated to offering timeless style with unmatched quality. Our collection includes finely crafted suits, shirts, shoes, and accessories.
+    <a href="about.html">ABOUT</a>
+     <p>
+      SB CLASSIC is a distinguished Ghana-based men’s fashion brand dedicated to offering timeless style with unmatched quality. We believe in the power of dressing well to express confidence, elegance, and class.
     </p>
     <p>
-      CONTACT US: +233260928990 | <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a>
+      Our collection includes finely crafted suits, shirts, shoes, and accessories designed for the modern gentleman who values sophistication and comfort.
+    </p>
+    <p>
+              🌍WHAT WE OFFER
+    </p>
+    <p>
+- High-quality, ready-to-wear men’s fashion
+- Local & nationwide delivery across Ghana
+- International shipping available
+- Easy and secure checkout via Flutterwave
+- Friendly customer service & order tracking
+    </p>
+    <p>
+      With a strong online presence and growing customer base, SB CLASSIC is more than a brand — it’s a lifestyle rooted in excellence, sophistication, and authenticity.
+       </p>
+       <p>
+      Experience style with class — experience SB CLASSIC.
+    </p>
+    <p>
+  <footer>
+    </p>
+      CONTACT US: +233260928990 | sbclassics@icloud.com
     </p>
     <p class="social-links">
       FOLLOW US ON:
@@ -177,6 +228,5 @@
     </p>
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
-
 </body>
 </html>
