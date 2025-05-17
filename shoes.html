@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shoes - SB CLASSIC</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #111;
+      margin: 0; padding: 0;
+    }
+    header, footer {
+      background: #0a0a23; /* Blue Black */
+      color: #d4af37; /* Deep Gold */
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    nav a {
+      color: #d4af37;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      color: #0a0a23;
+    }
+    .products {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 1rem;
+      max-width: 280px;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+      text-align: center;
+      background: #fff;
+    }
+    .product-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    .product-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #0a0a23;
+    }
+    .product-price {
+      font-weight: 600;
+      color: #d4af37;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    .quantity-label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+    input[type="number"] {
+      width: 60px;
+      padding: 0.3rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    button.add-to-cart {
+      background: #d4af37;
+      border: none;
+      color: #0a0a23;
+      font-weight: 700;
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button.add-to-cart:hover {
+      background: #b89227;
+    }
+    footer p {
+      margin: 0.5rem 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>SB CLASSIC</h2>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="clothes.html">Clothes</a>
+      <a href="shoe.html">Shoes</a>
+      <a href="accessories.html">Accessories</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Shoes Collection</h1>
+    <section class="products">
+      <article class="product-card">
+        <img src="shoe/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
+        <div class="product-name">Versace Sneaker Black</div>
+        <div class="product-price">GHS 1,899</div>
+        <label class="quantity-label" for="qty-black">Quantity:</label>
+        <input type="number" id="qty-black" name="qty-black" min="1" max="10" value="1" />
+        <button class="add-to-cart" onclick="addToCart('Versace Sneaker Black', 1899, document.getElementById('qty-black').value)">Add to Cart</button>
+      </article>
+
+      <article class="product-card">
+        <img src="shoe/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
+        <div class="product-name">Versace Sneaker White</div>
+        <div class="product-price">GHS 1,899</div>
+        <label class="quantity-label" for="qty-white">Quantity:</label>
+        <input type="number" id="qty-white" name="qty-white" min="1" max="10" value="1" />
+        <button class="add-to-cart" onclick="addToCart('Versace Sneaker White', 1899, document.getElementById('qty-white').value)">Add to Cart</button>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 SB CLASSIC | Style with Class</p>
+    <p>Contact: +233260928990 | Email: sbclassics@icloud.com</p>
+  </footer>
+
+  <script>
+    function addToCart(productName, price, quantity) {
+      quantity = parseInt(quantity);
+      if(quantity < 1 || quantity > 10 || isNaN(quantity)) {
+        alert('Please enter a valid quantity between 1 and 10.');
+        return;
+      }
+      alert(`${quantity} x ${productName} added to cart at GHS ${price} each.`);
+      // Here you can integrate your cart logic as needed
+    }
+  </script>
+</body>
+</html>
