@@ -3,137 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Clothes - SB CLASSIC</title>
-  <style>
-    :root {
-      --deep-gold: #bfa153;
-      --blue-black: #101820;
-      --white: #ffffff;
-    }
-
-    body {
-      font-family: 'Georgia', serif;
-      background: var(--white);
-      color: var(--blue-black);
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      text-align: center;
-      padding: 20px;
-      border-bottom: 1px solid #ccc;
-    }
-
-    nav a {
-      margin: 0 15px;
-      color: var(--blue-black);
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: var(--deep-gold);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
-
-    .product-card {
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 15px;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .product-card img {
-      width: 100%;
-      max-width: 300px;
-      height: auto;
-      margin-bottom: 15px;
-      border-radius: 6px;
-    }
-
-    .swatches {
-      margin-top: 10px;
-    }
-
-    .swatch {
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      display: inline-block;
-      margin: 0 5px;
-      border: 2px solid #ddd;
-      cursor: pointer;
-    }
-
-    .swatch.active {
-      border: 3px solid var(--deep-gold);
-    }
-
-    h2 {
-      color: var(--deep-gold);
-    }
-  </style>
+  <title>Clothes | SB CLASSIC</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>SB CLASSIC - Clothes</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="clothes.html">Clothes</a>
-      <a href="shoes.html">Shoes</a>
-      <a href="accessories.html">Accessories</a>
+    <nav class="navbar">
+      <a href="index.html" class="logo">SB CLASSIC</a>
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="clothes.html" class="active">CLOTHES</a></li>
+        <li><a href="shoes.html">SHOES</a></li>
+        <li><a href="accessories.html">ACCESSORIES</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
     </nav>
   </header>
 
-  <div class="container">
+  <main>
+    <section class="product-section">
+      <h2 class="section-title">Clothes</h2>
+      <div class="product-grid">
 
-   <div class="product-card">
-  <h3>Elegant 2pcs Set</h3>
-  <p>Price: GHS 1,980</p>
-  <div class="color-options">
-    <img src="https://raw.githubusercontent.com/sbclassic/sbclassic/main/clothes/elegant_2pcs_set_apricot.jpeg" alt="Apricot" width="160">
-    <img src="https://raw.githubusercontent.com/sbclassic/sbclassic/main/clothes/elegant_2pcs_set_blueblack.jpeg" alt="Blue Black" width="160">
-    <img src="https://raw.githubusercontent.com/sbclassic/sbclassic/main/clothes/elegant_2pcs_set_black.jpeg" alt="Black" width="160">
-  </div>
-</div>
-      <div class="swatches">
-        <span class="swatch active" style="background:#444;" onclick="document.getElementById('elegant-img').src='https://drive.google.com/uc?export=view&id=1jTECEDHAAOnKDYSiQPgonB2NhhP2gnSW'"></span>
-        <span class="swatch" style="background:#222;" onclick="document.getElementById('elegant-img').src='https://drive.google.com/uc?export=view&id=1He9Z4xpCbefvuO_3CTpLub1vwR2QVpFa'"></span>
-        <span class="swatch" style="background:#000;" onclick="document.getElementById('elegant-img').src='https://drive.google.com/uc?export=view&id=1XhASveMNkHs8hD6wbiIaD2hZa-8oHedM'"></span>
+        <!-- Product: Elegant 2pcs Set - Apricot -->
+        <div class="product-card">
+          <img src="clothes/IMG_8853.jpeg" alt="Elegant 2pcs Set - Apricot" class="product-img">
+          <h3 class="product-name">Elegant 2pcs Set</h3>
+          <p class="product-color">Color: Apricot</p>
+          <p class="product-price">GHS 1,980</p>
+        </div>
+
+        <!-- Product: Elegant 2pcs Set - Blue Black -->
+        <div class="product-card">
+          <img src="clothes/IMG_8853.jpeg" alt="Elegant 2pcs Set - Blue Black" class="product-img">
+          <h3 class="product-name">Elegant 2pcs Set</h3>
+          <p class="product-color">Color: Blue Black</p>
+          <p class="product-price">GHS 1,980</p>
+        </div>
+
+        <!-- Product: Elegant 2pcs Set - Black -->
+        <div class="product-card">
+          <img src="clothes/IMG_8853.jpeg" alt="Elegant 2pcs Set - Black" class="product-img">
+          <h3 class="product-name">Elegant 2pcs Set</h3>
+          <p class="product-color">Color: Black</p>
+          <p class="product-price">GHS 1,980</p>
+        </div>
+
+        <!-- Add more products below using same structure -->
+
       </div>
-    </div>
+    </section>
+  </main>
 
-    <!-- Polo Shirt -->
-    <div class="product-card">
-      <h2>Fashion Versatile Polo Shirt</h2>
-      <p>Price: GHS 790</p>
-      <img id="polo-img" src="https://drive.google.com/uc?export=view&id=1qb-R83oaMmCz5btN08Ge_uHcD0ynEJPR" alt="Polo Shirt" />
-      <div class="swatches">
-        <span class="swatch active" style="background:#222;" onclick="document.getElementById('polo-img').src='https://drive.google.com/uc?export=view&id=1qb-R83oaMmCz5btN08Ge_uHcD0ynEJPR'"></span>
-        <span class="swatch" style="background:#555;" onclick="document.getElementById('polo-img').src='https://drive.google.com/uc?export=view&id=1C13OXSSdnBPHLFX-ggC6RHaF_hZInusO'"></span>
-        <span class="swatch" style="background:#444;" onclick="document.getElementById('polo-img').src='https://drive.google.com/uc?export=view&id=1fIrURvr5fGycWCjO8pWTYSG_49C6MGRB'"></span>
-      </div>
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>Contact us: <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a> | <a href="tel:+233260928990">+233260928990</a></p>
+      <p>Follow us on Instagram: <a href="https://instagram.com/sb_classic_" target="_blank">@sb_classic_</a></p>
+      <p>&copy; 2025 SB CLASSIC. Style with Class.</p>
     </div>
-
-    <!-- Classy Jackets -->
-    <div class="product-card">
-      <h2>Simple Classy Jackets</h2>
-      <p>Price: GHS 899</p>
-      <img id="jacket-img" src="https://drive.google.com/uc?export=view&id=1A2bstxwabfK-FfrPABdqBipTXjw9Sm4W" alt="Classy Jacket" />
-      <div class="swatches">
-        <span class="swatch active" style="background:#555;" onclick="document.getElementById('jacket-img').src='https://drive.google.com/uc?export=view&id=1A2bstxwabfK-FfrPABdqBipTXjw9Sm4W'"></span>
-        <span class="swatch" style="background:#333;" onclick="document.getElementById('jacket-img').src='https://drive.google.com/uc?export=view&id=1pThFTWCXSgE0VDVu4lkBDmCSYGmxDkkQ'"></span>
-        <span class="swatch" style="background:#1a1a1a;" onclick="document.getElementById('jacket-img').src='https://drive.google.com/uc?export=view&id=1B6uQwbHUSkvalKG2Zfko1euhrniktLGY'"></span>
-      </div>
-    </div>
-
-  </div>
+  </footer>
 </body>
 </html>
