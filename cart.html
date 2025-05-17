@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Cart - SB CLASSIC</title>
+  <style>
+    :root {
+      --deep-gold: #bfa153;
+      --blue-black: #101820;
+      --white: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: var(--white);
+      color: var(--blue-black);
+    }
+
+    header, footer {
+      text-align: center;
+      padding: 20px;
+      background: var(--white);
+      border-bottom: 1px solid #ddd;
+    }
+
+    header img.logo {
+      height: 90px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    nav a {
+      margin: 0 10px;
+      color: var(--blue-black);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--deep-gold);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--deep-gold);
+      font-weight: normal;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 1rem;
+    }
+
+    .cart-item img {
+      width: 100px;
+      height: auto;
+      border-radius: 5px;
+      margin-right: 20px;
+    }
+
+    .cart-details {
+      flex: 1;
+    }
+
+    .cart-details h3 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .cart-details p {
+      margin: 5px 0;
+      color: #333;
+    }
+
+    .cart-actions input {
+      width: 40px;
+      text-align: center;
+      padding: 5px;
+      font-size: 1rem;
+    }
+
+    .remove-btn {
+      background: none;
+      color: red;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-left: 10px;
+    }
+
+    .total {
+      text-align: right;
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      color: var(--blue-black);
+    }
+
+    .checkout-btn {
+      display: block;
+      margin: 2rem auto;
+      background: var(--deep-gold);
+      color: #fff;
+      padding: 12px 25px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .checkout-btn:hover {
+      background: #a88e48;
+    }
+
+    footer {
+      background: var(--blue-black);
+      color: var(--white);
+      font-size: 0.9rem;
+      padding: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    footer a {
+      color: var(--deep-gold);
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">
+      <img src="logo.png" alt="SB CLASSIC Logo" class="logo" />
+    </a>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="clothes.html">CLOTHES</a>
+      <a href="shoes.html">SHOES</a>
+      <a href="accessories.html">ACCESSORIES</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Your Cart</h1>
+
+    <div class="cart-item">
+      <img src="shoes/versace_sneaker_white.jpeg" alt="Product" />
+      <div class="cart-details">
+        <h3>Versace Sneaker - White</h3>
+        <p>Price: GHS 1,899</p>
+      </div>
+      <div class="cart-actions">
+        <input type="number" value="1" min="1" />
+        <button class="remove-btn">Remove</button>
+      </div>
+    </div>
+
+    <div class="total">
+      Total: GHS 1,899
+    </div>
+
+    <a href="checkout.html" class="checkout-btn">Proceed to Checkout</a>
+  </main>
+
+  <footer>
+    CONTACT: +233260928990 | sbclassics@icloud.com <br/>
+    <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
+    <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
+    <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a>
+    <p>© 2025 SB CLASSIC. All rights reserved.</p>
+  </footer>
+</body>
+</html>
