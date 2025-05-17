@@ -54,28 +54,27 @@
     }
 
     main h1 {
-      font-weight: 500;
+      font-weight: 400;       /* lighter font weight */
       font-size: 2.5rem;
       margin-bottom: 0.2rem;
       color: var(--deep-gold);
       line-height: 1.2;
+      letter-spacing: 1px;
     }
 
-    main h2 {
-      font-weight: 400;
-      font-size: 1.5rem;
+    main h2.slogan {
+      font-weight: 600;
+      font-size: 1.2rem;
       margin-top: 0;
-      margin-bottom: 2rem;
       color: var(--blue-black);
       font-style: italic;
     }
 
     main p {
+      max-width: 700px;
+      margin: 1rem auto;
       font-size: 1.1rem;
-      line-height: 1.6;
-      max-width: 600px;
-      margin: 0.8rem auto;
-      color: var(--blue-black);
+      line-height: 1.5;
     }
 
     footer {
@@ -87,14 +86,18 @@
       margin-top: 3rem;
     }
 
-    footer p a {
+    footer a {
       color: var(--deep-gold);
       text-decoration: none;
-      margin: 0 0.3rem;
+      margin: 0 0.5rem;
     }
 
-    footer p a:hover {
+    footer a:hover {
       text-decoration: underline;
+    }
+
+    footer .social {
+      margin-top: 0.5rem;
     }
 
     @media (max-width: 600px) {
@@ -120,7 +123,7 @@
 
   <main>
     <h1>Welcome to SB CLASSIC</h1>
-    <h2>Style with Class</h2>
+    <h2 class="slogan">Style with Class</h2>
     <p>
       SB CLASSIC is a distinguished men’s fashion brand dedicated to offering timeless style with unmatched quality. We believe in the power of dressing well to express confidence, elegance, and class.
     </p>
@@ -137,12 +140,14 @@
 
   <footer>
     <p>
-      Contact us: +233260928990 | sbclassics@icloud.com<br />
-      Follow us on:
-      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
-      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
+      Contact us: +233260928990 | sbclassics@icloud.com
+    </p>
+    <p class="social">
+      Follow us on: 
+      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> | 
+      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> | 
+      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> | 
+      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> | 
       <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
     </p>
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
