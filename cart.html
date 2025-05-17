@@ -84,7 +84,7 @@
     }
 
     .cart-actions input {
-      width: 40px;
+      width: 50px;
       text-align: center;
       padding: 5px;
       font-size: 1rem;
@@ -104,6 +104,7 @@
       font-size: 1.2rem;
       margin-top: 2rem;
       color: var(--blue-black);
+      font-weight: bold;
     }
 
     .checkout-btn {
@@ -158,23 +159,15 @@
   <main>
     <h1>Your Cart</h1>
 
-    <div class="cart-item">
-      <img src="shoes/versace_sneaker_white.jpeg" alt="Product" />
-      <div class="cart-details">
-        <h3>Versace Sneaker - White</h3>
-        <p>Price: GHS 1,899</p>
-      </div>
-      <div class="cart-actions">
-        <input type="number" value="1" min="1" />
-        <button class="remove-btn">Remove</button>
-      </div>
+    <div id="cart-items-container">
+      <!-- Cart items will be injected here -->
     </div>
 
-    <div class="total">
-      Total: GHS 1,899
+    <div class="total" id="total-price">
+      Total: GHS 0
     </div>
 
-    <a href="checkout.html" class="checkout-btn">Proceed to Checkout</a>
+    <a href="checkout.html" id="checkout-btn" class="checkout-btn" style="display:none;">Proceed to Checkout</a>
   </main>
 
   <footer>
@@ -184,5 +177,80 @@
     <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a>
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Load cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('sbclassicCart')) || [];
+
+    const cartContainer = document.getElementById('cart-items-container');
+    const totalPriceEl = document.getElementById('total-price');
+    const checkoutBtn = document.getElementById('checkout-btn');
+
+    function renderCart() {
+      cartContainer.innerHTML = '';
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+        totalPriceEl.textContent = 'Total: GHS 0';
+        checkoutBtn.style.display = 'none';
+        return;
+      }
+
+      checkoutBtn.style.display = 'inline-block';
+
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+
+        div.innerHTML = `
+          <img src="${item.imgSrc}" alt="${item.name}" />
+          <div class="cart-details">
+            <h3>${item.name}</h3>
+            <p>Price: GHS ${item.price.toLocaleString()}</p>
+            <p>Subtotal: GHS ${(itemTotal).toLocaleString()}</p>
+          </div>
+          <div class="cart-actions">
+            <input type="number" min="1" value="${item.quantity}" data-index="${index}" />
+            <button class="remove-btn" data-index="${index}">Remove</button>
+          </div>
+        `;
+
+        cartContainer.appendChild(div);
+      });
+
+      totalPriceEl.textContent = 'Total: GHS ' + total.toLocaleString();
+
+      // Attach event listeners for quantity changes and removals
+      const qtyInputs = cartContainer.querySelectorAll('input[type="number"]');
+      qtyInputs.forEach(input => {
+        input.addEventListener('change', (e) => {
+          const i = e.target.getAttribute('data-index');
+          let val = parseInt(e.target.value);
+          if (isNaN(val) || val < 1) val = 1;
+          cart[i].quantity = val;
+          localStorage.setItem('sbclassicCart', JSON.stringify(cart));
+          renderCart();
+        });
+      });
+
+      const removeButtons = cartContainer.querySelectorAll('.remove-btn');
+      removeButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+          const i = e.target.getAttribute('data-index');
+          cart.splice(i, 1);
+          localStorage.setItem('sbclassicCart', JSON.stringify(cart));
+          renderCart();
+        });
+      });
+    }
+
+    // Initial render
+    renderCart();
+  </script>
 </body>
 </html>
