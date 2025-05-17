@@ -5,11 +5,132 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Contact Us - SB CLASSIC</title>
   <style>
-    /* Paste your existing styles here or link a CSS file */
+    :root {
+      --deep-gold: #bfa153;
+      --blue-black: #101820;
+      --white: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: var(--white);
+      color: var(--blue-black);
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header img.logo {
+      height: 100px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: var(--blue-black);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      color: var(--deep-gold);
+    }
+
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--deep-gold);
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: var(--blue-black);
+    }
+
+    form {
+      margin-top: 2rem;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: Georgia, serif;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      background: var(--blue-black);
+      color: var(--white);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--deep-gold);
+      color: var(--blue-black);
+    }
+
+    footer {
+      background: var(--blue-black);
+      color: var(--white);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+
+    footer a {
+      color: var(--deep-gold);
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .social-links {
+      margin-top: 0.5rem;
+      font-weight: 500;
+      font-size: 1rem;
+    }
   </style>
 </head>
 <body>
+
   <header>
+    <a href="index.html">
+      <img src="logo.png" alt="SB CLASSIC Logo" class="logo" />
+    </a>
     <nav>
       <a href="index.html">HOME</a>
       <a href="about.html">ABOUT</a>
@@ -17,25 +138,45 @@
       <a href="clothes.html">CLOTHES</a>
       <a href="shoes.html">SHOES</a>
       <a href="accessories.html">ACCESSORIES</a>
+      <a href="products.html">PRODUCTS</a>
     </nav>
   </header>
 
   <main>
-    <h1>Contact Us</h1>
-    <p>Phone: +233260928990</p>
-    <p>Email: sbclassics@icloud.com</p>
-    <p>Follow us on social media:</p>
-    <ul>
-      <li><a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a></li>
-      <li><a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a></li>
-      <li><a href="https://t.me/sbclassics" target="_blank">Telegram</a></li>
-      <li><a href="https://wa.me/233260928990" target="_blank">WhatsApp</a></li>
-      <li><a href="https://www.tiktok.com/sb.classic" target="_blank">TikTok</a></li>
-    </ul>
+    <h1>Contact SB CLASSIC</h1>
+    <p>We’d love to hear from you. Reach out with any questions or feedback.</p>
+
+    <form action="mailto:sbclassics@icloud.com" method="POST" enctype="text/plain">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
   </main>
 
   <footer>
+    <p>
+      SB CLASSIC is a distinguished Ghana-based men’s fashion brand dedicated to offering timeless style with unmatched quality. Our collection includes finely crafted suits, shirts, shoes, and accessories.
+    </p>
+    <p>
+      CONTACT US: +233260928990 | <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a>
+    </p>
+    <p class="social-links">
+      FOLLOW US ON:
+      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
+      <a href="https://www.tiktok.com/sb.classic" target="_blank">TikTok</a>
+    </p>
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
+
 </body>
 </html>
