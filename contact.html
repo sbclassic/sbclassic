@@ -1,50 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CONTACTS SB CLASSIC</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us – SB CLASSIC</title>
   <style>
     body {
-      font-family: 'Georgia', serif;
-      margin: 2rem;
-      background: #fff;
-      color: #101820;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+      color: #000;
+    }
+    header {
+      background-color: #0b0b1c;
+      color: #ffd700;
+      padding: 20px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 10px;
+      color: #ffd700;
+      text-decoration: none;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
     h1 {
-      color: #bfa153;
+      color: #0b0b1c;
+      text-align: center;
     }
-    p, li {
-      line-height: 1.6;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
-    a {
-      color: #bfa153;
+    input, textarea {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #ffd700;
+      color: #0b0b1c;
+      padding: 12px;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+    }
+    footer {
+      background-color: #0b0b1c;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    .social-links a {
+      color: #ffd700;
       text-decoration: none;
-      font-weight: bold;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    ul {
-      padding-left: 1rem;
+      margin: 0 5px;
     }
   </style>
 </head>
 <body>
-  <h1>CONTACTS SB CLASSIC</h1>
 
-  <p><strong>Phone:</strong> <a href="tel:+233260928990">+233 260 928 990</a></p>
-  <p><strong>Email:</strong> <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a></p>
+  <header>
+    <h1>SB CLASSIC</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="clothes.html">Clothes</a>
+      <a href="shoes.html">Shoes</a>
+      <a href="accessories.html">Accessories</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-  <h2>Social Media</h2>
-  <ul>
-    <li><strong>Instagram:</strong> <a href="https://instagram.com/sb_classic_" target="_blank">@sb_classic_</a></li>
-    <li><strong>TikTok:</strong> @sb.classic</li>
-    <li><strong>Facebook Page:</strong> <a href="https://facebook.com/sb.classic_" target="_blank">sb.classic_</a></li>
-    <li><strong>WhatsApp:</strong> <a href="https://wa.me/233260928990" target="_blank">+233 260 928 990</a></li>
-    <li><strong>Telegram Channel:</strong> <a href="https://t.me/sbclassics" target="_blank">https://t.me/sbclassics</a></li>
-  </ul>
+  <div class="container">
+    <h1>Contact Us</h1>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
 
-  <p><a href="index.html">&larr; Back to Home</a></p>
+    <div style="margin-top: 30px;">
+      <p><strong>Phone:</strong> <a href="tel:+233260928990">+233260928990</a></p>
+      <p><strong>Email:</strong> <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>CONTACT US: +233260928990 | sbclassics@icloud.com</p>
+    <p class="social-links">
+      FOLLOW US ON:
+      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
+      <a href="https://www.tiktok.com/sb.classic" target="_blank">TikTok</a>
+    </p>
+  </footer>
+
 </body>
 </html>
