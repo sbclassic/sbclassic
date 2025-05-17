@@ -1,172 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Contact Us - SB CLASSIC</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us – SB CLASSIC</title>
   <style>
-    :root {
-      --deep-gold: #bfa153;
-      --blue-black: #101820;
-      --white: #ffffff;
-    }
-
     body {
       margin: 0;
-      font-family: 'Georgia', serif;
-      background: var(--white);
-      color: var(--blue-black);
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+      color: #000;
     }
-
     header {
-      text-align: center;
+      background-color: #0b0b1c;
+      color: #ffd700;
       padding: 20px;
-      border-bottom: 1px solid #ddd;
-    }
-
-    header img.logo {
-      height: 100px;
-      display: block;
-      margin: 0 auto;
-    }
-
-    nav {
-      margin-top: 10px;
-    }
-
-    nav a {
-      margin: 0 15px;
-      color: var(--blue-black);
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-
-    nav a:hover {
-      color: var(--deep-gold);
-    }
-
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
       text-align: center;
     }
-
+    nav a {
+      margin: 0 10px;
+      color: #ffd700;
+      text-decoration: none;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
     h1 {
-      color: var(--deep-gold);
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
+      color: #0b0b1c;
+      text-align: center;
     }
-
-    p {
-      font-size: 1rem;
-      color: var(--blue-black);
-    }
-
     form {
-      margin-top: 2rem;
-      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
-
-    label {
-      display: block;
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-
     input, textarea {
-      width: 100%;
       padding: 10px;
-      margin-top: 5px;
+      font-size: 1rem;
       border: 1px solid #ccc;
       border-radius: 4px;
-      font-family: Georgia, serif;
     }
-
     button {
-      margin-top: 1.5rem;
-      background: var(--blue-black);
-      color: var(--white);
-      padding: 10px 20px;
+      background-color: #ffd700;
+      color: #0b0b1c;
+      padding: 12px;
+      font-size: 1rem;
       border: none;
-      border-radius: 4px;
       cursor: pointer;
     }
-
-    button:hover {
-      background: var(--deep-gold);
-      color: var(--blue-black);
-    }
-
     footer {
-      background: var(--blue-black);
-      color: var(--white);
-      padding: 1.5rem 2rem;
+      background-color: #0b0b1c;
+      color: #fff;
       text-align: center;
-      font-size: 0.9rem;
-      margin-top: 3rem;
+      padding: 20px;
+      margin-top: 40px;
     }
-
-    footer a {
-      color: var(--deep-gold);
+    .social-links a {
+      color: #ffd700;
       text-decoration: none;
-      margin: 0 0.5rem;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    .social-links {
-      margin-top: 0.5rem;
-      font-weight: 500;
-      font-size: 1rem;
+      margin: 0 5px;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <a href="index.html">
-      <img src="logo.png" alt="SB CLASSIC Logo" class="logo" />
-    </a>
+    <h1>SB CLASSIC</h1>
     <nav>
-      <a href="index.html">HOME</a>
-      <a href="about.html">ABOUT</a>
-      <a href="contacts.html">CONTACTS</a>
-      <a href="clothes.html">CLOTHES</a>
-      <a href="shoes.html">SHOES</a>
-      <a href="accessories.html">ACCESSORIES</a>
-      <a href="products.html">PRODUCTS</a>
+      <a href="index.html">Home</a>
+      <a href="clothes.html">Clothes</a>
+      <a href="shoes.html">Shoes</a>
+      <a href="accessories.html">Accessories</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
-  <main>
-    <h1>Contact SB CLASSIC</h1>
-    <p>We’d love to hear from you. Reach out with any questions or feedback.</p>
-
-    <form action="mailto:sbclassics@icloud.com" method="POST" enctype="text/plain">
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required>
-
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
-
+  <div class="container">
+    <h1>Contact Us</h1>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
       <button type="submit">Send Message</button>
     </form>
-  </main>
+
+    <div style="margin-top: 30px;">
+      <p><strong>Phone:</strong> <a href="tel:+233260928990">+233260928990</a></p>
+      <p><strong>Email:</strong> <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a></p>
+    </div>
+  </div>
 
   <footer>
-    <p>
-      SB CLASSIC is a distinguished Ghana-based men’s fashion brand dedicated to offering timeless style with unmatched quality. Our collection includes finely crafted suits, shirts, shoes, and accessories.
-    </p>
-    <p>
-      CONTACT US: +233260928990 | <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a>
-    </p>
+    <p>CONTACT US: +233260928990 | sbclassics@icloud.com</p>
     <p class="social-links">
       FOLLOW US ON:
       <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
@@ -175,7 +102,6 @@
       <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
       <a href="https://www.tiktok.com/sb.classic" target="_blank">TikTok</a>
     </p>
-    <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
 
 </body>
