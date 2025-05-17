@@ -8,37 +8,78 @@
     :root {
       --deep-gold: #bfa153;
       --blue-black: #101820;
-      --white: #fff;
+      --white: #ffffff;
     }
+
     body {
       margin: 0;
       font-family: 'Georgia', serif;
       background: var(--white);
       color: var(--blue-black);
     }
+
     header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-      background: var(--white);
+      text-align: center;
+      padding: 20px;
       border-bottom: 1px solid #ddd;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     }
+
     header img.logo {
-      height: 80px;
+      height: 100px;
+      display: block;
+      margin: 0 auto;
     }
+
+    nav {
+      margin-top: 10px;
+    }
+
     nav a {
-      margin-left: 1.5rem;
-      text-decoration: none;
+      margin: 0 15px;
       color: var(--blue-black);
-      font-weight: 600;
+      text-decoration: none;
+      font-weight: bold;
       font-size: 1rem;
     }
+
     nav a:hover {
       color: var(--deep-gold);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    h1, h2 {
+      color: var(--deep-gold);
+    }
+
+    footer {
+      background: var(--blue-black);
+      color: var(--white);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+
+    footer a {
+      color: var(--deep-gold);
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      nav a {
+        display: inline-block;
+        margin: 10px;
+      }
     }
   </style>
 </head>
@@ -54,9 +95,33 @@
       <a href="contact.html">CONTACT</a>
     </nav>
   </header>
+
   <main>
     <h1>Welcome to SB CLASSIC</h1>
-    <p>Style with Class.</p>
+    <p>
+      SB CLASSIC is a distinguished men’s fashion brand dedicated to offering timeless style with unmatched quality. We believe in the power of dressing well to express confidence, elegance, and class.
+    </p>
+    <p>
+      Our collection includes finely crafted suits, shirts, shoes, and accessories designed for the modern gentleman who values sophistication and comfort.
+    </p>
+    <p>
+      At SB CLASSIC, every detail matters — from the cut and fabric to the fit and finish. Our mission is to help men elevate their style with pieces that stand the test of time.
+    </p>
+    <p>
+      Experience style with class — experience SB CLASSIC.
+    </p>
   </main>
+
+  <footer>
+    <p>
+      Contact us: +233260928990 | sbclassics@icloud.com<br />
+      Follow us on:
+      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a>,
+      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a>,
+      <a href="https://t.me/sbclassics" target="_blank">Telegram</a>,
+      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a>
+    </p>
+    <p>© 2025 SB CLASSIC. All rights reserved.</p>
+  </footer>
 </body>
 </html>
