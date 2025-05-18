@@ -2,60 +2,105 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SB CLASSIC - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SB CLASSIC - Style with Class</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #fff;
-      color: #000;
+      color: #111;
     }
     header {
-      background: #0a0a23;
-      color: #d4af37;
-      padding: 20px;
+      background-color: #0a0a23; /* Blue Black */
+      color: #d4af37; /* Deep Gold */
+      padding: 1.5rem 2rem;
       text-align: center;
     }
     nav a {
-      margin: 0 12px;
       color: #d4af37;
+      margin: 0 1rem;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 700;
     }
     nav a:hover {
       text-decoration: underline;
     }
     .hero {
-      background: url('banner.jpg') center/cover no-repeat;
-      padding: 80px 20px;
-      color: #fff;
+      background: url('images/hero-banner.jpg') center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #d4af37;
+      text-shadow: 0 0 5px #000;
+      font-size: 2.5rem;
+      font-weight: 900;
+    }
+    main.container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h2.section-title {
+      color: #0a0a23;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #d4af37;
+      display: inline-block;
+      padding-bottom: 0.3rem;
+    }
+    .featured-products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      width: 220px;
+      padding: 0.5rem;
       text-align: center;
+      transition: box-shadow 0.3s ease;
+      cursor: pointer;
+      background: #fafafa;
     }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
+    .product-card:hover {
+      box-shadow: 0 4px 10px rgba(212, 175, 55, 0.5);
     }
-    .hero p {
-      font-size: 1.2rem;
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 4px;
     }
-    .section {
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .section h2 {
+    .product-card h3 {
+      margin: 0.5rem 0 0.2rem;
+      font-weight: 700;
       color: #0a0a23;
     }
-    .footer {
-      background: #0a0a23;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    .social a {
+    .product-card p.price {
       color: #d4af37;
-      margin: 0 8px;
+      font-weight: 700;
+      margin: 0.2rem 0 0.8rem;
+    }
+    footer {
+      background-color: #0a0a23;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 2rem;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+    }
+    .social-links a {
+      color: #d4af37;
       text-decoration: none;
+      margin: 0 0.5rem;
+      font-weight: 700;
+    }
+    .social-links a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -68,30 +113,52 @@
       <a href="clothes.html">Clothes</a>
       <a href="shoes.html">Shoes</a>
       <a href="accessories.html">Accessories</a>
-      <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
+      <a href="about.html">About</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h1>Welcome to SB CLASSIC</h1>
-    <p>Style with Class – Discover our premium collection</p>
+    Welcome to SB CLASSIC — Style with Class
   </section>
 
-  <section class="section">
-    <h2>Featured Collections</h2>
-    <p>Explore high-quality clothes, shoes, and accessories imported just for you.</p>
-  </section>
-
-  <footer class="footer">
-    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
-    <div class="social">
-      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
-      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
-      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
+  <main class="container">
+    <h2 class="section-title">Featured Products</h2>
+    <div class="featured-products">
+      <div class="product-card" onclick="location.href='clothes.html'">
+        <img src="images/clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set Apricot" />
+        <h3>Elegant 2pcs Set - Apricot</h3>
+        <p class="price">GHS 1,980</p>
+      </div>
+      <div class="product-card" onclick="location.href='clothes.html'">
+        <img src="images/clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Set Black" />
+        <h3>Elegant 2pcs Set - Black</h3>
+        <p class="price">GHS 1,980</p>
+      </div>
+      <div class="product-card" onclick="location.href='shoes.html'">
+        <img src="images/shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
+        <h3>Versace Sneaker - Black</h3>
+        <p class="price">GHS 1,890</p>
+      </div>
+      <div class="product-card" onclick="location.href='shoes.html'">
+        <img src="images/shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
+        <h3>Versace Sneaker - White</h3>
+        <p class="price">GHS 1,890</p>
+      </div>
     </div>
+  </main>
+
+  <footer>
+    <p>© 2025 SB CLASSIC | Style with Class</p>
+    <p>Contact: +233260928990 | sbclassics@icloud.com</p>
+    <p class="social-links">
+      FOLLOW US ON:
+      <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener noreferrer">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank" rel="noopener noreferrer">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank" rel="noopener noreferrer">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank" rel="noopener noreferrer">WhatsApp</a> |
+      <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener noreferrer">TikTok</a>
+    </p>
   </footer>
 
 </body>
