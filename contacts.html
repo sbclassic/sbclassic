@@ -12,15 +12,19 @@
       color: #000;
     }
     header {
-      background-color: #0b0b1c;
-      color: #ffd700;
+      background-color: #0a0a23; /* Blue Black */
+      color: #d4af37; /* Deep Gold */
       padding: 20px;
       text-align: center;
     }
     nav a {
       margin: 0 10px;
-      color: #ffd700;
+      color: #d4af37;
       text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
     }
     .container {
       max-width: 800px;
@@ -28,7 +32,7 @@
       padding: 0 20px;
     }
     h1 {
-      color: #0b0b1c;
+      color: #0a0a23;
       text-align: center;
     }
     form {
@@ -43,24 +47,33 @@
       border-radius: 4px;
     }
     button {
-      background-color: #ffd700;
-      color: #0b0b1c;
+      background-color: #d4af37;
+      color: #0a0a23;
       padding: 12px;
       font-size: 1rem;
+      font-weight: bold;
       border: none;
+      border-radius: 4px;
       cursor: pointer;
     }
+    button:hover {
+      background-color: #b89227;
+    }
     footer {
-      background-color: #0b0b1c;
-      color: #fff;
+      background-color: #0a0a23;
+      color: #d4af37;
       text-align: center;
       padding: 20px;
       margin-top: 40px;
     }
     .social-links a {
-      color: #ffd700;
+      color: #d4af37;
       text-decoration: none;
       margin: 0 5px;
+    }
+    .contact-info a {
+      color: #0a0a23;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -73,27 +86,29 @@
       <a href="clothes.html">Clothes</a>
       <a href="shoes.html">Shoes</a>
       <a href="accessories.html">Accessories</a>
+      <a href="cart.html">Cart</a>
+      <a href="checkout.html">Checkout</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <div class="container">
     <h1>Contact Us</h1>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" rows="5" required></textarea>
+    <form onsubmit="event.preventDefault(); alert('Thank you for contacting us! We’ll get back to you soon.'); this.reset();">
+      <input type="text" placeholder="Your Name" aria-label="Your Name" required>
+      <input type="email" placeholder="Your Email" aria-label="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" aria-label="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
 
-    <div style="margin-top: 30px;">
+    <div class="contact-info" style="margin-top: 30px;">
       <p><strong>Phone:</strong> <a href="tel:+233260928990">+233260928990</a></p>
       <p><strong>Email:</strong> <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a></p>
     </div>
   </div>
 
   <footer>
-    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
+    <p>© 2025 SB CLASSIC | Style with Class</p>
     <p class="social-links">
       FOLLOW US ON:
       <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
