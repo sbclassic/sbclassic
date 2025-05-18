@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accessories – SB CLASSIC</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #fff;
+      color: #111;
+    }
+    header, footer {
+      background-color: #0a0a23; /* Blue Black */
+      color: #d4af37; /* Deep Gold */
+      text-align: center;
+      padding: 1rem 2rem;
+    }
+    nav a {
+      color: #d4af37;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h1 {
+      text-align: center;
+      color: #0a0a23;
+      margin-bottom: 2rem;
+    }
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 1rem;
+      max-width: 280px;
+      background: #fff;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .product-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    .product-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #0a0a23;
+    }
+    .product-price {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #d4af37;
+      margin-bottom: 1rem;
+    }
+    .quantity-label {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+    input[type="number"] {
+      width: 60px;
+      padding: 0.3rem;
+      font-size: 1rem;
+      text-align: center;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      margin-bottom: 1rem;
+    }
+    .add-to-cart {
+      background-color: #d4af37;
+      color: #0a0a23;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .add-to-cart:hover {
+      background-color: #b89227;
+    }
+    footer p {
+      margin: 0.5rem 0;
+    }
+    .social-links a {
+      color: #d4af37;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h2>SB CLASSIC</h2>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="clothes.html">Clothes</a>
+      <a href="shoes.html">Shoes</a>
+      <a href="accessories.html">Accessories</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Accessories Collection</h1>
+    <section class="products">
+      <!-- Example accessory -->
+      <article class="product-card">
+        <img src="accessories/belt_black.jpeg" alt="Classic Leather Belt" />
+        <div class="product-name">Classic Leather Belt</div>
+        <div class="product-price">GHS 390</div>
+        <label class="quantity-label" for="qty-belt">Quantity:</label>
+        <input type="number" id="qty-belt" name="qty-belt" min="1" max="10" value="1" />
+        <button class="add-to-cart" onclick="addToCart('Classic Leather Belt', 390, document.getElementById('qty-belt').value)">Add to Cart</button>
+      </article>
+
+      <!-- Add more accessories below as needed -->
+    </section>
+  </main>
+
+  <footer>
+    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
+    <p class="social-links">
+      FOLLOW US ON:
+      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
+      <a href="https://www.tiktok.com/sb.classic" target="_blank">TikTok</a>
+    </p>
+  </footer>
+
+  <script>
+    function addToCart(productName, price, quantity) {
+      quantity = parseInt(quantity);
+      if (isNaN(quantity) || quantity < 1 || quantity > 10) {
+        alert('Please enter a valid quantity between 1 and 10.');
+        return;
+      }
+      alert(`${quantity} x ${productName} added to cart at GHS ${price} each.`);
+      // Store to localStorage or cart logic
+    }
+  </script>
+
+</body>
+</html>
