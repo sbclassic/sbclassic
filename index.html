@@ -1,27 +1,64 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SB CLASSIC – Style with Class</title>
+  <title>SB CLASSIC - Home</title>
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #fff; color: #111; }
-    header, footer { background: #0a0a23; color: #d4af37; padding: 1rem 2rem; text-align: center; }
-    nav a { color: #d4af37; margin: 0 1rem; text-decoration: none; font-weight: bold; }
-    nav a:hover { text-decoration: underline; }
-    .hero { padding: 4rem 2rem; background: #f4f4f4; text-align: center; }
-    .hero h1 { font-size: 2.5rem; color: #0a0a23; }
-    .hero p { font-size: 1.2rem; color: #555; }
-    .featured-products { padding: 2rem; max-width: 960px; margin: auto; }
-    .featured-products h2 { text-align: center; color: #0a0a23; }
-    .product-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
-    .product-card {
-      border: 1px solid #ddd; border-radius: 6px; padding: 1rem;
-      max-width: 240px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); text-align: center;
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fff; color: #111; }
+    header, footer {
+      background: #0a0a23;
+      color: #d4af37;
+      padding: 1rem 2rem;
+      text-align: center;
     }
-    .product-card img { width: 100%; height: auto; border-radius: 4px; }
-    .product-name { font-weight: bold; margin-top: 1rem; color: #0a0a23; }
-    .product-price { color: #d4af37; font-weight: bold; margin-top: 0.5rem; }
+    nav a {
+      color: #d4af37;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover { text-decoration: underline; }
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h1 {
+      text-align: center;
+      color: #0a0a23;
+      margin-bottom: 1rem;
+    }
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 1rem;
+      max-width: 280px;
+      text-align: center;
+      background: #fff;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+    }
+    .product-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .product-name {
+      margin: 0.5rem 0;
+      font-weight: bold;
+      color: #0a0a23;
+    }
+    .product-price {
+      color: #d4af37;
+      font-size: 1.2rem;
+    }
     footer p { margin: 0.5rem 0; }
   </style>
 </head>
@@ -30,38 +67,33 @@
     <h2>SB CLASSIC</h2>
     <nav>
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
       <a href="clothes.html">Clothes</a>
       <a href="shoes.html">Shoes</a>
       <a href="accessories.html">Accessories</a>
+      <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>Welcome to SB CLASSIC</h1>
-    <p>Style with Class – Elevate your fashion with premium outfits and accessories.</p>
-  </section>
-
-  <section class="featured-products">
-    <h2>Featured Products</h2>
-    <div class="product-grid">
+  <main class="container">
+    <h1>Featured Products</h1>
+    <section class="product-grid">
       <div class="product-card">
-        <img src="clothes/IMG_8853.jpeg" alt="Elegant 2pcs Set">
-        <div class="product-name">Elegant 2pcs Set</div>
+        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set Apricot" />
+        <div class="product-name">Elegant 2pcs Set (Apricot)</div>
         <div class="product-price">GHS 1,980</div>
       </div>
       <div class="product-card">
-        <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker">
-        <div class="product-name">Versace Sneaker</div>
+        <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
+        <div class="product-name">Versace Sneaker Black</div>
         <div class="product-price">GHS 1,899</div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer>
     <p>© 2025 SB CLASSIC | Style with Class</p>
-    <p>Contact: +233260928990 | sbclassics@icloud.com</p>
+    <p>Contact: +233260928990 | Email: sbclassics@icloud.com</p>
   </footer>
 </body>
 </html>
