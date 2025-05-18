@@ -2,190 +2,164 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SB CLASSIC - Style with Class</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SB CLASSIC – Style with Class</title>
   <style>
-    /* Reset some basic styles */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
       background-color: #fff;
-      color: #0b0b1c;
-      line-height: 1.6;
+      color: #000;
     }
+
     header {
       background-color: #0b0b1c;
       color: #ffd700;
-      padding: 25px 20px;
+      padding: 20px;
       text-align: center;
-      font-weight: 700;
-      font-size: 1.8rem;
-      letter-spacing: 2px;
     }
-    nav {
-      background-color: #111129;
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      padding: 15px 0;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
+
     nav a {
+      margin: 0 10px;
       color: #ffd700;
       text-decoration: none;
-      transition: color 0.3s ease;
     }
-    nav a:hover {
-      color: #fff;
-      border-bottom: 2px solid #ffd700;
-      padding-bottom: 3px;
+
+    .hero {
+      background: url('images/hero-bg.jpg') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
     }
-    main {
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+    }
+
+    .products {
       max-width: 1200px;
       margin: 40px auto;
-      padding: 0 20px;
-    }
-    .welcome-section {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .welcome-section h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-      font-weight: 800;
-      color: #0b0b1c;
-      letter-spacing: 1.5px;
-    }
-    .welcome-section p {
-      font-size: 1.2rem;
-      color: #444;
-      max-width: 600px;
-      margin: 0 auto;
-      font-style: italic;
-    }
-    .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
+      gap: 20px;
+      padding: 0 20px;
     }
-    .product-card {
+
+    .product {
       border: 1px solid #ddd;
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
-      background-color: #fff;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      background: #f9f9f9;
     }
-    .product-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 15px rgb(0 0 0 / 0.15);
-    }
-    .product-image {
+
+    .product img {
       width: 100%;
       height: 250px;
       object-fit: cover;
-      display: block;
     }
-    .product-info {
-      padding: 15px 12px;
-      text-align: center;
+
+    .product h3 {
+      margin: 10px 0;
     }
-    .product-name {
-      font-size: 1.1rem;
-      font-weight: 700;
+
+    .product p {
+      color: #555;
+    }
+
+    .product .price {
       color: #0b0b1c;
-      margin-bottom: 6px;
-      text-transform: capitalize;
+      font-weight: bold;
+      margin-bottom: 15px;
     }
-    .product-price {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #ffd700;
-    }
+
     footer {
       background-color: #0b0b1c;
-      color: #ffd700;
+      color: #fff;
       text-align: center;
-      padding: 20px 10px;
-      margin-top: 60px;
-      font-weight: 600;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    .social-links a {
+      color: #ffd700;
+      text-decoration: none;
+      margin: 0 5px;
     }
   </style>
 </head>
 <body>
+
   <header>
-    SB CLASSIC
+    <h1>SB CLASSIC</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="clothes.html">Clothes</a>
+      <a href="shoes.html">Shoes</a>
+      <a href="accessories.html">Accessories</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
   </header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="clothes.html">Clothes</a>
-    <a href="shoes.html">Shoes</a>
-    <a href="accessories.html">Accessories</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+  <section class="hero">
+    <h1>Welcome to SB CLASSIC</h1>
+    <p>Style with Class – Discover Premium Clothing & Accessories</p>
+  </section>
 
-  <main>
-    <section class="welcome-section">
-      <h1>Welcome to SB CLASSIC</h1>
-      <p>Style with Class — Explore our exclusive collection of clothes, shoes, and accessories tailored for you.</p>
-    </section>
+  <section class="products">
+    <div class="product">
+      <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set Apricot">
+      <h3>Elegant 2pcs Set</h3>
+      <p>Color: Apricot</p>
+      <p class="price">GHS 1,980</p>
+    </div>
 
-    <section>
-      <h2 style="text-align:center; margin-bottom: 30px; font-weight: 700; color: #0b0b1c;">
-        Featured Products
-      </h2>
-      <div class="products-grid">
-        <!-- Product 1 -->
-        <div class="product-card">
-          <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set Apricot" class="product-image" />
-          <div class="product-info">
-            <div class="product-name">Elegant 2pcs Set (Apricot)</div>
-            <div class="product-price">GHS 1,980</div>
-          </div>
-        </div>
-        <!-- Product 2 -->
-        <div class="product-card">
-          <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Set Black" class="product-image" />
-          <div class="product-info">
-            <div class="product-name">Elegant 2pcs Set (Black)</div>
-            <div class="product-price">GHS 1,980</div>
-          </div>
-        </div>
-        <!-- Product 3 -->
-        <div class="product-card">
-          <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" class="product-image" />
-          <div class="product-info">
-            <div class="product-name">Versace Sneaker (Black)</div>
-            <div class="product-price">GHS 1,890</div>
-          </div>
-        </div>
-        <!-- Product 4 -->
-        <div class="product-card">
-          <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" class="product-image" />
-          <div class="product-info">
-            <div class="product-name">Versace Sneaker (White)</div>
-            <div class="product-price">GHS 1,890</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+    <div class="product">
+      <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Set Black">
+      <h3>Elegant 2pcs Set</h3>
+      <p>Color: Black</p>
+      <p class="price">GHS 1,980</p>
+    </div>
+
+    <div class="product">
+      <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Set Blue Black">
+      <h3>Elegant 2pcs Set</h3>
+      <p>Color: Blue Black</p>
+      <p class="price">GHS 1,980</p>
+    </div>
+
+    <div class="product">
+      <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black">
+      <h3>Versace Sneaker</h3>
+      <p>Color: Black</p>
+      <p class="price">GHS 1,890</p>
+    </div>
+
+    <div class="product">
+      <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White">
+      <h3>Versace Sneaker</h3>
+      <p>Color: White</p>
+      <p class="price">GHS 1,890</p>
+    </div>
+  </section>
 
   <footer>
-    CONTACT: +233260928990 | sbclassics@icloud.com | 
-    FOLLOW US ON: 
-    <a href="https://instagram.com/sb_classic_" target="_blank" style="color:#ffd700; text-decoration:none;">Instagram</a> | 
-    <a href="https://facebook.com/sb.classic_" target="_blank" style="color:#ffd700; text-decoration:none;">Facebook</a> | 
-    <a href="https://t.me/sbclassics" target="_blank" style="color:#ffd700; text-decoration:none;">Telegram</a> | 
-    <a href="https://wa.me/233260928990" target="_blank" style="color:#ffd700; text-decoration:none;">WhatsApp</a> | 
-    <a href="https://www.tiktok.com/@sb.classic" target="_blank" style="color:#ffd700; text-decoration:none;">TikTok</a>
+    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
+    <p class="social-links">
+      FOLLOW US ON:
+      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
+      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
+    </p>
   </footer>
+
 </body>
 </html>
