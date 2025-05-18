@@ -2,75 +2,116 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shoes – SB CLASSIC</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #fff;
-      color: #000;
+      color: #111;
     }
     header {
-      background: #0a0a23;
+      background-color: #0a0a23;
       color: #d4af37;
-      padding: 20px;
+      padding: 1.5rem 2rem;
       text-align: center;
     }
     nav a {
-      margin: 0 12px;
       color: #d4af37;
+      margin: 0 1rem;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 700;
     }
     nav a:hover {
       text-decoration: underline;
     }
-    .container {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
+    main.container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
-    h2 {
-      text-align: center;
+    h1 {
       color: #0a0a23;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 2rem;
     }
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin-top: 30px;
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
     }
-    .product {
-      width: 250px;
-      border: 1px solid #ccc;
+    .product-card {
+      border: 1px solid #ddd;
       border-radius: 6px;
       overflow: hidden;
-      text-align: center;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+      transition: box-shadow 0.3s ease;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
     }
-    .product img {
+    .product-card:hover {
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.2);
+    }
+    .product-card img {
       width: 100%;
       height: auto;
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
     }
-    .product h3 {
-      margin: 10px 0 5px;
+    .product-info {
+      padding: 1rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .product p {
-      margin: 0 0 15px;
-      color: #444;
+    .product-name {
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: #0a0a23;
+    }
+    .product-price {
+      font-weight: 700;
+      color: #d4af37;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    .product-colors {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .color-swatch {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .color-swatch:hover {
+      transform: scale(1.2);
+      border-color: #d4af37;
     }
     footer {
-      background: #0a0a23;
+      background-color: #0a0a23;
       color: #fff;
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+      padding: 1rem 2rem;
+      margin-top: 3rem;
+      font-size: 0.9rem;
     }
-    .social a {
+    .social-links a {
       color: #d4af37;
-      margin: 0 8px;
       text-decoration: none;
+      margin: 0 0.5rem;
+      font-weight: 700;
+    }
+    .social-links a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -83,36 +124,53 @@
       <a href="clothes.html">Clothes</a>
       <a href="shoes.html">Shoes</a>
       <a href="accessories.html">Accessories</a>
-      <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
+      <a href="about.html">About</a>
     </nav>
   </header>
 
-  <div class="container">
-    <h2>Shoes</h2>
-    <div class="products">
-      <div class="product">
+  <main class="container">
+    <h1>Our Shoes Collection</h1>
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
         <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
-        <h3>Versace Sneaker - Black</h3>
-        <p>GHS 1,890</p>
+        <div class="product-info">
+          <div class="product-name">Versace Sneaker – Black</div>
+          <div class="product-price">GHS 1,890</div>
+          <div class="product-colors">
+            <div class="color-swatch" style="background-color: #000;" title="Black"></div>
+            <div class="color-swatch" style="background-color: #fff; border: 1px solid #ccc;" title="White"></div>
+          </div>
+        </div>
       </div>
-      <div class="product">
+
+      <!-- Product 2 -->
+      <div class="product-card">
         <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
-        <h3>Versace Sneaker - White</h3>
-        <p>GHS 1,890</p>
+        <div class="product-info">
+          <div class="product-name">Versace Sneaker – White</div>
+          <div class="product-price">GHS 1,890</div>
+          <div class="product-colors">
+            <div class="color-swatch" style="background-color: #000;" title="Black"></div>
+            <div class="color-swatch" style="background-color: #fff; border: 1px solid #ccc;" title="White"></div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </main>
 
   <footer>
-    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
-    <div class="social">
-      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
-      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
-      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
-    </div>
+    <p>© 2025 SB CLASSIC | Style with Class</p>
+    <p>Contact: +233260928990 | sbclassics@icloud.com</p>
+    <p class="social-links">
+      FOLLOW US ON:
+      <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener noreferrer">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank" rel="noopener noreferrer">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank" rel="noopener noreferrer">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank" rel="noopener noreferrer">WhatsApp</a> |
+      <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener noreferrer">TikTok</a>
+    </p>
   </footer>
 
 </body>
