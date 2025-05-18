@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,10 +24,12 @@
       margin: 2rem auto;
       padding: 0 1rem;
     }
-    h1 {
-      text-align: center;
+    h1, h2 {
       color: #0a0a23;
-      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .section {
+      margin-bottom: 3rem;
     }
     .product-grid {
       display: flex;
@@ -76,17 +77,40 @@
   </header>
 
   <main class="container">
-    <h1>Featured Products</h1>
-    <section class="product-grid">
-      <div class="product-card">
-        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set Apricot" />
-        <div class="product-name">Elegant 2pcs Set (Apricot)</div>
-        <div class="product-price">GHS 1,980</div>
+    <section class="section">
+      <h1>Featured Clothes</h1>
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set Apricot" />
+          <div class="product-name">Elegant 2pcs Set (Apricot)</div>
+          <div class="product-price">GHS 1,980</div>
+        </div>
+        <div class="product-card">
+          <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Set Black" />
+          <div class="product-name">Elegant 2pcs Set (Black)</div>
+          <div class="product-price">GHS 1,980</div>
+        </div>
+        <div class="product-card">
+          <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Set Blue Black" />
+          <div class="product-name">Elegant 2pcs Set (Blue Black)</div>
+          <div class="product-price">GHS 1,980</div>
+        </div>
       </div>
-      <div class="product-card">
-        <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
-        <div class="product-name">Versace Sneaker Black</div>
-        <div class="product-price">GHS 1,899</div>
+    </section>
+
+    <section class="section">
+      <h1>Featured Shoes</h1>
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
+          <div class="product-name">Versace Sneaker (Black)</div>
+          <div class="product-price">GHS 1,890</div>
+        </div>
+        <div class="product-card">
+          <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
+          <div class="product-name">Versace Sneaker (White)</div>
+          <div class="product-price">GHS 1,890</div>
+        </div>
       </div>
     </section>
   </main>
