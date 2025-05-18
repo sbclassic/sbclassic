@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SB CLASSIC - Style with Class</title>
   <style>
-    /* Reset and base */
+    /* Reset some basic styles */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -14,183 +14,114 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #fff;
-      color: #0b0b1c; /* Dark blue-black */
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      background-color: #fff;
-      padding: 25px 20px;
-      border-bottom: 2px solid #ffd700;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    header h1 {
-      font-size: 2.8rem;
       color: #0b0b1c;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #0b0b1c;
+      color: #ffd700;
+      padding: 25px 20px;
+      text-align: center;
       font-weight: 700;
-      margin-bottom: 10px;
-      font-family: 'Georgia', serif;
+      font-size: 1.8rem;
       letter-spacing: 2px;
+    }
+    nav {
+      background-color: #111129;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 15px 0;
+      font-weight: 600;
+      font-size: 1.1rem;
     }
     nav a {
       color: #ffd700;
       text-decoration: none;
-      margin: 0 15px;
-      font-weight: 600;
-      font-size: 1.1rem;
       transition: color 0.3s ease;
     }
     nav a:hover {
-      color: #0b0b1c;
-      text-decoration: underline;
+      color: #fff;
+      border-bottom: 2px solid #ffd700;
+      padding-bottom: 3px;
     }
-
     main {
-      flex-grow: 1;
       max-width: 1200px;
-      margin: 40px auto 60px;
+      margin: 40px auto;
       padding: 0 20px;
     }
-
-    /* Hero Section */
-    .hero {
-      background: url('images/hero-background.jpg') no-repeat center center/cover;
-      border-radius: 10px;
-      padding: 80px 20px;
-      margin-bottom: 50px;
-      color: #0b0b1c;
+    .welcome-section {
       text-align: center;
-      box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
-      position: relative;
+      margin-bottom: 40px;
     }
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-color: rgba(255 215 0 / 0.12);
-      border-radius: 10px;
-      pointer-events: none;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .hero h2 {
-      font-size: 3rem;
+    .welcome-section h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
       font-weight: 800;
-      margin-bottom: 15px;
+      color: #0b0b1c;
       letter-spacing: 1.5px;
     }
-    .hero p {
-      font-size: 1.3rem;
-      font-weight: 500;
-      color: #333;
-      line-height: 1.4;
+    .welcome-section p {
+      font-size: 1.2rem;
+      color: #444;
+      max-width: 600px;
+      margin: 0 auto;
+      font-style: italic;
     }
-
-    /* Featured Categories Section */
-    .categories {
-      display: flex;
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 30px;
-      justify-content: center;
-      flex-wrap: wrap;
     }
-    .category-card {
-      flex: 1 1 280px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.08);
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
       overflow: hidden;
-      cursor: pointer;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+      background-color: #fff;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 15px rgb(0 0 0 / 0.15);
+    }
+    .product-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+    .product-info {
+      padding: 15px 12px;
       text-align: center;
     }
-    .category-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 20px rgb(0 0 0 / 0.15);
-    }
-    .category-card img {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-      border-bottom: 4px solid #ffd700;
-    }
-    .category-card h3 {
-      margin: 15px 0 20px;
-      font-size: 1.5rem;
+    .product-name {
+      font-size: 1.1rem;
       font-weight: 700;
       color: #0b0b1c;
-      letter-spacing: 1px;
+      margin-bottom: 6px;
+      text-transform: capitalize;
     }
-    .category-card a {
-      display: inline-block;
-      margin-bottom: 20px;
-      color: #ffd700;
+    .product-price {
+      font-size: 1rem;
       font-weight: 600;
-      font-size: 1.1rem;
-      text-decoration: none;
-      border: 2px solid #ffd700;
-      padding: 8px 20px;
-      border-radius: 25px;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      color: #ffd700;
     }
-    .category-card a:hover {
-      background-color: #ffd700;
-      color: #0b0b1c;
-    }
-
-    /* Footer */
     footer {
       background-color: #0b0b1c;
-      color: #fff;
-      text-align: center;
-      padding: 25px 20px;
-      font-size: 0.95rem;
-      letter-spacing: 0.7px;
-    }
-    footer a {
       color: #ffd700;
-      text-decoration: none;
-      margin: 0 8px;
+      text-align: center;
+      padding: 20px 10px;
+      margin-top: 60px;
       font-weight: 600;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero h2 {
-        font-size: 2.2rem;
-      }
-      .categories {
-        flex-direction: column;
-        gap: 20px;
-        align-items: center;
-      }
-      .category-card {
-        width: 100%;
-        max-width: 350px;
-      }
-      nav a {
-        margin: 0 8px;
-        font-size: 1rem;
-      }
     }
   </style>
 </head>
 <body>
+  <header>
+    SB CLASSIC
+  </header>
 
-<header>
-  <h1>SB CLASSIC</h1>
   <nav>
     <a href="index.html">Home</a>
     <a href="clothes.html">Clothes</a>
@@ -199,48 +130,62 @@
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
-</header>
 
-<main>
-  <section class="hero">
-    <div class="hero-content">
-      <h2>Welcome to SB CLASSIC</h2>
-      <p>Discover timeless style and unmatched quality. Style with Class, every day.</p>
-    </div>
-  </section>
+  <main>
+    <section class="welcome-section">
+      <h1>Welcome to SB CLASSIC</h1>
+      <p>Style with Class — Explore our exclusive collection of clothes, shoes, and accessories tailored for you.</p>
+    </section>
 
-  <section class="categories">
-    <div class="category-card">
-      <img src="images/clothes/elegant_2pcs_set_apricot.jpeg" alt="Clothes - Elegant 2pcs Set" />
-      <h3>Clothes</h3>
-      <a href="clothes.html">Shop Clothes</a>
-    </div>
+    <section>
+      <h2 style="text-align:center; margin-bottom: 30px; font-weight: 700; color: #0b0b1c;">
+        Featured Products
+      </h2>
+      <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set Apricot" class="product-image" />
+          <div class="product-info">
+            <div class="product-name">Elegant 2pcs Set (Apricot)</div>
+            <div class="product-price">GHS 1,980</div>
+          </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="product-card">
+          <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Set Black" class="product-image" />
+          <div class="product-info">
+            <div class="product-name">Elegant 2pcs Set (Black)</div>
+            <div class="product-price">GHS 1,980</div>
+          </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="product-card">
+          <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" class="product-image" />
+          <div class="product-info">
+            <div class="product-name">Versace Sneaker (Black)</div>
+            <div class="product-price">GHS 1,890</div>
+          </div>
+        </div>
+        <!-- Product 4 -->
+        <div class="product-card">
+          <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" class="product-image" />
+          <div class="product-info">
+            <div class="product-name">Versace Sneaker (White)</div>
+            <div class="product-price">GHS 1,890</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <div class="category-card">
-      <img src="images/shoes/versace_sneaker_black.jpeg" alt="Shoes - Versace Sneaker Black" />
-      <h3>Shoes</h3>
-      <a href="shoes.html">Shop Shoes</a>
-    </div>
-
-    <div class="category-card">
-      <img src="images/accessories/watch_black.jpg" alt="Accessories - Watch" />
-      <h3>Accessories</h3>
-      <a href="accessories.html">Shop Accessories</a>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <p>Contact us: +233260928990 | <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a></p>
-  <p>
-    Follow us:
-    <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener">Instagram</a> |
-    <a href="https://facebook.com/sb.classic_" target="_blank" rel="noopener">Facebook</a> |
-    <a href="https://t.me/sbclassics" target="_blank" rel="noopener">Telegram</a> |
-    <a href="https://wa.me/233260928990" target="_blank" rel="noopener">WhatsApp</a> |
-    <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener">TikTok</a>
-  </p>
-</footer>
-
+  <footer>
+    CONTACT: +233260928990 | sbclassics@icloud.com | 
+    FOLLOW US ON: 
+    <a href="https://instagram.com/sb_classic_" target="_blank" style="color:#ffd700; text-decoration:none;">Instagram</a> | 
+    <a href="https://facebook.com/sb.classic_" target="_blank" style="color:#ffd700; text-decoration:none;">Facebook</a> | 
+    <a href="https://t.me/sbclassics" target="_blank" style="color:#ffd700; text-decoration:none;">Telegram</a> | 
+    <a href="https://wa.me/233260928990" target="_blank" style="color:#ffd700; text-decoration:none;">WhatsApp</a> | 
+    <a href="https://www.tiktok.com/@sb.classic" target="_blank" style="color:#ffd700; text-decoration:none;">TikTok</a>
+  </footer>
 </body>
 </html>
