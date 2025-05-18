@@ -2,116 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Clothes – SB CLASSIC</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       background: #fff;
-      color: #111;
+      color: #000;
     }
     header {
-      background-color: #0a0a23;
+      background: #0a0a23;
       color: #d4af37;
-      padding: 1.5rem 2rem;
+      padding: 20px;
       text-align: center;
     }
     nav a {
+      margin: 0 12px;
       color: #d4af37;
-      margin: 0 1rem;
       text-decoration: none;
-      font-weight: 700;
+      font-weight: bold;
     }
     nav a:hover {
       text-decoration: underline;
     }
-    main.container {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+    .container {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
     }
-    h1 {
-      color: #0a0a23;
-      font-weight: 900;
+    h2 {
       text-align: center;
-      margin-bottom: 2rem;
+      color: #0a0a23;
     }
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
     }
-    .product-card {
-      border: 1px solid #ddd;
+    .product {
+      width: 250px;
+      border: 1px solid #ccc;
       border-radius: 6px;
       overflow: hidden;
-      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
-      transition: box-shadow 0.3s ease;
-      background: #fff;
-      display: flex;
-      flex-direction: column;
+      text-align: center;
     }
-    .product-card:hover {
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.2);
-    }
-    .product-card img {
+    .product img {
       width: 100%;
       height: auto;
-      object-fit: cover;
-      aspect-ratio: 4 / 3;
     }
-    .product-info {
-      padding: 1rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .product h3 {
+      margin: 10px 0 5px;
     }
-    .product-name {
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      color: #0a0a23;
-    }
-    .product-price {
-      font-weight: 700;
-      color: #d4af37;
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-    }
-    .product-colors {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-    .color-swatch {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 1px solid #ccc;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-    .color-swatch:hover {
-      transform: scale(1.2);
-      border-color: #d4af37;
+    .product p {
+      margin: 0 0 15px;
+      color: #444;
     }
     footer {
-      background-color: #0a0a23;
+      background: #0a0a23;
       color: #fff;
       text-align: center;
-      padding: 1rem 2rem;
-      margin-top: 3rem;
-      font-size: 0.9rem;
+      padding: 20px;
+      margin-top: 40px;
     }
-    .social-links a {
+    .social a {
       color: #d4af37;
+      margin: 0 8px;
       text-decoration: none;
-      margin: 0 0.5rem;
-      font-weight: 700;
-    }
-    .social-links a:hover {
-      text-decoration: underline;
     }
   </style>
 </head>
@@ -124,69 +83,41 @@
       <a href="clothes.html">Clothes</a>
       <a href="shoes.html">Shoes</a>
       <a href="accessories.html">Accessories</a>
-      <a href="contact.html">Contact</a>
       <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
-  <main class="container">
-    <h1>Our Clothes Collection</h1>
-    <div class="products-grid">
-      <!-- Product 1 -->
-      <div class="product-card">
-        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set Apricot" />
-        <div class="product-info">
-          <div class="product-name">Elegant 2pcs Set - Apricot</div>
-          <div class="product-price">GHS 1,980</div>
-          <div class="product-colors">
-            <div class="color-swatch" style="background-color: #ffb380;" title="Apricot"></div>
-            <div class="color-swatch" style="background-color: #1c1c27;" title="Blue Black"></div>
-            <div class="color-swatch" style="background-color: #000;" title="Black"></div>
-          </div>
-        </div>
+  <div class="container">
+    <h2>Clothes</h2>
+    <div class="products">
+      <div class="product">
+        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Apricot 2pcs Set">
+        <h3>Elegant 2pcs Set - Apricot</h3>
+        <p>GHS 1,980</p>
       </div>
-
-      <!-- Product 2 -->
-      <div class="product-card">
-        <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Set Blue Black" />
-        <div class="product-info">
-          <div class="product-name">Elegant 2pcs Set - Blue Black</div>
-          <div class="product-price">GHS 1,980</div>
-          <div class="product-colors">
-            <div class="color-swatch" style="background-color: #ffb380;" title="Apricot"></div>
-            <div class="color-swatch" style="background-color: #1c1c27;" title="Blue Black"></div>
-            <div class="color-swatch" style="background-color: #000;" title="Black"></div>
-          </div>
-        </div>
+      <div class="product">
+        <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Black 2pcs Set">
+        <h3>Elegant 2pcs Set - Black</h3>
+        <p>GHS 1,980</p>
       </div>
-
-      <!-- Product 3 -->
-      <div class="product-card">
-        <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Set Black" />
-        <div class="product-info">
-          <div class="product-name">Elegant 2pcs Set - Black</div>
-          <div class="product-price">GHS 1,980</div>
-          <div class="product-colors">
-            <div class="color-swatch" style="background-color: #ffb380;" title="Apricot"></div>
-            <div class="color-swatch" style="background-color: #1c1c27;" title="Blue Black"></div>
-            <div class="color-swatch" style="background-color: #000;" title="Black"></div>
-          </div>
-        </div>
+      <div class="product">
+        <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Blue Black 2pcs Set">
+        <h3>Elegant 2pcs Set - Blue Black</h3>
+        <p>GHS 1,980</p>
       </div>
     </div>
-  </main>
+  </div>
 
   <footer>
-    <p>© 2025 SB CLASSIC | Style with Class</p>
-    <p>Contact: +233260928990 | sbclassics@icloud.com</p>
-    <p class="social-links">
-      FOLLOW US ON:
-      <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener noreferrer">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_" target="_blank" rel="noopener noreferrer">Facebook</a> |
-      <a href="https://t.me/sbclassics" target="_blank" rel="noopener noreferrer">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank" rel="noopener noreferrer">WhatsApp</a> |
-      <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener noreferrer">TikTok</a>
-    </p>
+    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
+    <div class="social">
+      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
+      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
+    </div>
   </footer>
 
 </body>
