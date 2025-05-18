@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shoes - SB CLASSIC</title>
+  <title>Shoes – SB CLASSIC</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #fff;
       color: #111;
-      margin: 0; padding: 0;
     }
     header, footer {
-      background: #0a0a23; /* Blue Black */
+      background-color: #0a0a23; /* Blue Black */
       color: #d4af37; /* Deep Gold */
-      padding: 1rem 2rem;
       text-align: center;
+      padding: 1rem 2rem;
     }
     nav a {
       color: #d4af37;
-      margin: 0 1rem;
+      margin: 0 10px;
       text-decoration: none;
       font-weight: bold;
     }
@@ -33,27 +33,26 @@
     }
     h1 {
       text-align: center;
-      margin-bottom: 2rem;
-      font-weight: 700;
       color: #0a0a23;
+      margin-bottom: 2rem;
     }
     .products {
       display: flex;
-      gap: 2rem;
       flex-wrap: wrap;
       justify-content: center;
+      gap: 2rem;
     }
     .product-card {
       border: 1px solid #ddd;
       border-radius: 6px;
       padding: 1rem;
       max-width: 280px;
-      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
-      text-align: center;
       background: #fff;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
     .product-card img {
-      max-width: 100%;
+      width: 100%;
       height: auto;
       border-radius: 4px;
       margin-bottom: 1rem;
@@ -65,50 +64,56 @@
       color: #0a0a23;
     }
     .product-price {
+      font-size: 1.2rem;
       font-weight: 600;
       color: #d4af37;
       margin-bottom: 1rem;
-      font-size: 1.2rem;
     }
     .quantity-label {
-      display: block;
-      margin-bottom: 0.3rem;
       font-weight: 600;
+      margin-bottom: 0.3rem;
+      display: block;
     }
     input[type="number"] {
       width: 60px;
       padding: 0.3rem;
       font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
       text-align: center;
+      border-radius: 4px;
+      border: 1px solid #ccc;
       margin-bottom: 1rem;
     }
-    button.add-to-cart {
-      background: #d4af37;
-      border: none;
+    .add-to-cart {
+      background-color: #d4af37;
       color: #0a0a23;
-      font-weight: 700;
+      border: none;
       padding: 0.6rem 1.2rem;
+      font-weight: bold;
       border-radius: 4px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background 0.3s;
     }
-    button.add-to-cart:hover {
-      background: #b89227;
+    .add-to-cart:hover {
+      background-color: #b89227;
     }
     footer p {
       margin: 0.5rem 0;
     }
+    .social-links a {
+      color: #d4af37;
+      text-decoration: none;
+      margin: 0 5px;
+    }
   </style>
 </head>
 <body>
+
   <header>
     <h2>SB CLASSIC</h2>
     <nav>
       <a href="index.html">Home</a>
       <a href="clothes.html">Clothes</a>
-      <a href="shoe.html">Shoes</a>
+      <a href="shoes.html">Shoes</a>
       <a href="accessories.html">Accessories</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -117,41 +122,53 @@
   <main class="container">
     <h1>Shoes Collection</h1>
     <section class="products">
+
+      <!-- Brown Loafers -->
       <article class="product-card">
-        <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
-        <div class="product-name">Versace Sneaker Black</div>
-        <div class="product-price">GHS 1,899</div>
-        <label class="quantity-label" for="qty-black">Quantity:</label>
-        <input type="number" id="qty-black" name="qty-black" min="1" max="10" value="1" />
-        <button class="add-to-cart" onclick="addToCart('Versace Sneaker Black', 1899, document.getElementById('qty-black').value)">Add to Cart</button>
+        <img src="shoes/loafers.jpg" alt="Brown Loafers" />
+        <div class="product-name">Brown Loafers</div>
+        <div class="product-price">GHS 1,890</div>
+        <label class="quantity-label" for="qty-loafers">Quantity:</label>
+        <input type="number" id="qty-loafers" name="qty-loafers" min="1" max="10" value="1" />
+        <button class="add-to-cart" onclick="addToCart('Brown Loafers', 1890, document.getElementById('qty-loafers').value)">Add to Cart</button>
       </article>
 
+      <!-- Gucci Sneaker -->
       <article class="product-card">
-        <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
-        <div class="product-name">Versace Sneaker White</div>
-        <div class="product-price">GHS 1,899</div>
-        <label class="quantity-label" for="qty-white">Quantity:</label>
-        <input type="number" id="qty-white" name="qty-white" min="1" max="10" value="1" />
-        <button class="add-to-cart" onclick="addToCart('Versace Sneaker White', 1899, document.getElementById('qty-white').value)">Add to Cart</button>
+        <img src="shoes/sneakers.jpg" alt="Gucci Sneaker" />
+        <div class="product-name">Gucci Sneaker</div>
+        <div class="product-price">GHS 1,890</div>
+        <label class="quantity-label" for="qty-sneaker">Quantity:</label>
+        <input type="number" id="qty-sneaker" name="qty-sneaker" min="1" max="10" value="1" />
+        <button class="add-to-cart" onclick="addToCart('Gucci Sneaker', 1890, document.getElementById('qty-sneaker').value)">Add to Cart</button>
       </article>
+
     </section>
   </main>
 
   <footer>
-    <p>© 2025 SB CLASSIC | Style with Class</p>
-    <p>Contact: +233260928990 | Email: sbclassics@icloud.com</p>
+    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
+    <p class="social-links">
+      FOLLOW US ON:
+      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
+      <a href="https://www.tiktok.com/sb.classic" target="_blank">TikTok</a>
+    </p>
   </footer>
 
   <script>
     function addToCart(productName, price, quantity) {
       quantity = parseInt(quantity);
-      if(quantity < 1 || quantity > 10 || isNaN(quantity)) {
+      if (isNaN(quantity) || quantity < 1 || quantity > 10) {
         alert('Please enter a valid quantity between 1 and 10.');
         return;
       }
       alert(`${quantity} x ${productName} added to cart at GHS ${price} each.`);
-      // Here you can integrate your cart logic as needed
+      // TODO: Add to cart logic here
     }
   </script>
+
 </body>
 </html>
