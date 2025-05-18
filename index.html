@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SB CLASSIC - Home</title>
+  <title>SB CLASSIC – Home</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fff; color: #111; }
     header, footer {
@@ -19,17 +19,25 @@
       font-weight: bold;
     }
     nav a:hover { text-decoration: underline; }
+    .hero {
+      background: #f7f7f7;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+    .hero h1 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      color: #0a0a23;
+    }
     .container {
       max-width: 960px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
-    h1, h2 {
-      color: #0a0a23;
+    h2 {
       text-align: center;
-    }
-    .section {
-      margin-bottom: 3rem;
+      color: #0a0a23;
+      margin-bottom: 1.5rem;
     }
     .product-grid {
       display: flex;
@@ -44,7 +52,7 @@
       max-width: 280px;
       text-align: center;
       background: #fff;
-      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     .product-card img {
       max-width: 100%;
@@ -64,6 +72,7 @@
   </style>
 </head>
 <body>
+
   <header>
     <h2>SB CLASSIC</h2>
     <nav>
@@ -76,48 +85,43 @@
     </nav>
   </header>
 
-  <main class="container">
-    <section class="section">
-      <h1>Featured Clothes</h1>
-      <div class="product-grid">
-        <div class="product-card">
-          <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set Apricot" />
-          <div class="product-name">Elegant 2pcs Set (Apricot)</div>
-          <div class="product-price">GHS 1,980</div>
-        </div>
-        <div class="product-card">
-          <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Set Black" />
-          <div class="product-name">Elegant 2pcs Set (Black)</div>
-          <div class="product-price">GHS 1,980</div>
-        </div>
-        <div class="product-card">
-          <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Set Blue Black" />
-          <div class="product-name">Elegant 2pcs Set (Blue Black)</div>
-          <div class="product-price">GHS 1,980</div>
-        </div>
-      </div>
-    </section>
+  <section class="hero">
+    <h1>Welcome to SB CLASSIC</h1>
+    <p>Premium fashion. Imported. Style with Class.</p>
+  </section>
 
-    <section class="section">
-      <h1>Featured Shoes</h1>
-      <div class="product-grid">
-        <div class="product-card">
-          <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
-          <div class="product-name">Versace Sneaker (Black)</div>
-          <div class="product-price">GHS 1,890</div>
-        </div>
-        <div class="product-card">
-          <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
-          <div class="product-name">Versace Sneaker (White)</div>
-          <div class="product-price">GHS 1,890</div>
-        </div>
+  <main class="container">
+    <h2>Featured Products</h2>
+    <div class="product-grid">
+      <!-- Clothes -->
+      <div class="product-card">
+        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set Apricot" />
+        <div class="product-name">Elegant 2pcs Set (Apricot)</div>
+        <div class="product-price">GHS 1,980</div>
       </div>
-    </section>
+      <div class="product-card">
+        <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Set Blue Black" />
+        <div class="product-name">Elegant 2pcs Set (Blue Black)</div>
+        <div class="product-price">GHS 1,980</div>
+      </div>
+      <!-- Shoes -->
+      <div class="product-card">
+        <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
+        <div class="product-name">Versace Sneaker (Black)</div>
+        <div class="product-price">GHS 1,890</div>
+      </div>
+      <div class="product-card">
+        <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
+        <div class="product-name">Versace Sneaker (White)</div>
+        <div class="product-price">GHS 1,890</div>
+      </div>
+    </div>
   </main>
 
   <footer>
     <p>© 2025 SB CLASSIC | Style with Class</p>
     <p>Contact: +233260928990 | Email: sbclassics@icloud.com</p>
   </footer>
+
 </body>
 </html>
