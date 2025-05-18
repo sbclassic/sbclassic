@@ -2,79 +2,90 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SB CLASSIC – Home</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fff; color: #111; }
-    header, footer {
-      background: #0a0a23;
-      color: #d4af37;
-      padding: 1rem 2rem;
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+      color: #000;
+    }
+    header {
+      background-color: #0b0b1c;
+      color: #ffd700;
+      padding: 20px;
       text-align: center;
     }
     nav a {
-      color: #d4af37;
-      margin: 0 1rem;
+      margin: 0 10px;
+      color: #ffd700;
       text-decoration: none;
-      font-weight: bold;
     }
-    nav a:hover { text-decoration: underline; }
     .hero {
-      background: #f7f7f7;
-      padding: 3rem 1rem;
       text-align: center;
+      padding: 60px 20px;
+      background: #f4f4f4;
     }
     .hero h1 {
-      margin-bottom: 1rem;
-      font-size: 2rem;
-      color: #0a0a23;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
     }
-    .container {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+    .hero p {
+      font-size: 1.2rem;
+      color: #555;
     }
-    h2 {
+    .section {
+      padding: 40px 20px;
       text-align: center;
-      color: #0a0a23;
-      margin-bottom: 1.5rem;
     }
-    .product-grid {
+    .section h2 {
+      color: #0b0b1c;
+    }
+    .products {
       display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
       justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
     }
     .product-card {
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      padding: 1rem;
-      max-width: 280px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      width: 200px;
       text-align: center;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     .product-card img {
-      max-width: 100%;
+      width: 100%;
       height: auto;
       border-radius: 4px;
     }
-    .product-name {
-      margin: 0.5rem 0;
+    .product-card h3 {
+      margin: 10px 0 5px;
+      font-size: 1.1rem;
+    }
+    .product-card p {
+      color: #0b0b1c;
       font-weight: bold;
-      color: #0a0a23;
     }
-    .product-price {
-      color: #d4af37;
-      font-size: 1.2rem;
+    footer {
+      background-color: #0b0b1c;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
     }
-    footer p { margin: 0.5rem 0; }
+    .social-links a {
+      color: #ffd700;
+      text-decoration: none;
+      margin: 0 5px;
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <h2>SB CLASSIC</h2>
+    <h1>SB CLASSIC</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="clothes.html">Clothes</a>
@@ -87,40 +98,51 @@
 
   <section class="hero">
     <h1>Welcome to SB CLASSIC</h1>
-    <p>Premium fashion. Imported. Style with Class.</p>
+    <p>Style with Class – Explore premium clothes, shoes, and accessories.</p>
   </section>
 
-  <main class="container">
-    <h2>Featured Products</h2>
-    <div class="product-grid">
-      <!-- Clothes -->
+  <section class="section">
+    <h2>Featured Clothes</h2>
+    <div class="products">
       <div class="product-card">
-        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set Apricot" />
-        <div class="product-name">Elegant 2pcs Set (Apricot)</div>
-        <div class="product-price">GHS 1,980</div>
+        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Apricot" />
+        <h3>Elegant 2pcs Set (Apricot)</h3>
+        <p>GHS 1,980</p>
       </div>
       <div class="product-card">
-        <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Set Blue Black" />
-        <div class="product-name">Elegant 2pcs Set (Blue Black)</div>
-        <div class="product-price">GHS 1,980</div>
+        <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Black" />
+        <h3>Elegant 2pcs Set (Black)</h3>
+        <p>GHS 1,980</p>
       </div>
-      <!-- Shoes -->
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Featured Shoes</h2>
+    <div class="products">
       <div class="product-card">
         <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
-        <div class="product-name">Versace Sneaker (Black)</div>
-        <div class="product-price">GHS 1,890</div>
+        <h3>Versace Sneaker (Black)</h3>
+        <p>GHS 1,890</p>
       </div>
       <div class="product-card">
         <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
-        <div class="product-name">Versace Sneaker (White)</div>
-        <div class="product-price">GHS 1,890</div>
+        <h3>Versace Sneaker (White)</h3>
+        <p>GHS 1,890</p>
       </div>
     </div>
-  </main>
+  </section>
 
   <footer>
-    <p>© 2025 SB CLASSIC | Style with Class</p>
-    <p>Contact: +233260928990 | Email: sbclassics@icloud.com</p>
+    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
+    <p class="social-links">
+      FOLLOW US ON:
+      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
+      <a href="https://www.tiktok.com/@sb_classic_" target="_blank">TikTok</a>
+    </p>
   </footer>
 
 </body>
