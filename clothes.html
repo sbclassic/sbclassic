@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #0a0a23; /* Restored dark theme */
+      background-color: #0a0a23;
       color: #fff;
     }
     header {
@@ -60,7 +60,7 @@
     }
     .product p {
       margin: 0 0 15px;
-      color: #ffffff; /* Price in white */
+      color: #ffffff;
       font-weight: bold;
     }
     footer {
@@ -70,10 +70,13 @@
       padding: 20px;
       margin-top: 40px;
     }
-    .social a {
+    footer a {
       color: #d4af37;
-      margin: 0 8px;
       text-decoration: none;
+      font-weight: bold;
+    }
+    footer a:hover {
+      text-decoration: underline;
     }
     #whatsapp-chat {
       position: fixed;
@@ -137,8 +140,11 @@
   </div>
 
   <footer>
-    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
-    <p class="social-links">
+    <p style="color:#d4af37; font-weight: bold;">
+      CONTACT: <a href="tel:+233260928990">+233260928990</a> |
+      <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a>
+    </p>
+    <p>
       FOLLOW US ON:
       <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
       <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
