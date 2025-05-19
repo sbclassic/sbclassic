@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Clothes – SB CLASSIC</title>
   <style>
     body {
@@ -52,6 +52,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      padding-bottom: 10px;
     }
     .product img {
       width: 100%;
@@ -60,17 +61,19 @@
     .product h3 {
       margin: 10px 0 5px;
       color: #fff;
+      font-size: 1.1em;
     }
     .product p {
       margin: 0 0 15px;
       color: #ffffff;
       font-weight: bold;
+      font-size: 1em;
     }
     .buttons {
       display: flex;
       justify-content: center;
       gap: 10px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
     .buttons button {
       background-color: #d4af37;
@@ -143,8 +146,8 @@
   <div class="container">
     <h2>Clothes</h2>
     <div class="products">
-      <div class="product" data-id="clothes1" data-name="Elegant 2pcs Set - Apricot" data-price="1980" data-image="clothes/elegant_2pcs_set_apricot.jpeg">
-        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Apricot 2pcs Set">
+      <div class="product" data-name="Elegant 2pcs Set - Apricot" data-price="1980" data-image="clothes/elegant_2pcs_set_apricot.jpeg">
+        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Apricot 2pcs Set" />
         <h3>Elegant 2pcs Set - Apricot</h3>
         <p>GHS 1,980</p>
         <div class="buttons">
@@ -152,8 +155,8 @@
           <button class="checkout">Checkout 💳</button>
         </div>
       </div>
-      <div class="product" data-id="clothes2" data-name="Elegant 2pcs Set - Black" data-price="1980" data-image="clothes/elegant_2pcs_set_black.jpeg">
-        <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Black 2pcs Set">
+      <div class="product" data-name="Elegant 2pcs Set - Black" data-price="1980" data-image="clothes/elegant_2pcs_set_black.jpeg">
+        <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Black 2pcs Set" />
         <h3>Elegant 2pcs Set - Black</h3>
         <p>GHS 1,980</p>
         <div class="buttons">
@@ -161,8 +164,8 @@
           <button class="checkout">Checkout 💳</button>
         </div>
       </div>
-      <div class="product" data-id="clothes3" data-name="Elegant 2pcs Set - Blue Black" data-price="1980" data-image="clothes/elegant_2pcs_set_blueblack.jpeg">
-        <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Blue Black 2pcs Set">
+      <div class="product" data-name="Elegant 2pcs Set - Blue Black" data-price="1980" data-image="clothes/elegant_2pcs_set_blueblack.jpeg">
+        <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Blue Black 2pcs Set" />
         <h3>Elegant 2pcs Set - Blue Black</h3>
         <p>GHS 1,980</p>
         <div class="buttons">
@@ -180,11 +183,11 @@
     </p>
     <p>
       FOLLOW US ON:
-      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
-      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
-      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
+      <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank" rel="noopener">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank" rel="noopener">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank" rel="noopener">WhatsApp</a> |
+      <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener">TikTok</a>
     </p>
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
@@ -196,45 +199,61 @@
   </a>
 
   <script>
-    // Cart functionality
+    // Utility function to get cart from localStorage or return empty array
     function getCart() {
-      return JSON.parse(localStorage.getItem('sbclassicCart')) || [];
+      let cart = localStorage.getItem('sbclassic_cart');
+      return cart ? JSON.parse(cart) : [];
     }
 
+    // Utility function to save cart to localStorage
     function saveCart(cart) {
-      localStorage.setItem('sbclassicCart', JSON.stringify(cart));
+      localStorage.setItem('sbclassic_cart', JSON.stringify(cart));
     }
 
+    // Add product to cart or increase quantity if already exists
     function addToCart(product) {
-      const cart = getCart();
-      const existing = cart.find(item => item.id === product.id);
-      if (existing) {
-        existing.quantity += 1;
+      let cart = getCart();
+      let existingProduct = cart.find(item => item.name === product.name);
+      if (existingProduct) {
+        existingProduct.quantity += 1;
       } else {
         product.quantity = 1;
         cart.push(product);
       }
       saveCart(cart);
-      alert(`${product.name} added to cart!`);
+      alert(`Added "${product.name}" to cart.`);
     }
 
-    document.querySelectorAll('.product').forEach(productEl => {
-      const id = productEl.getAttribute('data-id');
-      const name = productEl.getAttribute('data-name');
-      const price = parseFloat(productEl.getAttribute('data-price'));
-      const image = productEl.getAttribute('data-image');
+    document.addEventListener('DOMContentLoaded', () => {
+      const addButtons = document.querySelectorAll('.add-to-cart');
+      const checkoutButtons = document.querySelectorAll('.checkout');
 
-      const addToCartBtn = productEl.querySelector('.add-to-cart');
-      const checkoutBtn = productEl.querySelector('.checkout');
-
-      addToCartBtn.addEventListener('click', () => {
-        addToCart({ id, name, price, image });
+      addButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const productDiv = button.closest('.product');
+          const product = {
+            name: productDiv.getAttribute('data-name'),
+            price: parseFloat(productDiv.getAttribute('data-price')),
+            image: productDiv.getAttribute('data-image'),
+            quantity: 1
+          };
+          addToCart(product);
+        });
       });
 
-      checkoutBtn.addEventListener('click', () => {
-        addToCart({ id, name, price, image });
-        // Redirect to checkout page
-        window.location.href = 'checkout.html';
+      checkoutButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Add the item to cart first, then redirect to cart.html
+          const productDiv = button.closest('.product');
+          const product = {
+            name: productDiv.getAttribute('data-name'),
+            price: parseFloat(productDiv.getAttribute('data-price')),
+            image: productDiv.getAttribute('data-image'),
+            quantity: 1
+          };
+          addToCart(product);
+          window.location.href = 'cart.html'; // Redirect to your cart page
+        });
       });
     });
   </script>
