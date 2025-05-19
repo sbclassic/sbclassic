@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SB CLASSIC – Style with Class</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    /* --- Basic styles, same as your current style with some additions --- */
     body {
       margin: 0;
       font-family: 'Raleway', sans-serif;
@@ -16,6 +17,7 @@
       color: #ffd700;
       padding: 20px;
       text-align: center;
+      position: relative;
     }
 
     .logo {
@@ -24,10 +26,45 @@
       margin-bottom: 10px;
     }
 
+    nav {
+      margin-top: 10px;
+    }
+
     nav a {
       margin: 0 10px;
       color: #ffd700;
       text-decoration: none;
+      font-weight: 600;
+    }
+
+    .cart-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      color: #ffd700;
+      font-weight: 700;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .cart-icon svg {
+      width: 24px;
+      height: 24px;
+      margin-right: 6px;
+      fill: #ffd700;
+    }
+
+    .cart-count {
+      background-color: #ffd700;
+      color: #0b0b1c;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 2px 6px;
+      border-radius: 50%;
+      min-width: 20px;
+      text-align: center;
     }
 
     .hero {
@@ -43,22 +80,17 @@
     }
 
     .hero h1 {
-  font-size: 1.8rem;
-  white-space: nowrap;
-  line-height: 1.2;
-  margin: 0;
-}
-      margin-bottom: 10px;
+      font-size: 1.8rem;
+      white-space: nowrap;
+      line-height: 1.2;
+      margin: 0;
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-      font-family: 'Raleway', sans-serif;
-      color: white;
     }
 
     .hero p {
       font-size: 1.2rem;
       font-style: italic;
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-      color: white;
     }
 
     .section {
@@ -86,11 +118,16 @@
       background-color: #f9f9f9;
       text-align: center;
       padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .product img {
       width: 100%;
       height: auto;
+      border-radius: 3px;
+      margin-bottom: 10px;
     }
 
     .product h3 {
@@ -99,10 +136,39 @@
       color: #0b0b1c;
     }
 
-    .product p {
-      margin: 0;
+    .product p.price {
+      margin: 0 0 10px;
       font-weight: bold;
       color: #000;
+    }
+
+    /* Quantity selector */
+    .quantity-container {
+      margin-bottom: 10px;
+    }
+
+    select.quantity {
+      padding: 5px;
+      font-size: 1rem;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+      width: 60px;
+    }
+
+    button.add-to-cart {
+      background-color: #0b0b1c;
+      color: #ffd700;
+      border: none;
+      padding: 10px;
+      font-weight: 700;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button.add-to-cart:hover {
+      background-color: #ffd700;
+      color: #0b0b1c;
     }
 
     footer {
@@ -146,41 +212,21 @@
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <a href="cart.html" class="cart-icon" aria-label="View Cart">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 18c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm10 0c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zM7.164 13h9.672c.542 0 .99-.363 1.106-.883l2.517-9.098-1.98-.55-2.152 7.77h-8.478l-1.812-6.028-2.44.736 1.812 6.028h-1.91v2h2.184z"/></svg>
+      <span class="cart-count" id="cart-count">0</span>
+    </a>
   </header>
 
   <section class="hero">
-   <h1 class="hero-heading">Welcome to SB CLASSIC</h1>
-   <p>...Style with Class</p>
+    <h1 class="hero-heading">Welcome to SB CLASSIC</h1>
+    <p>...Style with Class</p>
   </section>
 
   <section class="section">
     <h2>Featured Products</h2>
-    <div class="products">
-      <div class="product">
-        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Apricot">
-        <h3>Elegant 2pcs Set – Apricot</h3>
-        <p>GHS 1,980</p>
-      </div>
-      <div class="product">
-        <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Black">
-        <h3>Elegant 2pcs Set – Black</h3>
-        <p>GHS 1,980</p>
-      </div>
-      <div class="product">
-        <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Blue Black">
-        <h3>Elegant 2pcs Set – Blue Black</h3>
-        <p>GHS 1,980</p>
-      </div>
-      <div class="product">
-        <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black">
-        <h3>Versace Sneaker – Black</h3>
-        <p>GHS 1,890</p>
-      </div>
-      <div class="product">
-        <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White">
-        <h3>Versace Sneaker – White</h3>
-        <p>GHS 1,890</p>
-      </div>
+    <div class="products" id="product-list">
+      <!-- Products dynamically inserted here -->
     </div>
   </section>
 
@@ -201,21 +247,126 @@
     <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
     <p class="social-links">
       FOLLOW US ON:
-      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
-      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
-      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
+      <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank" rel="noopener">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank" rel="noopener">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank" rel="noopener">WhatsApp</a>
     </p>
-    <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
 
-  <a href="https://wa.me/233260928990" 
-     target="_blank" 
-     class="whatsapp-chat" 
-     aria-label="Chat with us on WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
-  </a>
+<script>
+  // Sample product data (update or add more products here)
+  const products = [
+    {
+      id: "navy-suit",
+      name: "Navy Blue Suit",
+      price: 960,
+      image: "clothes/navy_suit.jpg"
+    },
+    {
+      id: "black-tuxedo",
+      name: "Black Tuxedo",
+      price: 1980,
+      image: "clothes/tuxedo.jpg"
+    },
+    {
+      id: "white-shirt",
+      name: "White Shirt",
+      price: 450,
+      image: "clothes/white_shirt.jpg"
+    },
+    {
+      id: "brown-loafers",
+      name: "Brown Loafers",
+      price: 1890,
+      image: "shoes/loafers.jpg"
+    },
+    {
+      id: "gucci-sneaker",
+      name: "Gucci Sneaker",
+      price: 1890,
+      image: "shoes/sneakers.jpg"
+    }
+  ];
+
+  const productList = document.getElementById('product-list');
+  const cartCountElem = document.getElementById('cart-count');
+
+  // Load cart from localStorage or empty array
+  function loadCart() {
+    const cart = localStorage.getItem('sbclassic_cart');
+    return cart ? JSON.parse(cart) : [];
+  }
+
+  // Save cart to localStorage
+  function saveCart(cart) {
+    localStorage.setItem('sbclassic_cart', JSON.stringify(cart));
+  }
+
+  // Update cart item count badge
+  function updateCartCount() {
+    const cart = loadCart();
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCountElem.textContent = count;
+  }
+
+  // Add product to cart
+  function addToCart(productId, quantity) {
+    let cart = loadCart();
+    quantity = Number(quantity);
+    if (quantity < 1) return;
+
+    const existingItem = cart.find(item => item.id === productId);
+    if (existingItem) {
+      existingItem.quantity += quantity;
+      if (existingItem.quantity > 10) existingItem.quantity = 10; // max 10
+    } else {
+      cart.push({ id: productId, quantity: quantity });
+    }
+    saveCart(cart);
+    updateCartCount();
+    alert("Added to cart!");
+  }
+
+  // Render products
+  function renderProducts() {
+    productList.innerHTML = '';
+    products.forEach(product => {
+      const productDiv = document.createElement('div');
+      productDiv.className = 'product';
+      productDiv.innerHTML = `
+        <img src="${product.image}" alt="${product.name}" />
+        <h3>${product.name}</h3>
+        <p class="price">GHS ${product.price.toLocaleString()}</p>
+        <div class="quantity-container">
+          <label for="qty-${product.id}">Qty:</label>
+          <select id="qty-${product.id}" class="quantity" aria-label="Select quantity for ${product.name}">
+            ${[...Array(10).keys()].map(i => `<option value="${i+1}">${i+1}</option>`).join('')}
+          </select>
+        </div>
+        <button class="add-to-cart" data-product-id="${product.id}">Add to Cart</button>
+      `;
+      productList.appendChild(productDiv);
+    });
+
+    // Attach event listeners to buttons
+    document.querySelectorAll('button.add-to-cart').forEach(button => {
+      button.addEventListener('click', (e) => {
+        const pid = e.target.getAttribute('data-product-id');
+        const qtySelect = document.getElementById(`qty-${pid}`);
+        addToCart(pid, qtySelect.value);
+      });
+    });
+  }
+
+  // Initialize page
+  function init() {
+    renderProducts();
+    updateCartCount();
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+</script>
 
 </body>
 </html>
