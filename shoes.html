@@ -6,29 +6,79 @@
   <title>Shoes – SB CLASSIC</title>
   <style>
     body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #0b0b1c; /* Blue Black */
-  color: #ffffff;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0b0b1c; /* Blue Black */
+      color: #ffffff;
     }
     .container {
       background-color: #0b0b1c;
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
     }
     
     h2 {
-      color: #ffd700; /* Optional: Golden section title */
+      text-align: center;
+      color: #d4af37; /* Deep Gold */
     }
 
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
     .product {
       background-color: #1a1a2e;
       border: 1px solid #333;
       color: #ffffff;
+      width: 250px;
+      border-radius: 6px;
+      overflow: hidden;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px 10px;
+    }
+    .product img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    .product h3 {
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    .product p.price {
+      margin: 0 0 15px;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 1.1em;
     }
 
-    .product p {
-      margin: 0 0 15px;
-      color: #ffffff; /* White */
+    /* Add to Cart Button */
+    .add-to-cart {
+      background-color: #d4af37;
+      color: #0b0b1c;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 15px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-bottom: 15px;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      max-width: 220px;
+      box-sizing: border-box;
     }
+    .add-to-cart:hover {
+      background-color: #b59425;
+    }
+
     header {
       background: #0a0a23;
       color: #d4af37;
@@ -44,40 +94,7 @@
     nav a:hover {
       text-decoration: underline;
     }
-    .container {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h2 {
-      text-align: center;
-      color: ##d4af37;
-    }
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin-top: 30px;
-    }
-    .product {
-      width: 250px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      overflow: hidden;
-      text-align: center;
-    }
-    .product img {
-      width: 100%;
-      height: auto;
-    }
-    .product h3 {
-      margin: 10px 0 5px;
-    }
-    .product p {
-      margin: 0 0 15px;
-      color: #444;
-    }
+
     footer {
       background: #0a0a23;
       color: #fff;
@@ -113,10 +130,6 @@
       width: 35px;
       height: 35px;
     }
-    
-    .products .product p {
-      color: #ffffff !important;
-    }
   </style>
 </head>
 <body>
@@ -137,14 +150,20 @@
     <h2>Shoes</h2>
     <div class="products">
       <div class="product">
-        <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
+        <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" loading="lazy" />
         <h3>Versace Sneaker - Black</h3>
         <p class="price">GHS 1,890</p>
+        <button class="add-to-cart" data-product="Versace Sneaker - Black" data-price="1890">
+          🛒 Add to Cart
+        </button>
       </div>
       <div class="product">
-        <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
+        <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" loading="lazy" />
         <h3>Versace Sneaker - White</h3>
         <p class="price">GHS 1,890</p>
+        <button class="add-to-cart" data-product="Versace Sneaker - White" data-price="1890">
+          🛒 Add to Cart
+        </button>
       </div>
     </div>
   </div>
