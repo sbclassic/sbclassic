@@ -1,4 +1,4 @@
-// cart.js
+// js/cart.js
 
 function getCart() {
   return JSON.parse(localStorage.getItem('cart')) || [];
@@ -24,43 +24,8 @@ function addToCart(product) {
   alert(`${product.name} added to cart`);
 }
 
-function removeFromCart(productId) {
-  let cart = getCart().filter(item => item.id !== productId);
+function removeFromCart(id) {
+  let cart = getCart().filter(item => item.id !== id);
   saveCart(cart);
   location.reload();
-}
-
-function updateCartDisplay() {
-  const cart = getCart();
-  const cartContainer = document.getElementById("cart-items");
-  const cartTotal = document.getElementById("cart-total");
-
-  if (!cartContainer || !cartTotal) return;
-
-  if (cart.length === 0) {
-    cartContainer.innerHTML = "<p>Your cart is empty.</p>";
-    cartTotal.textContent = "Total: GHS 0";
-    return;
-  }
-
-  let total = 0;
-  cartContainer.innerHTML = "";
-  cart.forEach(item => {
-    const itemTotal = item.price * item.quantity;
-    total += itemTotal;
-    cartContainer.innerHTML += `
-      <div class="cart-item">
-        <img src="${item.image}" alt="${item.name}" width="80" />
-        <div>
-          <h4>${item.name}</h4>
-          <p>Price: GHS ${item.price}</p>
-          <p>Quantity: ${item.quantity}</p>
-          <button onclick="removeFromCart('${item.id}')">Remove</button>
-        </div>
-      </div>
-      <hr/>
-    `;
-  });
-
-  cartTotal.textContent = `Total: GHS ${total}`;
 }
