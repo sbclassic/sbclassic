@@ -1,63 +1,9 @@
-<!-- checkout.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Checkout – SB CLASSIC</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0b0b1c;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background: #0a0a23;
-      padding: 20px;
-      text-align: center;
-    }
-    header h1 {
-      color: #d4af37;
-    }
-    nav a {
-      margin: 0 15px;
-      color: #d4af37;
-      text-decoration: none;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .container {
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 20px;
-      background-color: #1a1a2e;
-      border-radius: 8px;
-    }
-    input {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: none;
-      border-radius: 4px;
-      font-size: 16px;
-    }
-    button {
-      width: 100%;
-      background-color: #d4af37;
-      color: #000;
-      padding: 12px;
-      font-size: 18px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #c19e2b;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
@@ -78,22 +24,15 @@
   </main>
 
   <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script src="js/cart.js"></script>
   <script>
-    // Local cart functions
-    function getCart() {
-      return JSON.parse(localStorage.getItem('cart')) || [];
-    }
-
-    function clearCart() {
-      localStorage.removeItem('cart');
-    }
-
-    document.getElementById('checkout-form').addEventListener('submit', function (e) {
+    document.getElementById('checkout-form').addEventListener('submit', function(e) {
       e.preventDefault();
 
       const cart = getCart();
-      if (cart.length === 0) {
-        return alert("Your cart is empty.");
+      if (!cart || cart.length === 0) {
+        alert("Your cart is empty.");
+        return;
       }
 
       const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -102,22 +41,23 @@
       const phone = document.getElementById('phone').value;
 
       const handler = PaystackPop.setup({
-        key: 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxxx', // Replace with your real public key
+        key: 'YOUR_PUBLIC_KEY_HERE', // 🔁 Replace with your real public Paystack key
         email: email,
-        amount: total * 100, // Paystack accepts kobo/pesewas
+        amount: total * 100, // in pesewas
         currency: 'GHS',
         ref: 'SB_' + Date.now(),
         metadata: {
           custom_fields: [
-            { display_name: "Full Name", variable_name: "full_name", value: name },
+            { display_name: "Customer Name", variable_name: "name", value: name },
             { display_name: "Phone Number", variable_name: "phone", value: phone }
           ]
         },
-        callback: function (response) {
+        callback: function(response) {
+          // You can send the response.reference to your server here if needed
           clearCart();
-          window.location.href = "confirmation.html";
+          window.location.href = 'confirmation.html';
         },
-        onClose: function () {
+        onClose: function() {
           alert('Transaction was cancelled.');
         }
       });
