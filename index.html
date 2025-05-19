@@ -7,206 +7,354 @@
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
-      font-family: 'Raleway', sans-serif;
       margin: 0;
-      background-color: #f9f9f9;
-      color: #0b0b1c;
+      font-family: 'Raleway', sans-serif;
     }
 
     header {
       background-color: #0b0b1c;
-      color: white;
+      color: #ffd700;
       padding: 20px;
       text-align: center;
     }
 
-    header h1 {
-      margin: 0;
+    .logo {
+      width: 120px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    nav a {
+      margin: 0 10px;
+      color: #ffd700;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background-color: #0b0b1c;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 1.8rem;
+      white-space: nowrap;
+      line-height: 1.2;
+      margin: 0 0 10px 0;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      font-style: italic;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
     }
 
     .section {
-      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
-    h2 {
+    .section h2 {
       text-align: center;
-      margin-bottom: 30px;
+      color: #0b0b1c;
     }
 
     .products {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
-      justify-content: center;
+      margin-top: 30px;
     }
 
     .product {
-      background: white;
       border: 1px solid #ddd;
-      padding: 15px;
-      border-radius: 8px;
-      width: 250px;
+      border-radius: 5px;
+      overflow: hidden;
+      background-color: #f9f9f9;
       text-align: center;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
     }
 
     .product img {
       width: 100%;
-      height: 300px;
+      height: auto;
       object-fit: cover;
-      border-radius: 5px;
+      border-bottom: 1px solid #ddd;
     }
 
     .product h3 {
       margin: 10px 0 5px;
-      font-size: 18px;
+      font-size: 1.1rem;
+      color: #0b0b1c;
     }
 
     .product p {
+      margin: 0 0 10px 0;
       font-weight: bold;
-      margin: 0 0 10px;
+      color: #000;
     }
 
-    .add-to-cart {
-      background-color: #ffd700;
-      color: #0b0b1c;
+    .quantity-label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .quantity-input {
+      width: 60px;
+      padding: 5px;
+      font-size: 1rem;
+      text-align: center;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .btn {
+      background-color: #0b0b1c;
+      color: #ffd700;
       border: none;
       padding: 10px 15px;
+      font-size: 1rem;
       cursor: pointer;
-      border-radius: 5px;
-      font-weight: bold;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #ffd700;
+      color: #0b0b1c;
     }
 
     .cart-buttons {
-      margin-top: 40px;
+      margin-top: 30px;
       text-align: center;
+      gap: 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
-    .cart-buttons button {
+    .cart-buttons a {
+      display: inline-block;
+      background-color: #0b0b1c;
+      color: #ffd700;
+      padding: 12px 25px;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .cart-buttons a:hover {
       background-color: #ffd700;
-      border: none;
       color: #0b0b1c;
-      padding: 10px 20px;
-      margin: 10px;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 5px;
     }
 
     footer {
-      background: #0b0b1c;
-      color: white;
-      padding: 20px;
+      background-color: #0b0b1c;
+      color: #fff;
       text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    .social-links a {
+      color: #ffd700;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    .social-links a:hover {
+      text-decoration: underline;
+    }
+
+    .whatsapp-chat {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+
+    .whatsapp-chat img {
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
+  <header>
+    <img src="logo.png" alt="SB CLASSIC Logo" class="logo" />
+    <h1>SB CLASSIC</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="clothes.html">Clothes</a>
+      <a href="shoes.html">Shoes</a>
+      <a href="accessories.html">Accessories</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-<header>
-  <h1>SB CLASSIC</h1>
-  <p>Style with Class</p>
-</header>
+  <section class="hero">
+    <h1 class="hero-heading">Welcome to SB CLASSIC</h1>
+    <p>...Style with Class</p>
+  </section>
 
-<section class="section">
-  <h2>Featured Products</h2>
-  <div class="products">
-    <div class="product" data-id="1" data-name="Elegant 2pcs Set – Apricot" data-price="1980" data-image="clothes/elegant_2pcs_set_apricot.jpeg">
-      <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Apricot" />
-      <h3>Elegant 2pcs Set – Apricot</h3>
-      <p>GHS 1,980</p>
-      <button class="add-to-cart">Add to Cart</button>
+  <section class="section">
+    <h2>Featured Products</h2>
+    <div class="products">
+      <div class="product" data-name="Elegant 2pcs Set – Apricot" data-price="1980" data-image="clothes/elegant_2pcs_set_apricot.jpeg">
+        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Apricot" />
+        <h3>Elegant 2pcs Set – Apricot</h3>
+        <p>GHS 1,980</p>
+        <label class="quantity-label" for="qty-apricot">Quantity:</label>
+        <input type="number" id="qty-apricot" class="quantity-input" min="1" value="1" />
+        <button class="btn add-to-cart-btn">Add to Cart</button>
+      </div>
+
+      <div class="product" data-name="Elegant 2pcs Set – Black" data-price="1980" data-image="clothes/elegant_2pcs_set_black.jpeg">
+        <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Black" />
+        <h3>Elegant 2pcs Set – Black</h3>
+        <p>GHS 1,980</p>
+        <label class="quantity-label" for="qty-black">Quantity:</label>
+        <input type="number" id="qty-black" class="quantity-input" min="1" value="1" />
+        <button class="btn add-to-cart-btn">Add to Cart</button>
+      </div>
+
+      <div class="product" data-name="Elegant 2pcs Set – Blue Black" data-price="1980" data-image="clothes/elegant_2pcs_set_blueblack.jpeg">
+        <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Blue Black" />
+        <h3>Elegant 2pcs Set – Blue Black</h3>
+        <p>GHS 1,980</p>
+        <label class="quantity-label" for="qty-blueblack">Quantity:</label>
+        <input type="number" id="qty-blueblack" class="quantity-input" min="1" value="1" />
+        <button class="btn add-to-cart-btn">Add to Cart</button>
+      </div>
+
+      <div class="product" data-name="Versace Sneaker – Black" data-price="1890" data-image="shoes/versace_sneaker_black.jpeg">
+        <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
+        <h3>Versace Sneaker – Black</h3>
+        <p>GHS 1,890</p>
+        <label class="quantity-label" for="qty-sneaker-black">Quantity:</label>
+        <input type="number" id="qty-sneaker-black" class="quantity-input" min="1" value="1" />
+        <button class="btn add-to-cart-btn">Add to Cart</button>
+      </div>
+
+      <div class="product" data-name="Brown Loafers" data-price="1890" data-image="shoes/brown_loafers.jpeg">
+        <img src="shoes/brown_loafers.jpeg" alt="Brown Loafers" />
+        <h3>Brown Loafers</h3>
+        <p>GHS 1,890</p>
+        <label class="quantity-label" for="qty-brown-loafers">Quantity:</label>
+        <input type="number" id="qty-brown-loafers" class="quantity-input" min="1" value="1" />
+        <button class="btn add-to-cart-btn">Add to Cart</button>
+      </div>
     </div>
-    <div class="product" data-id="2" data-name="Elegant 2pcs Set – Black" data-price="1980" data-image="clothes/elegant_2pcs_set_black.jpeg">
-      <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Black" />
-      <h3>Elegant 2pcs Set – Black</h3>
-      <p>GHS 1,980</p>
-      <button class="add-to-cart">Add to Cart</button>
+
+    <div class="cart-buttons">
+      <a href="cart.html" id="view-cart-btn" style="display:none;">View Cart 🛒</a>
+      <a href="checkout.html" id="checkout-btn" style="display:none;">Checkout 💳</a>
     </div>
-    <div class="product" data-id="3" data-name="Versace Sneaker – Black" data-price="1890" data-image="shoes/versace_sneaker_black.jpeg">
-      <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
-      <h3>Versace Sneaker – Black</h3>
-      <p>GHS 1,890</p>
-      <button class="add-to-cart">Add to Cart</button>
-    </div>
-    <div class="product" data-id="4" data-name="Versace Sneaker – White" data-price="1890" data-image="shoes/versace_sneaker_white.jpeg">
-      <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
-      <h3>Versace Sneaker – White</h3>
-      <p>GHS 1,890</p>
-      <button class="add-to-cart">Add to Cart</button>
-    </div>
+  </section>
+
+  <footer>
+    <p>Contact us: +233260928990 | sbclassics@icloud.com</p>
+    <p>Follow us:
+      <span class="social-links">
+        <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
+        <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
+        <a href="https://t.me/sbclassics" target="_blank">Telegram</a>
+      </span>
+    </p>
+    <p>© 2025 SB CLASSIC. All rights reserved.</p>
+  </footer>
+
+  <div class="whatsapp-chat">
+    <a href="https://wa.me/233260928990" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+      <img src="whatsapp_icon.png" alt="WhatsApp Chat" />
+    </a>
   </div>
 
-  <div class="cart-buttons" style="display:none;">
-    <button id="view-cart">View Cart 🛒</button>
-    <button id="checkout">Checkout 💳</button>
-  </div>
-</section>
-
-<footer>
-  <p>Contact us: sbclassics@icloud.com | +233 260 928 990</p>
-  <p>Follow us: Instagram @sb_classic_ | Facebook @sb.classic_</p>
-</footer>
-
-<script>
-  const addToCartButtons = document.querySelectorAll('.add-to-cart');
-  const cartButtonsContainer = document.querySelector('.cart-buttons');
-  const viewCartBtn = document.getElementById('view-cart');
-  const checkoutBtn = document.getElementById('checkout');
-
-  function getCart() {
-    const cartJSON = localStorage.getItem('sbclassicCart');
-    return cartJSON ? JSON.parse(cartJSON) : [];
-  }
-
-  function saveCart(cart) {
-    localStorage.setItem('sbclassicCart', JSON.stringify(cart));
-  }
-
-  function updateCartButtons() {
-    const cart = getCart();
-    if (cart.length > 0) {
-      cartButtonsContainer.style.display = 'block';
-    } else {
-      cartButtonsContainer.style.display = 'none';
+  <script>
+    // Helper function to get cart from localStorage or initialize
+    function getCart() {
+      const cart = localStorage.getItem('sbclassic_cart');
+      return cart ? JSON.parse(cart) : [];
     }
-  }
 
-  function addToCart(product) {
-    const cart = getCart();
-    const existing = cart.find(item => item.id === product.id);
-    if (existing) {
-      existing.quantity += 1;
-    } else {
-      cart.push({ ...product, quantity: 1 });
+    // Save cart back to localStorage
+    function saveCart(cart) {
+      localStorage.setItem('sbclassic_cart', JSON.stringify(cart));
     }
-    saveCart(cart);
-    updateCartButtons();
-    alert(`${product.name} added to cart!`);
-  }
 
-  addToCartButtons.forEach(button => {
-    button.addEventListener('click', e => {
-      const productDiv = e.target.closest('.product');
-      const product = {
-        id: productDiv.dataset.id,
-        name: productDiv.dataset.name,
-        price: Number(productDiv.dataset.price),
-        image: productDiv.dataset.image
-      };
-      addToCart(product);
+    // Update visibility of cart and checkout buttons
+    function updateCartButtons() {
+      const cart = getCart();
+      const viewCartBtn = document.getElementById('view-cart-btn');
+      const checkoutBtn = document.getElementById('checkout-btn');
+      if (cart.length > 0) {
+        viewCartBtn.style.display = 'inline-block';
+        checkoutBtn.style.display = 'inline-block';
+      } else {
+        viewCartBtn.style.display = 'none';
+        checkoutBtn.style.display = 'none';
+      }
+    }
+
+    // Add product to cart or update quantity if already present
+    function addToCart(name, price, image, quantity) {
+      let cart = getCart();
+
+      // Check if product already in cart
+      const existingIndex = cart.findIndex(item => item.name === name);
+      if (existingIndex > -1) {
+        cart[existingIndex].quantity += quantity;
+      } else {
+        cart.push({ name, price, image, quantity });
+      }
+
+      saveCart(cart);
+      updateCartButtons();
+      alert(`Added ${quantity} x "${name}" to cart.`);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartButtons();
+
+      // Attach event listeners to all add to cart buttons
+      const buttons = document.querySelectorAll('.add-to-cart-btn');
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          const productDiv = button.closest('.product');
+          const name = productDiv.getAttribute('data-name');
+          const price = parseFloat(productDiv.getAttribute('data-price'));
+          const image = productDiv.getAttribute('data-image');
+
+          // Find associated quantity input inside this product div
+          const qtyInput = productDiv.querySelector('.quantity-input');
+          let quantity = parseInt(qtyInput.value);
+          if (isNaN(quantity) || quantity < 1) quantity = 1;
+
+          addToCart(name, price, image, quantity);
+        });
+      });
     });
-  });
-
-  viewCartBtn.addEventListener('click', () => {
-    window.location.href = 'cart.html';
-  });
-
-  checkoutBtn.addEventListener('click', () => {
-    window.location.href = 'checkout.html';
-  });
-
-  updateCartButtons();
-</script>
-
+  </script>
 </body>
 </html>
