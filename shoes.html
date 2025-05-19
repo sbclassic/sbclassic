@@ -1,2 +1,163 @@
-/images/shoes/versace_sneaker_black.jpeg
-/images/shoes/versace_sneaker_white.jpeg
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shoes – SB CLASSIC</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0a0a23;
+      color: #fff;
+    }
+    header {
+      background: #0a0a23;
+      color: #d4af37;
+      padding: 20px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 12px;
+      color: #d4af37;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      color: #d4af37;
+      margin-bottom: 30px;
+    }
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .product {
+      width: 250px;
+      background: #fff;
+      color: #000;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .product:hover {
+      transform: translateY(-5px);
+    }
+    .product img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    .product h3 {
+      margin: 15px 0 5px;
+      font-size: 18px;
+    }
+    .product p {
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    footer {
+      background: #0a0a23;
+      color: #fff;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+    .social-links a {
+      color: #d4af37;
+      margin: 0 8px;
+      text-decoration: none;
+    }
+    .social-links a:hover {
+      text-decoration: underline;
+    }
+    /* WhatsApp Chat */
+    .whatsapp-chat {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 60px;
+      height: 60px;
+      z-index: 1000;
+      border-radius: 50%;
+      background-color: #25d366;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s ease;
+    }
+    .whatsapp-chat:hover {
+      background-color: #1ebe57;
+    }
+    .whatsapp-chat img {
+      width: 35px;
+      height: 35px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>SB CLASSIC</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="clothes.html">Clothes</a>
+      <a href="shoes.html">Shoes</a>
+      <a href="accessories.html">Accessories</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Shoes</h2>
+    <div class="products">
+      <div class="product">
+        <img src="images/shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
+        <h3>Versace Sneaker – Black</h3>
+        <p>GHS 1,890</p>
+      </div>
+      <div class="product">
+        <img src="images/shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
+        <h3>Versace Sneaker – White</h3>
+        <p>GHS 1,890</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
+    <p class="social-links">
+      FOLLOW US:
+      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
+      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
+    </p>
+    <p>© 2025 SB CLASSIC. All rights reserved.</p>
+  </footer>
+
+  <!-- WhatsApp Chat Button -->
+  <a href="https://wa.me/233260928990" 
+     target="_blank" 
+     class="whatsapp-chat" 
+     aria-label="Chat with us on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
+  </a>
+
+</body>
+</html>
