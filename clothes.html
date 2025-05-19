@@ -49,6 +49,9 @@
       overflow: hidden;
       text-align: center;
       background-color: #1c1c2e;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .product img {
       width: 100%;
@@ -62,6 +65,25 @@
       margin: 0 0 15px;
       color: #ffffff;
       font-weight: bold;
+    }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .buttons button {
+      background-color: #d4af37;
+      border: none;
+      padding: 8px 16px;
+      color: #0a0a23;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .buttons button:hover {
+      background-color: #b08c25;
     }
     footer {
       background: #0a0a23;
@@ -125,16 +147,28 @@
         <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Apricot 2pcs Set">
         <h3>Elegant 2pcs Set - Apricot</h3>
         <p>GHS 1,980</p>
+        <div class="buttons">
+          <button class="add-to-cart">Cart 🛒</button>
+          <button class="checkout">Checkout 💳</button>
+        </div>
       </div>
       <div class="product">
         <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Black 2pcs Set">
         <h3>Elegant 2pcs Set - Black</h3>
         <p>GHS 1,980</p>
+        <div class="buttons">
+          <button class="add-to-cart">Cart 🛒</button>
+          <button class="checkout">Checkout 💳</button>
+        </div>
       </div>
       <div class="product">
         <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Blue Black 2pcs Set">
         <h3>Elegant 2pcs Set - Blue Black</h3>
         <p>GHS 1,980</p>
+        <div class="buttons">
+          <button class="add-to-cart">Cart 🛒</button>
+          <button class="checkout">Checkout 💳</button>
+        </div>
       </div>
     </div>
   </div>
