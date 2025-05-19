@@ -1,210 +1,27 @@
+<!-- cart.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cart – SB CLASSIC</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0b0b1c;
-      color: #ffffff;
-    }
-    header, footer {
-      background: #0a0a23;
-      color: #d4af37;
-      text-align: center;
-      padding: 20px;
-    }
-    nav a {
-      margin: 0 12px;
-      color: #d4af37;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 30px 20px;
-    }
-    h2 {
-      text-align: center;
-      color: #d4af37;
-    }
-    .cart-item {
-      display: flex;
-      background: #1a1a2e;
-      margin-bottom: 20px;
-      padding: 15px;
-      border-radius: 6px;
-      align-items: center;
-      gap: 20px;
-    }
-    .cart-item img {
-      width: 100px;
-      height: auto;
-      border-radius: 4px;
-    }
-    .cart-details {
-      flex: 1;
-    }
-    .cart-details h3 {
-      margin: 0 0 5px;
-    }
-    .cart-details p {
-      margin: 5px 0;
-    }
-    .cart-actions {
-      text-align: right;
-    }
-    input[type="number"] {
-      width: 50px;
-      padding: 5px;
-      margin-top: 5px;
-    }
-    .remove-btn {
-      background: #ff4d4d;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      margin-top: 5px;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    .total {
-      text-align: right;
-      margin-top: 30px;
-      font-size: 18px;
-      color: #ffd700;
-    }
-    .checkout-btn {
-      display: block;
-      background: #d4af37;
-      color: #0b0b1c;
-      text-align: center;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 16px;
-      margin: 30px auto 0;
-      cursor: pointer;
-      width: 100%;
-      max-width: 300px;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
   <header>
-    <h1>SB CLASSIC</h1>
+    <h1>Your Cart 🛒</h1>
     <nav>
       <a href="index.html">Home</a>
-      <a href="clothes.html">Clothes</a>
-      <a href="shoes.html">Shoes</a>
-      <a href="accessories.html">Accessories</a>
-      <a href="cart.html">🛒 Cart</a>
+      <a href="checkout.html">Checkout 💳</a>
     </nav>
   </header>
 
-  <div class="container">
-    <h2>Your Cart</h2>
+  <main class="container">
     <div id="cart-items"></div>
-    <div class="total" id="cart-total">Total: GHS 0.00</div>
-    <button class="checkout-btn" onclick="payWithPaystack()">Proceed to Checkout 💳</button>
-  </div>
+    <h3>Total: <span id="total-price">GHS 0</span></h3>
+    <a href="checkout.html" class="btn">Proceed to Checkout</a>
+  </main>
 
-  <footer>
-    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
-    <p>© 2025 SB CLASSIC. All rights reserved.</p>
-  </footer>
-
-  <script src="https://js.paystack.co/v1/inline.js"></script>
-  <script>
-    let cart = JSON.parse(localStorage.getItem("sbclassic_cart")) || [];
-
-    const cartItemsEl = document.getElementById("cart-items");
-    const cartTotalEl = document.getElementById("cart-total");
-
-    function renderCart() {
-      cartItemsEl.innerHTML = "";
-      let total = 0;
-
-      if (cart.length === 0) {
-        cartItemsEl.innerHTML = "<p>Your cart is empty.</p>";
-        cartTotalEl.textContent = "Total: GHS 0.00";
-        return;
-      }
-
-      cart.forEach((item, index) => {
-        const subtotal = item.price * item.quantity;
-        total += subtotal;
-
-        const cartItem = document.createElement("div");
-        cartItem.className = "cart-item";
-        cartItem.innerHTML = `
-          <img src="${item.image}" alt="${item.name}" />
-          <div class="cart-details">
-            <h3>${item.name}</h3>
-            <p>GHS ${item.price.toFixed(2)}</p>
-            <p>
-              Quantity: 
-              <input type="number" min="1" value="${item.quantity}" onchange="updateQuantity(${index}, this.value)" />
-            </p>
-          </div>
-          <div class="cart-actions">
-            <p>Subtotal: GHS ${subtotal.toFixed(2)}</p>
-            <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
-          </div>
-        `;
-        cartItemsEl.appendChild(cartItem);
-      });
-
-      cartTotalEl.textContent = "Total: GHS " + total.toFixed(2);
-    }
-
-    function updateQuantity(index, value) {
-      cart[index].quantity = parseInt(value);
-      localStorage.setItem("sbclassic_cart", JSON.stringify(cart));
-      renderCart();
-    }
-
-    function removeItem(index) {
-      cart.splice(index, 1);
-      localStorage.setItem("sbclassic_cart", JSON.stringify(cart));
-      renderCart();
-    }
-
-    function payWithPaystack() {
-      if (cart.length === 0) {
-        alert("Your cart is empty.");
-        return;
-      }
-
-      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-      const handler = PaystackPop.setup({
-        key: 'pk_test_xxxxxxxxxxxxxxxx', // Replace with your real Paystack public key
-        email: 'customer@example.com',  // Optional: collect this from user
-        amount: total * 100, // in kobo (GHS to pesewas)
-        currency: 'GHS',
-        callback: function(response) {
-          alert('Payment successful! Ref: ' + response.reference);
-          cart = [];
-          localStorage.removeItem("sbclassic_cart");
-          renderCart();
-        },
-        onClose: function() {
-          alert('Transaction was cancelled.');
-        }
-      });
-      handler.openIframe();
-    }
-
-    renderCart();
-  </script>
+  <script src="js/cart.js"></script>
+  <script>renderCartItems('cart-items');</script>
 </body>
 </html>
