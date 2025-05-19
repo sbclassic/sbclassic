@@ -79,6 +79,33 @@
       text-decoration: none;
       margin: 0 8px;
     }
+
+    /* WhatsApp Floating Button */
+    #whatsapp-chat {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+    #whatsapp-chat:hover {
+      background-color: #1ebe57;
+    }
+    #whatsapp-chat svg {
+      width: 30px;
+      height: 30px;
+      fill: white;
+    }
   </style>
 </head>
 <body>
@@ -122,6 +149,20 @@
     </p>
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
+
+  <!-- WhatsApp Floating Chat Button -->
+  <a 
+    id="whatsapp-chat" 
+    href="https://wa.me/233260928990" 
+    target="_blank" 
+    aria-label="Chat with us on WhatsApp"
+    title="Chat with us on WhatsApp"
+  >
+    <!-- WhatsApp SVG Icon -->
+    <svg viewBox="0 0 24 24">
+      <path d="M20.52 3.48A11.91 11.91 0 0012 0C5.373 0 .004 5.372.004 12a11.87 11.87 0 002.013 6.012L0 24l6.11-2.02A11.938 11.938 0 0012 24c6.627 0 12-5.373 12-12 0-3.2-1.242-6.214-3.48-8.52zm-8.03 17.14a9.525 9.525 0 01-5.123-1.44l-.368-.218-3.62 1.197 1.214-3.53-.24-.364a9.518 9.518 0 01-1.447-5.132c0-5.246 4.262-9.51 9.508-9.51 2.54 0 4.92.99 6.7 2.79a9.457 9.457 0 012.79 6.7 9.534 9.534 0 01-9.53 9.53zm5.2-7.12c-.287-.14-1.7-.84-1.965-.94-.264-.1-.456-.14-.648.14-.193.28-.75.94-.92 1.13-.17.19-.33.21-.615.07-.285-.14-1.2-.44-2.29-1.41-.847-.75-1.42-1.68-1.59-1.96-.17-.28-.018-.43.124-.57.127-.127.284-.33.427-.495.144-.165.19-.28.287-.465.096-.19.048-.36-.024-.5-.07-.14-.65-1.57-.89-2.15-.234-.565-.47-.49-.647-.5l-.55-.01c-.19 0-.5.07-.76.36-.264.28-1.006.983-1.006 2.4 0 1.42 1.03 2.8 1.174 2.99.144.19 2.03 3.1 4.92 4.34.69.3 1.23.48 1.65.61.69.2 1.32.17 1.82.1.56-.09 1.7-.69 1.94-1.36.24-.67.24-1.25.17-1.36-.07-.12-.26-.19-.55-.33z"/>
+    </svg>
+  </a>
 
 </body>
 </html>
