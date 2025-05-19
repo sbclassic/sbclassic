@@ -30,10 +30,6 @@
       text-decoration: none;
     }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
-
     .hero {
       background-color: #0b0b1c;
       height: 400px;
@@ -85,17 +81,11 @@
       background-color: #f9f9f9;
       text-align: center;
       padding: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
     }
 
     .product img {
       width: 100%;
       height: auto;
-      object-fit: cover;
-      border-bottom: 1px solid #ddd;
     }
 
     .product h3 {
@@ -122,8 +112,6 @@
       font-size: 1rem;
       text-align: center;
       margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
     }
 
     .btn {
@@ -179,10 +167,6 @@
       color: #ffd700;
       text-decoration: none;
       margin: 0 5px;
-    }
-
-    .social-links a:hover {
-      text-decoration: underline;
     }
 
     .whatsapp-chat {
@@ -252,62 +236,81 @@
         <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
         <h3>Versace Sneaker – Black</h3>
         <p>GHS 1,890</p>
-        <label class="quantity-label" for="qty-sneaker-black">Quantity:</label>
-        <input type="number" id="qty-sneaker-black" class="quantity-input" min="1" value="1" />
+        <label class="quantity-label" for="qty-vsb">Quantity:</label>
+        <input type="number" id="qty-vsb" class="quantity-input" min="1" value="1" />
         <button class="btn add-to-cart-btn">Add to Cart</button>
       </div>
 
-      <div class="product" data-name="Brown Loafers" data-price="1890" data-image="shoes/brown_loafers.jpeg">
-        <img src="shoes/brown_loafers.jpeg" alt="Brown Loafers" />
-        <h3>Brown Loafers</h3>
+      <div class="product" data-name="Versace Sneaker – White" data-price="1890" data-image="shoes/versace_sneaker_white.jpeg">
+        <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
+        <h3>Versace Sneaker – White</h3>
         <p>GHS 1,890</p>
-        <label class="quantity-label" for="qty-brown-loafers">Quantity:</label>
-        <input type="number" id="qty-brown-loafers" class="quantity-input" min="1" value="1" />
+        <label class="quantity-label" for="qty-vsw">Quantity:</label>
+        <input type="number" id="qty-vsw" class="quantity-input" min="1" value="1" />
         <button class="btn add-to-cart-btn">Add to Cart</button>
       </div>
     </div>
 
     <div class="cart-buttons">
-      <a href="cart.html" id="view-cart-btn" style="display:none;">View Cart 🛒</a>
-      <a href="checkout.html" id="checkout-btn" style="display:none;">Checkout 💳</a>
+      <a href="cart.html" id="view-cart-btn" style="display:none;">View Cart</a>
+      <a href="checkout.html" id="checkout-btn" style="display:none;">Checkout</a>
     </div>
   </section>
 
   <footer>
-    <p>Contact us: +233260928990 | sbclassics@icloud.com</p>
-    <p>Follow us:
-      <span class="social-links">
-        <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
-        <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
-        <a href="https://t.me/sbclassics" target="_blank">Telegram</a>
-      </span>
+    <div class="container">
+      <h2>About SB CLASSIC</h2>
+      <p>Welcome to SB CLASSIC — your destination for timeless style and sophistication.</p>
+      <p>SB CLASSIC is a Ghana-based men’s fashion brand committed to helping you look sharp, feel confident, and stand out — effortlessly.</p>
+      <p>We specialize in premium suits, shirts, shoes, and accessories, carefully sourced from trusted international suppliers and tailored for the modern gentleman.</p>
+      <p>🌍 WHAT WE OFFER:</p>
+      <p>- High-quality, ready-to-wear men’s fashion</p>
+      <p>- Local & nationwide delivery across Ghana</p>
+      <p>- International shipping available</p>
+      <p>- Easy and secure checkout</p>
+      <p>- Friendly customer service & order tracking</p>
+      <p>Our slogan: Style with Class — and we live by it.</p>
+    </div>
+    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
+    <p class="social-links">
+      FOLLOW US ON:
+      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
+      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
     </p>
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
 
-  <div class="whatsapp-chat">
-    <a href="https://wa.me/233260928990" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
-      <img src="whatsapp_icon.png" alt="WhatsApp Chat" />
-    </a>
-  </div>
+  <a
+    href="https://wa.me/233260928990"
+    target="_blank"
+    class="whatsapp-chat"
+    aria-label="Chat with us on WhatsApp"
+  >
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+      alt="WhatsApp Chat"
+    />
+  </a>
 
   <script>
-    // Helper function to get cart from localStorage or initialize
+    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+    const viewCartBtn = document.getElementById('view-cart-btn');
+    const checkoutBtn = document.getElementById('checkout-btn');
+
     function getCart() {
-      const cart = localStorage.getItem('sbclassic_cart');
+      const cart = localStorage.getItem('sbclassicCart');
       return cart ? JSON.parse(cart) : [];
     }
 
-    // Save cart back to localStorage
     function saveCart(cart) {
-      localStorage.setItem('sbclassic_cart', JSON.stringify(cart));
+      localStorage.setItem('sbclassicCart', JSON.stringify(cart));
     }
 
-    // Update visibility of cart and checkout buttons
     function updateCartButtons() {
       const cart = getCart();
-      const viewCartBtn = document.getElementById('view-cart-btn');
-      const checkoutBtn = document.getElementById('checkout-btn');
       if (cart.length > 0) {
         viewCartBtn.style.display = 'inline-block';
         checkoutBtn.style.display = 'inline-block';
@@ -317,44 +320,33 @@
       }
     }
 
-    // Add product to cart or update quantity if already present
-    function addToCart(name, price, image, quantity) {
-      let cart = getCart();
+    addToCartButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const productDiv = btn.closest('.product');
+        const name = productDiv.dataset.name;
+        const price = parseFloat(productDiv.dataset.price);
+        const image = productDiv.dataset.image;
+        const qtyInput = productDiv.querySelector('.quantity-input');
+        let quantity = parseInt(qtyInput.value);
+        if (quantity < 1 || isNaN(quantity)) quantity = 1;
 
-      // Check if product already in cart
-      const existingIndex = cart.findIndex(item => item.name === name);
-      if (existingIndex > -1) {
-        cart[existingIndex].quantity += quantity;
-      } else {
-        cart.push({ name, price, image, quantity });
-      }
+        let cart = getCart();
 
-      saveCart(cart);
-      updateCartButtons();
-      alert(`Added ${quantity} x "${name}" to cart.`);
-    }
+        const existingProductIndex = cart.findIndex(item => item.name === name);
+        if (existingProductIndex > -1) {
+          cart[existingProductIndex].quantity += quantity;
+        } else {
+          cart.push({ name, price, image, quantity });
+        }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      updateCartButtons();
-
-      // Attach event listeners to all add to cart buttons
-      const buttons = document.querySelectorAll('.add-to-cart-btn');
-      buttons.forEach(button => {
-        button.addEventListener('click', () => {
-          const productDiv = button.closest('.product');
-          const name = productDiv.getAttribute('data-name');
-          const price = parseFloat(productDiv.getAttribute('data-price'));
-          const image = productDiv.getAttribute('data-image');
-
-          // Find associated quantity input inside this product div
-          const qtyInput = productDiv.querySelector('.quantity-input');
-          let quantity = parseInt(qtyInput.value);
-          if (isNaN(quantity) || quantity < 1) quantity = 1;
-
-          addToCart(name, price, image, quantity);
-        });
+        saveCart(cart);
+        updateCartButtons();
+        alert(`${quantity} x "${name}" added to cart.`);
       });
     });
+
+    // Update buttons on page load
+    updateCartButtons();
   </script>
 </body>
 </html>
