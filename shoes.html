@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shoes – SB CLASSIC</title>
   <style>
     body {
@@ -11,79 +11,14 @@
       background: #0b0b1c; /* Blue Black */
       color: #ffffff;
     }
-    .container {
-      background-color: #0b0b1c;
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    
-    h2 {
-      text-align: center;
-      color: #d4af37; /* Deep Gold */
-    }
-
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin-top: 30px;
-    }
-    .product {
-      background-color: #1a1a2e;
-      border: 1px solid #333;
-      color: #ffffff;
-      width: 250px;
-      border-radius: 6px;
-      overflow: hidden;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 15px 10px;
-    }
-    .product img {
-      width: 100%;
-      height: auto;
-      border-radius: 4px;
-      margin-bottom: 10px;
-    }
-    .product h3 {
-      margin: 10px 0 5px;
-      font-weight: bold;
-    }
-    .product p.price {
-      margin: 0 0 15px;
-      color: #ffffff;
-      font-weight: bold;
-      font-size: 1.1em;
-    }
-
-    /* Add to Cart Button */
-    .add-to-cart {
-      background-color: #d4af37;
-      color: #0b0b1c;
-      border: none;
-      border-radius: 4px;
-      padding: 8px 15px;
-      cursor: pointer;
-      font-weight: bold;
-      margin-bottom: 15px;
-      transition: background-color 0.3s ease;
-      width: 100%;
-      max-width: 220px;
-      box-sizing: border-box;
-    }
-    .add-to-cart:hover {
-      background-color: #b59425;
-    }
-
     header {
       background: #0a0a23;
       color: #d4af37;
       padding: 20px;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
     nav a {
       margin: 0 12px;
@@ -94,13 +29,81 @@
     nav a:hover {
       text-decoration: underline;
     }
-
+    .cart-count {
+      background: #d4af37;
+      color: #0b0b1c;
+      border-radius: 50%;
+      padding: 2px 8px;
+      font-weight: bold;
+      margin-left: 8px;
+      font-size: 0.9em;
+      vertical-align: super;
+    }
+    .container {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      color: #d4af37;
+      margin-bottom: 30px;
+    }
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .product {
+      width: 250px;
+      background-color: #1a1a2e;
+      border-radius: 6px;
+      overflow: hidden;
+      text-align: center;
+      border: 1px solid #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 10px;
+    }
+    .product img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .product h3 {
+      margin: 10px 0 5px;
+      color: #ffd700;
+    }
+    .price {
+      margin: 0 0 15px;
+      color: #d4af37;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+    .add-to-cart-btn {
+      background-color: #d4af37;
+      color: #0b0b1c;
+      border: none;
+      padding: 10px 0;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 0 0 6px 6px;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      font-size: 1em;
+    }
+    .add-to-cart-btn:hover {
+      background-color: #b59e21;
+    }
     footer {
       background: #0a0a23;
       color: #fff;
       text-align: center;
       padding: 20px;
       margin-top: 40px;
+      font-size: 0.9em;
     }
     .social-links a {
       color: #d4af37;
@@ -143,27 +146,24 @@
       <a href="accessories.html">Accessories</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
+      <a href="cart.html">Cart <span id="cart-count" class="cart-count">0</span></a>
     </nav>
   </header>
 
   <div class="container">
     <h2>Shoes</h2>
     <div class="products">
-      <div class="product">
-        <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" loading="lazy" />
+      <div class="product" data-id="1" data-name="Versace Sneaker - Black" data-price="1890" data-image="shoes/versace_sneaker_black.jpeg">
+        <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
         <h3>Versace Sneaker - Black</h3>
         <p class="price">GHS 1,890</p>
-        <button class="add-to-cart" data-product="Versace Sneaker - Black" data-price="1890">
-          🛒 Add to Cart
-        </button>
+        <button class="add-to-cart-btn">Add to Cart</button>
       </div>
-      <div class="product">
-        <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" loading="lazy" />
+      <div class="product" data-id="2" data-name="Versace Sneaker - White" data-price="1890" data-image="shoes/versace_sneaker_white.jpeg">
+        <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
         <h3>Versace Sneaker - White</h3>
         <p class="price">GHS 1,890</p>
-        <button class="add-to-cart" data-product="Versace Sneaker - White" data-price="1890">
-          🛒 Add to Cart
-        </button>
+        <button class="add-to-cart-btn">Add to Cart</button>
       </div>
     </div>
   </div>
@@ -172,11 +172,11 @@
     <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
     <p class="social-links">
       FOLLOW US ON:
-      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
-      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
-      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
+      <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank" rel="noopener">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank" rel="noopener">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank" rel="noopener">WhatsApp</a> |
+      <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener">TikTok</a>
     </p>
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
@@ -185,9 +185,61 @@
   <a href="https://wa.me/233260928990" 
      target="_blank" 
      class="whatsapp-chat" 
-     aria-label="Chat with us on WhatsApp">
+     aria-label="Chat with us on WhatsApp" 
+     rel="noopener">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
   </a>
+
+<script>
+  // Utility: get cart from localStorage or empty array
+  function getCart() {
+    return JSON.parse(localStorage.getItem('sbclassic_cart') || '[]');
+  }
+
+  // Utility: save cart to localStorage
+  function saveCart(cart) {
+    localStorage.setItem('sbclassic_cart', JSON.stringify(cart));
+  }
+
+  // Update cart count bubble in header
+  function updateCartCount() {
+    const cart = getCart();
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    document.getElementById('cart-count').textContent = count;
+  }
+
+  // Add product to cart or increase quantity
+  function addToCart(product) {
+    const cart = getCart();
+    const existingIndex = cart.findIndex(item => item.id === product.id);
+    if (existingIndex > -1) {
+      cart[existingIndex].quantity += 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
+    saveCart(cart);
+    updateCartCount();
+    alert(`${product.name} added to cart.`);
+  }
+
+  // On page load: attach event listeners and update cart count
+  document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount();
+
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+      button.addEventListener('click', e => {
+        const productElem = e.target.closest('.product');
+        const product = {
+          id: productElem.getAttribute('data-id'),
+          name: productElem.getAttribute('data-name'),
+          price: parseFloat(productElem.getAttribute('data-price')),
+          image: productElem.getAttribute('data-image')
+        };
+        addToCart(product);
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
