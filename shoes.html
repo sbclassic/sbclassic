@@ -159,11 +159,11 @@
     <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
     <p class="social-links">
       FOLLOW US ON:
-      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
-      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
-      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
+      <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank" rel="noopener">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank" rel="noopener">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank" rel="noopener">WhatsApp</a> |
+      <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener">TikTok</a>
     </p>
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
@@ -176,20 +176,24 @@
   </a>
 
   <script>
+    // Get cart from localStorage or empty array
     function getCart() {
       return JSON.parse(localStorage.getItem('cart')) || [];
     }
 
+    // Save cart to localStorage
     function saveCart(cart) {
       localStorage.setItem('cart', JSON.stringify(cart));
     }
 
+    // Update the cart count display in navbar
     function updateCartCount() {
       const cart = getCart();
       const count = cart.reduce((total, item) => total + item.quantity, 0);
       document.getElementById('cart-count').textContent = count;
     }
 
+    // Add product to cart, increment quantity if already present
     function addToCart(product) {
       let cart = getCart();
       const existing = cart.find(item => item.id === product.id);
@@ -204,7 +208,7 @@
       alert(`${product.name} added to cart!`);
     }
 
-    // Initialize cart count on load
+    // Initialize cart count on page load
     updateCartCount();
   </script>
 
