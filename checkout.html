@@ -1,58 +1,59 @@
+<!-- checkout.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>Checkout – SB CLASSIC</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header> ... </header>
+  <header>
+    <h1>Checkout 💳</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart 🛒</a>
+    </nav>
+  </header>
 
-  <div class="container">
-    <h2>Checkout</h2>
-    <div id="checkout-summary"></div>
-
+  <main class="container">
     <form id="checkout-form">
-      <input type="text" name="name" placeholder="Your Full Name" required />
-      <input type="email" name="email" placeholder="Email Address" required />
-      <input type="tel" name="phone" placeholder="Phone Number" required />
-      <button type="submit">Pay Now with Paystack</button>
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="tel" id="phone" placeholder="Phone Number" required />
+      <button type="submit">Pay with Paystack</button>
     </form>
-  </div>
+  </main>
 
   <script src="https://js.paystack.co/v1/inline.js"></script>
-  <script src="cart.js"></script>
+  <script src="js/cart.js"></script>
   <script>
-    loadCartForCheckout();
-
-    document.getElementById("checkout-form").addEventListener("submit", function(e) {
+    document.getElementById('checkout-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const cart = getCart();
-      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-      const name = this.name.value;
-      const email = this.email.value;
-      const phone = this.phone.value;
+      if (cart.length === 0) return alert("Your cart is empty.");
 
-      const handler = PaystackPop.setup({
-        key: 'YOUR_PUBLIC_KEY',
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      const email = document.getElementById('email').value;
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+
+      PaystackPop.setup({
+        key: 'YOUR_PUBLIC_KEY_HERE', // Replace with your real key
         email: email,
         amount: total * 100,
         currency: 'GHS',
-        ref: 'SB_' + Math.floor(Math.random() * 1000000000),
+        ref: 'SB_' + Date.now(),
         metadata: {
-          custom_fields: [
-            { display_name: "Customer Name", variable_name: "customer_name", value: name },
-            { display_name: "Phone Number", variable_name: "phone_number", value: phone }
-          ]
+          custom_fields: [{ display_name: name, variable_name: phone, value: phone }]
         },
-        callback: function() {
-          localStorage.removeItem("cart");
-          window.location.href = "confirmation.html";
+        callback: function(response) {
+          clearCart();
+          window.location.href = 'confirmation.html';
         },
         onClose: function() {
-          alert('Payment window closed.');
+          alert('Transaction was cancelled');
         }
-      });
-      handler.openIframe();
+      }).openIframe();
     });
   </script>
 </body>
