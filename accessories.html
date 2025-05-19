@@ -9,7 +9,7 @@
      margin: 0;
      font-family: 'Segoe UI', sans-serif;
      background: #0a0a23;  /* Blue-black */
-     color: white;         /* Set default text color */
+     color: white;         /* Default text color */
     }
     header {
       background: #0a0a23;
@@ -25,6 +25,10 @@
     }
     nav a:hover {
       text-decoration: underline;
+    }
+    /* Remove cart buttons from navbar */
+    nav .nav-btn {
+      display: none;
     }
     .container {
       padding: 40px 20px;
@@ -64,7 +68,7 @@
       margin: 0 0 15px;
       color: white !important;
     }
-    /* Cart and Checkout buttons below each product */
+    /* Buttons below each product */
     .product-buttons {
       display: flex;
       justify-content: center;
@@ -83,6 +87,26 @@
       font-size: 14px;
     }
     .product-buttons button:hover {
+      background-color: #b8962d;
+      color: white;
+    }
+    /* Checkout button below all products */
+    #checkout-main-btn {
+      display: block;
+      margin: 30px auto 0;
+      background-color: #d4af37;
+      border: none;
+      color: #0a0a23;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      max-width: 200px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+    #checkout-main-btn:hover {
       background-color: #b8962d;
       color: white;
     }
@@ -126,21 +150,6 @@
     h1, h2, h3, p {
       color: white !important;
     }
-
-    .nav-btn {
-      background-color: #d4af37;
-      color: #0a0a23;
-      padding: 6px 12px;
-      border-radius: 4px;
-      margin-left: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-    .nav-btn:hover {
-      background-color: #b8962d;
-      color: white;
-    }
   </style>
 </head>
 <body>
@@ -154,8 +163,7 @@
       <a href="accessories.html">Accessories</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
-      <a href="cart.html" class="nav-btn">Cart 🛒</a>
-      <a href="checkout.html" class="nav-btn">Checkout 💳</a>
+      <!-- Cart and Checkout buttons removed from nav -->
     </nav>
   </header>
 
@@ -167,8 +175,7 @@
         <h3>Classic Black Belt</h3>
         <p>GHS 350</p>
         <div class="product-buttons">
-          <button class="add-to-cart-btn">Cart 🛒</button>
-          <button class="checkout-btn">Checkout 💳</button>
+          <button class="add-to-cart-btn">Add to Cart 🛒</button>
         </div>
       </div>
       <div class="product" data-name="Silver Watch" data-price="1200" data-image="accessories/watch_silver.jpeg">
@@ -176,8 +183,7 @@
         <h3>Silver Watch</h3>
         <p>GHS 1,200</p>
         <div class="product-buttons">
-          <button class="add-to-cart-btn">Cart 🛒</button>
-          <button class="checkout-btn">Checkout 💳</button>
+          <button class="add-to-cart-btn">Add to Cart 🛒</button>
         </div>
       </div>
       <div class="product" data-name="Modern Glasses" data-price="900" data-image="accessories/glasses_modern.jpeg">
@@ -185,11 +191,13 @@
         <h3>Modern Glasses</h3>
         <p>GHS 900</p>
         <div class="product-buttons">
-          <button class="add-to-cart-btn">Cart 🛒</button>
-          <button class="checkout-btn">Checkout 💳</button>
+          <button class="add-to-cart-btn">Add to Cart 🛒</button>
         </div>
       </div>
     </div>
+
+    <!-- Main Checkout Button -->
+    <button id="checkout-main-btn">Checkout 💳</button>
   </div>
 
   <footer>
@@ -218,5 +226,38 @@
     </svg>
   </a>
 
+  <script>
+    // Simple cart implementation using localStorage
+    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const productEl = button.closest('.product');
+        const name = productEl.getAttribute('data-name');
+        const price = parseFloat(productEl.getAttribute('data-price'));
+        const image = productEl.getAttribute('data-image');
+
+        let cart = JSON.parse(localStorage.getItem('sbclassicCart')) || [];
+
+        // Check if product is already in cart; if so, increase qty else add new
+        const existingProduct = cart.find(item => item.name === name);
+        if (existingProduct) {
+          existingProduct.quantity++;
+        } else {
+          cart.push({ name, price, image, quantity: 1 });
+        }
+
+        localStorage.setItem('sbclassicCart', JSON.stringify(cart));
+        alert(`Added "${name}" to cart!`);
+      });
+    });
+
+    // Checkout button: redirect to a cart page or alert cart contents
+    const checkoutBtn = document.getElementById('checkout-main-btn');
+    checkoutBtn.addEventListener('click', () => {
+      // Redirect to cart.html or show cart summary
+      window.location.href = 'cart.html'; // replace with your cart page path
+    });
+  </script>
 </body>
 </html>
