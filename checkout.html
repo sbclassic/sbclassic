@@ -1,273 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Checkout - SB CLASSIC</title>
-  <style>
-    :root {
-      --deep-gold: #bfa153;
-      --blue-black: #101820;
-      --white: #ffffff;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Georgia', serif;
-      background: var(--white);
-      color: var(--blue-black);
-      padding: 1rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    header {
-      text-align: center;
-      padding: 20px 0;
-      border-bottom: 1px solid #ddd;
-      margin-bottom: 1rem;
-    }
-
-    header img.logo {
-      height: 90px;
-    }
-
-    h1 {
-      color: var(--deep-gold);
-      text-align: center;
-      margin-bottom: 1rem;
-      font-weight: normal;
-    }
-
-    .summary {
-      border: 1px solid #ddd;
-      padding: 15px;
-      margin-bottom: 1rem;
-      border-radius: 6px;
-    }
-
-    .summary h2 {
-      margin-top: 0;
-      font-size: 1.2rem;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 5px;
-      color: var(--blue-black);
-    }
-
-    .summary-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .summary-total {
-      font-weight: bold;
-      font-size: 1.1rem;
-      border-top: 1px solid #ddd;
-      padding-top: 10px;
-      margin-top: 10px;
-      text-align: right;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    label {
-      margin-top: 12px;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"] {
-      padding: 10px;
-      font-size: 1rem;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      width: 100%;
-    }
-
-    button.pay-btn {
-      margin-top: 20px;
-      background: var(--deep-gold);
-      border: none;
-      color: white;
-      font-weight: bold;
-      padding: 12px;
-      font-size: 1.1rem;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    button.pay-btn:hover {
-      background: #a88e48;
-    }
-
-    .confirmation {
-      text-align: center;
-      padding: 20px;
-      background-color: #e6ffe6;
-      border: 1px solid #33cc33;
-      color: #2a7a2a;
-      border-radius: 6px;
-      margin-top: 2rem;
-      display: none;
-    }
-
-    footer {
-      margin-top: 3rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: var(--blue-black);
-      border-top: 1px solid #ddd;
-      padding: 1rem 0;
-    }
-  </style>
+  <title>Checkout – SB CLASSIC</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">
-      <img src="logo.png" alt="SB CLASSIC Logo" class="logo" />
-    </a>
-  </header>
+  <header> ... </header>
 
-  <h1>Checkout</h1>
+  <div class="container">
+    <h2>Checkout</h2>
+    <div id="checkout-summary"></div>
 
-  <div class="summary" id="order-summary">
-    <h2>Order Summary</h2>
-    <!-- Products summary will be injected here -->
-    <div id="summary-items"></div>
-    <div class="summary-total" id="summary-total">Total: GHS 0</div>
+    <form id="checkout-form">
+      <input type="text" name="name" placeholder="Your Full Name" required />
+      <input type="email" name="email" placeholder="Email Address" required />
+      <input type="tel" name="phone" placeholder="Phone Number" required />
+      <button type="submit">Pay Now with Paystack</button>
+    </form>
   </div>
 
-  <form id="checkout-form">
-    <label for="fullname">Full Name</label>
-    <input type="text" id="fullname" name="fullname" required />
-
-    <label for="email">Email Address</label>
-    <input type="email" id="email" name="email" required />
-
-    <label for="phone">Phone Number</label>
-    <input type="tel" id="phone" name="phone" pattern="[0-9+]{9,15}" required placeholder="+233XXXXXXXXX" />
-
-    <button type="submit" class="pay-btn">Pay Now</button>
-  </form>
-
-  <div class="confirmation" id="confirmation-message">
-    <h2>Payment Successful!</h2>
-    <p>Thank you for your purchase. Your order has been received and is being processed.</p>
-    <a href="index.html">Return to Home</a>
-  </div>
-
-  <footer>
-    CONTACT: +233260928990 | sbclassics@icloud.com <br/>
-    <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
-    <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
-    <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a>
-    <p>© 2025 SB CLASSIC. All rights reserved.</p>
-  </footer>
-
-  <!-- Flutterwave inline JS (https://developer.flutterwave.com/docs/flutterwave-standard) -->
-  <script src="https://checkout.flutterwave.com/v3.js"></script>
-
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script src="cart.js"></script>
   <script>
-    const cart = JSON.parse(localStorage.getItem('sbclassicCart')) || [];
+    loadCartForCheckout();
 
-    const summaryItemsEl = document.getElementById('summary-items');
-    const summaryTotalEl = document.getElementById('summary-total');
-    const form = document.getElementById('checkout-form');
-    const confirmationMessage = document.getElementById('confirmation-message');
-
-    function renderOrderSummary() {
-      if (cart.length === 0) {
-        summaryItemsEl.innerHTML = '<p>Your cart is empty. Please add some products before checkout.</p>';
-        form.style.display = 'none';
-        summaryTotalEl.style.display = 'none';
-        return;
-      }
-
-      let total = 0;
-      summaryItemsEl.innerHTML = '';
-
-      cart.forEach(item => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-
-        const div = document.createElement('div');
-        div.className = 'summary-item';
-        div.innerHTML = `
-          <span>${item.name} x${item.quantity}</span>
-          <span>GHS ${itemTotal.toLocaleString()}</span>
-        `;
-        summaryItemsEl.appendChild(div);
-      });
-
-      summaryTotalEl.textContent = 'Total: GHS ' + total.toLocaleString();
-      form.style.display = 'flex';
-      summaryTotalEl.style.display = 'block';
-    }
-
-    // Run on page load
-    renderOrderSummary();
-
-    form.addEventListener('submit', function (e) {
+    document.getElementById("checkout-form").addEventListener("submit", function(e) {
       e.preventDefault();
+      const cart = getCart();
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      const name = this.name.value;
+      const email = this.email.value;
+      const phone = this.phone.value;
 
-      if (cart.length === 0) {
-        alert('Your cart is empty!');
-        return;
-      }
-
-      const fullname = form.fullname.value.trim();
-      const email = form.email.value.trim();
-      const phone = form.phone.value.trim();
-
-      if (!fullname || !email || !phone) {
-        alert('Please fill in all fields.');
-        return;
-      }
-
-      // Calculate total amount in kobo (smallest currency unit)
-      const amountGhs = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-      const amountKobo = amountGhs * 100;
-
-      // Flutterwave payment integration
-      FlutterwaveCheckout({
-        public_key: "FLWPUBK_TEST-xxxxxxxxxxxxxxxxxxxxxxxxxxxx-X", // Replace with your public key
-        tx_ref: "SBCLASSIC_" + Date.now(),
-        amount: amountGhs,
-        currency: "GHS",
-        payment_options: "card,mobilemoney,ussd",
-        customer: {
-          email: email,
-          phonenumber: phone,
-          name: fullname,
+      const handler = PaystackPop.setup({
+        key: 'YOUR_PUBLIC_KEY',
+        email: email,
+        amount: total * 100,
+        currency: 'GHS',
+        ref: 'SB_' + Math.floor(Math.random() * 1000000000),
+        metadata: {
+          custom_fields: [
+            { display_name: "Customer Name", variable_name: "customer_name", value: name },
+            { display_name: "Phone Number", variable_name: "phone_number", value: phone }
+          ]
         },
-        customizations: {
-          title: "SB CLASSIC",
-          description: "Payment for your SB CLASSIC order",
-          logo: "https://sbclassic.com/logo.png" // Replace with your logo URL or remove
+        callback: function() {
+          localStorage.removeItem("cart");
+          window.location.href = "confirmation.html";
         },
-        callback: function (data) {
-          if (data.status === "successful") {
-            // Payment successful
-            confirmationMessage.style.display = 'block';
-            form.style.display = 'none';
-            summaryTotalEl.style.display = 'none';
-            summaryItemsEl.style.display = 'none';
-            localStorage.removeItem('sbclassicCart'); // Clear cart
-          } else {
-            alert("Payment was not successful. Please try again.");
-          }
-        },
-        onclose: function () {
-          // User closed the payment modal
+        onClose: function() {
+          alert('Payment window closed.');
         }
       });
+      handler.openIframe();
     });
   </script>
 </body>
