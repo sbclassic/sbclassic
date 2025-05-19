@@ -6,7 +6,6 @@
   <title>SB CLASSIC – Style with Class</title>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* --- Basic styles, same as your current style with some additions --- */
     body {
       margin: 0;
       font-family: 'Raleway', sans-serif;
@@ -17,7 +16,6 @@
       color: #ffd700;
       padding: 20px;
       text-align: center;
-      position: relative;
     }
 
     .logo {
@@ -26,45 +24,10 @@
       margin-bottom: 10px;
     }
 
-    nav {
-      margin-top: 10px;
-    }
-
     nav a {
       margin: 0 10px;
       color: #ffd700;
       text-decoration: none;
-      font-weight: 600;
-    }
-
-    .cart-icon {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      cursor: pointer;
-      color: #ffd700;
-      font-weight: 700;
-      font-size: 1.3rem;
-      display: flex;
-      align-items: center;
-    }
-
-    .cart-icon svg {
-      width: 24px;
-      height: 24px;
-      margin-right: 6px;
-      fill: #ffd700;
-    }
-
-    .cart-count {
-      background-color: #ffd700;
-      color: #0b0b1c;
-      font-weight: 700;
-      font-size: 0.8rem;
-      padding: 2px 6px;
-      border-radius: 50%;
-      min-width: 20px;
-      text-align: center;
     }
 
     .hero {
@@ -85,12 +48,14 @@
       line-height: 1.2;
       margin: 0;
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+      color: white;
     }
 
     .hero p {
       font-size: 1.2rem;
       font-style: italic;
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+      color: white;
     }
 
     .section {
@@ -126,8 +91,6 @@
     .product img {
       width: 100%;
       height: auto;
-      border-radius: 3px;
-      margin-bottom: 10px;
     }
 
     .product h3 {
@@ -136,37 +99,47 @@
       color: #0b0b1c;
     }
 
-    .product p.price {
-      margin: 0 0 10px;
+    .product p {
+      margin: 0;
       font-weight: bold;
       color: #000;
     }
 
-    /* Quantity selector */
     .quantity-container {
-      margin-bottom: 10px;
+      margin: 10px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
     }
 
-    select.quantity {
+    .quantity-container label {
+      font-weight: 600;
+      color: #0b0b1c;
+    }
+
+    .quantity-container input[type="number"] {
+      width: 60px;
       padding: 5px;
       font-size: 1rem;
-      border-radius: 3px;
       border: 1px solid #ccc;
-      width: 60px;
+      border-radius: 3px;
+      text-align: center;
     }
 
-    button.add-to-cart {
+    .add-to-cart-btn {
       background-color: #0b0b1c;
       color: #ffd700;
       border: none;
       padding: 10px;
-      font-weight: 700;
-      border-radius: 3px;
       cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
       transition: background-color 0.3s ease;
+      margin-top: auto;
     }
 
-    button.add-to-cart:hover {
+    .add-to-cart-btn:hover {
       background-color: #ffd700;
       color: #0b0b1c;
     }
@@ -212,10 +185,6 @@
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <a href="cart.html" class="cart-icon" aria-label="View Cart">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 18c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm10 0c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zM7.164 13h9.672c.542 0 .99-.363 1.106-.883l2.517-9.098-1.98-.55-2.152 7.77h-8.478l-1.812-6.028-2.44.736 1.812 6.028h-1.91v2h2.184z"/></svg>
-      <span class="cart-count" id="cart-count">0</span>
-    </a>
   </header>
 
   <section class="hero">
@@ -225,8 +194,61 @@
 
   <section class="section">
     <h2>Featured Products</h2>
-    <div class="products" id="product-list">
-      <!-- Products dynamically inserted here -->
+    <div class="products">
+      <div class="product" data-name="Elegant 2pcs Set – Apricot" data-price="1980" data-folder="clothes" data-image="elegant_2pcs_set_apricot.jpeg">
+        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Apricot" />
+        <h3>Elegant 2pcs Set – Apricot</h3>
+        <p>GHS 1,980</p>
+        <div class="quantity-container">
+          <label for="qty-elegant-apricot">Quantity:</label>
+          <input id="qty-elegant-apricot" type="number" value="1" min="1" />
+        </div>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </div>
+
+      <div class="product" data-name="Elegant 2pcs Set – Black" data-price="1980" data-folder="clothes" data-image="elegant_2pcs_set_black.jpeg">
+        <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Black" />
+        <h3>Elegant 2pcs Set – Black</h3>
+        <p>GHS 1,980</p>
+        <div class="quantity-container">
+          <label for="qty-elegant-black">Quantity:</label>
+          <input id="qty-elegant-black" type="number" value="1" min="1" />
+        </div>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </div>
+
+      <div class="product" data-name="Elegant 2pcs Set – Blue Black" data-price="1980" data-folder="clothes" data-image="elegant_2pcs_set_blueblack.jpeg">
+        <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Blue Black" />
+        <h3>Elegant 2pcs Set – Blue Black</h3>
+        <p>GHS 1,980</p>
+        <div class="quantity-container">
+          <label for="qty-elegant-blueblack">Quantity:</label>
+          <input id="qty-elegant-blueblack" type="number" value="1" min="1" />
+        </div>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </div>
+
+      <div class="product" data-name="Versace Sneaker – Black" data-price="1890" data-folder="shoes" data-image="versace_sneaker_black.jpeg">
+        <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
+        <h3>Versace Sneaker – Black</h3>
+        <p>GHS 1,890</p>
+        <div class="quantity-container">
+          <label for="qty-sneaker-black">Quantity:</label>
+          <input id="qty-sneaker-black" type="number" value="1" min="1" />
+        </div>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </div>
+
+      <div class="product" data-name="Versace Sneaker – White" data-price="1890" data-folder="shoes" data-image="versace_sneaker_white.jpeg">
+        <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
+        <h3>Versace Sneaker – White</h3>
+        <p>GHS 1,890</p>
+        <div class="quantity-container">
+          <label for="qty-sneaker-white">Quantity:</label>
+          <input id="qty-sneaker-white" type="number" value="1" min="1" />
+        </div>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </div>
     </div>
   </section>
 
@@ -250,123 +272,60 @@
       <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener">Instagram</a> |
       <a href="https://facebook.com/sb.classic_" target="_blank" rel="noopener">Facebook</a> |
       <a href="https://t.me/sbclassics" target="_blank" rel="noopener">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://wa.me/233260928990" target="_blank" rel="noopener">WhatsApp</a> |
+      <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener">TikTok</a>
     </p>
+    <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
 
-<script>
-  // Sample product data (update or add more products here)
-  const products = [
-    {
-      id: "navy-suit",
-      name: "Navy Blue Suit",
-      price: 960,
-      image: "clothes/navy_suit.jpg"
-    },
-    {
-      id: "black-tuxedo",
-      name: "Black Tuxedo",
-      price: 1980,
-      image: "clothes/tuxedo.jpg"
-    },
-    {
-      id: "white-shirt",
-      name: "White Shirt",
-      price: 450,
-      image: "clothes/white_shirt.jpg"
-    },
-    {
-      id: "brown-loafers",
-      name: "Brown Loafers",
-      price: 1890,
-      image: "shoes/loafers.jpg"
-    },
-    {
-      id: "gucci-sneaker",
-      name: "Gucci Sneaker",
-      price: 1890,
-      image: "shoes/sneakers.jpg"
-    }
-  ];
+  <a href="https://wa.me/233260928990" 
+     target="_blank" 
+     class="whatsapp-chat" 
+     aria-label="Chat with us on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
+  </a>
 
-  const productList = document.getElementById('product-list');
-  const cartCountElem = document.getElementById('cart-count');
+  <script>
+    // Add to Cart button logic with quantity
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const productDiv = button.closest('.product');
+        const name = productDiv.dataset.name;
+        const price = parseFloat(productDiv.dataset.price);
+        const folder = productDiv.dataset.folder;
+        const image = productDiv.dataset.image;
+        const qtyInput = productDiv.querySelector('input[type="number"]');
+        const quantity = parseInt(qtyInput.value);
 
-  // Load cart from localStorage or empty array
-  function loadCart() {
-    const cart = localStorage.getItem('sbclassic_cart');
-    return cart ? JSON.parse(cart) : [];
-  }
+        if(quantity < 1 || isNaN(quantity)) {
+          alert('Please enter a valid quantity (1 or more).');
+          return;
+        }
 
-  // Save cart to localStorage
-  function saveCart(cart) {
-    localStorage.setItem('sbclassic_cart', JSON.stringify(cart));
-  }
+        // Get existing cart or initialize empty
+        let cart = JSON.parse(localStorage.getItem('sbclassic_cart')) || [];
 
-  // Update cart item count badge
-  function updateCartCount() {
-    const cart = loadCart();
-    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCountElem.textContent = count;
-  }
+        // Check if product already in cart
+        const existingProductIndex = cart.findIndex(item => item.name === name);
+        if(existingProductIndex > -1) {
+          // Update quantity
+          cart[existingProductIndex].quantity += quantity;
+        } else {
+          // Add new product
+          cart.push({
+            name,
+            price,
+            folder,
+            image,
+            quantity
+          });
+        }
 
-  // Add product to cart
-  function addToCart(productId, quantity) {
-    let cart = loadCart();
-    quantity = Number(quantity);
-    if (quantity < 1) return;
-
-    const existingItem = cart.find(item => item.id === productId);
-    if (existingItem) {
-      existingItem.quantity += quantity;
-      if (existingItem.quantity > 10) existingItem.quantity = 10; // max 10
-    } else {
-      cart.push({ id: productId, quantity: quantity });
-    }
-    saveCart(cart);
-    updateCartCount();
-    alert("Added to cart!");
-  }
-
-  // Render products
-  function renderProducts() {
-    productList.innerHTML = '';
-    products.forEach(product => {
-      const productDiv = document.createElement('div');
-      productDiv.className = 'product';
-      productDiv.innerHTML = `
-        <img src="${product.image}" alt="${product.name}" />
-        <h3>${product.name}</h3>
-        <p class="price">GHS ${product.price.toLocaleString()}</p>
-        <div class="quantity-container">
-          <label for="qty-${product.id}">Qty:</label>
-          <select id="qty-${product.id}" class="quantity" aria-label="Select quantity for ${product.name}">
-            ${[...Array(10).keys()].map(i => `<option value="${i+1}">${i+1}</option>`).join('')}
-          </select>
-        </div>
-        <button class="add-to-cart" data-product-id="${product.id}">Add to Cart</button>
-      `;
-      productList.appendChild(productDiv);
-    });
-
-    // Attach event listeners to buttons
-    document.querySelectorAll('button.add-to-cart').forEach(button => {
-      button.addEventListener('click', (e) => {
-        const pid = e.target.getAttribute('data-product-id');
-        const qtySelect = document.getElementById(`qty-${pid}`);
-        addToCart(pid, qtySelect.value);
+        localStorage.setItem('sbclassic_cart', JSON.stringify(cart));
+        alert(`${quantity} × ${name} added to cart.`);
       });
     });
-  }
-
-  // Initialize page
-  function init() {
-    renderProducts();
-    updateCartCount();
-  }
-
-  document.addEventListener('DOMContentLoaded', init);
-</script>
+  </script>
 
 </body>
 </html>
