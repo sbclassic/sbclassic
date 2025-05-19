@@ -8,99 +8,115 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #0a0a23;
-      color: #fff;
+      background-color: #f9f9f9;
+      color: #000;
     }
     header {
       background: #0a0a23;
-      color: #d4af37;
       padding: 20px;
+      color: #d4af37;
       text-align: center;
+    }
+    nav {
+      margin-top: 10px;
     }
     nav a {
       margin: 0 12px;
       color: #d4af37;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 16px;
     }
     nav a:hover {
       text-decoration: underline;
     }
     .container {
-      padding: 40px 20px;
-      max-width: 1000px;
+      max-width: 1100px;
       margin: auto;
+      padding: 40px 20px;
     }
     h2 {
       text-align: center;
-      color: #d4af37;
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #0a0a23;
     }
     .products {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
-      margin-top: 30px;
     }
     .product {
-      width: 250px;
-      border: 1px solid #444;
-      border-radius: 6px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       overflow: hidden;
-      text-align: center;
-      background-color: #1c1c2e;
+      width: 260px;
+      transition: transform 0.2s ease;
+    }
+    .product:hover {
+      transform: translateY(-5px);
     }
     .product img {
       width: 100%;
-      height: auto;
+      height: 300px;
+      object-fit: cover;
     }
     .product h3 {
-      margin: 10px 0 5px;
-      color: #fff;
+      font-size: 18px;
+      margin: 15px 0 5px;
+      padding: 0 10px;
+      color: #0a0a23;
     }
     .product p {
-      margin: 0 0 15px;
-      color: #ffffff;
-      font-weight: bold;
+      font-size: 16px;
+      color: #444;
+      padding: 0 10px 15px;
     }
     footer {
       background: #0a0a23;
       color: #fff;
       text-align: center;
-      padding: 20px;
+      padding: 30px 15px;
       margin-top: 40px;
     }
-    footer a {
+    .social-links a {
       color: #d4af37;
+      margin: 0 8px;
       text-decoration: none;
-      font-weight: bold;
     }
-    footer a:hover {
+    .social-links a:hover {
       text-decoration: underline;
     }
-    #whatsapp-chat {
+    /* WhatsApp Live Chat Button */
+    .whatsapp-chat {
       position: fixed;
       bottom: 25px;
       right: 25px;
-      background-color: #25d366;
-      border-radius: 50%;
       width: 60px;
       height: 60px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       z-index: 1000;
-      cursor: pointer;
+      border-radius: 50%;
+      background-color: #25d366;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       transition: background-color 0.3s ease;
     }
-    #whatsapp-chat:hover {
+    .whatsapp-chat:hover {
       background-color: #1ebe57;
     }
-    #whatsapp-chat svg {
-      width: 30px;
-      height: 30px;
-      fill: white;
+    .whatsapp-chat img {
+      width: 35px;
+      height: 35px;
+    }
+
+    @media (max-width: 600px) {
+      .product {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -122,25 +138,22 @@
     <h2>Shoes</h2>
     <div class="products">
       <div class="product">
-        <img src="shoes/brown_loafers.jpg" alt="Brown Loafers">
-        <h3>Brown Loafers</h3>
+        <img src="images/shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
+        <h3>Versace Sneaker – Black</h3>
         <p>GHS 1,890</p>
       </div>
       <div class="product">
-        <img src="shoes/gucci_sneakers.jpg" alt="Gucci Sneaker">
-        <h3>Gucci Sneaker</h3>
+        <img src="images/shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
+        <h3>Versace Sneaker – White</h3>
         <p>GHS 1,890</p>
       </div>
     </div>
   </div>
 
   <footer>
-    <p style="color: #fff; font-weight: bold;">
-      CONTACT: <a href="tel:+233260928990">+233260928990</a> |
-      <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a>
-    </p>
-    <p>
-      FOLLOW US ON:
+    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
+    <p class="social-links">
+      FOLLOW US:
       <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
       <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
       <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
@@ -150,10 +163,12 @@
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
 
-  <a href="https://wa.me/233260928990" target="_blank" id="whatsapp-chat" aria-label="Chat with us on WhatsApp">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-      <path d="M20.52 3.48a11.87 11.87 0 00-16.76 0 11.8 11.8 0 00-3.12 8.24 11.9 11.9 0 001.73 5.97L2 22l4.45-1.17a11.88 11.88 0 005.94 1.73 11.8 11.8 0 008.24-3.12 11.87 11.87 0 000-16.76zM12 20a8 8 0 01-4.2-1.18l-.3-.18-2.64.7.7-2.57-.19-.3A7.94 7.94 0 014 12a8 8 0 118 8zm4.17-5.22c-.22-.11-1.3-.64-1.5-.71-.2-.07-.34-.11-.48.11s-.55.71-.68.85c-.13.13-.26.15-.48.05a6.54 6.54 0 01-1.93-1.19 7.3 7.3 0 01-1.36-1.69c-.14-.23-.02-.35.1-.47.11-.12.25-.3.37-.45.12-.15.16-.26.24-.43.08-.17.04-.31-.02-.43-.06-.12-.48-1.15-.66-1.58-.17-.42-.35-.37-.48-.38h-.41c-.13 0-.43.05-.65.31s-.85.83-.85 2.03c0 1.2.87 2.36 1 2.53.13.17 2 3.06 4.85 4.29a9.31 9.31 0 001.38.47c.59.14 1.13.12 1.56.07.48-.06 1.3-.53 1.49-1.05.2-.52.2-.96.14-1.05-.07-.1-.22-.16-.44-.27z"/>
-    </svg>
+  <!-- WhatsApp Live Chat Button -->
+  <a href="https://wa.me/233260928990" 
+     target="_blank" 
+     class="whatsapp-chat" 
+     aria-label="Chat with us on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
   </a>
 
 </body>
