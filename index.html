@@ -5,12 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
   <title>SB CLASSIC – Style with Class</title>
-  <style>
+    <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fff;
-      color: #000;
+      font-family: 'Raleway', sans-serif;
+      ...
     }
 
     header {
@@ -20,7 +19,16 @@
       text-align: center;
     }
 
+    .logo {
+      width: 120px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
     nav a {
+    ...
+    }
+  </style>
       margin: 0 10px;
       color: #ffd700;
       text-decoration: none;
@@ -141,10 +149,8 @@
 <body>
 
   <header>
-  <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-    <img src="logo.png" alt="SB CLASSIC Logo" style="height: 80px;" />
-    <h1>SB CLASSIC</h1>
-  </div>
+  <img src="logo.png" alt="SB CLASSIC Logo" class="logo" />
+  <h1>SB CLASSIC</h1>
   <nav>
     <a href="index.html">Home</a>
     <a href="clothes.html">Clothes</a>
