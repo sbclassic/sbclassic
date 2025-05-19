@@ -6,28 +6,105 @@
   <title>SB CLASSIC – Style with Class</title>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* Your existing styles here */
-    /* ... */
-    .cart-buttons {
-      margin-top: 20px;
+    body {
+      font-family: 'Raleway', sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #0b0b1c;
+    }
+
+    header {
+      background-color: #0b0b1c;
+      color: white;
+      padding: 20px;
       text-align: center;
     }
+
+    header h1 {
+      margin: 0;
+    }
+
+    .section {
+      padding: 40px 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .product {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      width: 250px;
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .product h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+    }
+
+    .product p {
+      font-weight: bold;
+      margin: 0 0 10px;
+    }
+
+    .add-to-cart {
+      background-color: #ffd700;
+      color: #0b0b1c;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .cart-buttons {
+      margin-top: 40px;
+      text-align: center;
+    }
+
     .cart-buttons button {
       background-color: #ffd700;
       border: none;
       color: #0b0b1c;
       padding: 10px 20px;
-      margin: 5px;
+      margin: 10px;
       font-weight: bold;
       cursor: pointer;
       border-radius: 5px;
+    }
+
+    footer {
+      background: #0b0b1c;
+      color: white;
+      padding: 20px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <!-- Your header/nav here -->
+  <h1>SB CLASSIC</h1>
+  <p>Style with Class</p>
 </header>
 
 <section class="section">
@@ -45,7 +122,18 @@
       <p>GHS 1,980</p>
       <button class="add-to-cart">Add to Cart</button>
     </div>
-    <!-- More products here -->
+    <div class="product" data-id="3" data-name="Versace Sneaker – Black" data-price="1890" data-image="shoes/versace_sneaker_black.jpeg">
+      <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
+      <h3>Versace Sneaker – Black</h3>
+      <p>GHS 1,890</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+    <div class="product" data-id="4" data-name="Versace Sneaker – White" data-price="1890" data-image="shoes/versace_sneaker_white.jpeg">
+      <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
+      <h3>Versace Sneaker – White</h3>
+      <p>GHS 1,890</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
   </div>
 
   <div class="cart-buttons" style="display:none;">
@@ -55,28 +143,25 @@
 </section>
 
 <footer>
-  <!-- Your footer here -->
+  <p>Contact us: sbclassics@icloud.com | +233 260 928 990</p>
+  <p>Follow us: Instagram @sb_classic_ | Facebook @sb.classic_</p>
 </footer>
 
 <script>
-  // Get references to buttons and container
   const addToCartButtons = document.querySelectorAll('.add-to-cart');
   const cartButtonsContainer = document.querySelector('.cart-buttons');
   const viewCartBtn = document.getElementById('view-cart');
   const checkoutBtn = document.getElementById('checkout');
 
-  // Load cart from localStorage or empty array
   function getCart() {
     const cartJSON = localStorage.getItem('sbclassicCart');
     return cartJSON ? JSON.parse(cartJSON) : [];
   }
 
-  // Save cart to localStorage
   function saveCart(cart) {
     localStorage.setItem('sbclassicCart', JSON.stringify(cart));
   }
 
-  // Update cart buttons visibility
   function updateCartButtons() {
     const cart = getCart();
     if (cart.length > 0) {
@@ -86,22 +171,19 @@
     }
   }
 
-  // Add product to cart
   function addToCart(product) {
     const cart = getCart();
-    // Check if product already in cart
     const existing = cart.find(item => item.id === product.id);
     if (existing) {
       existing.quantity += 1;
     } else {
-      cart.push({...product, quantity: 1});
+      cart.push({ ...product, quantity: 1 });
     }
     saveCart(cart);
     updateCartButtons();
     alert(`${product.name} added to cart!`);
   }
 
-  // Attach click handlers
   addToCartButtons.forEach(button => {
     button.addEventListener('click', e => {
       const productDiv = e.target.closest('.product');
@@ -115,7 +197,6 @@
     });
   });
 
-  // Cart button click handlers
   viewCartBtn.addEventListener('click', () => {
     window.location.href = 'cart.html';
   });
@@ -124,7 +205,6 @@
     window.location.href = 'checkout.html';
   });
 
-  // Initial setup
   updateCartButtons();
 </script>
 
