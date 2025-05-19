@@ -8,38 +8,33 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
-      color: #000;
+      background-color: #0a0a23;
+      color: #fff;
     }
     header {
       background: #0a0a23;
-      padding: 20px;
       color: #d4af37;
+      padding: 20px;
       text-align: center;
-    }
-    nav {
-      margin-top: 10px;
     }
     nav a {
       margin: 0 12px;
       color: #d4af37;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
+      font-weight: bold;
     }
     nav a:hover {
       text-decoration: underline;
     }
     .container {
-      max-width: 1100px;
-      margin: auto;
       padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
     }
     h2 {
       text-align: center;
-      font-size: 32px;
+      color: #d4af37;
       margin-bottom: 30px;
-      color: #0a0a23;
     }
     .products {
       display: flex;
@@ -48,12 +43,14 @@
       justify-content: center;
     }
     .product {
+      width: 250px;
       background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      color: #000;
+      border-radius: 6px;
       overflow: hidden;
-      width: 260px;
-      transition: transform 0.2s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: center;
+      transition: transform 0.3s ease;
     }
     .product:hover {
       transform: translateY(-5px);
@@ -64,21 +61,18 @@
       object-fit: cover;
     }
     .product h3 {
-      font-size: 18px;
       margin: 15px 0 5px;
-      padding: 0 10px;
-      color: #0a0a23;
+      font-size: 18px;
     }
     .product p {
+      margin-bottom: 15px;
       font-size: 16px;
-      color: #444;
-      padding: 0 10px 15px;
     }
     footer {
       background: #0a0a23;
       color: #fff;
       text-align: center;
-      padding: 30px 15px;
+      padding: 30px 20px;
       margin-top: 40px;
     }
     .social-links a {
@@ -89,7 +83,7 @@
     .social-links a:hover {
       text-decoration: underline;
     }
-    /* WhatsApp Live Chat Button */
+    /* WhatsApp Chat */
     .whatsapp-chat {
       position: fixed;
       bottom: 25px;
@@ -111,12 +105,6 @@
     .whatsapp-chat img {
       width: 35px;
       height: 35px;
-    }
-
-    @media (max-width: 600px) {
-      .product {
-        width: 100%;
-      }
     }
   </style>
 </head>
@@ -163,7 +151,7 @@
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
 
-  <!-- WhatsApp Live Chat Button -->
+  <!-- WhatsApp Chat Button -->
   <a href="https://wa.me/233260928990" 
      target="_blank" 
      class="whatsapp-chat" 
