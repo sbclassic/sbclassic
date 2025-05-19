@@ -1,18 +1,19 @@
-// JS: js/cart.js
+// cart.js
 
-// Utility to get the cart from localStorage
 function getCart() {
-  return JSON.parse(localStorage.getItem('sbCart') || '[]');
+  return JSON.parse(localStorage.getItem('cart')) || [];
 }
 
-// Utility to save the cart to localStorage
 function saveCart(cart) {
-  localStorage.setItem('sbCart', JSON.stringify(cart));
+  localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// Add a product to the cart
+function clearCart() {
+  localStorage.removeItem('cart');
+}
+
 function addToCart(product) {
-  const cart = getCart();
+  let cart = getCart();
   const existing = cart.find(item => item.id === product.id);
   if (existing) {
     existing.quantity += 1;
@@ -23,60 +24,43 @@ function addToCart(product) {
   alert(`${product.name} added to cart`);
 }
 
-// Render cart items on cart.html
-function renderCartItems(containerId) {
-  const cart = getCart();
-  const container = document.getElementById(containerId);
-  const totalSpan = document.getElementById('total-price');
+function removeFromCart(productId) {
+  let cart = getCart().filter(item => item.id !== productId);
+  saveCart(cart);
+  location.reload();
+}
 
-  container.innerHTML = '';
-  let total = 0;
+function updateCartDisplay() {
+  const cart = getCart();
+  const cartContainer = document.getElementById("cart-items");
+  const cartTotal = document.getElementById("cart-total");
+
+  if (!cartContainer || !cartTotal) return;
 
   if (cart.length === 0) {
-    container.innerHTML = '<p>Your cart is empty.</p>';
-    totalSpan.innerText = 'GHS 0';
+    cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+    cartTotal.textContent = "Total: GHS 0";
     return;
   }
 
-  cart.forEach((item, index) => {
+  let total = 0;
+  cartContainer.innerHTML = "";
+  cart.forEach(item => {
     const itemTotal = item.price * item.quantity;
     total += itemTotal;
-
-    const div = document.createElement('div');
-    div.className = 'cart-item';
-    div.innerHTML = `
-      <img src="${item.image}" alt="${item.name}" />
-      <div>
-        <h4>${item.name}</h4>
-        <p>GHS ${item.price} × 
-        <input type="number" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, this.value)" /></p>
-        <p>Total: GHS ${itemTotal}</p>
-        <button onclick="removeItem(${index})">Remove</button>
+    cartContainer.innerHTML += `
+      <div class="cart-item">
+        <img src="${item.image}" alt="${item.name}" width="80" />
+        <div>
+          <h4>${item.name}</h4>
+          <p>Price: GHS ${item.price}</p>
+          <p>Quantity: ${item.quantity}</p>
+          <button onclick="removeFromCart('${item.id}')">Remove</button>
+        </div>
       </div>
+      <hr/>
     `;
-    container.appendChild(div);
   });
 
-  totalSpan.innerText = `GHS ${total}`;
-}
-
-// Remove item from cart
-function removeItem(index) {
-  const cart = getCart();
-  cart.splice(index, 1);
-  saveCart(cart);
-  renderCartItems('cart-items');
-}
-
-// Update quantity
-function updateQuantity(index, qty) {
-  const cart = getCart();
-  cart[index].quantity = parseInt(qty);
-  saveCart(cart);
-  renderCartItems('cart-items');
-}
-
-// Clear cart
-function clearCart() {
-  localStorage.removeItem('sbCart');
+  cartTotal.textContent = `Total: GHS ${total}`;
 }
