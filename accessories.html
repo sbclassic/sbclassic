@@ -48,10 +48,13 @@
       border-radius: 6px;
       overflow: hidden;
       text-align: center;
+      background-color: #111133;
+      padding-bottom: 15px;
     }
     .product img {
       width: 100%;
       height: auto;
+      display: block;
     }
     .product h3 {
       margin: 10px 0 5px;
@@ -60,6 +63,28 @@
     .product p {
       margin: 0 0 15px;
       color: white !important;
+    }
+    /* Cart and Checkout buttons below each product */
+    .product-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .product-buttons button {
+      background-color: #d4af37;
+      border: none;
+      color: #0a0a23;
+      font-weight: bold;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 14px;
+    }
+    .product-buttons button:hover {
+      background-color: #b8962d;
+      color: white;
     }
     footer {
       background: #0a0a23;
@@ -73,7 +98,6 @@
       margin: 0 8px;
       text-decoration: none;
     }
-
     /* WhatsApp live chat button styles */
     .whatsapp-chat {
       position: fixed;
@@ -138,20 +162,32 @@
   <div class="container">
     <h2>Accessories</h2>
     <div class="products">
-      <div class="product">
+      <div class="product" data-name="Classic Black Belt" data-price="350" data-image="accessories/belt_classic_black.jpeg">
         <img src="accessories/belt_classic_black.jpeg" alt="Classic Black Belt" />
         <h3>Classic Black Belt</h3>
         <p>GHS 350</p>
+        <div class="product-buttons">
+          <button class="add-to-cart-btn">Cart 🛒</button>
+          <button class="checkout-btn">Checkout 💳</button>
+        </div>
       </div>
-      <div class="product">
+      <div class="product" data-name="Silver Watch" data-price="1200" data-image="accessories/watch_silver.jpeg">
         <img src="accessories/watch_silver.jpeg" alt="Silver Watch" />
         <h3>Silver Watch</h3>
         <p>GHS 1,200</p>
+        <div class="product-buttons">
+          <button class="add-to-cart-btn">Cart 🛒</button>
+          <button class="checkout-btn">Checkout 💳</button>
+        </div>
       </div>
-      <div class="product">
+      <div class="product" data-name="Modern Glasses" data-price="900" data-image="accessories/glasses_modern.jpeg">
         <img src="accessories/glasses_modern.jpeg" alt="Modern Glasses" />
         <h3>Modern Glasses</h3>
         <p>GHS 900</p>
+        <div class="product-buttons">
+          <button class="add-to-cart-btn">Cart 🛒</button>
+          <button class="checkout-btn">Checkout 💳</button>
+        </div>
       </div>
     </div>
   </div>
