@@ -4,34 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Shoes – SB CLASSIC</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: #ffffff;
-      color: #2c2c2c;
+      background: #0b0b1c;
+      color: #ffffff;
     }
     header {
-      background: #191970;
-      color: #f8f8ff;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      background: #191970; /* Midnight Blue */
+      color: #f8f8ff; /* Very light */
+      padding: 20px 0;
+      text-align: center;
+      position: relative;
     }
     header h1 {
       margin: 0;
-      font-size: 24px;
+      font-weight: 700;
+      font-size: 2rem;
+      line-height: 1;
+      user-select: none;
+    }
+    nav {
+      margin-top: 10px;
     }
     nav a {
-      margin-left: 16px;
+      margin: 0 14px;
       color: #f8f8ff;
       text-decoration: none;
       font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+      user-select: none;
+      transition: color 0.3s ease;
     }
     nav a:hover {
       text-decoration: underline;
+      color: #d4af37; /* gold highlight on hover */
     }
     .container {
       padding: 40px 20px;
@@ -40,80 +51,87 @@
     }
     h2 {
       text-align: center;
-      color: #191970;
+      color: #d4af37;
+      font-weight: 700;
+      margin-bottom: 30px;
     }
     .products {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
-      margin-top: 30px;
     }
     .product {
       width: 250px;
-      background-color: #ffffff;
-      border: 1px solid #ddd;
-      border-radius: 8px;
+      background-color: #1a1a2e;
+      border: 1px solid #333;
+      border-radius: 6px;
       overflow: hidden;
       text-align: center;
       padding-bottom: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
     }
     .product:hover {
-      transform: translateY(-4px);
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(212, 175, 55, 0.6);
     }
     .product img {
       width: 100%;
       height: auto;
+      border-bottom: 1px solid #333;
     }
     .product h3 {
-      margin: 10px 0 5px;
-      color: #2c2c2c;
+      margin: 12px 0 6px;
+      color: #f8f8ff;
       font-weight: 600;
+      font-size: 1.1rem;
     }
-    .product p {
-      margin: 5px 0;
+    .product p.price {
+      color: #d4af37;
+      margin: 6px 0 10px;
+      font-weight: 700;
+      font-size: 1rem;
     }
     .product button {
-      background-color: #191970;
-      color: #fff;
+      background-color: #d4af37;
+      color: #000;
       border: none;
-      padding: 10px 15px;
+      padding: 10px 20px;
       margin-top: 10px;
       cursor: pointer;
       border-radius: 5px;
       font-weight: 600;
+      font-size: 1rem;
       transition: background 0.3s ease;
     }
     .product button:hover {
-      background-color: #151557;
-    }
-    .about-section {
-      padding: 40px 20px;
-      background: #f7f7f7;
-      color: #2c2c2c;
-      text-align: center;
-    }
-    .about-section h3 {
-      margin-bottom: 10px;
-      color: #191970;
+      background-color: #bfa232;
     }
     footer {
-      background: #ffffff;
-      color: #2c2c2c;
+      background: #ffffff; /* White */
+      color: #2c2c2c; /* Charcoal */
       text-align: center;
-      padding: 20px;
-      font-size: 14px;
+      padding: 25px 20px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      user-select: none;
     }
-    .social-links a {
-      color: #191970;
-      margin: 0 8px;
+    footer a {
+      color: #191970; /* Midnight Blue */
       text-decoration: none;
       font-weight: 600;
+      transition: text-decoration 0.3s ease;
     }
-    .social-links a:hover {
+    footer a:hover {
       text-decoration: underline;
+    }
+    .social-links {
+      margin: 10px 0 15px;
+    }
+    .social-links a {
+      margin: 0 10px;
     }
     .whatsapp-chat {
       position: fixed;
@@ -129,6 +147,7 @@
       justify-content: center;
       align-items: center;
       transition: background-color 0.3s ease;
+      user-select: none;
     }
     .whatsapp-chat:hover {
       background-color: #1ebe57;
@@ -148,7 +167,6 @@
       <a href="clothes.html">Clothes</a>
       <a href="shoes.html">Shoes</a>
       <a href="accessories.html">Accessories</a>
-      <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       <a href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
     </nav>
@@ -182,11 +200,6 @@
     </div>
   </div>
 
-  <div class="about-section">
-    <h3>About SB CLASSIC</h3>
-    <p>SB CLASSIC is your trusted brand for elegant, imported fashion items. We deliver premium quality with a taste of luxury. Explore our collections and stand out in style.</p>
-  </div>
-
   <footer>
     <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
     <p class="social-links">
@@ -200,25 +213,32 @@
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
 
-  <a href="https://wa.me/233260928990" target="_blank" class="whatsapp-chat" aria-label="Chat with us on WhatsApp">
+  <a href="https://wa.me/233260928990" 
+     target="_blank" 
+     class="whatsapp-chat" 
+     aria-label="Chat with us on WhatsApp">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
   </a>
 
   <script>
+    // Get cart from localStorage or empty array
     function getCart() {
       return JSON.parse(localStorage.getItem('cart')) || [];
     }
 
+    // Save cart to localStorage
     function saveCart(cart) {
       localStorage.setItem('cart', JSON.stringify(cart));
     }
 
+    // Update the cart count display in navbar
     function updateCartCount() {
       const cart = getCart();
       const count = cart.reduce((total, item) => total + item.quantity, 0);
       document.getElementById('cart-count').textContent = count;
     }
 
+    // Add product to cart, increment quantity if already present
     function addToCart(product) {
       let cart = getCart();
       const existing = cart.find(item => item.id === product.id);
@@ -233,6 +253,7 @@
       alert(`${product.name} added to cart!`);
     }
 
+    // Initialize cart count on page load
     updateCartCount();
   </script>
 
