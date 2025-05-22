@@ -3,91 +3,157 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Accessories – SB CLASSIC</title>
+  <title>ACCESSORIES – SB CLASSIC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0b0b1c;
-      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      background: #ffffff;
+      color: #2c2c2c;
     }
+
     header {
-      background: #0a0a23;
-      color: #d4af37;
-      padding: 20px;
+      background: #191970;
+      color: #f8f8ff;
+      padding: 25px 20px;
       text-align: center;
     }
-    nav a {
-      margin: 0 12px;
-      color: #d4af37;
-      text-decoration: none;
-      font-weight: bold;
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #f8f8ff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+    }
+
     nav a:hover {
       text-decoration: underline;
     }
+
     .container {
       padding: 40px 20px;
       max-width: 1000px;
       margin: auto;
     }
+
     h2 {
       text-align: center;
-      color: #d4af37;
+      color: #191970;
+      font-weight: 700;
+      font-size: 2.2rem;
+      margin-bottom: 30px;
     }
+
     .products {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
-      margin-top: 30px;
+      margin-top: 10px;
     }
+
     .product {
       width: 250px;
-      background-color: #1a1a2e;
-      border: 1px solid #333;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
       border-radius: 6px;
       overflow: hidden;
       text-align: center;
       padding-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      color: #2c2c2c;
+      transition: transform 0.3s ease;
     }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    }
+
     .product img {
       width: 100%;
       height: auto;
+      display: block;
+      border-bottom: 1px solid #eee;
     }
+
     .product h3 {
-      margin: 10px 0 5px;
-      color: #fff;
+      margin: 15px 0 8px;
+      font-weight: 600;
+      font-size: 1.1rem;
     }
-    .product p {
-      color: #ffffff;
+
+    .product p.price {
+      color: #191970;
+      font-weight: 700;
       margin: 5px 0;
+      font-size: 1.1rem;
     }
+
     .product button {
-      background-color: #d4af37;
-      color: #000;
+      background-color: #191970;
+      color: #f8f8ff;
       border: none;
-      padding: 10px 15px;
-      margin-top: 10px;
+      padding: 10px 20px;
+      margin-top: 12px;
       cursor: pointer;
       border-radius: 5px;
+      font-weight: 600;
+      font-size: 1rem;
       transition: background 0.3s ease;
     }
+
     .product button:hover {
-      background-color: #bfa232;
+      background-color: #000050;
     }
+
     footer {
-      background: #0a0a23;
-      color: #fff;
+      background: #ffffff;
+      color: #2c2c2c;
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+      padding: 25px 15px;
+      border-top: 1px solid #ccc;
+      font-size: 0.9rem;
+      line-height: 1.4;
     }
-    .social-links a {
-      color: #d4af37;
+
+    footer p.social-links {
+      margin: 10px 0;
+    }
+
+    footer p.social-links a {
+      color: #191970;
       margin: 0 8px;
       text-decoration: none;
+      font-weight: 600;
     }
+
+    footer p.social-links a:hover {
+      text-decoration: underline;
+    }
+
     .whatsapp-chat {
       position: fixed;
       bottom: 25px;
@@ -103,9 +169,11 @@
       align-items: center;
       transition: background-color 0.3s ease;
     }
+
     .whatsapp-chat:hover {
       background-color: #1ebe57;
     }
+
     .whatsapp-chat img {
       width: 35px;
       height: 35px;
@@ -115,43 +183,36 @@
 <body>
 
   <header>
-    <h1>SB CLASSIC</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="clothes.html">Clothes</a>
-      <a href="shoes.html">Shoes</a>
-      <a href="accessories.html">Accessories</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
-    </nav>
+    <div class="header-content">
+      <div class="logo">SB CLASSIC</div>
+      <nav>
+        <a href="index.html">HOME</a>
+        <a href="clothes.html">CLOTHES</a>
+        <a href="shoes.html">SHOES</a>
+        <a href="accessories.html">ACCESSORIES</a>
+        <a href="contact.html">CONTACT</a>
+        <a href="cart.html">🛒 CART (<span id="cart-count">0</span>)</a>
+      </nav>
+    </div>
   </header>
 
   <div class="container">
     <h2>Accessories</h2>
     <div class="products">
+      <!-- Sample Product -->
       <div class="product">
-        <img src="accessories/watch1.jpeg" alt="Luxury Watch 1" />
-        <h3>Luxury Watch – Gold</h3>
-        <p class="price">GHS 850</p>
+        <img src="accessories/sample_accessory.jpeg" alt="Accessory Name" />
+        <h3>Stylish Sunglasses</h3>
+        <p class="price">GHS 350</p>
         <button onclick="addToCart({ 
-          id: 'lux-watch-gold', 
-          name: 'Luxury Watch – Gold', 
-          price: 850, 
-          image: 'accessories/watch1.jpeg' 
+          id: 'sunglasses', 
+          name: 'Stylish Sunglasses', 
+          price: 350, 
+          image: 'accessories/sample_accessory.jpeg' 
         })">Add to Cart</button>
       </div>
-      <div class="product">
-        <img src="accessories/glasses1.jpeg" alt="Sunglasses" />
-        <h3>Classic Sunglasses</h3>
-        <p class="price">GHS 420</p>
-        <button onclick="addToCart({ 
-          id: 'classic-glasses', 
-          name: 'Classic Sunglasses', 
-          price: 420, 
-          image: 'accessories/glasses1.jpeg' 
-        })">Add to Cart</button>
-      </div>
+
+      <!-- Add more products here -->
     </div>
   </div>
 
@@ -168,10 +229,7 @@
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
 
-  <a href="https://wa.me/233260928990" 
-     target="_blank" 
-     class="whatsapp-chat" 
-     aria-label="Chat with us on WhatsApp">
+  <a href="https://wa.me/233260928990" target="_blank" class="whatsapp-chat" aria-label="Chat with us on WhatsApp">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
   </a>
 
