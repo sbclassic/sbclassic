@@ -1,11 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SB CLASSIC – Style with Class</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-  <style>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-overlay">
+    <div class="hero-text">
+      <h1>Welcome to SB CLASSIC</h1>
+      <p>…Style with class</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: #111;
+  }
+
+  .hero {
+    height: 100vh;
+    background-image: url('your-hero-image.jpg'); /* Replace with your actual image */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .hero-overlay {
+    background: rgba(0, 0, 0, 0.4); /* Optional: dark overlay for contrast */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .hero-text h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin: 0;
+    font-weight: 600;
+    animation: fadeInDown 1s ease-out;
+  }
+
+  .hero-text p {
+    font-size: 1.2rem;
+    color: #f8d168;
+    margin-top: 1rem;
+    animation: fadeInUp 1.2s ease-out;
+  }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+    .hero-text p {
+      font-size: 1rem;
+    }
+  }
+</style>
     body {
       background-color: #ffffff;
       color: #333333;
