@@ -2,144 +2,124 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Clothes - SB CLASSIC</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clothes – SB CLASSIC</title>
   <style>
-    /* Base styling */
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background: #ffffff;
       color: #2c2c2c;
     }
-
-    /* Header styling */
     header {
-      background-color: #191970; /* Midnight Blue */
-      padding: 15px 0;
-    }
-    nav {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
+      background: #191970; /* Midnight Blue */
+      color: #f8f8ff; /* Very Light */
+      padding: 20px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.8rem;
     }
     nav a {
+      margin: 0 12px;
       color: #f8f8ff;
       text-decoration: none;
-      font-weight: 500;
-      font-size: 1rem;
-      letter-spacing: 0.05em;
-      line-height: 1;
-      padding: 5px 0;
+      font-weight: 600;
     }
     nav a:hover {
       text-decoration: underline;
     }
-
-    /* Page title */
-    .page-title {
+    .container {
+      padding: 40px 20px;
       max-width: 1000px;
-      margin: 30px auto;
-      text-align: center;
-      color: #191970; /* Midnight Blue */
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
+      margin: auto;
     }
-
-    /* Products grid */
+    /* Updated Clothes heading */
+    h2.clothes-heading {
+      color: #191970;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 30px;
+    }
     .products {
-      max-width: 1000px;
-      margin: 0 auto 50px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 20px;
-      padding: 0 10px;
+      justify-content: center;
     }
-
-    /* Individual product card */
     .product {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
       width: 250px;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      overflow: hidden;
       text-align: center;
       padding-bottom: 20px;
-      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(25, 25, 112, 0.1);
     }
     .product img {
       width: 100%;
-      border-bottom: 1px solid #ddd;
-      display: block;
+      height: auto;
     }
     .product h3 {
-      font-size: 1.05rem;
-      margin: 15px 0 8px;
+      margin: 10px 0 5px;
       color: #2c2c2c;
     }
     .product p.price {
       color: #191970; /* Midnight Blue */
-      font-weight: 700;
-      margin: 0 0 12px;
-      font-size: 1rem;
+      margin: 5px 0;
+      font-weight: 600;
     }
     .product button {
-      border: 2px solid #191970;
-      background: transparent;
-      color: #191970;
-      font-weight: 600;
-      padding: 10px 20px;
-      border-radius: 6px;
+      background-color: #191970; /* Midnight Blue */
+      color: #f8f8ff; /* Very Light */
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
       cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      font-size: 1rem;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+      font-weight: 700;
     }
     .product button:hover {
-      background-color: #191970;
-      color: #fff;
+      background-color: #12164a;
     }
-
-    /* Footer */
     footer {
       background: #ffffff;
       color: #2c2c2c;
       text-align: center;
-      padding: 25px 10px;
+      padding: 20px;
+      margin-top: 40px;
       font-size: 0.9rem;
-      border-top: 1px solid #ddd;
-      max-width: 1000px;
-      margin: 0 auto 30px;
     }
-    footer .social-links a {
+    footer a {
       color: #191970;
       text-decoration: none;
-      margin: 0 8px;
-      font-weight: 500;
-      font-size: 0.95rem;
+      font-weight: 600;
     }
-    footer .social-links a:hover {
+    footer a:hover {
       text-decoration: underline;
     }
-
-    /* WhatsApp floating button */
+    .social-links a {
+      margin: 0 8px;
+    }
     .whatsapp-chat {
       position: fixed;
       bottom: 25px;
       right: 25px;
-      background: #25d366;
-      border-radius: 50%;
       width: 60px;
       height: 60px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      z-index: 1000;
+      border-radius: 50%;
+      background-color: #25d366;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
       display: flex;
       justify-content: center;
       align-items: center;
       transition: background-color 0.3s ease;
-      z-index: 1000;
     }
     .whatsapp-chat:hover {
       background-color: #1ebe57;
@@ -152,108 +132,88 @@
 </head>
 <body>
 
-<header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="clothes.html" aria-current="page">Clothes</a>
-    <a href="shoes.html">Shoes</a>
-    <a href="accessories.html">Accessories</a>
-    <a href="contact.html">Contact</a>
-    <a href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
-  </nav>
-</header>
+  <header>
+    SB CLASSIC
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="clothes.html">Clothes</a>
+      <a href="shoes.html">Shoes</a>
+      <a href="accessories.html">Accessories</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
 
-<main>
-  <h1 class="page-title">CLOTHES</h1>
+  <div class="container">
+    <h2 class="clothes-heading">Clothes</h2>
+    <div class="products">
+      <!-- Sample product -->
+      <div class="product">
+        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set – Apricot" />
+        <h3>Elegant 2pcs Set – Apricot</h3>
+        <p class="price">GHS 1,980</p>
+        <button onclick="addToCart({ 
+          id: 'elegant-apricot', 
+          name: 'Elegant 2pcs Set – Apricot', 
+          price: 1980, 
+          image: 'clothes/elegant_2pcs_set_apricot.jpeg' 
+        })">Add to Cart</button>
+      </div>
+      <!-- Add other products similarly -->
+    </div>
+  </div>
 
-  <section class="products">
-    <article class="product">
-      <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set – Apricot" />
-      <h3>Elegant 2pcs Set – Apricot</h3>
-      <p class="price">GHS 1,980</p>
-      <button onclick="addToCart({
-        id: 'elegant-apricot',
-        name: 'Elegant 2pcs Set – Apricot',
-        price: 1980,
-        image: 'clothes/elegant_2pcs_set_apricot.jpeg'
-      })">Add to Cart</button>
-    </article>
+  <footer>
+    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
+    <p class="social-links">
+      FOLLOW US ON:
+      <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank" rel="noopener">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank" rel="noopener">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank" rel="noopener">WhatsApp</a> |
+      <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener">TikTok</a>
+    </p>
+    <p>© 2025 SB CLASSIC. All rights reserved.</p>
+  </footer>
 
-    <article class="product">
-      <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Set – Black" />
-      <h3>Elegant 2pcs Set – Black</h3>
-      <p class="price">GHS 1,980</p>
-      <button onclick="addToCart({
-        id: 'elegant-black',
-        name: 'Elegant 2pcs Set – Black',
-        price: 1980,
-        image: 'clothes/elegant_2pcs_set_black.jpeg'
-      })">Add to Cart</button>
-    </article>
+  <a href="https://wa.me/233260928990" 
+     target="_blank" 
+     class="whatsapp-chat" 
+     aria-label="Chat with us on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
+  </a>
 
-    <article class="product">
-      <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Set – Blue Black" />
-      <h3>Elegant 2pcs Set – Blue Black</h3>
-      <p class="price">GHS 1,980</p>
-      <button onclick="addToCart({
-        id: 'elegant-blueblack',
-        name: 'Elegant 2pcs Set – Blue Black',
-        price: 1980,
-        image: 'clothes/elegant_2pcs_set_blueblack.jpeg'
-      })">Add to Cart</button>
-    </article>
-  </section>
-</main>
-
-<footer>
-  <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
-  <p class="social-links">
-    FOLLOW US ON: 
-    <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener noreferrer">Instagram</a> | 
-    <a href="https://facebook.com/sb.classic_" target="_blank" rel="noopener noreferrer">Facebook</a> | 
-    <a href="https://t.me/sbclassics" target="_blank" rel="noopener noreferrer">Telegram</a> | 
-    <a href="https://wa.me/233260928990" target="_blank" rel="noopener noreferrer">WhatsApp</a> | 
-    <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener noreferrer">TikTok</a>
-  </p>
-  <p>© 2025 SB CLASSIC. All rights reserved.</p>
-</footer>
-
-<a href="https://wa.me/233260928990" target="_blank" class="whatsapp-chat" aria-label="Chat with us on WhatsApp">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
-</a>
-
-<script>
-  // Cart functions
-  function getCart() {
-    return JSON.parse(localStorage.getItem('cart')) || [];
-  }
-
-  function saveCart(cart) {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }
-
-  function updateCartCount() {
-    const cart = getCart();
-    const count = cart.reduce((acc, item) => acc + item.quantity, 0);
-    document.getElementById('cart-count').textContent = count;
-  }
-
-  function addToCart(product) {
-    let cart = getCart();
-    const existing = cart.find(item => item.id === product.id);
-    if (existing) {
-      existing.quantity += 1;
-    } else {
-      product.quantity = 1;
-      cart.push(product);
+  <script>
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart')) || [];
     }
-    saveCart(cart);
-    updateCartCount();
-    alert(`${product.name} added to cart!`);
-  }
 
-  updateCartCount();
-</script>
+    function saveCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function updateCartCount() {
+      const cart = getCart();
+      const count = cart.reduce((total, item) => total + item.quantity, 0);
+      document.getElementById('cart-count').textContent = count;
+    }
+
+    function addToCart(product) {
+      let cart = getCart();
+      const existing = cart.find(item => item.id === product.id);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        product.quantity = 1;
+        cart.push(product);
+      }
+      saveCart(cart);
+      updateCartCount();
+      alert(`${product.name} added to cart!`);
+    }
+
+    updateCartCount();
+  </script>
 
 </body>
 </html>
