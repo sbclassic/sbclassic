@@ -10,31 +10,45 @@
       font-family: 'Poppins', sans-serif;
       background: #ffffff;
       color: #2c2c2c;
-    }
-    header {
-      background: #191970;
-      color: #f8f8ff;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    .logo {
-      font-size: 1.6rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-    nav a {
-      margin: 0 12px;
-      color: #f8f8ff;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
+  }
+   header {
+     background: #191970;
+     color: #f8f8ff;
+     padding: 25px 20px;
+     text-align: center;
+  }
+
+  .header-content {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+  }
+
+   .logo {
+     font-size: 2rem;
+     font-weight: 600;
+     letter-spacing: 1.5px;
+     margin-bottom: 10px;
+  }
+
+   nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+   nav a {
+    color: #f8f8ff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+  }
+
+   nav a:hover {
+    text-decoration: underline;
+  }
     .container {
       padding: 40px 20px;
       max-width: 1000px;
@@ -135,16 +149,18 @@
 <body>
 
   <header>
-    SB CLASSIC
+  <div class="header-content">
+    <div class="logo">SB CLASSIC</div>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="clothes.html">Clothes</a>
-      <a href="shoes.html">Shoes</a>
-      <a href="accessories.html">Accessories</a>
-      <a href="contact.html">Contact</a>
-      <a href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
+      <a href="index.html">HOME</a>
+      <a href="clothes.html">CLOTHES</a>
+      <a href="shoes.html">SHOES</a>
+      <a href="accessories.html">ACCESSORIES</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="cart.html">🛒 CART (<span id="cart-count">0</span>)</a>
     </nav>
-  </header>
+  </div>
+</header>
 
   <div class="container">
     <h2>CLOTHES</h2>
