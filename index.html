@@ -3,331 +3,215 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SB CLASSIC – Style with Class</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet" />
+  <title>SB CLASSIC - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     body {
-      background-color: #ffffff;
-      color: #333333;
-      font-family: 'Raleway', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #222;
     }
 
-    header {
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .header {
       background-color: #2c2c2c;
-      color: #d4af37;
-      padding: 20px;
+      color: #f5d76e;
+      padding: 1rem 2rem;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      font-size: 1.5rem;
+      font-weight: bold;
     }
 
     .logo img {
-      width: 50px;
-      height: auto;
+      height: 40px;
+      margin-right: 10px;
     }
 
-    nav a {
-      margin: 0 10px;
-      color: #ffd700;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .hero {
-      background-color: #0b0b1c;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      flex-direction: column;
-      padding: 20px;
-    }
-
-    .hero h1 {
-      font-size: 1.8rem;
-      line-height: 1.2;
-      margin: 0 0 10px 0;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-      font-family: 'Raleway', sans-serif;
-      font-weight: 700;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      font-style: italic;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-    }
-
-    .section {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .section h2 {
-      text-align: center;
-      color: #0b0b1c;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .product {
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      overflow: hidden;
-      background-color: #f9f9f9;
-      text-align: center;
-      padding: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      transition: transform 0.2s ease;
-    }
-
-    .product:hover {
-      transform: translateY(-5px);
-    }
-
-    .product img {
-      width: 100%;
-      height: auto;
-    }
-
-    .product h3 {
-      margin: 10px 0 5px;
-      font-size: 1.1rem;
-      color: #0b0b1c;
-    }
-
-    .product p {
-      margin: 0 0 10px 0;
-      font-weight: bold;
-      color: #000;
-    }
-
-    .quantity-label {
-      display: block;
-      margin-bottom: 5px;
+    .nav a {
+      margin-left: 1.2rem;
+      color: #f5d76e;
       font-weight: 600;
     }
 
-    .quantity-input {
-      width: 60px;
-      padding: 5px;
-      font-size: 1rem;
+    .hero {
+      background-color: #0f0f1f;
+      color: white;
       text-align: center;
-      margin-bottom: 10px;
+      padding: 4rem 2rem;
     }
 
-    .btn {
-      background-color: #0b0b1c;
-      color: #ffd700;
-      border: none;
-      padding: 10px 15px;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
+    .hero h1 {
+      font-size: 2.2rem;
+      margin: 0;
     }
 
-    .btn:hover {
-      background-color: #ffd700;
-      color: #0b0b1c;
+    .hero h1 span {
+      color: #f5d76e;
     }
 
-    .cart-buttons {
-      margin-top: 30px;
-      text-align: center;
-      gap: 20px;
+    .hero p {
+      font-style: italic;
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .products-section {
+      padding: 3rem 2rem;
+      background-color: #fff;
+    }
+
+    .section-title {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
     }
 
-    .cart-buttons a {
-      display: inline-block;
-      background-color: #0b0b1c;
-      color: #ffd700;
-      padding: 12px 25px;
-      text-decoration: none;
-      font-weight: 700;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
+    .section-title h2 {
+      font-size: 1.6rem;
+      color: #222;
     }
 
-    .cart-buttons a:hover {
-      background-color: #ffd700;
-      color: #0b0b1c;
+    .whatsapp-btn img {
+      height: 36px;
     }
 
-    footer {
-      background-color: #0b0b1c;
-      color: #fff;
+    .products-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.08);
+      overflow: hidden;
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
+      padding: 1rem;
+      transition: transform 0.3s ease;
     }
 
-    .social-links a {
-      color: #ffd700;
-      text-decoration: none;
-      margin: 0 5px;
+    .product-card:hover {
+      transform: translateY(-6px);
     }
 
-    .whatsapp-chat {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 999;
+    .product-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
     }
 
-    .whatsapp-chat img {
-      width: 60px;
-      height: 60px;
-      cursor: pointer;
+    .product-card h3 {
+      margin-top: 0.8rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .product-card p {
+      color: #777;
+      font-weight: 500;
+    }
+
+    .footer {
+      background-color: #2c2c2c;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 4rem;
     }
   </style>
 </head>
 <body>
-  <header>
+
+  <!-- HEADER -->
+  <header class="header">
     <div class="logo">
       <img src="logo.png" alt="SB CLASSIC Logo" />
-      <h1>SB CLASSIC</h1>
+      <span>SB <strong>CLASSIC</strong></span>
     </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="clothes.html">Clothes</a>
-      <a href="shoes.html">Shoes</a>
-      <a href="accessories.html">Accessories</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+    <nav class="nav">
+      <a href="#">Home</a>
+      <a href="#">Clothes</a>
+      <a href="#">Shoes</a>
+      <a href="#">Accessories</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
     </nav>
   </header>
 
+  <!-- HERO -->
   <section class="hero">
-    <h1 class="hero-heading">Welcome to SB CLASSIC</h1>
-    <p>...Style with Class</p>
+    <div class="hero-text">
+      <h1>Welcome to <span>SB CLASSIC</span></h1>
+      <p>…Style with Class</p>
+    </div>
   </section>
 
-  <section class="section">
-    <h2>Featured Products</h2>
-    <div class="products">
-      <!-- PRODUCT CARDS HERE (leave yours as-is) -->
-      <!-- Example product -->
-      <div class="product" data-name="Elegant 2pcs Set – Apricot" data-price="1980" data-image="clothes/elegant_2pcs_set_apricot.jpeg">
-        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Apricot" />
+  <!-- FEATURED PRODUCTS -->
+  <section class="products-section">
+    <div class="section-title">
+      <h2>Featured Products</h2>
+      <a href="https://wa.me/233260928990" class="whatsapp-btn" target="_blank">
+        <img src="whatsapp-icon.png" alt="WhatsApp" />
+      </a>
+    </div>
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set Apricot">
         <h3>Elegant 2pcs Set – Apricot</h3>
         <p>GHS 1,980</p>
-        <label class="quantity-label" for="qty-apricot">Quantity:</label>
-        <input type="number" id="qty-apricot" class="quantity-input" min="1" value="1" />
-        <button class="btn add-to-cart-btn">Add to Cart</button>
       </div>
-      <!-- Repeat for other products -->
-    </div>
 
-    <div class="cart-buttons">
-      <a href="cart.html" id="view-cart-btn" style="display:none;">View Cart</a>
-      <a href="checkout.html" id="checkout-btn" style="display:none;">Checkout</a>
+      <!-- Product 2 -->
+      <div class="product-card">
+        <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Set Black">
+        <h3>Elegant 2pcs Set – Black</h3>
+        <p>GHS 1,980</p>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Set Blue Black">
+        <h3>Elegant 2pcs Set – Blue Black</h3>
+        <p>GHS 1,980</p>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card">
+        <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black">
+        <h3>Versace Sneaker – Black</h3>
+        <p>GHS 1,899</p>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product-card">
+        <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White">
+        <h3>Versace Sneaker – White</h3>
+        <p>GHS 1,899</p>
+      </div>
     </div>
   </section>
 
-  <footer>
-    <div class="container">
-      <h2>About SB CLASSIC</h2>
-      <p>Welcome to SB CLASSIC — your destination for timeless style and sophistication.</p>
-      <p>SB CLASSIC is a Ghana-based men’s fashion brand committed to helping you look sharp, feel confident, and stand out — effortlessly.</p>
-      <p>We specialize in premium suits, shirts, shoes, and accessories, carefully sourced from trusted international suppliers and tailored for the modern gentleman.</p>
-      <p>🌍 WHAT WE OFFER:</p>
-      <p>- High-quality, ready-to-wear men’s fashion</p>
-      <p>- Local & nationwide delivery across Ghana</p>
-      <p>- International shipping available</p>
-      <p>- Easy and secure checkout</p>
-      <p>- Friendly customer service & order tracking</p>
-      <p>Our slogan: Style with Class — and we live by it.</p>
-    </div>
-    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
-    <p class="social-links">
-      FOLLOW US ON:
-      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
-      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
-      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
-    </p>
-    <p>© 2025 SB CLASSIC. All rights reserved.</p>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
 
-  <a href="https://wa.me/233260928990" target="_blank" class="whatsapp-chat" aria-label="Chat with us on WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
-  </a>
-
-  <script>
-    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-    const viewCartBtn = document.getElementById('view-cart-btn');
-    const checkoutBtn = document.getElementById('checkout-btn');
-
-    function getCart() {
-      const cart = localStorage.getItem('sbclassicCart');
-      return cart ? JSON.parse(cart) : [];
-    }
-
-    function saveCart(cart) {
-      localStorage.setItem('sbclassicCart', JSON.stringify(cart));
-    }
-
-    function updateCartButtons() {
-      const cart = getCart();
-      if (cart.length > 0) {
-        viewCartBtn.style.display = 'inline-block';
-        checkoutBtn.style.display = 'inline-block';
-      } else {
-        viewCartBtn.style.display = 'none';
-        checkoutBtn.style.display = 'none';
-      }
-    }
-
-    addToCartButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const productDiv = btn.closest('.product');
-        const name = productDiv.dataset.name;
-        const price = parseFloat(productDiv.dataset.price);
-        const image = productDiv.dataset.image;
-        const qtyInput = productDiv.querySelector('.quantity-input');
-        let quantity = parseInt(qtyInput.value);
-        if (quantity < 1 || isNaN(quantity)) quantity = 1;
-
-        let cart = getCart();
-        const existingProductIndex = cart.findIndex(item => item.name === name);
-
-        if (existingProductIndex > -1) {
-          cart[existingProductIndex].quantity += quantity;
-        } else {
-          cart.push({ name, price, image, quantity });
-        }
-
-        saveCart(cart);
-        updateCartButtons();
-        alert(`${quantity} x "${name}" added to cart.`);
-      });
-    });
-
-    updateCartButtons();
-  </script>
 </body>
 </html>
