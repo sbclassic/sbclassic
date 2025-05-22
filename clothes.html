@@ -6,130 +6,134 @@
   <title>Clothes – SB CLASSIC</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #ffffff;
-      color: #2c2c2c;
-    }
-    header {
-      background: #2c2c2c;
-      color: #f8f8ff;
-      padding: 20px;
-      text-align: center;
-    }
-    nav a {
-      margin: 0 12px;
-      color: #f8f8ff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-    nav a:hover {
-      text-decoration: underline;
-      color: #d4af37;
-    }
-    .container {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h2 {
-      text-align: center;
-      color: #2c2c2c;
-      font-weight: 700;
-      margin-bottom: 30px;
-    }
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-    .product {
-      width: 250px;
-      background-color: #ffffff;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      overflow: hidden;
-      text-align: center;
-      padding-bottom: 20px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-      transition: transform 0.2s ease;
-    }
-    .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    }
-    .product img {
-      width: 100%;
-      height: auto;
-      border-bottom: 1px solid #ddd;
-    }
-    .product h3 {
-      margin: 15px 0 8px;
-      color: #2c2c2c;
-      font-weight: 600;
-    }
-    .product p.price {
-      color: #555555;
-      margin: 5px 0 12px;
-      font-weight: 500;
-    }
-    .product button {
-      background-color: #d4af37;
-      color: #000;
-      border: none;
-      padding: 10px 20px;
-      margin-top: 10px;
-      cursor: pointer;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
-    }
-    .product button:hover {
-      background-color: #bfa232;
-    }
-    footer {
-      background: #2c2c2c;
-      color: #f8f8ff;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
-    .social-links a {
-      color: #d4af37;
-      margin: 0 8px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .social-links a:hover {
-      text-decoration: underline;
-    }
-    .whatsapp-chat {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      width: 60px;
-      height: 60px;
-      z-index: 1000;
-      border-radius: 50%;
-      background-color: #25d366;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: background-color 0.3s ease;
-    }
-    .whatsapp-chat:hover {
-      background-color: #1ebe57;
-    }
-    .whatsapp-chat img {
-      width: 35px;
-      height: 35px;
-    }
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #ffffff;
+  color: #2c2c2c;
+}
+
+header {
+  background: #2c2c2c;
+  color: #d4af37;
+  padding: 20px;
+  text-align: center;
+}
+
+nav a {
+  margin: 0 12px;
+  color: #d4af37;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+  color: #2c2c2c;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.product {
+  width: 250px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.product img {
+  width: 100%;
+  height: auto;
+}
+
+.product h3 {
+  margin: 10px 0 5px;
+  color: #2c2c2c;
+}
+
+.product p {
+  color: #2c2c2c;
+  margin: 5px 0;
+}
+
+.product button {
+  background-color: #d4af37;
+  color: #000;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  font-weight: bold;
+}
+
+.product button:hover {
+  background-color: #bfa232;
+}
+
+footer {
+  background: #2c2c2c;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 0.9em;
+}
+
+footer .social-links a {
+  color: #d4af37;
+  margin: 0 8px;
+  text-decoration: none;
+}
+
+footer .social-links a:hover {
+  text-decoration: underline;
+}
+
+.whatsapp-chat {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  z-index: 1000;
+  border-radius: 50%;
+  background-color: #25d366;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.whatsapp-chat:hover {
+  background-color: #1ebe57;
+}
+
+.whatsapp-chat img {
+  width: 35px;
+  height: 35px;
+}
   </style>
 </head>
 <body>
