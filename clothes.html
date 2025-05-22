@@ -2,63 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Clothes – SB CLASSIC</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
-
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background: #ffffff;
       color: #2c2c2c;
     }
-
     header {
-      background: #191970; /* midnight blue */
-      color: #f8f8ff; /* very light */
+      background: #191970; /* Midnight Blue */
+      color: #f8f8ff; /* Very Light */
       padding: 20px;
       text-align: center;
       font-weight: 700;
-      letter-spacing: 2px;
+      font-size: 1.8rem;
     }
-
     nav a {
       margin: 0 12px;
       color: #f8f8ff;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.95rem;
     }
-
     nav a:hover {
       text-decoration: underline;
     }
-
     .container {
       padding: 40px 20px;
       max-width: 1000px;
       margin: auto;
     }
-
-    h2 {
-      font-weight: 900;
-      color: #0b0b1c; /* blueblack */
-      letter-spacing: 3px;
+    /* Updated Clothes heading */
+    h2.clothes-heading {
+      color: #191970;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      letter-spacing: 1.5px;
+      font-weight: 700;
       text-transform: uppercase;
-      text-shadow: 1px 1px 4px rgba(11, 11, 28, 0.6);
-      margin-bottom: 30px;
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       text-align: center;
+      margin-bottom: 30px;
     }
-
     .products {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
     }
-
     .product {
       width: 250px;
       background-color: #ffffff;
@@ -67,51 +58,35 @@
       overflow: hidden;
       text-align: center;
       padding-bottom: 20px;
-      box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
-      transition: box-shadow 0.3s ease;
+      box-shadow: 0 2px 5px rgba(25, 25, 112, 0.1);
     }
-
-    .product:hover {
-      box-shadow: 0 8px 12px rgb(0 0 0 / 0.15);
-    }
-
     .product img {
       width: 100%;
       height: auto;
     }
-
     .product h3 {
       margin: 10px 0 5px;
       color: #2c2c2c;
-      font-weight: 700;
-      font-size: 1.1rem;
     }
-
     .product p.price {
-      color: #191970; /* midnight blue */
-      font-weight: 700;
+      color: #191970; /* Midnight Blue */
       margin: 5px 0;
-      font-size: 1.05rem;
+      font-weight: 600;
     }
-
     .product button {
-      background: none;
-      border: 2px solid #191970; /* midnight blue */
-      color: #191970;
-      font-weight: 700;
+      background-color: #191970; /* Midnight Blue */
+      color: #f8f8ff; /* Very Light */
+      border: none;
       padding: 10px 15px;
       margin-top: 10px;
       cursor: pointer;
       border-radius: 5px;
-      font-size: 1rem;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background 0.3s ease;
+      font-weight: 700;
     }
-
     .product button:hover {
-      background-color: #191970;
-      color: #f8f8ff;
+      background-color: #12164a;
     }
-
     footer {
       background: #ffffff;
       color: #2c2c2c;
@@ -119,24 +94,18 @@
       padding: 20px;
       margin-top: 40px;
       font-size: 0.9rem;
-      border-top: 1px solid #ccc;
     }
-
     footer a {
       color: #191970;
       text-decoration: none;
-      margin: 0 8px;
       font-weight: 600;
     }
-
     footer a:hover {
       text-decoration: underline;
     }
-
-    .social-links {
-      margin: 10px 0;
+    .social-links a {
+      margin: 0 8px;
     }
-
     .whatsapp-chat {
       position: fixed;
       bottom: 25px;
@@ -152,11 +121,9 @@
       align-items: center;
       transition: background-color 0.3s ease;
     }
-
     .whatsapp-chat:hover {
       background-color: #1ebe57;
     }
-
     .whatsapp-chat img {
       width: 35px;
       height: 35px;
@@ -166,7 +133,7 @@
 <body>
 
   <header>
-    <h1>SB CLASSIC</h1>
+    SB CLASSIC
     <nav>
       <a href="index.html">Home</a>
       <a href="clothes.html">Clothes</a>
@@ -178,41 +145,21 @@
   </header>
 
   <div class="container">
-    <h2>CLOTHES</h2>
+    <h2 class="clothes-heading">Clothes</h2>
     <div class="products">
+      <!-- Sample product -->
       <div class="product">
-        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set - Apricot" />
-        <h3>Elegant 2pcs Set - Apricot</h3>
+        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set – Apricot" />
+        <h3>Elegant 2pcs Set – Apricot</h3>
         <p class="price">GHS 1,980</p>
         <button onclick="addToCart({ 
           id: 'elegant-apricot', 
-          name: 'Elegant 2pcs Set - Apricot', 
+          name: 'Elegant 2pcs Set – Apricot', 
           price: 1980, 
           image: 'clothes/elegant_2pcs_set_apricot.jpeg' 
         })">Add to Cart</button>
       </div>
-      <div class="product">
-        <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Set - Black" />
-        <h3>Elegant 2pcs Set - Black</h3>
-        <p class="price">GHS 1,980</p>
-        <button onclick="addToCart({ 
-          id: 'elegant-black', 
-          name: 'Elegant 2pcs Set - Black', 
-          price: 1980, 
-          image: 'clothes/elegant_2pcs_set_black.jpeg' 
-        })">Add to Cart</button>
-      </div>
-      <div class="product">
-        <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Set - Blue Black" />
-        <h3>Elegant 2pcs Set - Blue Black</h3>
-        <p class="price">GHS 1,980</p>
-        <button onclick="addToCart({ 
-          id: 'elegant-blueblack', 
-          name: 'Elegant 2pcs Set - Blue Black', 
-          price: 1980, 
-          image: 'clothes/elegant_2pcs_set_blueblack.jpeg' 
-        })">Add to Cart</button>
-      </div>
+      <!-- Add other products similarly -->
     </div>
   </div>
 
@@ -237,24 +184,20 @@
   </a>
 
   <script>
-    // Get cart from localStorage or empty array
     function getCart() {
       return JSON.parse(localStorage.getItem('cart')) || [];
     }
 
-    // Save cart to localStorage
     function saveCart(cart) {
       localStorage.setItem('cart', JSON.stringify(cart));
     }
 
-    // Update the cart count display in navbar
     function updateCartCount() {
       const cart = getCart();
       const count = cart.reduce((total, item) => total + item.quantity, 0);
       document.getElementById('cart-count').textContent = count;
     }
 
-    // Add product to cart, increment quantity if already present
     function addToCart(product) {
       let cart = getCart();
       const existing = cart.find(item => item.id === product.id);
@@ -269,8 +212,8 @@
       alert(`${product.name} added to cart!`);
     }
 
-    // Initialize cart count on page load
     updateCartCount();
   </script>
+
 </body>
 </html>
