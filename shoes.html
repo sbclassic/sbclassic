@@ -4,43 +4,44 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Shoes – SB CLASSIC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Poppins', sans-serif;
       background: #ffffff;
       color: #2c2c2c;
     }
-
     header {
-      background: #2c2c2c;
-      color: #d4af37;
+      background: #191970;
+      color: #f8f8ff;
       padding: 20px;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
     nav a {
-      margin: 0 12px;
-      color: #d4af37;
+      margin-left: 16px;
+      color: #f8f8ff;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
     }
-
     nav a:hover {
       text-decoration: underline;
     }
-
     .container {
       padding: 40px 20px;
       max-width: 1000px;
       margin: auto;
     }
-
     h2 {
       text-align: center;
-      color: #2c2c2c;
+      color: #191970;
     }
-
     .products {
       display: flex;
       flex-wrap: wrap;
@@ -48,68 +49,72 @@
       justify-content: center;
       margin-top: 30px;
     }
-
     .product {
       width: 250px;
       background-color: #ffffff;
-      border: 1px solid #ccc;
+      border: 1px solid #ddd;
       border-radius: 8px;
       overflow: hidden;
       text-align: center;
       padding-bottom: 20px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
     }
-
+    .product:hover {
+      transform: translateY(-4px);
+    }
     .product img {
       width: 100%;
       height: auto;
     }
-
     .product h3 {
       margin: 10px 0 5px;
       color: #2c2c2c;
+      font-weight: 600;
     }
-
     .product p {
-      color: #2c2c2c;
       margin: 5px 0;
     }
-
     .product button {
-      background-color: #d4af37;
-      color: #000;
+      background-color: #191970;
+      color: #fff;
       border: none;
       padding: 10px 15px;
       margin-top: 10px;
       cursor: pointer;
       border-radius: 5px;
+      font-weight: 600;
       transition: background 0.3s ease;
-      font-weight: bold;
     }
-
     .product button:hover {
-      background-color: #bfa232;
+      background-color: #151557;
     }
-
+    .about-section {
+      padding: 40px 20px;
+      background: #f7f7f7;
+      color: #2c2c2c;
+      text-align: center;
+    }
+    .about-section h3 {
+      margin-bottom: 10px;
+      color: #191970;
+    }
     footer {
-      background: #2c2c2c;
-      color: #ffffff;
+      background: #ffffff;
+      color: #2c2c2c;
       text-align: center;
       padding: 20px;
-      margin-top: 40px;
-      font-size: 0.9em;
+      font-size: 14px;
     }
-
-    footer .social-links a {
-      color: #d4af37;
+    .social-links a {
+      color: #191970;
       margin: 0 8px;
       text-decoration: none;
+      font-weight: 600;
     }
-
-    footer .social-links a:hover {
+    .social-links a:hover {
       text-decoration: underline;
     }
-
     .whatsapp-chat {
       position: fixed;
       bottom: 25px;
@@ -125,11 +130,9 @@
       align-items: center;
       transition: background-color 0.3s ease;
     }
-
     .whatsapp-chat:hover {
       background-color: #1ebe57;
     }
-
     .whatsapp-chat img {
       width: 35px;
       height: 35px;
@@ -155,47 +158,49 @@
     <h2>Shoes</h2>
     <div class="products">
       <div class="product">
-        <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker - Black" />
+        <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
         <h3>Versace Sneaker - Black</h3>
-        <p class="price">GHS 1,899</p>
-        <button onclick="addToCart({
-          id: 'versace-black',
-          name: 'Versace Sneaker - Black',
-          price: 1899,
-          image: 'shoes/versace_sneaker_black.jpeg'
+        <p class="price">GHS 1,890</p>
+        <button onclick="addToCart({ 
+          id: 'versace-black', 
+          name: 'Versace Sneaker - Black', 
+          price: 1890, 
+          image: 'shoes/versace_sneaker_black.jpeg' 
         })">Add to Cart</button>
       </div>
       <div class="product">
-        <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker - White" />
+        <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
         <h3>Versace Sneaker - White</h3>
-        <p class="price">GHS 1,899</p>
-        <button onclick="addToCart({
-          id: 'versace-white',
-          name: 'Versace Sneaker - White',
-          price: 1899,
-          image: 'shoes/versace_sneaker_white.jpeg'
+        <p class="price">GHS 1,890</p>
+        <button onclick="addToCart({ 
+          id: 'versace-white', 
+          name: 'Versace Sneaker - White', 
+          price: 1890, 
+          image: 'shoes/versace_sneaker_white.jpeg' 
         })">Add to Cart</button>
       </div>
     </div>
+  </div>
+
+  <div class="about-section">
+    <h3>About SB CLASSIC</h3>
+    <p>SB CLASSIC is your trusted brand for elegant, imported fashion items. We deliver premium quality with a taste of luxury. Explore our collections and stand out in style.</p>
   </div>
 
   <footer>
     <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
     <p class="social-links">
       FOLLOW US ON:
-      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
-      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
-      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
+      <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank" rel="noopener">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank" rel="noopener">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank" rel="noopener">WhatsApp</a> |
+      <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener">TikTok</a>
     </p>
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
 
-  <a href="https://wa.me/233260928990"
-     target="_blank"
-     class="whatsapp-chat"
-     aria-label="Chat with us on WhatsApp">
+  <a href="https://wa.me/233260928990" target="_blank" class="whatsapp-chat" aria-label="Chat with us on WhatsApp">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
   </a>
 
