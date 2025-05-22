@@ -12,18 +12,25 @@
       color: #2c2c2c;
     }
     header {
-      background: #191970; /* Midnight Blue */
-      color: #f8f8ff; /* Very Light */
-      padding: 20px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 1.8rem;
+      background: #191970;
+      color: #f8f8ff;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 1px;
     }
     nav a {
       margin: 0 12px;
       color: #f8f8ff;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
+      font-size: 0.95rem;
     }
     nav a:hover {
       text-decoration: underline;
@@ -33,15 +40,12 @@
       max-width: 1000px;
       margin: auto;
     }
-    /* Updated Clothes heading */
-    h2.clothes-heading {
-      color: #191970;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-      letter-spacing: 1.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 2.5rem;
+    h2 {
       text-align: center;
+      color: #191970; /* Midnight Blue */
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
       margin-bottom: 30px;
     }
     .products {
@@ -53,12 +57,12 @@
     .product {
       width: 250px;
       background-color: #ffffff;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
       overflow: hidden;
       text-align: center;
       padding-bottom: 20px;
-      box-shadow: 0 2px 5px rgba(25, 25, 112, 0.1);
     }
     .product img {
       width: 100%;
@@ -66,45 +70,43 @@
     }
     .product h3 {
       margin: 10px 0 5px;
+      font-size: 1rem;
+      font-weight: 500;
       color: #2c2c2c;
     }
     .product p.price {
-      color: #191970; /* Midnight Blue */
+      color: #191970;
+      font-weight: bold;
       margin: 5px 0;
-      font-weight: 600;
     }
     .product button {
-      background-color: #191970; /* Midnight Blue */
-      color: #f8f8ff; /* Very Light */
+      background-color: #191970;
+      color: #ffffff;
       border: none;
       padding: 10px 15px;
       margin-top: 10px;
       cursor: pointer;
       border-radius: 5px;
+      font-size: 0.9rem;
       transition: background 0.3s ease;
-      font-weight: 700;
     }
     .product button:hover {
-      background-color: #12164a;
+      background-color: #151552;
     }
     footer {
       background: #ffffff;
       color: #2c2c2c;
       text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 0.9rem;
-    }
-    footer a {
-      color: #191970;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    footer a:hover {
-      text-decoration: underline;
+      padding: 25px 10px;
+      font-size: 0.95rem;
     }
     .social-links a {
+      color: #191970;
       margin: 0 8px;
+      text-decoration: none;
+    }
+    .social-links a:hover {
+      text-decoration: underline;
     }
     .whatsapp-chat {
       position: fixed;
@@ -133,7 +135,7 @@
 <body>
 
   <header>
-    SB CLASSIC
+    <div class="logo">SB CLASSIC</div>
     <nav>
       <a href="index.html">Home</a>
       <a href="clothes.html">Clothes</a>
@@ -145,11 +147,10 @@
   </header>
 
   <div class="container">
-    <h2 class="clothes-heading">Clothes</h2>
+    <h2>CLOTHES</h2>
     <div class="products">
-      <!-- Sample product -->
       <div class="product">
-        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set – Apricot" />
+        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Apricot" />
         <h3>Elegant 2pcs Set – Apricot</h3>
         <p class="price">GHS 1,980</p>
         <button onclick="addToCart({ 
@@ -159,7 +160,30 @@
           image: 'clothes/elegant_2pcs_set_apricot.jpeg' 
         })">Add to Cart</button>
       </div>
-      <!-- Add other products similarly -->
+
+      <div class="product">
+        <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Black" />
+        <h3>Elegant 2pcs Set – Black</h3>
+        <p class="price">GHS 1,980</p>
+        <button onclick="addToCart({ 
+          id: 'elegant-black', 
+          name: 'Elegant 2pcs Set – Black', 
+          price: 1980, 
+          image: 'clothes/elegant_2pcs_set_black.jpeg' 
+        })">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Blue Black" />
+        <h3>Elegant 2pcs Set – Blue Black</h3>
+        <p class="price">GHS 1,980</p>
+        <button onclick="addToCart({ 
+          id: 'elegant-blueblack', 
+          name: 'Elegant 2pcs Set – Blue Black', 
+          price: 1980, 
+          image: 'clothes/elegant_2pcs_set_blueblack.jpeg' 
+        })">Add to Cart</button>
+      </div>
     </div>
   </div>
 
@@ -167,11 +191,11 @@
     <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
     <p class="social-links">
       FOLLOW US ON:
-      <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_" target="_blank" rel="noopener">Facebook</a> |
-      <a href="https://t.me/sbclassics" target="_blank" rel="noopener">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank" rel="noopener">WhatsApp</a> |
-      <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
+      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
     </p>
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
@@ -187,17 +211,14 @@
     function getCart() {
       return JSON.parse(localStorage.getItem('cart')) || [];
     }
-
     function saveCart(cart) {
       localStorage.setItem('cart', JSON.stringify(cart));
     }
-
     function updateCartCount() {
       const cart = getCart();
       const count = cart.reduce((total, item) => total + item.quantity, 0);
       document.getElementById('cart-count').textContent = count;
     }
-
     function addToCart(product) {
       let cart = getCart();
       const existing = cart.find(item => item.id === product.id);
@@ -211,7 +232,6 @@
       updateCartCount();
       alert(`${product.name} added to cart!`);
     }
-
     updateCartCount();
   </script>
 
