@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Clothes – SB CLASSIC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -11,102 +12,83 @@
       background: #ffffff;
       color: #2c2c2c;
     }
-
     header {
       background: #191970;
       color: #f8f8ff;
-      padding: 15px 20px;
+      padding: 15px 0;
+    }
+    header nav {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
+      gap: 25px;
       flex-wrap: wrap;
     }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-
-    nav a {
-      margin-left: 15px;
+    header nav a {
       color: #f8f8ff;
       text-decoration: none;
       font-weight: 500;
       font-size: 0.95rem;
     }
-
-    nav a:hover {
+    header nav a:hover {
       text-decoration: underline;
     }
-
     .container {
       padding: 40px 20px;
       max-width: 1000px;
       margin: auto;
     }
-
     h2 {
       text-align: center;
       color: #191970;
-      font-size: 1.8rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
+      font-size: 2rem;
       margin-bottom: 30px;
+      letter-spacing: 1px;
     }
-
     .products {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
     }
-
     .product {
       width: 250px;
-      background-color: #ffffff;
-      border: 1px solid #ddd;
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
       border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
       overflow: hidden;
       text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
       padding-bottom: 20px;
     }
-
     .product img {
       width: 100%;
       height: auto;
     }
-
     .product h3 {
-      margin: 10px 0 5px;
-      font-size: 1rem;
-      font-weight: 500;
-      color: #2c2c2c;
+      margin: 12px 0 5px;
+      font-size: 1.05rem;
     }
-
     .product p.price {
       color: #191970;
       font-weight: bold;
       margin: 5px 0;
     }
-
     .product button {
-      background-color: #191970;
-      color: #ffffff;
-      border: none;
+      background-color: transparent;
+      color: #191970;
+      border: 2px solid #191970;
       padding: 10px 15px;
       margin-top: 10px;
       cursor: pointer;
       border-radius: 5px;
-      font-size: 0.9rem;
-      transition: background 0.3s ease;
+      font-weight: 600;
+      transition: 0.3s ease;
     }
-
     .product button:hover {
-      background-color: #151552;
+      background-color: #191970;
+      color: #fff;
     }
-
     footer {
       background: #ffffff;
       color: #2c2c2c;
@@ -114,17 +96,15 @@
       padding: 20px;
       margin-top: 40px;
     }
-
     .social-links a {
       color: #191970;
       margin: 0 8px;
       text-decoration: none;
+      font-weight: 500;
     }
-
     .social-links a:hover {
       text-decoration: underline;
     }
-
     .whatsapp-chat {
       position: fixed;
       bottom: 25px;
@@ -140,11 +120,9 @@
       align-items: center;
       transition: background-color 0.3s ease;
     }
-
     .whatsapp-chat:hover {
       background-color: #1ebe57;
     }
-
     .whatsapp-chat img {
       width: 35px;
       height: 35px;
@@ -154,21 +132,21 @@
 <body>
 
   <header>
-  <nav style="display: flex; justify-content: center; align-items: center; gap: 25px; width: 100%;">
-    <a href="index.html">Home</a>
-    <a href="clothes.html">Clothes</a>
-    <a href="shoes.html">Shoes</a>
-    <a href="accessories.html">Accessories</a>
-    <a href="contact.html">Contact</a>
-    <a href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
-  </nav>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="clothes.html">Clothes</a>
+      <a href="shoes.html">Shoes</a>
+      <a href="accessories.html">Accessories</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
+    </nav>
   </header>
 
   <div class="container">
-    <h2>Clothes</h2>
+    <h2>CLOTHES</h2>
     <div class="products">
       <div class="product">
-        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set – Apricot" />
+        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Apricot" />
         <h3>Elegant 2pcs Set – Apricot</h3>
         <p class="price">GHS 1,980</p>
         <button onclick="addToCart({ 
@@ -179,7 +157,7 @@
         })">Add to Cart</button>
       </div>
       <div class="product">
-        <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Set – Black" />
+        <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Black" />
         <h3>Elegant 2pcs Set – Black</h3>
         <p class="price">GHS 1,980</p>
         <button onclick="addToCart({ 
@@ -190,7 +168,7 @@
         })">Add to Cart</button>
       </div>
       <div class="product">
-        <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Set – Blue Black" />
+        <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Blue Black" />
         <h3>Elegant 2pcs Set – Blue Black</h3>
         <p class="price">GHS 1,980</p>
         <button onclick="addToCart({ 
@@ -207,16 +185,19 @@
     <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
     <p class="social-links">
       FOLLOW US ON:
-      <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_" target="_blank" rel="noopener">Facebook</a> |
-      <a href="https://t.me/sbclassics" target="_blank" rel="noopener">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank" rel="noopener">WhatsApp</a> |
-      <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
+      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
     </p>
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
 
-  <a href="https://wa.me/233260928990" target="_blank" class="whatsapp-chat" aria-label="Chat with us on WhatsApp">
+  <a href="https://wa.me/233260928990" 
+     target="_blank" 
+     class="whatsapp-chat" 
+     aria-label="Chat with us on WhatsApp">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
   </a>
 
