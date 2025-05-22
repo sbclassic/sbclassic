@@ -11,49 +11,57 @@
       background: #ffffff;
       color: #2c2c2c;
     }
+
     header {
       background: #191970;
       color: #f8f8ff;
       padding: 15px 20px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
     }
+
     .logo {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 600;
       letter-spacing: 1px;
     }
+
     nav a {
-      margin: 0 12px;
+      margin-left: 15px;
       color: #f8f8ff;
       text-decoration: none;
       font-weight: 500;
       font-size: 0.95rem;
     }
+
     nav a:hover {
       text-decoration: underline;
     }
+
     .container {
       padding: 40px 20px;
       max-width: 1000px;
       margin: auto;
     }
+
     h2 {
       text-align: center;
-      color: #191970; /* Midnight Blue */
+      color: #191970;
       font-size: 1.8rem;
       font-weight: 600;
       letter-spacing: 0.5px;
       margin-bottom: 30px;
     }
+
     .products {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
     }
+
     .product {
       width: 250px;
       background-color: #ffffff;
@@ -64,21 +72,25 @@
       text-align: center;
       padding-bottom: 20px;
     }
+
     .product img {
       width: 100%;
       height: auto;
     }
+
     .product h3 {
       margin: 10px 0 5px;
       font-size: 1rem;
       font-weight: 500;
       color: #2c2c2c;
     }
+
     .product p.price {
       color: #191970;
       font-weight: bold;
       margin: 5px 0;
     }
+
     .product button {
       background-color: #191970;
       color: #ffffff;
@@ -90,24 +102,29 @@
       font-size: 0.9rem;
       transition: background 0.3s ease;
     }
+
     .product button:hover {
       background-color: #151552;
     }
+
     footer {
       background: #ffffff;
       color: #2c2c2c;
       text-align: center;
-      padding: 25px 10px;
-      font-size: 0.95rem;
+      padding: 20px;
+      margin-top: 40px;
     }
+
     .social-links a {
       color: #191970;
       margin: 0 8px;
       text-decoration: none;
     }
+
     .social-links a:hover {
       text-decoration: underline;
     }
+
     .whatsapp-chat {
       position: fixed;
       bottom: 25px;
@@ -123,9 +140,11 @@
       align-items: center;
       transition: background-color 0.3s ease;
     }
+
     .whatsapp-chat:hover {
       background-color: #1ebe57;
     }
+
     .whatsapp-chat img {
       width: 35px;
       height: 35px;
@@ -147,10 +166,10 @@
   </header>
 
   <div class="container">
-    <h2>CLOTHES</h2>
+    <h2>Clothes</h2>
     <div class="products">
       <div class="product">
-        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Apricot" />
+        <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set – Apricot" />
         <h3>Elegant 2pcs Set – Apricot</h3>
         <p class="price">GHS 1,980</p>
         <button onclick="addToCart({ 
@@ -160,9 +179,8 @@
           image: 'clothes/elegant_2pcs_set_apricot.jpeg' 
         })">Add to Cart</button>
       </div>
-
       <div class="product">
-        <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Black" />
+        <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Set – Black" />
         <h3>Elegant 2pcs Set – Black</h3>
         <p class="price">GHS 1,980</p>
         <button onclick="addToCart({ 
@@ -172,9 +190,8 @@
           image: 'clothes/elegant_2pcs_set_black.jpeg' 
         })">Add to Cart</button>
       </div>
-
       <div class="product">
-        <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Blue Black" />
+        <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Set – Blue Black" />
         <h3>Elegant 2pcs Set – Blue Black</h3>
         <p class="price">GHS 1,980</p>
         <button onclick="addToCart({ 
@@ -191,19 +208,16 @@
     <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
     <p class="social-links">
       FOLLOW US ON:
-      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
-      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
-      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
+      <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_" target="_blank" rel="noopener">Facebook</a> |
+      <a href="https://t.me/sbclassics" target="_blank" rel="noopener">Telegram</a> |
+      <a href="https://wa.me/233260928990" target="_blank" rel="noopener">WhatsApp</a> |
+      <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener">TikTok</a>
     </p>
     <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
 
-  <a href="https://wa.me/233260928990" 
-     target="_blank" 
-     class="whatsapp-chat" 
-     aria-label="Chat with us on WhatsApp">
+  <a href="https://wa.me/233260928990" target="_blank" class="whatsapp-chat" aria-label="Chat with us on WhatsApp">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
   </a>
 
@@ -211,14 +225,17 @@
     function getCart() {
       return JSON.parse(localStorage.getItem('cart')) || [];
     }
+
     function saveCart(cart) {
       localStorage.setItem('cart', JSON.stringify(cart));
     }
+
     function updateCartCount() {
       const cart = getCart();
       const count = cart.reduce((total, item) => total + item.quantity, 0);
       document.getElementById('cart-count').textContent = count;
     }
+
     function addToCart(product) {
       let cart = getCart();
       const existing = cart.find(item => item.id === product.id);
@@ -232,6 +249,7 @@
       updateCartCount();
       alert(`${product.name} added to cart!`);
     }
+
     updateCartCount();
   </script>
 
