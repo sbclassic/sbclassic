@@ -18,46 +18,48 @@
       font-size: 15px;
     }
 
-    header {
-      background-color: #191970;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      max-width: 1200px;
-      margin: auto;
-    }
+header {
+  background-color: #191970;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
 
-    .logo img {
-       height: 80px;
-       max-width: 100%;
-       object-fit: contain;
-     }
+.logo img {
+  height: 80px;
+  max-width: 100%;
+  object-fit: contain;
+}
 
-    .nav {
-       display: flex;
-       flex-wrap: wrap;
-       gap: 12px;
-       justify-content: center;
-     }
+.nav-container {
+  flex: 1;
+  text-align: center;
+}
 
-    .nav a {
-       font-size: 14px;
-       color: #f8f8ff;
-       text-decoration: none;
-       font-weight: 600;
-       transition: color 0.3s;
-    }
-    .nav-title {
-       width: 100%;
-       text-align: center;
-       font-weight: 700;
-       font-size: 24px;
-       color: #f8f8ff;
-       margin: 5px 0 10px;
-       font-family: 'Poppins', sans-serif;
-     }
+.nav-title {
+  font-weight: 700;
+  font-size: 24px;
+  color: #f8f8ff;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 6px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+nav a {
+  font-size: 14px;
+  color: #f8f8ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
 
     .hero {
       background-image: url('images/hero-sbclassic.png');
@@ -197,9 +199,10 @@
 
   <!-- HEADER -->
   <header>
-    <div class="logo">
-      <img src="logo.png" alt="SB CLASSIC Logo">
-    </div>
+  <div class="logo">
+    <img src="logo.png" alt="SB CLASSIC Logo">
+  </div>
+  <div class="nav-container">
     <div class="nav-title">SB CLASSIC</div>
     <nav>
       <a href="index.html">Home</a>
@@ -210,7 +213,8 @@
       <a href="contact.html">Contact</a>
       <a href="cart.html">🛒 Cart</a>
     </nav>
-  </header>
+  </div>
+</header>
 
   <!-- HERO IMAGE ONLY -->
   <section class="hero"></section>
