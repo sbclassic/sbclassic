@@ -60,29 +60,16 @@
       background-image: url('images/hero-sbclassic.png');
       background-size: cover;
       background-position: center;
-      height: 100vh; /* Full screen height */
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: white;
       position: relative;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
     }
-
-    .hero h1 {
-      font-size: 2.4rem;
-      margin: 0;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-      font-weight: 700;
-    }
-
-    .hero p {
-      font-size: 1.3rem;
-      font-style: italic;
-      margin-top: 10px;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-    }
-    
     .hero::before {
       content: "";
       position: absolute;
@@ -90,23 +77,23 @@
       width: 100%; height: 100%;
       background: rgba(0, 0, 0, 0.4); /* dark overlay */
       z-index: 1;
-     }
-
-     .hero-content {
-       position: relative;
-       z-index: 2;
-       font-family: 'Poppins', sans-serif;
-     }
-
-     .hero-content h1 {
-       font-size: 3rem;
-       margin-bottom: 0.5rem;
-     }
-
-     .hero-content p {
-       font-size: 1.5rem;
-     }
-
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 20px;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0 0 10px;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    }
+    .hero-content p {
+      font-size: 1.4rem;
+      font-style: italic;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
     .section {
       max-width: 1200px;
       margin: 40px auto;
