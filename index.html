@@ -6,71 +6,167 @@
   <title>SB CLASSIC – Style with Class</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background-color: #ffffff;
-  color: #333;
-  font-size: 16px; /* Set a base size */
-}
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #333;
+      font-size: 15px;
+    }
 
-header {
-  background-color: #191970;
-  padding: 10px 20px; /* Reduce padding */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    header {
+      background-color: #191970;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-.logo img {
-  height: 60px; /* Reduce logo size */
-}
+    .logo img {
+      height: 50px;
+    }
 
-nav {
-  display: flex;
-  gap: 16px;
-}
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
 
-nav a {
-  font-size: 14px;
-  color: #f8f8ff;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s;
-}
+    nav a {
+      font-size: 14px;
+      color: #f8f8ff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
 
-.hero {
-  background-image: url('images/hero-sbclassic.png');
-  background-size: cover;
-  background-position: center;
-  height: 60vh; /* Reduce height from 100vh */
-}
+    .hero {
+      background-image: url('images/hero-sbclassic.png');
+      background-size: cover;
+      background-position: center;
+      height: 40vh;
+      min-height: 250px;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-.products {
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
-}
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
 
-.product-card img {
-  width: 100%;
-  height: auto;
-}
+    .section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-.footer {
-  background-color: #2c2c2c;
-  color: white;
-  padding: 30px 20px;
-  font-size: 14px;
-}
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
 
-.whatsapp-button img {
-  width: 50px;
-  height: 50px;
-}
+    .product {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 16px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .product img {
+      width: 100%;
+      max-height: 240px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .quantity-input {
+      width: 60px;
+      padding: 4px;
+      margin-top: 4px;
+    }
+
+    .btn {
+      margin-top: 10px;
+      padding: 8px 12px;
+      font-size: 13px;
+      background-color: #191970;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .cart-buttons {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .cart-buttons a {
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 10px 16px;
+      background-color: #2c2c2c;
+      color: white;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #2c2c2c;
+      color: white;
+      padding: 30px 20px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    footer .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .social-links a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    .whatsapp-chat {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .whatsapp-chat img {
+      width: 50px;
+      height: 50px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        justify-content: center;
+      }
+
+      .logo img {
+        height: 40px;
+      }
+
+      .section h2 {
+        font-size: 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -97,48 +193,50 @@ nav a {
   <section class="section">
     <h2>Featured Products</h2>
     <div class="products">
-    <div class="product" data-name="Elegant 2pcs Set – Apricot" data-price="1980" data-image="clothes/elegant_2pcs_set_apricot.jpeg">
+
+      <!-- Product Cards -->
+      <div class="product" data-name="Elegant 2pcs Set – Apricot" data-price="1980">
         <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Apricot" />
         <h3>Elegant 2pcs Set – Apricot</h3>
         <p>GHS 1,980</p>
-        <label class="quantity-label" for="qty-apricot">Quantity:</label>
-        <input type="number" id="qty-apricot" class="quantity-input" min="1" value="1" />
+        <label>Quantity:</label>
+        <input type="number" class="quantity-input" min="1" value="1" />
         <button class="btn add-to-cart-btn">Add to Cart</button>
       </div>
 
-      <div class="product" data-name="Elegant 2pcs Set – Black" data-price="1980" data-image="clothes/elegant_2pcs_set_black.jpeg">
+      <div class="product" data-name="Elegant 2pcs Set – Black" data-price="1980">
         <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Black" />
         <h3>Elegant 2pcs Set – Black</h3>
         <p>GHS 1,980</p>
-        <label class="quantity-label" for="qty-black">Quantity:</label>
-        <input type="number" id="qty-black" class="quantity-input" min="1" value="1" />
+        <label>Quantity:</label>
+        <input type="number" class="quantity-input" min="1" value="1" />
         <button class="btn add-to-cart-btn">Add to Cart</button>
       </div>
 
-      <div class="product" data-name="Elegant 2pcs Set – Blue Black" data-price="1980" data-image="clothes/elegant_2pcs_set_blueblack.jpeg">
+      <div class="product" data-name="Elegant 2pcs Set – Blue Black" data-price="1980">
         <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Blue Black" />
         <h3>Elegant 2pcs Set – Blue Black</h3>
         <p>GHS 1,980</p>
-        <label class="quantity-label" for="qty-blueblack">Quantity:</label>
-        <input type="number" id="qty-blueblack" class="quantity-input" min="1" value="1" />
+        <label>Quantity:</label>
+        <input type="number" class="quantity-input" min="1" value="1" />
         <button class="btn add-to-cart-btn">Add to Cart</button>
       </div>
 
-      <div class="product" data-name="Versace Sneaker – Black" data-price="1899" data-image="shoes/versace_sneaker_black.jpeg">
+      <div class="product" data-name="Versace Sneaker – Black" data-price="1899">
         <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
         <h3>Versace Sneaker – Black</h3>
         <p>GHS 1,899</p>
-        <label class="quantity-label" for="qty-vsb">Quantity:</label>
-        <input type="number" id="qty-vsb" class="quantity-input" min="1" value="1" />
+        <label>Quantity:</label>
+        <input type="number" class="quantity-input" min="1" value="1" />
         <button class="btn add-to-cart-btn">Add to Cart</button>
       </div>
 
-      <div class="product" data-name="Versace Sneaker – White" data-price="1899" data-image="shoes/versace_sneaker_white.jpeg">
+      <div class="product" data-name="Versace Sneaker – White" data-price="1899">
         <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
         <h3>Versace Sneaker – White</h3>
         <p>GHS 1,899</p>
-        <label class="quantity-label" for="qty-vsw">Quantity:</label>
-        <input type="number" id="qty-vsw" class="quantity-input" min="1" value="1" />
+        <label>Quantity:</label>
+        <input type="number" class="quantity-input" min="1" value="1" />
         <button class="btn add-to-cart-btn">Add to Cart</button>
       </div>
     </div>
@@ -156,25 +254,30 @@ nav a {
       <p>SB CLASSIC is a Ghana-based men’s fashion brand committed to helping you look sharp, feel confident, and stand out — effortlessly.</p>
       <p>We specialize in premium suits, shirts, shoes, and accessories, carefully sourced from trusted international suppliers and tailored for the modern gentleman.</p>
       <p>🌍 WHAT WE OFFER:</p>
-      <p>- High-quality, ready-to-wear men’s fashion</p>
-      <p>- Local & nationwide delivery across Ghana</p>
-      <p>- International shipping available</p>
-      <p>- Easy and secure checkout</p>
-      <p>- Friendly customer service & order tracking</p>
+      <ul>
+        <li>High-quality, ready-to-wear men’s fashion</li>
+        <li>Local & nationwide delivery across Ghana</li>
+        <li>International shipping available</li>
+        <li>Easy and secure checkout</li>
+        <li>Friendly customer service & order tracking</li>
+      </ul>
       <p>Our slogan: Style with Class — and we live by it.</p>
+      <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
+      <p class="social-links">
+        FOLLOW US ON:
+        <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
+        <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
+        <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
+        <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
+        <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
+      </p>
+      <p>© 2025 SB CLASSIC. All rights reserved.</p>
     </div>
-    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
-    <p class="social-links">
-      FOLLOW US ON:
-      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
-      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
-      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
-    </p>
-    <p>© 2025 SB CLASSIC. All rights reserved.</p>
   </footer>
 
   <a href="https://wa.me/233260928990" target="_blank" class="whatsapp-chat" aria-label="Chat with us on WhatsApp">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
   </a>
+
+</body>
+</html>
