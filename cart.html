@@ -6,25 +6,33 @@
   <title>Cart 🛒 – SB CLASSIC</title>
   <style>
     body {
-      background: #0b0b1c;
-      color: #fff;
+      background: #fff;
+      color: #000;
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 20px;
     }
     h1 {
       text-align: center;
-      color: #d4af37;
+      color: #fff;
+      background-color: #191970;
+      margin: 0;
+      padding: 15px 0;
+      font-weight: bold;
     }
     nav {
       text-align: center;
       margin-bottom: 25px;
+      background-color: #191970;
+      padding: 15px 0;
+      border-radius: 6px;
     }
     nav a {
-      color: #d4af37;
+      color: #fff;
       text-decoration: none;
       margin: 0 15px;
       font-weight: bold;
+      font-size: 1.1em;
     }
     nav a:hover {
       text-decoration: underline;
@@ -32,20 +40,23 @@
     .container {
       max-width: 900px;
       margin: auto;
-      background: #1a1a2e;
+      background: #f5f5f5;
       padding: 20px;
       border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+      color: #000;
     }
     .cart-item {
       display: flex;
       align-items: center;
-      border-bottom: 1px solid #333;
+      border-bottom: 1px solid #ccc;
       padding: 15px 0;
     }
     .cart-item img {
       width: 80px;
       height: auto;
       border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
     .item-details {
       flex: 2;
@@ -55,9 +66,10 @@
       font-size: 1.2em;
       font-weight: bold;
       margin-bottom: 5px;
+      color: #191970;
     }
     .item-price {
-      color: #ccc;
+      color: #444;
       margin-bottom: 8px;
     }
     .quantity-control {
@@ -70,7 +82,7 @@
       padding: 5px;
       font-size: 1em;
       border-radius: 5px;
-      border: none;
+      border: 1px solid #ccc;
       text-align: center;
     }
     .remove-btn {
@@ -121,7 +133,7 @@
     .empty-msg {
       text-align: center;
       font-size: 1.3em;
-      color: #aaa;
+      color: #666;
       margin: 50px 0;
     }
   </style>
