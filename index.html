@@ -19,54 +19,49 @@
     }
 
 header {
-      background-color: #191970;
-      width: 100%;
-    }
+  background-color: #191970;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
 
-    .navbar-inner {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-    }
+.logo img {
+  height: 80px;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  display: block;
+}
 
-    .logo img {
-      height: 80px;
-      width: auto;
-      max-width: none;
-      object-fit: contain;
-      display: block;
-    }
+.nav-container {
+  flex: 1;
+  text-align: center;
+}
 
-    .nav-container {
-      flex: 1;
-      text-align: center;
-    }
+.nav-title {
+  font-weight: 700;
+  font-size: 24px;
+  color: #f8f8ff;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 6px;
+}
 
-    .nav-title {
-      font-weight: 700;
-      font-size: 24px;
-      color: #f8f8ff;
-      font-family: 'Poppins', sans-serif;
-      margin-bottom: 6px;
-    }
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
 
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    nav a {
-      font-size: 14px;
-      color: #f8f8ff;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
+nav a {
+  font-size: 14px;
+  color: #f8f8ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
 
     .hero {
       background-image: url('images/hero-sbclassic.png');
