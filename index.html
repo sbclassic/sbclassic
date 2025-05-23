@@ -27,12 +27,14 @@ header {
   margin: auto;
 }
 
+.logo {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
 .logo img {
-  height: 80px;
-  width: auto;
-  max-width: none;
-  object-fit: contain;
-  display: block;
+   height: 80px;
+   max-width: 100%;
 }
 
 .nav-container {
@@ -174,12 +176,13 @@ nav a {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      z-index: 1000;
+      z-index: 999;
     }
 
     .whatsapp-chat img {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
     }
 
     @media (max-width: 768px) {
