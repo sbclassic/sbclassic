@@ -272,5 +272,52 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
   </a>
 
+<script>
+  const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+  const viewCartBtn = document.getElementById('view-cart-btn');
+  const checkoutBtn = document.getElementById('checkout-btn');
+
+  function getCart() {
+    const cart = localStorage.getItem('cart');
+    return cart ? JSON.parse(cart) : [];
+  }
+
+  function saveCart(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  function updateCartButtons() {
+    const cart = getCart();
+    const visible = cart.length > 0;
+    if (viewCartBtn) viewCartBtn.style.display = visible ? 'inline-block' : 'none';
+    if (checkoutBtn) checkoutBtn.style.display = visible ? 'inline-block' : 'none';
+  }
+
+  addToCartButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const productDiv = btn.closest('.product');
+      const name = productDiv.dataset.name;
+      const price = parseFloat(productDiv.dataset.price);
+      const image = productDiv.dataset.image;
+      const qtyInput = productDiv.querySelector('.quantity-input');
+      let quantity = parseInt(qtyInput.value);
+      if (quantity < 1 || isNaN(quantity)) quantity = 1;
+
+      let cart = getCart();
+      const index = cart.findIndex(item => item.name === name);
+      if (index > -1) {
+        cart[index].quantity += quantity;
+      } else {
+        cart.push({ name, price, image, quantity });
+      }
+
+      saveCart(cart);
+      updateCartButtons();
+      alert(`${quantity} x "${name}" added to cart.`);
+    });
+  });
+
+  updateCartButtons();
+</script>
 </body>
 </html>
