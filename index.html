@@ -25,6 +25,14 @@ header {
   padding: 10px 20px;
   max-width: 1200px;
   margin: auto;
+  height: auto; /* Let height grow naturally */
+}
+
+logo {
+  flex-shrink: 0; /* Prevent shrinking */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo img {
@@ -199,22 +207,20 @@ nav a {
 
   <!-- HEADER -->
   <header>
-  <div class="header-inner">
-    <div class="logo">
-      <img src="logo.png" alt="SB CLASSIC Logo">
-    </div>
-    <div class="nav-container">
-      <div class="nav-title">SB CLASSIC</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="clothes.html">Clothes</a>
-        <a href="shoes.html">Shoes</a>
-        <a href="accessories.html">Accessories</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="cart.html">🛒 Cart</a>
-      </nav>
-    </div>
+  <div class="logo">
+    <img src="logo.png" alt="SB CLASSIC Logo">
+  </div>
+  <div class="nav-container">
+    <div class="nav-title">SB CLASSIC</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="clothes.html">Clothes</a>
+      <a href="shoes.html">Shoes</a>
+      <a href="accessories.html">Accessories</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">🛒 Cart</a>
+    </nav>
   </div>
 </header>
 
