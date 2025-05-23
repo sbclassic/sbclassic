@@ -57,17 +57,16 @@
     }
 
     .hero {
-      background-image: url('banner.jpg');
+      background-image: url('images/hero-sbclassic.png');
       background-size: cover;
       background-position: center;
-      height: 400px;
+      height: 100vh; /* Full screen height */
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: white;
-      flex-direction: column;
-      padding: 20px;
+      position: relative;
     }
 
     .hero h1 {
@@ -84,19 +83,6 @@
       text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
     }
     
-    .hero {
-      background-image: url('images/hero-sbclassic.png');
-      background-size: cover;
-      background-position: center;
-      height: 100vh; /* Full screen height */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      position: relative;
-    }
-
     .hero::before {
       content: "";
       position: absolute;
