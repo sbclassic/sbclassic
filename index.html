@@ -7,125 +7,70 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #ffffff;
-      color: #333;
-    }
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
+  color: #333;
+  font-size: 16px; /* Set a base size */
+}
 
-    header {
-      background-color: #191970;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+header {
+  background-color: #191970;
+  padding: 10px 20px; /* Reduce padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .logo img {
-      height: 80px;
-    }
+.logo img {
+  height: 60px; /* Reduce logo size */
+}
 
-    nav {
-      display: flex;
-      gap: 20px;
-    }
+nav {
+  display: flex;
+  gap: 16px;
+}
 
-    nav a {
-      color: #f8f8ff;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
+nav a {
+  font-size: 14px;
+  color: #f8f8ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
 
-    nav a:hover {
-      color: #e6e6fa;
-    }
+.hero {
+  background-image: url('images/hero-sbclassic.png');
+  background-size: cover;
+  background-position: center;
+  height: 60vh; /* Reduce height from 100vh */
+}
 
-    .hero {
-      background-image: url('images/hero-sbclassic.png'); /* Replace with your image */
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-    }
+.products {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
 
-    .products {
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
+.product-card img {
+  width: 100%;
+  height: auto;
+}
 
-    .product-card {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
+.footer {
+  background-color: #2c2c2c;
+  color: white;
+  padding: 30px 20px;
+  font-size: 14px;
+}
 
-    .product-card img {
-      width: 100%;
-      height: auto;
-    }
-
-    .product-info {
-      padding: 16px;
-    }
-
-    .product-info h3 {
-      margin: 0;
-      font-size: 18px;
-    }
-
-    .product-info p {
-      margin: 8px 0;
-      font-weight: 600;
-    }
-
-    .product-info button {
-      padding: 10px 15px;
-      background-color: #191970;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .footer {
-      background-color: #2c2c2c;
-      color: white;
-      padding: 40px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .footer h4 {
-      margin-bottom: 10px;
-    }
-
-    .footer p, .footer a {
-      color: #ccc;
-      text-decoration: none;
-      margin: 4px 0;
-    }
-
-    .whatsapp-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 999;
-    }
-
-    .whatsapp-button img {
-      width: 60px;
-      height: 60px;
-    }
+.whatsapp-button img {
+  width: 50px;
+  height: 50px;
+}
   </style>
 </head>
 <body>
