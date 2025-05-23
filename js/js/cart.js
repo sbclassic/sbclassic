@@ -1,15 +1,15 @@
 // js/cart.js
 
 function getCart() {
-  return JSON.parse(localStorage.getItem('cart')) || [];
+  return JSON.parse(localStorage.getItem('sbclassicCart')) || [];
 }
 
 function saveCart(cart) {
-  localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem('sbclassicCart', JSON.stringify(cart));
 }
 
 function clearCart() {
-  localStorage.removeItem('cart');
+  localStorage.removeItem('sbclassicCart');
 }
 
 function addToCart(product) {
