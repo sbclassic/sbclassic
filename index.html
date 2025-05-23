@@ -25,28 +25,19 @@ header {
   padding: 10px 20px;
   max-width: 1200px;
   margin: auto;
-  height: auto; /* Let height grow naturally */
-}
-
-.logo {
-  flex-shrink: 0; /* Prevent shrinking */
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .logo img {
-  height: 100px;
-  max-width: 100%;
+  height: 80px;
+  width: auto;
+  max-width: none;
   object-fit: contain;
+  display: block;
 }
 
-header {
-  justify-content: space-between;
-}
 .nav-container {
-  flex: none;
-  text-align: left;
+  flex: 1;
+  text-align: center;
 }
 
 .nav-title {
@@ -254,7 +245,7 @@ nav a {
           <h3>Elegant 2pcs Set – Blue Black</h3>
           <p>GHS 1,980</p>
           <label>Quantity:</label>
-          <input type="number" class="quantity-input" min="1" value="1" />
+          <inputtype="number" class="quantity-input" min="1" value="1" />
           <button class="btn add-to-cart-btn">Add to Cart</button>
         </div>
         <div class="product" data-name="Versace Sneaker – Black" data-price="1899" data-image="shoes/versace_sneaker_black.jpeg">
