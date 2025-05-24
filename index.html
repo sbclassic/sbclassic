@@ -138,7 +138,7 @@ nav a {
     }
 
 footer {
-  background-color: #fafafa; /* soft off-white */
+  background-color: #fafafa; /* soft background */
   color: #444;
   padding: 40px 20px;
   font-family: 'Poppins', sans-serif;
@@ -151,7 +151,7 @@ footer {
 footer h2 {
   font-size: 20px;
   margin-bottom: 12px;
-  color: #191970; /* deep navy */
+  color: #191970;
   font-weight: 600;
 }
 
@@ -161,6 +161,7 @@ footer ul {
   text-align: left;
   max-width: 600px;
   margin: 0 auto 20px;
+  color: #555;
 }
 
 footer p {
@@ -168,19 +169,30 @@ footer p {
   color: #555;
 }
 
-footer a {
-  color: #191970;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
+footer p strong {
+  color: #000; /* for “CONTACT” and “FOLLOW US ON” */
+  font-weight: 700;
 }
 
-footer a:hover {
-  color: #000;
+footer .highlight {
+  color: #191970; /* midnight blue */
+  font-weight: 700;
 }
 
 footer .social-links {
   margin-top: 10px;
+}
+
+footer .social-links a {
+  color: #191970;
+  font-weight: 700;
+  margin: 0 5px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer .social-links a:hover {
+  color: #000;
 }
     .whatsapp-chat {
       position: fixed;
@@ -299,9 +311,11 @@ footer .social-links {
         <li>Friendly customer service & order tracking</li>
       </ul>
       <p>Our slogan: Style with Class — and we live by it.</p>
-      <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
+      
+      <p><strong>CONTACT:</strong> <span class="highlight">+233260928990</span> | <span class="highlight">sbclassics@icloud.com</span></p>
+
       <p class="social-links">
-        FOLLOW US ON:
+        <strong>FOLLOW US ON:</strong>
         <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
         <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
         <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
