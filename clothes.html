@@ -69,67 +69,44 @@
       justify-content: center;
     }
 
-    .product {
-      width: 300px; /* Increased from 250px */
-      background-color: #ffffff; /* white product card */
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      overflow: hidden;
-      text-align: center;
-      padding-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      color: #2c2c2c; /* dark text */
-      transition: transform 0.3s ease;
-     }
+    .products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 10px;
+}
 
-    .product img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-bottom: 1px solid #eee;
-     }
+.product {
+  width: 300px; /* Increased from 250px */
+  background-color: #ffffff; /* white product card */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  color: #2c2c2c; /* dark text */
+  transition: transform 0.3s ease;
+}
 
-     .product h3 {
-       margin: 10px 0 5px;
-       font-size: 1rem;
-       font-weight: 500;
-       color: #2c2c2c;
-     }
+.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
 
-    .product p.price {
-      color: #191970;
-      font-weight: bold;
-      margin: 5px 0;
-    }
+.product img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 1px solid #eee;
+}
 
-    .product button {
-      background-color: #191970;
-      color: #ffffff;
-      border: none;
-      padding: 10px 15px;
-      margin-top: 10px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 0.9rem;
-      transition: background 0.3s ease;
-    }
-    
-    .product button:hover {
-      background-color: #151552;
-    }
-    
-    .product img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-bottom: 1px solid #eee;
-    }
-
-    .product h3 {
-      margin: 15px 0 8px;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
+.product h3 {
+  margin: 15px 0 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
     
     footer {
       background: #ffffff;
