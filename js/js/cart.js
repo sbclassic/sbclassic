@@ -1,31 +1,11 @@
-// js/cart.js
-
-function getCart() {
-  return JSON.parse(localStorage.getItem('sbclassicCart')) || [];
-}
-
-function saveCart(cart) {
-  localStorage.setItem('sbclassicCart', JSON.stringify(cart));
-}
-
-function clearCart() {
-  localStorage.removeItem('sbclassicCart');
-}
-
-function addToCart(product) {
+function addToCart(product, quantity = 1) {
   let cart = getCart();
   const existing = cart.find(item => item.id === product.id);
   if (existing) {
-    existing.quantity += 1;
+    existing.quantity += quantity;
   } else {
-    cart.push({ ...product, quantity: 1 });
+    cart.push({ ...product, quantity: quantity });
   }
   saveCart(cart);
-  alert(`${product.name} added to cart`);
-}
-
-function removeFromCart(id) {
-  let cart = getCart().filter(item => item.id !== id);
-  saveCart(cart);
-  location.reload();
+  alert(`${product.name} (x${quantity}) added to cart`);
 }
