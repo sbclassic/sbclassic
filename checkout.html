@@ -1,45 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Checkout – SB CLASSIC</title>
 </head>
 <body>
-  <h1>Checkout 💳</h1>
-  <div id="checkout-summary"></div>
-
+  <h1>Checkout</h1>
+  <div id="cart-items"></div>
   <script src="cart.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const cart = getCart();
-      const summaryDiv = document.getElementById("checkout-summary");
-
-      if (cart.length === 0) {
-        summaryDiv.innerHTML = "<p>Your cart is empty. Please add items before checking out.</p>";
-        return;
-      }
-
-      let html = "";
-      let total = 0;
-
-      cart.forEach(item => {
-        const subtotal = item.price * item.quantity;
-        total += subtotal;
-        html += `
-          <div>
-            <strong>${item.name}</strong><br>
-            Price: GHS ${item.price.toFixed(2)}<br>
-            Quantity: ${item.quantity}<br>
-            Subtotal: GHS ${subtotal.toFixed(2)}
-            <hr>
-          </div>
-        `;
-      });
-
-      html += `<strong>Total: GHS ${total.toFixed(2)}</strong>`;
-      summaryDiv.innerHTML = html;
-    });
+    document.addEventListener("DOMContentLoaded", renderCart);
   </script>
 </body>
 </html>
