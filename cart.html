@@ -1,44 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8" /><title>Cart 🛒</title></head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart – SB CLASSIC</title>
+</head>
 <body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="checkout.html">Checkout 💳</a>
+  </nav>
+
   <h1>Your Cart 🛒</h1>
   <div id="cart-items"></div>
   <div id="cart-total"></div>
-  <a href="checkout.html" id="checkout-link" style="display:none;">Proceed to Checkout 💳</a>
+  <a href="checkout.html" id="checkout-link" style="display:none;">Proceed to Checkout</a>
 
+  <script src="cart.js"></script>
   <script>
-    function renderCart() {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const container = document.getElementById('cart-items');
-      container.innerHTML = '';
-
-      if (cart.length === 0) {
-        container.textContent = 'Your cart is empty.';
-        document.getElementById('cart-total').textContent = '';
-        document.getElementById('checkout-link').style.display = 'none';
-        return;
-      }
-
-      cart.forEach(item => {
-        const div = document.createElement('div');
-        div.innerHTML = `
-          <img src="${item.image}" alt="${item.name}" width="100" />
-          <strong>${item.name}</strong><br>
-          Price: GHS ${item.price.toFixed(2)}<br>
-          Quantity: ${item.quantity}
-        `;
-        container.appendChild(div);
-      });
-
-      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-      document.getElementById('cart-total').textContent = 'Total: GHS ' + total.toFixed(2);
-      document.getElementById('checkout-link').style.display = 'inline-block';
-    }
-
-    <script src="cart.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', renderCart);
-</script>
+    document.addEventListener("DOMContentLoaded", () => {
+      renderCart();
+    });
+  </script>
 </body>
 </html>
