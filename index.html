@@ -393,17 +393,12 @@ footer .social-links a:hover {
   document.querySelectorAll('.add-to-cart-btn').forEach(button => {
     button.addEventListener('click', () => {
       const productDiv = button.closest('.product');
-      const quantityInput = productDiv.querySelector('.quantity-input');
-      const quantity = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
-
       const product = {
-        id: productDiv.dataset.id,
         name: productDiv.dataset.name,
         price: parseFloat(productDiv.dataset.price),
         image: productDiv.dataset.image,
-        quantity: quantity,
+        quantity: 1
       };
-
       addToCart(product);
       alert(`Added "${product.name}" to cart.`);
     });
