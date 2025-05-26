@@ -13,37 +13,14 @@
 
   <h1>Your Cart 🛒</h1>
   <div id="cart-items"></div>
-  <div id="cart-total"></div>
+  <div id="cart-total" style="margin-top: 20px; font-weight: bold;"></div>
   <a href="checkout.html" id="checkout-link" style="display:none;">Proceed to Checkout 💳</a>
 
   <script src="cart.js"></script>
   <script>
-    function updateCartTotal() {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      if (cart.length === 0) {
-        document.getElementById('cart-total').textContent = '';
-        document.getElementById('checkout-link').style.display = 'none';
-        return;
-      }
-      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-      document.getElementById('cart-total').textContent = 'Total: GHS ' + total.toFixed(2);
-      document.getElementById('checkout-link').style.display = 'inline-block';
-    }
-
-    // Run after renderCart updates the list
-    function renderCartAndTotal() {
-      renderCart();
-      updateCartTotal();
-    }
-
-    // Override renderCart to also update total
-    const originalRenderCart = renderCart;
-    renderCart = function() {
-      originalRenderCart();
-      updateCartTotal();
-    };
-
-    document.addEventListener('DOMContentLoaded', renderCartAndTotal);
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCart(); // This is already defined in cart.js and handles display
+    });
   </script>
 </body>
 </html>
