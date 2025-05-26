@@ -82,17 +82,62 @@
       subtotal += item.price * item.quantity;
     });
 
-    const deliverySelect = document.getElementById('delivery-option');
+    const deliverySelect = document.getElementById('shipping'); // corrected id here
     const subtotalDisplay = document.getElementById('summary-subtotal');
     const deliveryDisplay = document.getElementById('summary-shipping');
     const totalDisplay = document.getElementById('summary-total');
 
     subtotalDisplay.textContent = 'Subtotal: GHS ' + subtotal.toFixed(2);
 
-    deliverySelect.addEventListener('change', function () {
-      const deliveryFee = parseFloat(this.value);
+    function updateTotals() {
+      const deliveryFee = parseFloat(deliverySelect.value) || 0;
       deliveryDisplay.textContent = 'Delivery: GHS ' + deliveryFee.toFixed(2);
       totalDisplay.textContent = 'Total: GHS ' + (subtotal + deliveryFee).toFixed(2);
+    }
+
+    deliverySelect.addEventListener('change', updateTotals);
+
+    // Initialize totals on page load (in case a default is selected)
+    updateTotals();
+
+    document.getElementById('checkout-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (cart.length === 0) {
+        alert('Your cart is empty.');
+        return;
+      }
+
+      const name = this.name.value.trim();
+      const email = this.email.value.trim();
+      const phone = this.phone.value.trim();
+      const shippingCost = parseFloat(deliverySelect.value) || 0;
+      const totalAmount = subtotal + shippingCost;
+      const amountInKobo = totalAmount * 100;
+
+      var handler = PaystackPop.setup({
+        key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6', // Replace with your public key
+        email: email,
+        amount: amountInKobo,
+        currency: 'GHS',
+        metadata: {
+          custom_fields: [
+            { display_name: "Customer Name", value: name },
+            { display_name: "Phone Number", value: phone },
+            { display_name: "Shipping Option", value: `GHS ${shippingCost.toFixed(2)}` }
+          ]
+        },
+        callback: function (response) {
+          alert('Payment complete! Reference: ' + response.reference);
+          localStorage.removeItem('cart');
+          window.location.href = 'index.html';
+        },
+        onClose: function () {
+          alert('Payment window closed.');
+        }
+      });
+
+      handler.openIframe();
     });
   });
 
