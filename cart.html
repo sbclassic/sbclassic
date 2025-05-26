@@ -4,9 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cart 🛒 – SB CLASSIC</title>
-  <style>
-    /* (keep your existing styles) */
-  </style>
 </head>
 <body>
   <nav>
@@ -15,113 +12,38 @@
   </nav>
 
   <h1>Your Cart 🛒</h1>
-  <div class="container" id="cart-container">
-    <!-- Cart items inserted here -->
-  </div>
+  <div id="cart-items"></div>
+  <div id="cart-total"></div>
+  <a href="checkout.html" id="checkout-link" style="display:none;">Proceed to Checkout 💳</a>
 
+  <script src="cart.js"></script>
   <script>
-    function getCart() {
-      return JSON.parse(localStorage.getItem('cart')) || [];
-    }
-
-    function saveCart(cart) {
-      localStorage.setItem('cart', JSON.stringify(cart));
-    }
-
-    function formatPrice(num) {
-      return 'GHS ' + num.toFixed(2);
-    }
-
-    function renderCart() {
-      const cart = getCart();
-      const container = document.getElementById('cart-container');
-      container.innerHTML = '';
-
+    function updateCartTotal() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
       if (cart.length === 0) {
-        container.innerHTML = '<p class="empty-msg">Your cart is empty.</p>';
+        document.getElementById('cart-total').textContent = '';
+        document.getElementById('checkout-link').style.display = 'none';
         return;
       }
-
-      let total = 0;
-
-      cart.forEach((item, index) => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'cart-item';
-        itemDiv.innerHTML = `
-          <img src="${item.image}" alt="${item.name}" />
-          <div class="item-details">
-            <div class="item-name">${item.name}</div>
-            <div class="item-price">Price: ${formatPrice(item.price)}</div>
-            <div class="quantity-control">
-              Quantity: 
-              <input type="number" min="1" max="99" value="${item.quantity}" data-index="${index}" />
-              <button class="remove-btn" data-index="${index}">Remove</button>
-            </div>
-          </div>
-          <div class="item-total">${formatPrice(itemTotal)}</div>
-        `;
-        container.appendChild(itemDiv);
-      });
-
-      // Add cart summary & checkout button
-      const summaryDiv = document.createElement('div');
-      summaryDiv.className = 'cart-summary';
-      summaryDiv.textContent = 'Total: ' + formatPrice(total);
-
-      const checkoutBtn = document.createElement('a');
-      checkoutBtn.href = 'checkout.html';
-      checkoutBtn.className = 'checkout-btn';
-      checkoutBtn.textContent = 'Proceed to Checkout 💳';
-
-      container.appendChild(summaryDiv);
-      container.appendChild(checkoutBtn);
-
-      addListeners();
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      document.getElementById('cart-total').textContent = 'Total: GHS ' + total.toFixed(2);
+      document.getElementById('checkout-link').style.display = 'inline-block';
     }
 
-    function addListeners() {
-      const quantityInputs = document.querySelectorAll('.quantity-control input');
-      const removeButtons = document.querySelectorAll('.remove-btn');
-
-      quantityInputs.forEach(input => {
-        input.addEventListener('change', (e) => {
-          const index = parseInt(e.target.dataset.index, 10);
-          if (isNaN(index)) return;
-
-          let newQty = parseInt(e.target.value, 10);
-          if (isNaN(newQty) || newQty < 1) newQty = 1;
-          if (newQty > 99) newQty = 99;
-
-          const cart = getCart();
-          if (cart[index]) {
-            cart[index].quantity = newQty;
-            saveCart(cart);
-            renderCart();
-          }
-        });
-      });
-
-      removeButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const index = parseInt(e.target.dataset.index, 10);
-          if (isNaN(index)) return;
-
-          const cart = getCart();
-          if (cart[index]) {
-            cart.splice(index, 1);
-            saveCart(cart);
-            renderCart();
-          }
-        });
-      });
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
+    // Run after renderCart updates the list
+    function renderCartAndTotal() {
       renderCart();
-    });
+      updateCartTotal();
+    }
+
+    // Override renderCart to also update total
+    const originalRenderCart = renderCart;
+    renderCart = function() {
+      originalRenderCart();
+      updateCartTotal();
+    };
+
+    document.addEventListener('DOMContentLoaded', renderCartAndTotal);
   </script>
 </body>
 </html>
