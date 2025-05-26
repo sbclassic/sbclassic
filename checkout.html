@@ -39,50 +39,41 @@
   </nav>
 
   <h1>Checkout 💳</h1>
-  
-  <p id="subtotal" style="font-weight: bold;"></p>
-  
-  <label for="delivery-option" style="font-weight: bold;">Select Delivery Option:</label>
+
+<p id="subtotal" style="font-weight: bold;"></p>
+
+<label for="delivery-option" style="font-weight: bold;">Select Delivery Option:</label>
 <select id="delivery-option" required style="margin-bottom: 15px; display: block;">
   <option value="" disabled selected>Select delivery method</option>
-  <option value="20">Standard Delivery (GHS 20.00)</option>
-  <option value="40">Express Delivery (GHS 40.00)</option>
-  <option value="70">Same Day Delivery (GHS 70.00)</option>
+  <option value="0">Accra – GHS 50–95 (Depending on the area)</option>
+  <option value="0">Kumasi – GHS 50–80 (Depending on the value of the item)</option>
+  <option value="0">International Shipping – GHS 200–700 (Depending on the country)</option>
 </select>
-  
-  <div id="order-summary" style="margin-bottom: 20px; font-weight: bold;">
-    <h3>Order Summary</h3>
-    <p id="summary-subtotal">Subtotal: GHS 0.00</p>
-    <p id="summary-shipping">Delivery: GHS 0.00</p>
-    <p id="summary-total">Total: GHS 0.00</p>
-  </div>
 
-  <form id="checkout-form">
-    <label for="name">Full Name:</label><br />
-    <input type="text" id="name" name="name" required /><br /><br />
+<div id="order-summary" style="margin-bottom: 20px; font-weight: bold;">
+  <h3>Order Summary</h3>
+  <p id="summary-subtotal">Subtotal: GHS 0.00</p>
+  <p id="summary-shipping">Delivery: GHS 0.00</p>
+  <p id="summary-total">Total: GHS 0.00</p>
+</div>
 
-    <label for="email">Email:</label><br />
-    <input type="email" id="email" name="email" required /><br /><br />
+<form id="checkout-form">
+  <label for="name">Full Name:</label><br />
+  <input type="text" id="name" name="name" required /><br /><br />
 
-    <label for="phone">Phone Number:</label><br />
-    <input type="tel" id="phone" name="phone" required /><br /><br />
+  <label for="email">Email:</label><br />
+  <input type="email" id="email" name="email" required /><br /><br />
 
-  <label for="shipping">Shipping Option:</label><br />
-  <select id="shipping" name="shipping" required>
-    <option value="0">Select a delivery method</option>
-    <option value="20">Local Pickup – GHS 20</option>
-    <option value="40">Standard Delivery – GHS 40</option>
-    <option value="70">Nationwide Express – GHS 70</option>
-  </select><br /><br />
+  <label for="phone">Phone Number:</label><br />
+  <input type="tel" id="phone" name="phone" required /><br /><br />
 
   <div id="final-total" style="font-weight:bold;"></div><br />
 
   <button type="submit">Place Order</button>
 </form>
 
-  <script src="https://js.paystack.co/v1/inline.js"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
 <script>
-  // Dynamically populate subtotal, delivery, and total on page load
   document.addEventListener('DOMContentLoaded', function () {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     let subtotal = 0;
@@ -91,47 +82,20 @@
       subtotal += item.price * item.quantity;
     });
 
-    // Create delivery dropdown if it doesn't exist
-    if (!document.getElementById('delivery-option')) {
-      const deliveryLabel = document.createElement('label');
-      deliveryLabel.textContent = "Select Delivery Option:";
-      deliveryLabel.setAttribute('for', 'delivery-option');
+    const deliverySelect = document.getElementById('delivery-option');
+    const subtotalDisplay = document.getElementById('summary-subtotal');
+    const deliveryDisplay = document.getElementById('summary-shipping');
+    const totalDisplay = document.getElementById('summary-total');
 
-      const deliverySelect = document.createElement('select');
-      deliverySelect.id = 'delivery-option';
-      deliverySelect.innerHTML = `
-        <option value="0">-- Choose an option --</option>
-        <option value="20">Standard (2–5 days) - GHS 20</option>
-        <option value="40">Express (1–2 days) - GHS 40</option>
-        <option value="80">International - GHS 80</option>
-      `;
+    subtotalDisplay.textContent = 'Subtotal: GHS ' + subtotal.toFixed(2);
 
-      const summary = document.getElementById('subtotal')?.parentElement || document.body;
-      summary.appendChild(deliveryLabel);
-      summary.appendChild(deliverySelect);
-
-      // Add total display
-      const totalDisplay = document.createElement('p');
-      totalDisplay.id = 'total';
-      totalDisplay.style.fontWeight = 'bold';
-      totalDisplay.textContent = `Total: GHS ${subtotal.toFixed(2)}`;
-      summary.appendChild(totalDisplay);
-
-      // Update total when delivery option changes
-      deliverySelect.addEventListener('change', function () {
-        const deliveryFee = parseFloat(this.value);
-        document.getElementById('total').textContent =
-          `Total: GHS ${(subtotal + deliveryFee).toFixed(2)}`;
-      });
-    }
-
-    // Show subtotal
-    if (document.getElementById('subtotal')) {
-      document.getElementById('subtotal').textContent = 'Subtotal: GHS ' + subtotal.toFixed(2);
-    }
+    deliverySelect.addEventListener('change', function () {
+      const deliveryFee = parseFloat(this.value);
+      deliveryDisplay.textContent = 'Delivery: GHS ' + deliveryFee.toFixed(2);
+      totalDisplay.textContent = 'Total: GHS ' + (subtotal + deliveryFee).toFixed(2);
+    });
   });
 
-  // Checkout form submission
   document.getElementById('checkout-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
