@@ -1,65 +1,47 @@
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-function saveCart() {
-  localStorage.setItem('cart', JSON.stringify(cart));
-}
+// cart.js
 
 function addToCart(product) {
-  const existing = cart.find(item => item.id === product.id);
-  if (existing) {
-    existing.quantity += product.quantity;
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  const existingItem = cart.find(item => item.id === product.id);
+  if (existingItem) {
+    existingItem.quantity += product.quantity || 1;
   } else {
     cart.push(product);
   }
-  saveCart();
-  renderCart();
+
+  localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-function getCart() {
-  return JSON.parse(localStorage.getItem('cart')) || [];
-}
-
+// Render cart on cart.html
 function renderCart() {
-  const cartItemsDiv = document.getElementById('cart-items');
-  if (!cartItemsDiv) return; // no cart container, skip rendering
-
-  cart = getCart();
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const container = document.getElementById('cart-items');
+  container.innerHTML = '';
 
   if (cart.length === 0) {
-    cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
+    container.textContent = 'Cart is empty.';
+    document.getElementById('cart-total').textContent = '';
+    const checkoutLink = document.getElementById('checkout-link');
+    if (checkoutLink) checkoutLink.style.display = 'none';
     return;
   }
 
-  let html = '<ul>';
-  cart.forEach((item, i) => {
-    html += `<li>
-      <img src="${item.image}" alt="${item.name}" width="50" />
-      ${item.name} — Quantity: ${item.quantity} — Price: GHS ${item.price.toFixed(2)} each
-      <button onclick="removeFromCart(${i})">Remove</button>
-      <input type="number" min="1" max="99" value="${item.quantity}" onchange="updateQuantity(${i}, this.value)" />
-    </li>`;
+  cart.forEach(item => {
+    const itemDiv = document.createElement('div');
+    itemDiv.innerHTML = `
+      <img src="${item.image}" alt="${item.name}" width="60" />
+      <strong>${item.name}</strong> - 
+      Quantity: ${item.quantity} – 
+      Price: GHS ${(item.price * item.quantity).toFixed(2)}
+    `;
+    container.appendChild(itemDiv);
   });
-  html += '</ul>';
 
-  cartItemsDiv.innerHTML = html;
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const totalDiv = document.getElementById('cart-total');
+  if (totalDiv) totalDiv.textContent = 'Total: GHS ' + total.toFixed(2);
+
+  const checkoutLink = document.getElementById('checkout-link');
+  if (checkoutLink) checkoutLink.style.display = 'inline-block';
 }
-
-function removeFromCart(index) {
-  cart.splice(index, 1);
-  saveCart();
-  renderCart();
-}
-
-function updateQuantity(index, qty) {
-  qty = parseInt(qty);
-  if (isNaN(qty) || qty < 1) qty = 1;
-  if (qty > 99) qty = 99;
-  cart[index].quantity = qty;
-  saveCart();
-  renderCart();
-}
-
-// Initialize render if cart container present
-document.addEventListener('DOMContentLoaded', () => {
-  renderCart();
-});
