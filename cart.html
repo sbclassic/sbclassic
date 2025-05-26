@@ -2,17 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Your Cart – SB CLASSIC</title>
+  <title>Cart 🛒 – SB CLASSIC</title>
 </head>
 <body>
-  <h1>Your Cart</h1>
-  <div id="cart-items"></div>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="checkout.html">Checkout 💳</a>
+  </nav>
 
-  <script src="cart.js"></script>
+  <h1>Your Cart 🛒</h1>
+  <div id="cart-items"></div>
+  <div id="cart-total"></div>
+  <a href="checkout.html" id="checkout-link" style="display:none;">Proceed to Checkout 💳</a>
+
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      renderCart();
-    });
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const container = document.getElementById('cart-items');
+      const totalContainer = document.getElementById('cart-total');
+      const checkoutLink = document.getElementById('checkout-link');
+
+      if (cart.length === 0) {
+        container.textContent = 'Your cart is empty.';
+        totalContainer.textContent = '';
+        checkoutLink.style.display = 'none';
+        return;
+      }
+
+      container.innerHTML = '';
+      let total = 0;
+
+      cart.forEach(item => {
+        total += item.price * item.quantity;
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" width="100" />
+          <div>${item.name}</div>
+          <div>Price: GHS ${item.price.toFixed(2)}</div>
+          <div>Quantity: ${item.quantity}</div>
+        `;
+        container.appendChild(itemDiv);
+      });
+
+      totalContainer.textContent = `Total: GHS ${total.toFixed(2)}`;
+      checkoutLink.style.display = 'inline-block';
+    }
+
+    document.addEventListener('DOMContentLoaded', renderCart);
   </script>
 </body>
 </html>
