@@ -248,12 +248,11 @@ footer .social-links a:hover {
 
       <!-- Product Cards -->
 <div class="product" data-name="Elegant 2pcs Set – Apricot" data-price="1980" data-image="clothes/elegant_2pcs_set_apricot.jpeg">
-  <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Apricot" />
+  <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set – Apricot" />
   <h3>Elegant 2pcs Set – Apricot</h3>
   <p>GHS 1,980</p>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
+  <input type="number" class="quantity-input" value="1" min="1" />
+  <button class="add-to-cart-btn">Add to Cart</button>
 </div>
 
 <div class="product" data-name="Luxury Leather Jacket Brown" data-price="1299" data-image="clothes/luxury_leather_jacket_brown.jpeg">
@@ -415,9 +414,9 @@ footer .social-links a:hover {
     addToCartButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
         const productDiv = btn.closest('.product');
-        const name = productDiv.dataset.name;
-        const price = parseFloat(productDiv.dataset.price);
-        const image = productDiv.dataset.image;
+        const name = productDiv.getAttribute('data-name');
+        const price = parseFloat(productDiv.getAttribute('data-price'));
+        const image = productDiv.getAttribute('data-image');
         const qtyInput = productDiv.querySelector('.quantity-input');
         let quantity = parseInt(qtyInput.value);
         if (quantity < 1 || isNaN(quantity)) quantity = 1;
