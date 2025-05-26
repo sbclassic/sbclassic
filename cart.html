@@ -5,136 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cart 🛒 – SB CLASSIC</title>
   <style>
-    body {
-      background: #fff;
-      color: #000;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-      color: #000;
-      margin-bottom: 25px;
-      font-weight: bold;
-      font-size: 2em;
-    }
-    nav {
-      background-color: #191970; /* Midnight Blue */
-      text-align: center;
-      margin-bottom: 25px;
-      padding: 15px 0;
-      border-radius: 6px;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-      font-size: 1.1em;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: #f5f5f5;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
-      color: #000;
-    }
-    .cart-item {
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid #ccc;
-      padding: 15px 0;
-    }
-    .cart-item img {
-      width: 80px;
-      height: auto;
-      border-radius: 6px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    }
-    .item-details {
-      flex: 2;
-      margin-left: 20px;
-    }
-    .item-name {
-      font-size: 1.2em;
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: #191970;
-    }
-    .item-price {
-      color: #444;
-      margin-bottom: 8px;
-    }
-    .quantity-control {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .quantity-control input {
-      width: 50px;
-      padding: 5px;
-      font-size: 1em;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      text-align: center;
-    }
-    .remove-btn {
-      background: #d93025;
-      border: none;
-      color: white;
-      padding: 8px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-    .remove-btn:hover {
-      background: #a3241b;
-    }
-    .item-total {
-      flex: 1;
-      font-size: 1.1em;
-      font-weight: bold;
-      text-align: right;
-      color: #d4af37;
-    }
-    .cart-summary {
-      margin-top: 25px;
-      text-align: right;
-      font-size: 1.4em;
-      font-weight: bold;
-      color: #d4af37;
-    }
-    .checkout-btn {
-      display: block;
-      margin: 30px auto 0;
-      background: #d4af37;
-      border: none;
-      color: black;
-      font-weight: bold;
-      font-size: 1.2em;
-      padding: 15px 30px;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      text-align: center;
-      width: max-content;
-    }
-    .checkout-btn:hover {
-      background: #bfa232;
-    }
-    .empty-msg {
-      text-align: center;
-      font-size: 1.3em;
-      color: #666;
-      margin: 50px 0;
-    }
+    /* (keep your existing styles) */
   </style>
 </head>
 <body>
@@ -217,25 +88,33 @@
 
       quantityInputs.forEach(input => {
         input.addEventListener('change', (e) => {
-          const index = e.target.dataset.index;
-          let newQty = parseInt(e.target.value);
+          const index = parseInt(e.target.dataset.index, 10);
+          if (isNaN(index)) return;
+
+          let newQty = parseInt(e.target.value, 10);
           if (isNaN(newQty) || newQty < 1) newQty = 1;
           if (newQty > 99) newQty = 99;
 
           const cart = getCart();
-          cart[index].quantity = newQty;
-          saveCart(cart);
-          renderCart();
+          if (cart[index]) {
+            cart[index].quantity = newQty;
+            saveCart(cart);
+            renderCart();
+          }
         });
       });
 
       removeButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
-          const index = e.target.dataset.index;
+          const index = parseInt(e.target.dataset.index, 10);
+          if (isNaN(index)) return;
+
           const cart = getCart();
-          cart.splice(index, 1);
-          saveCart(cart);
-          renderCart();
+          if (cart[index]) {
+            cart.splice(index, 1);
+            saveCart(cart);
+            renderCart();
+          }
         });
       });
     }
