@@ -53,21 +53,62 @@
     <button type="submit">Place Order</button>
   </form>
 
-  <script>
-    document.getElementById('checkout-form').addEventListener('submit', function(e) {
-      e.preventDefault();
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+  document.getElementById('checkout-form').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      if (cart.length === 0) {
-        alert('Your cart is empty.');
-        return;
-      }
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length === 0) {
+      alert('Your cart is empty.');
+      return;
+    }
 
-      const name = this.name.value.trim();
-      alert(`Thank you, ${name}! Your order has been placed.`);
-      localStorage.removeItem('cart');
-      window.location.href = 'index.html';
+    const name = this.name.value.trim();
+    const email = this.email.value.trim();
+    const phone = this.phone.value.trim();
+
+    // Calculate total price
+    let totalAmount = 0;
+    cart.forEach(item => {
+      totalAmount += item.price * item.quantity;
     });
-  </script>
+
+    // Convert GHS to Kobo (Paystack expects amount in minor units)
+    let amountInKobo = totalAmount * 100;
+
+    // Start Paystack payment
+    var handler = PaystackPop.setup({
+      key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6', // 🔁 Replace with your actual **Paystack public key**
+      email: email,
+      amount: amountInKobo,
+      currency: 'GHS',
+      metadata: {
+        custom_fields: [
+          {
+            display_name: "Customer Name",
+            variable_name: "customer_name",
+            value: name
+          },
+          {
+            display_name: "Phone Number",
+            variable_name: "phone_number",
+            value: phone
+          }
+        ]
+      },
+      callback: function(response) {
+        alert('Payment complete! Reference: ' + response.reference);
+        localStorage.removeItem('cart');
+        window.location.href = 'index.html'; // or an order confirmation page
+      },
+      onClose: function() {
+        alert('Payment window closed.');
+      }
+    });
+
+    handler.openIframe();
+  });
+</script>
 </body>
 </html>
