@@ -249,7 +249,7 @@ footer .social-links a:hover {
       <!-- Product Cards -->
 <div class="product" data-id="1" data-name="Elegant 2pcs Set – Apricot" data-price="1980" data-image="clothes/elegant_2pcs_set_apricot.jpeg">
   <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set – Apricot" width="150" />
-  <div>Elegant 2pcs Set – Apricot</div>
+  <div><strong>Elegant 2pcs Set – Apricot</strong></div>
   <div>Price: GHS 1980.00</div>
   <button class="add-to-cart-btn">Add to Cart</button>
 </div>
@@ -389,25 +389,28 @@ footer .social-links a:hover {
   </a>
 
 <script>
-document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const productDiv = btn.closest('.product');
-    const product = {
-      id: productDiv.dataset.id,
-      name: productDiv.dataset.name,
-      price: parseFloat(productDiv.dataset.price),
-      image: productDiv.dataset.image,
-      quantity: 1
-    };
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const existingProduct = cart.find(item => item.id === product.id);
-    if (existingProduct) {
-      existingProduct.quantity++;
-    } else {
-      cart.push(product);
-    }
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`Added "${product.name}" to cart!`);
+  document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const productDiv = button.closest('.product');
+      const product = {
+        id: productDiv.dataset.id,
+        name: productDiv.dataset.name,
+        price: parseFloat(productDiv.dataset.price),
+        image: productDiv.dataset.image,
+        quantity: 1
+      };
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existingProduct = cart.find(item => item.id === product.id);
+
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        cart.push(product);
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`Added "${product.name}" to cart!`);
+    });
   });
-});
 </script>
