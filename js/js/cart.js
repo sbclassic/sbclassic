@@ -1,19 +1,55 @@
-// This code should run after your DOM is loaded
-document.querySelectorAll('.product').forEach(productDiv => {
-  const btn = productDiv.querySelector('.add-to-cart-btn');
-  btn.addEventListener('click', () => {
-    const id = productDiv.dataset.id || productDiv.getAttribute('data-id');
-    const name = productDiv.dataset.name || productDiv.getAttribute('data-name');
-    const price = parseFloat(productDiv.dataset.price);
-    const image = productDiv.dataset.image || productDiv.getAttribute('data-image');
-    const quantityInput = productDiv.querySelector('.quantity-input');
-    const quantity = quantityInput ? parseInt(quantityInput.value, 10) : 1;
+// js/cart.js
 
-    if (quantity <= 0 || isNaN(quantity)) {
-      alert('Please enter a valid quantity.');
-      return;
+function getCart() {
+  return JSON.parse(localStorage.getItem('sbclassicCart')) || [];
+}
+
+function saveCart(cart) {
+  localStorage.setItem('sbclassicCart', JSON.stringify(cart));
+}
+
+function clearCart() {
+  localStorage.removeItem('sbclassicCart');
+}
+
+function addToCart(product, quantity = 1) {
+  let cart = getCart();
+  const existing = cart.find(item => item.id === product.id);
+  if (existing) {
+    existing.quantity += quantity;
+  } else {
+    cart.push({ ...product, quantity });
+  }
+  saveCart(cart);
+  alert(`${product.name} (x${quantity}) added to cart`);
+}
+
+function removeFromCart(id) {
+  let cart = getCart().filter(item => item.id !== id);
+  saveCart(cart);
+  location.reload();
+}
+
+// Attach event listeners to product cards if on product page
+document.addEventListener('DOMContentLoaded', function () {
+  const productCards = document.querySelectorAll('.product');
+
+  productCards.forEach(card => {
+    const addBtn = card.querySelector('.add-to-cart-btn');
+    const qtyInput = card.querySelector('.quantity-input') || { value: 1 };
+
+    if (addBtn) {
+      addBtn.addEventListener('click', () => {
+        const product = {
+          id: card.dataset.name.toLowerCase().replace(/\s+/g, '-'),
+          name: card.dataset.name,
+          price: parseFloat(card.dataset.price),
+          image: card.dataset.image
+        };
+
+        const quantity = parseInt(qtyInput.value) || 1;
+        addToCart(product, quantity);
+      });
     }
-
-    addToCart({ id, name, price, image }, quantity);
   });
 });
