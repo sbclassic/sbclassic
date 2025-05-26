@@ -42,6 +42,14 @@
   
   <p id="subtotal" style="font-weight: bold;"></p>
   
+  <label for="delivery-option" style="font-weight: bold;">Select Delivery Option:</label>
+<select id="delivery-option" required style="margin-bottom: 15px; display: block;">
+  <option value="" disabled selected>Select delivery method</option>
+  <option value="20">Standard Delivery (GHS 20.00)</option>
+  <option value="40">Express Delivery (GHS 40.00)</option>
+  <option value="70">Same Day Delivery (GHS 70.00)</option>
+</select>
+  
   <div id="order-summary" style="margin-bottom: 20px; font-weight: bold;">
     <h3>Order Summary</h3>
     <p id="summary-subtotal">Subtotal: GHS 0.00</p>
