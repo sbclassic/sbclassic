@@ -1,11 +1,11 @@
 // cart.js
 
 function getCart() {
-  return JSON.parse(localStorage.getItem('cart')) || [];
+  return JSON.parse(localStorage.getItem("cart")) || [];
 }
 
 function saveCart(cart) {
-  localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 function addToCart(product) {
@@ -13,9 +13,9 @@ function addToCart(product) {
   const existing = cart.find(item => item.name === product.name);
 
   if (existing) {
-    existing.quantity += product.quantity || 1;
+    existing.quantity += 1;
   } else {
-    product.quantity = product.quantity || 1;
+    product.quantity = 1;
     cart.push(product);
   }
 
@@ -23,34 +23,39 @@ function addToCart(product) {
 }
 
 function renderCart() {
-  const cartItemsDiv = document.getElementById('cart-items');
+  const cartItemsDiv = document.getElementById("cart-items");
   if (!cartItemsDiv) return;
 
   const cart = getCart();
-  cartItemsDiv.innerHTML = '';
+  cartItemsDiv.innerHTML = "";
 
   if (cart.length === 0) {
-    cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
+    cartItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
     return;
   }
 
   cart.forEach(item => {
-    const itemDiv = document.createElement('div');
-    itemDiv.className = 'cart-item';
+    const itemDiv = document.createElement("div");
+    itemDiv.className = "cart-item";
     itemDiv.innerHTML = `
-      <img src="${item.image}" alt="${item.name}" width="80" />
-      <strong>${item.name}</strong><br>
-      Price: GHS ${item.price.toFixed(2)}<br>
-      Quantity: ${item.quantity}<br>
-      Subtotal: GHS ${(item.price * item.quantity).toFixed(2)}
+      <img src="${item.image}" alt="${item.name}" width="100" />
+      <p><strong>${item.name}</strong></p>
+      <p>Price: GHS ${item.price.toFixed(2)}</p>
+      <p>Quantity: ${item.quantity}</p>
+      <p>Subtotal: GHS ${(item.price * item.quantity).toFixed(2)}</p>
       <hr>
     `;
     cartItemsDiv.appendChild(itemDiv);
   });
 
-  // Show total
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const totalDiv = document.createElement('div');
-  totalDiv.innerHTML = `<strong>Total: GHS ${total.toFixed(2)}</strong>`;
-  cartItemsDiv.appendChild(totalDiv);
+  const totalDiv = document.getElementById("cart-total");
+  if (totalDiv) {
+    totalDiv.textContent = "Total: GHS " + total.toFixed(2);
+  }
+
+  const checkoutLink = document.getElementById("checkout-link");
+  if (checkoutLink) {
+    checkoutLink.style.display = "inline-block";
+  }
 }
