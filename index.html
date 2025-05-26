@@ -396,11 +396,18 @@ footer .social-links a:hover {
         id: productDiv.dataset.id,
         name: productDiv.dataset.name,
         price: parseFloat(productDiv.dataset.price),
-        image: productDiv.dataset.image
+        image: productDiv.dataset.image,
+        quantity: 1
       };
-      addToCart(product);
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existingProduct = cart.find(item => item.id === product.id);
+      if (existingProduct) {
+        existingProduct.quantity++;
+      } else {
+        cart.push(product);
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
       alert(`Added "${product.name}" to cart!`);
     });
   });
 </script>
-<script src="cart.js"></script>
