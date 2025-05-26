@@ -7,59 +7,48 @@
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
-      background: #f9f9f9;
-      color: #2b2b2b;
     }
-    nav a {
-      text-decoration: none;
-      margin-right: 15px;
-      color: #191970;
+    nav {
+      margin-bottom: 20px;
     }
     .cart-item {
       border: 1px solid #ccc;
-      padding: 10px;
+      padding: 12px;
       margin-bottom: 10px;
-      background: #fff;
       display: flex;
       align-items: center;
       gap: 15px;
     }
     .cart-item img {
-      border-radius: 4px;
-    }
-    #cart-total {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
+      width: 100px;
+      height: auto;
     }
     #checkout-link {
       display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
+      margin-top: 20px;
+      padding: 10px 15px;
       background-color: #191970;
       color: white;
       text-decoration: none;
+      font-weight: bold;
       border-radius: 5px;
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html">Home</a>
+    <a href="index.html">Home</a> |
     <a href="checkout.html">Checkout 💳</a>
   </nav>
 
   <h1>Your Cart 🛒</h1>
   <div id="cart-items"></div>
-  <div id="cart-total"></div>
-  <a href="checkout.html" id="checkout-link" style="display:none;">Proceed to Checkout 💳</a>
+  <div id="cart-total" style="margin-top: 10px; font-weight: bold;"></div>
+  <a href="checkout.html" id="checkout-link" style="display: none;">Proceed to Checkout 💳</a>
 
-  <!-- Load cart functions -->
   <script src="cart.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      renderCart();
-    });
+    document.addEventListener('DOMContentLoaded', renderCart);
   </script>
 </body>
 </html>
