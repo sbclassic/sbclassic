@@ -42,13 +42,12 @@
 
 <p id="subtotal" style="font-weight: bold;"></p>
 
-<label for="delivery-option" style="font-weight: bold;">Select Delivery Option:</label>
-<select id="delivery-option" required style="margin-bottom: 15px; display: block;">
-  <option value="" disabled selected>Select delivery method</option>
-  <option value=>Accra – GHS 50–95 (Depending on the area)</option>
-  <option value=>Kumasi – GHS 50–80 (Depending on the value of the item)</option>
-  <option value=>Nationwide Standard (7–14 Days)</option>
-  <option value=>International Shipping – GHS 200–700 (Depending on the country)</option>
+<select id="shipping" name="shipping" required>
+  <option value="">Select delivery method</option>
+  <option value="70">Accra – GHS 50–95 (Depending on the area)</option>
+  <option value="60">Kumasi – GHS 50–80 (Depending on the value of the item)</option>
+  <option value="45">Nationwide Standard (7–14 Days)</option>
+  <option value="400">International Shipping – GHS 200–700 (Depending on the country)</option>
 </select>
 
 <div id="order-summary" style="margin-bottom: 20px; font-weight: bold;">
