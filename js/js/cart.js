@@ -1,55 +1,45 @@
-// js/cart.js
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-function getCart() {
-  return JSON.parse(localStorage.getItem('sbclassicCart')) || [];
-}
-
-function saveCart(cart) {
-  localStorage.setItem('sbclassicCart', JSON.stringify(cart));
-}
-
-function clearCart() {
-  localStorage.removeItem('sbclassicCart');
-}
-
-function addToCart(product, quantity = 1) {
-  let cart = getCart();
+function addToCart(product) {
+  console.log('Adding product:', product);
+  
+  // Check if product exists in cart, then increment quantity
   const existing = cart.find(item => item.id === product.id);
   if (existing) {
-    existing.quantity += quantity;
+    existing.quantity += product.quantity;
   } else {
-    cart.push({ ...product, quantity });
+    cart.push(product);
   }
-  saveCart(cart);
-  alert(`${product.name} (x${quantity}) added to cart`);
+
+  // Save cart to localStorage
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+  // Render the cart UI
+  renderCart();
+
+  console.log('Cart now:', cart);
 }
 
-function removeFromCart(id) {
-  let cart = getCart().filter(item => item.id !== id);
-  saveCart(cart);
-  location.reload();
-}
+function renderCart() {
+  const cartItemsDiv = document.getElementById('cart-items');
+  if (!cartItemsDiv) {
+    console.warn('Cart container not found!');
+    return;
+  }
 
-// Attach event listeners to product cards if on product page
-document.addEventListener('DOMContentLoaded', function () {
-  const productCards = document.querySelectorAll('.product');
+  if (cart.length === 0) {
+    cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
+    return;
+  }
 
-  productCards.forEach(card => {
-    const addBtn = card.querySelector('.add-to-cart-btn');
-    const qtyInput = card.querySelector('.quantity-input') || { value: 1 };
-
-    if (addBtn) {
-      addBtn.addEventListener('click', () => {
-        const product = {
-          id: card.dataset.name.toLowerCase().replace(/\s+/g, '-'),
-          name: card.dataset.name,
-          price: parseFloat(card.dataset.price),
-          image: card.dataset.image
-        };
-
-        const quantity = parseInt(qtyInput.value) || 1;
-        addToCart(product, quantity);
-      });
-    }
+  let html = '<ul>';
+  cart.forEach(item => {
+    html += `<li>${item.name} — Quantity: ${item.quantity} — Price: GHC ${item.price}</li>`;
   });
-});
+  html += '</ul>';
+
+  cartItemsDiv.innerHTML = html;
+}
+
+// Call renderCart once on page load to initialize
+renderCart();
