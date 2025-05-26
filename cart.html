@@ -7,21 +7,26 @@
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
+      background: #f9f9f9;
+      color: #2b2b2b;
     }
     nav {
       margin-bottom: 20px;
     }
     .cart-item {
       border: 1px solid #ccc;
+      background: #fff;
       padding: 12px;
       margin-bottom: 10px;
       display: flex;
       align-items: center;
       gap: 15px;
+      border-radius: 5px;
     }
     .cart-item img {
       width: 100px;
       height: auto;
+      border-radius: 5px;
     }
     #checkout-link {
       display: inline-block;
@@ -33,6 +38,20 @@
       font-weight: bold;
       border-radius: 5px;
     }
+    #cart-total {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    #debug {
+      background: #fff8dc;
+      padding: 10px;
+      margin: 20px 0;
+      font-family: monospace;
+      font-size: 14px;
+      border: 1px solid #e0e0e0;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
@@ -42,54 +61,60 @@
   </nav>
 
   <h1>Your Cart 🛒</h1>
+  <div id="debug"></div>
   <div id="cart-items"></div>
-  <div id="cart-total" style="margin-top: 10px; font-weight: bold;"></div>
+  <div id="cart-total"></div>
   <a href="checkout.html" id="checkout-link" style="display: none;">Proceed to Checkout 💳</a>
 
   <script>
-  console.log('Cart script loaded');
+    function renderCart() {
+      const debug = document.getElementById('debug');
+      debug.innerHTML = 'Starting to render cart...<br>';
 
-  function renderCart() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    console.log('Cart content:', cart);
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      debug.innerHTML += `Cart content: ${JSON.stringify(cart)}<br>`;
 
-    const container = document.getElementById('cart-items');
-    if (!container) {
-      console.error('Cart container (#cart-items) NOT found');
-      return;
+      const container = document.getElementById('cart-items');
+      if (!container) {
+        debug.innerHTML += '❌ Error: Cart container (#cart-items) NOT found<br>';
+        return;
+      }
+
+      const totalContainer = document.getElementById('cart-total');
+      const checkoutLink = document.getElementById('checkout-link');
+
+      if (cart.length === 0) {
+        container.textContent = 'Your cart is empty.';
+        totalContainer.textContent = '';
+        checkoutLink.style.display = 'none';
+        debug.innerHTML += '🟡 Cart is empty.<br>';
+        return;
+      }
+
+      container.innerHTML = '';
+      let total = 0;
+
+      cart.forEach(item => {
+        total += item.price * item.quantity;
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" />
+          <div>
+            <strong>${item.name}</strong><br />
+            Price: GHS ${item.price.toFixed(2)}<br />
+            Quantity: ${item.quantity}
+          </div>
+        `;
+        container.appendChild(itemDiv);
+      });
+
+      totalContainer.textContent = `Total: GHS ${total.toFixed(2)}`;
+      checkoutLink.style.display = 'inline-block';
+      debug.innerHTML += '✅ Cart rendered successfully.<br>';
     }
 
-    const totalContainer = document.getElementById('cart-total');
-    const checkoutLink = document.getElementById('checkout-link');
-
-    if (cart.length === 0) {
-      container.textContent = 'Your cart is empty.';
-      totalContainer.textContent = '';
-      checkoutLink.style.display = 'none';
-      return;
-    }
-
-    container.innerHTML = '';
-    let total = 0;
-
-    cart.forEach(item => {
-      total += item.price * item.quantity;
-      const itemDiv = document.createElement('div');
-      itemDiv.className = 'cart-item';
-      itemDiv.innerHTML = `
-        <img src="${item.image}" alt="${item.name}" width="100" />
-        <div>
-          <strong>${item.name}</strong><br />
-          Price: GHS ${item.price.toFixed(2)}<br />
-          Quantity: ${item.quantity}
-        </div>
-      `;
-      container.appendChild(itemDiv);
-    });
-
-    totalContainer.textContent = `Total: GHS ${total.toFixed(2)}`;
-    checkoutLink.style.display = 'inline-block';
-  }
-
-  document.addEventListener('DOMContentLoaded', renderCart);
-</script>
+    document.addEventListener('DOMContentLoaded', renderCart);
+  </script>
+</body>
+</html>
