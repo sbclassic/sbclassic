@@ -388,35 +388,24 @@ footer .social-links a:hover {
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
   </a>
 
+<script src="cart.js"></script>
 <script>
-  function addToCart(product) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    if (!product.id) {
-      console.error('Product missing id:', product);
-      return;
-    }
-    const existing = cart.find(item => item.id === product.id);
-    if (existing) {
-      existing.quantity += 1;
-    } else {
-      cart.push(product);
-    }
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }
-
   document.querySelectorAll('.add-to-cart-btn').forEach(button => {
     button.addEventListener('click', () => {
       const productDiv = button.closest('.product');
+      const quantityInput = productDiv.querySelector('.quantity-input');
+      const quantity = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
+
       const product = {
         id: productDiv.dataset.id,
         name: productDiv.dataset.name,
         price: parseFloat(productDiv.dataset.price),
         image: productDiv.dataset.image,
-        quantity: 1,
+        quantity: quantity,
       };
+
       addToCart(product);
       alert(`Added "${product.name}" to cart.`);
     });
-  </script>
-</body>
-</html>
+  });
+</script>
