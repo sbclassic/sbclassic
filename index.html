@@ -390,15 +390,16 @@ footer .social-links a:hover {
 
 <script src="cart.js"></script>
 <script>
-  document.querySelectorAll(".add-to-cart-btn").forEach(button => {
-    button.addEventListener("click", () => {
-      const productDiv = button.closest(".product");
+  document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const productDiv = button.closest('.product');
       const product = {
         name: productDiv.dataset.name,
         price: parseFloat(productDiv.dataset.price),
         image: productDiv.dataset.image
       };
       addToCart(product);
-      alert(`Added "${product.name}" to cart.`);    });
-   });
- </script>
+      alert(`Added "${product.name}" to cart.`);
+    });
+  });
+</script>
