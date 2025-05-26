@@ -247,7 +247,7 @@ footer .social-links a:hover {
   <section class="hero"></section>
 
       <!-- Product Cards -->
-<div class="product" data-name="Elegant 2pcs Set – Apricot" data-price="1980" data-image="clothes/elegant_2pcs_set_apricot.jpeg">
+<div class="product" data-id="1" data-name="Elegant 2pcs Set – Apricot" data-price="1980" data-image="clothes/elegant_2pcs_set_apricot.jpeg">
   <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set – Apricot" width="150" />
   <div>Elegant 2pcs Set – Apricot</div>
   <div>Price: GHS 1980.00</div>
@@ -388,18 +388,26 @@ footer .social-links a:hover {
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
   </a>
 
-<script src="cart.js"></script>
 <script>
-  document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const productDiv = button.closest('.product');
-      const product = {
-        name: productDiv.dataset.name,
-        price: parseFloat(productDiv.dataset.price),
-        image: productDiv.dataset.image
-      };
-      addToCart(product);
-      alert(`Added "${product.name}" to cart.`);
-    });
+document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const productDiv = btn.closest('.product');
+    const product = {
+      id: productDiv.dataset.id,
+      name: productDiv.dataset.name,
+      price: parseFloat(productDiv.dataset.price),
+      image: productDiv.dataset.image,
+      quantity: 1
+    };
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingProduct = cart.find(item => item.id === product.id);
+    if (existingProduct) {
+      existingProduct.quantity++;
+    } else {
+      cart.push(product);
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`Added "${product.name}" to cart!`);
   });
+});
 </script>
