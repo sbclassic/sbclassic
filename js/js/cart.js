@@ -1,21 +1,17 @@
 // cart.js
 
-// Retrieve cart from localStorage or create empty array
 function getCart() {
   return JSON.parse(localStorage.getItem('cart')) || [];
 }
 
-// Save cart back to localStorage
 function saveCart(cart) {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// Add product to cart
 function addToCart(product) {
   const cart = getCart();
-
-  // Check if product already exists in cart
   const existing = cart.find(item => item.name === product.name);
+
   if (existing) {
     existing.quantity += product.quantity || 1;
   } else {
@@ -26,7 +22,6 @@ function addToCart(product) {
   saveCart(cart);
 }
 
-// Render the cart on the cart page
 function renderCart() {
   const cartItemsDiv = document.getElementById('cart-items');
   if (!cartItemsDiv) return;
@@ -52,8 +47,10 @@ function renderCart() {
     `;
     cartItemsDiv.appendChild(itemDiv);
   });
-}
 
-// Expose functions to global scope if needed
-window.addToCart = addToCart;
-window.renderCart = renderCart;
+  // Show total
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const totalDiv = document.createElement('div');
+  totalDiv.innerHTML = `<strong>Total: GHS ${total.toFixed(2)}</strong>`;
+  cartItemsDiv.appendChild(totalDiv);
+}
