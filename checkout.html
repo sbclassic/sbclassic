@@ -41,17 +41,27 @@
   <h1>Checkout 💳</h1>
 
   <form id="checkout-form">
-    <label for="name">Full Name:</label>
-    <input type="text" id="name" name="name" required />
+    <label for="name">Full Name:</label><br />
+    <input type="text" id="name" name="name" required /><br /><br />
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required />
+    <label for="email">Email:</label><br />
+    <input type="email" id="email" name="email" required /><br /><br />
 
-    <label for="phone">Phone Number:</label>
-    <input type="tel" id="phone" name="phone" required />
+    <label for="phone">Phone Number:</label><br />
+    <input type="tel" id="phone" name="phone" required /><br /><br />
 
-    <button type="submit">Place Order</button>
-  </form>
+  <label for="shipping">Shipping Option:</label><br />
+  <select id="shipping" name="shipping" required>
+    <option value="0">Select a delivery method</option>
+    <option value="20">Local Pickup – GHS 20</option>
+    <option value="40">Standard Delivery – GHS 40</option>
+    <option value="70">Nationwide Express – GHS 70</option>
+  </select><br /><br />
+
+  <div id="final-total" style="font-weight:bold;"></div><br />
+
+  <button type="submit">Place Order</button>
+</form>
 
   <script src="https://js.paystack.co/v1/inline.js"></script>
 <script>
