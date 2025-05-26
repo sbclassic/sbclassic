@@ -46,9 +46,50 @@
   <div id="cart-total" style="margin-top: 10px; font-weight: bold;"></div>
   <a href="checkout.html" id="checkout-link" style="display: none;">Proceed to Checkout 💳</a>
 
-  <script src="cart.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', renderCart);
-  </script>
-</body>
-</html>
+  console.log('Cart script loaded');
+
+  function renderCart() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    console.log('Cart content:', cart);
+
+    const container = document.getElementById('cart-items');
+    if (!container) {
+      console.error('Cart container (#cart-items) NOT found');
+      return;
+    }
+
+    const totalContainer = document.getElementById('cart-total');
+    const checkoutLink = document.getElementById('checkout-link');
+
+    if (cart.length === 0) {
+      container.textContent = 'Your cart is empty.';
+      totalContainer.textContent = '';
+      checkoutLink.style.display = 'none';
+      return;
+    }
+
+    container.innerHTML = '';
+    let total = 0;
+
+    cart.forEach(item => {
+      total += item.price * item.quantity;
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'cart-item';
+      itemDiv.innerHTML = `
+        <img src="${item.image}" alt="${item.name}" width="100" />
+        <div>
+          <strong>${item.name}</strong><br />
+          Price: GHS ${item.price.toFixed(2)}<br />
+          Quantity: ${item.quantity}
+        </div>
+      `;
+      container.appendChild(itemDiv);
+    });
+
+    totalContainer.textContent = `Total: GHS ${total.toFixed(2)}`;
+    checkoutLink.style.display = 'inline-block';
+  }
+
+  document.addEventListener('DOMContentLoaded', renderCart);
+</script>
