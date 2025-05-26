@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQs - SB CLASSIC</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff;
+      color: #2c2c2c;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #191970;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .faq-item {
+      margin-bottom: 15px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 15px;
+    }
+    .faq-question {
+      font-weight: 600;
+      cursor: pointer;
+      color: #191970;
+      margin-bottom: 5px;
+    }
+    .faq-answer {
+      margin-left: 15px;
+      color: #444;
+    }
+  </style>
+  <script>
+    // Simple toggle for FAQ answers
+    function toggleAnswer(id) {
+      const answer = document.getElementById(id);
+      if (answer.style.display === 'none' || !answer.style.display) {
+        answer.style.display = 'block';
+      } else {
+        answer.style.display = 'none';
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Frequently Asked Questions (FAQs)</h1>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleAnswer('answer1')">
+      Q1: How long does it take to process and deliver my order?
+    </div>
+    <div class="faq-answer" id="answer1" style="display:none;">
+      Orders are processed within 1–2 business days. Delivery takes 2–14 business days depending on your location.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleAnswer('answer2')">
+      Q2: What payment methods do you accept?
+    </div>
+    <div class="faq-answer" id="answer2" style="display:none;">
+      We accept major payment options, including mobile money, bank transfers, and card payments via Paystack.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleAnswer('answer3')">
+      Q3: Can I return or exchange items?
+    </div>
+    <div class="faq-answer" id="answer3" style="display:none;">
+      Yes, please refer to our Refund Policy for details on returns and exchanges.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleAnswer('answer4')">
+      Q4: Do you ship internationally?
+    </div>
+    <div class="faq-answer" id="answer4" style="display:none;">
+      Yes, we offer international shipping. Please contact us for rates and delivery times.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleAnswer('answer5')">
+      Q5: How can I contact customer service?
+    </div>
+    <div class="faq-answer" id="answer5" style="display:none;">
+      You can reach us by email at <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a> or call/WhatsApp +233260928990.
+    </div>
+  </div>
+
+</body>
+</html>
