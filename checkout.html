@@ -7,35 +7,18 @@
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
-      background: #f9f9f9;
-      color: #2b2b2b;
-    }
-    nav a {
-      text-decoration: none;
-      margin-right: 15px;
-      color: #191970;
-    }
-    h1 {
-      margin-bottom: 20px;
     }
     form {
-      background: #fff;
-      padding: 20px;
-      border-radius: 6px;
       max-width: 400px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     }
     label {
-      display: block;
-      margin-top: 10px;
+      font-weight: bold;
     }
     input {
       width: 100%;
       padding: 8px;
-      margin-top: 5px;
       margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      box-sizing: border-box;
     }
     button {
       padding: 10px 20px;
@@ -43,16 +26,14 @@
       color: white;
       border: none;
       border-radius: 4px;
+      font-size: 16px;
       cursor: pointer;
-    }
-    button:hover {
-      background-color: #2a2a9f;
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html">Home</a>
+    <a href="index.html">Home</a> |
     <a href="cart.html">Cart 🛒</a>
   </nav>
 
@@ -82,14 +63,8 @@
       }
 
       const name = this.name.value.trim();
-      const email = this.email.value.trim();
-      const phone = this.phone.value.trim();
-
-      // You can extend this for Paystack or email confirmation
-
-      localStorage.removeItem('cart');
       alert(`Thank you, ${name}! Your order has been placed.`);
-
+      localStorage.removeItem('cart');
       window.location.href = 'index.html';
     });
   </script>
