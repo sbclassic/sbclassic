@@ -1,106 +1,118 @@
-<!-- TRUNCATED ABOVE FOR BREVITY -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout 💳 – SB CLASSIC</title>
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+</head>
+<body>
+  <h1>Checkout 💳</h1>
 
-<form id="checkout-form">
-  <input type="text" id="name" placeholder="Full Name" required />
-  <input type="email" id="email" placeholder="Email Address" required />
-  <input type="tel" id="phone" placeholder="Phone Number" required />
+  <form id="checkout-form">
+    <input type="text" id="name" placeholder="Full Name" required />
+    <input type="email" id="email" placeholder="Email Address" required />
+    <input type="tel" id="phone" placeholder="Phone Number" required />
 
-  <fieldset style="border: none; margin-top: 10px;">
-    <legend><strong>Shipping Method</strong></legend>
-    <label>
-      <input type="radio" name="shipping" value="local" checked> Local Delivery (GHS 30)
-    </label><br>
-    <label>
-      <input type="radio" name="shipping" value="nationwide"> Nationwide Delivery (GHS 50)
-    </label><br>
-    <label>
-      <input type="radio" name="shipping" value="international"> International Shipping (GHS 120)
-    </label>
-  </fieldset>
+    <fieldset style="border: none; margin-top: 10px;">
+      <legend><strong>Shipping Method</strong></legend>
+      <label><input type="radio" name="shipping" value="local" checked> Local Delivery (GHS 30)</label><br>
+      <label><input type="radio" name="shipping" value="nationwide"> Nationwide Delivery (GHS 50)</label><br>
+      <label><input type="radio" name="shipping" value="international"> International Shipping (GHS 120)</label>
+    </fieldset>
 
-  <p id="shipping-fee">Shipping: GHS 30</p>
-  <div class="total" id="grand-total">Grand Total: GHS 0</div>
+    <p id="shipping-fee">Shipping: GHS 30.00</p>
+    <div id="grand-total">Grand Total: GHS 0.00</div>
 
-  <button type="submit">Pay with Paystack</button>
-</form>
+    <button type="submit">Pay with Paystack</button>
+  </form>
 
-<!-- ...rest of your script, then add this at the end of the script tag -->
-<script>
-  let shippingFee = 30;
+  <script>
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart')) || [];
+    }
 
-  const shippingRadios = document.querySelectorAll('input[name="shipping"]');
-  const shippingFeeDisplay = document.getElementById('shipping-fee');
-  const grandTotalDisplay = document.getElementById('grand-total');
+    function clearCart() {
+      localStorage.removeItem('cart');
+    }
 
-  function getCartTotal() {
-    const cart = getCart();
-    return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  }
+    let shippingFee = 30;
 
-  function updateTotalWithShipping() {
-    const subtotal = getCartTotal();
-    const total = subtotal + shippingFee;
-    shippingFeeDisplay.textContent = 'Shipping: GHS ' + shippingFee.toFixed(2);
-    grandTotalDisplay.textContent = 'Grand Total: GHS ' + total.toFixed(2);
-    return total;
-  }
+    const shippingRadios = document.querySelectorAll('input[name="shipping"]');
+    const shippingFeeDisplay = document.getElementById('shipping-fee');
+    const grandTotalDisplay = document.getElementById('grand-total');
 
-  shippingRadios.forEach(radio => {
-    radio.addEventListener('change', function () {
-      if (this.value === 'local') shippingFee = 30;
-      else if (this.value === 'nationwide') shippingFee = 50;
-      else if (this.value === 'international') shippingFee = 120;
-      updateTotalWithShipping();
-    });
-  });
-
-  document.addEventListener('DOMContentLoaded', () => {
-    updateCartCount();
-    displayCart();
-    updateTotalWithShipping(); // Initial total with default shipping
-
-    const form = document.getElementById('checkout-form');
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
+    function getCartTotal() {
       const cart = getCart();
-      if (cart.length === 0) {
-        alert('Your cart is empty.');
-        return;
-      }
+      return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    }
 
-      const email = document.getElementById('email').value.trim();
-      const name = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const totalAmount = updateTotalWithShipping();
+    function updateTotalWithShipping() {
+      const subtotal = getCartTotal();
+      const total = subtotal + shippingFee;
+      shippingFeeDisplay.textContent = 'Shipping: GHS ' + shippingFee.toFixed(2);
+      grandTotalDisplay.textContent = 'Grand Total: GHS ' + total.toFixed(2);
+      return total;
+    }
 
-      if (!name || !email || !phone) {
-        alert('Please fill in all required fields.');
-        return;
-      }
-
-      let handler = PaystackPop.setup({
-        key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6',
-        email: email,
-        amount: totalAmount * 100,
-        currency: 'GHS',
-        ref: 'SBCLASSIC_' + Date.now(),
-        metadata: {
-          custom_fields: [
-            { display_name: "Phone Number", variable_name: "phone_number", value: phone },
-            { display_name: "Customer Name", variable_name: "customer_name", value: name },
-            { display_name: "Shipping Fee", variable_name: "shipping_fee", value: 'GHS ' + shippingFee }
-          ]
-        },
-        callback: function(response) {
-          alert('Payment successful! Reference: ' + response.reference);
-          clearCart();
-          window.location.href = 'confirmation.html';
-        },
-        onClose: function() {
-          alert('Transaction was cancelled.');
-        }
+    shippingRadios.forEach(radio => {
+      radio.addEventListener('change', function () {
+        if (this.value === 'local') shippingFee = 30;
+        else if (this.value === 'nationwide') shippingFee = 50;
+        else if (this.value === 'international') shippingFee = 120;
+        updateTotalWithShipping();
       });
-      handler.openIframe();
     });
-  });
-</script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateTotalWithShipping();
+
+      const form = document.getElementById('checkout-form');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const cart = getCart();
+
+        if (cart.length === 0) {
+          alert('Your cart is empty.');
+          return;
+        }
+
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+
+        if (!name || !email || !phone) {
+          alert('Please fill in all required fields.');
+          return;
+        }
+
+        const totalAmount = updateTotalWithShipping();
+
+        let handler = PaystackPop.setup({
+          key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6',
+          email: email,
+          amount: totalAmount * 100,
+          currency: 'GHS',
+          ref: 'SBCLASSIC_' + Date.now(),
+          metadata: {
+            custom_fields: [
+              { display_name: "Phone Number", variable_name: "phone_number", value: phone },
+              { display_name: "Customer Name", variable_name: "customer_name", value: name },
+              { display_name: "Shipping Fee", variable_name: "shipping_fee", value: 'GHS ' + shippingFee.toFixed(2) }
+            ]
+          },
+          callback: function(response) {
+            alert('Payment successful! Reference: ' + response.reference);
+            clearCart();
+            window.location.href = 'index.html';
+          },
+          onClose: function() {
+            alert('Payment cancelled.');
+          }
+        });
+        handler.openIframe();
+      });
+    });
+  </script>
+</body>
+</html>
