@@ -273,6 +273,28 @@
 
     updateCartCount();
   </script>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const productCards = document.querySelectorAll('.product');
 
+    productCards.forEach(card => {
+      const addBtn = card.querySelector('.add-to-cart-btn');
+      const qtyInput = card.querySelector('.quantity-input') || { value: 1 };
+
+      addBtn?.addEventListener('click', () => {
+        const product = {
+          id: card.dataset.name.toLowerCase().replace(/\s+/g, '-'),
+          name: card.dataset.name,
+          price: parseFloat(card.dataset.price),
+          image: card.dataset.image
+        };
+
+        const quantity = parseInt(qtyInput.value) || 1;
+        addToCart(product, quantity);
+      });
+    });
+  });
+</script>
 </body>
 </html>
