@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Cart – SB CLASSIC</title>
+  <meta charset="UTF-8" />
+  <title>Your Cart – SB CLASSIC</title>
 </head>
 <body>
   <h1>Your Cart</h1>
   <div id="cart-items"></div>
+
   <script src="cart.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", renderCart);
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCart();
+    });
   </script>
 </body>
 </html>
