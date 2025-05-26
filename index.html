@@ -247,13 +247,12 @@ footer .social-links a:hover {
   <section class="hero"></section>
 
       <!-- Product Cards -->
-<div class="product" data-name="Elegant 2pcs Set – Apricot" data-price="1980" data-image="clothes/elegant_2pcs_set_apricot.jpeg">
-  <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set – Apricot" />
-  <h3>Elegant 2pcs Set – Apricot</h3>
-  <p>GHS 1,980</p>
-  <input type="number" class="quantity-input" value="1" min="1" />
-  <button class="add-to-cart-btn">Add to Cart</button>
-</div>
+<div class="product" data-id="1" data-name="Elegant 2pcs Set – Apricot" data-price="1980" data-image="clothes/elegant_2pcs_set_apricot.jpeg">
+      <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set – Apricot" width="150" />
+      <div>Elegant 2pcs Set – Apricot</div>
+      <div>Price: GHS 1980.00</div>
+      <button class="add-to-cart-btn">Add to Cart</button>
+    </div>
 
 <div class="product" data-name="Luxury Leather Jacket Brown" data-price="1299" data-image="clothes/luxury_leather_jacket_brown.jpeg">
   <img src="clothes/luxury_leather_jacket_brown.jpeg" alt="Luxury Leather Jacket Brown" />
@@ -389,52 +388,21 @@ footer .social-links a:hover {
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
   </a>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-    const viewCartBtn = document.getElementById('view-cart-btn');
-    const checkoutBtn = document.getElementById('checkout-btn');
-
-    function getCart() {
-      const cart = localStorage.getItem('cart');
-      return cart ? JSON.parse(cart) : [];
-    }
-
-    function saveCart(cart) {
-      localStorage.setItem('cart', JSON.stringify(cart));
-    }
-
-    function updateCartButtons() {
-      const cart = getCart();
-      const visible = cart.length > 0;
-      if (viewCartBtn) viewCartBtn.style.display = visible ? 'inline-block' : 'none';
-      if (checkoutBtn) checkoutBtn.style.display = visible ? 'inline-block' : 'none';
-    }
-
-    addToCartButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const productDiv = btn.closest('.product');
-        const name = productDiv.getAttribute('data-name');
-        const price = parseFloat(productDiv.getAttribute('data-price'));
-        const image = productDiv.getAttribute('data-image');
-        const qtyInput = productDiv.querySelector('.quantity-input');
-        let quantity = parseInt(qtyInput.value);
-        if (quantity < 1 || isNaN(quantity)) quantity = 1;
-
-        let cart = getCart();
-        const index = cart.findIndex(item => item.name === name);
-        if (index > -1) {
-          cart[index].quantity += quantity;
-        } else {
-          cart.push({ name, price, image, quantity });
-        }
-
-        saveCart(cart);
-        updateCartButtons();
-        alert(`${quantity} x "${name}" added to cart.`);
-      });
-    });
-
-    updateCartButtons();
-  });
-</script>
+<script src="cart.js"></script>
+  <script>
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const productDiv = button.closest('.product');
+        const product = {
+          id: productDiv.dataset.id,
+          name: productDiv.dataset.name,
+          price: parseFloat(productDiv.dataset.price),
+          image: productDiv.dataset.image,
+          quantity: 1,
+        };
+        addToCart(product);
+        alert(`Added "${product.name}" to cart.`);
+        });
+  </script>
+</body>
+</html>
