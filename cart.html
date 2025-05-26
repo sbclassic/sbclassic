@@ -33,6 +33,8 @@
       font-weight: bold;
       border-radius: 5px;
     }
+    
+    <pre id="debug-output" style="background:#f4f4f4; padding:10px; border:1px solid #ccc; font-size:12px;"></pre>
   </style>
 </head>
 <body>
@@ -52,6 +54,16 @@
       const container = document.getElementById('cart-items');
       const totalContainer = document.getElementById('cart-total');
       const checkoutLink = document.getElementById('checkout-link');
+      
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const rawCart = localStorage.getItem('cart');
+    const debugBox = document.getElementById('debug-output');
+    debugBox.textContent = 'Cart from localStorage:\n\n' + rawCart;
+
+    // You can also keep your existing renderCart() logic below this
+  });
+</script>
 
       if (cart.length === 0) {
         container.textContent = 'Your cart is empty.';
