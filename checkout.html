@@ -72,6 +72,56 @@
 
   <script src="https://js.paystack.co/v1/inline.js"></script>
 <script>
+  // Dynamically populate subtotal, delivery, and total on page load
+  document.addEventListener('DOMContentLoaded', function () {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let subtotal = 0;
+
+    cart.forEach(item => {
+      subtotal += item.price * item.quantity;
+    });
+
+    // Create delivery dropdown if it doesn't exist
+    if (!document.getElementById('delivery-option')) {
+      const deliveryLabel = document.createElement('label');
+      deliveryLabel.textContent = "Select Delivery Option:";
+      deliveryLabel.setAttribute('for', 'delivery-option');
+
+      const deliverySelect = document.createElement('select');
+      deliverySelect.id = 'delivery-option';
+      deliverySelect.innerHTML = `
+        <option value="0">-- Choose an option --</option>
+        <option value="20">Standard (2–5 days) - GHS 20</option>
+        <option value="40">Express (1–2 days) - GHS 40</option>
+        <option value="80">International - GHS 80</option>
+      `;
+
+      const summary = document.getElementById('subtotal')?.parentElement || document.body;
+      summary.appendChild(deliveryLabel);
+      summary.appendChild(deliverySelect);
+
+      // Add total display
+      const totalDisplay = document.createElement('p');
+      totalDisplay.id = 'total';
+      totalDisplay.style.fontWeight = 'bold';
+      totalDisplay.textContent = `Total: GHS ${subtotal.toFixed(2)}`;
+      summary.appendChild(totalDisplay);
+
+      // Update total when delivery option changes
+      deliverySelect.addEventListener('change', function () {
+        const deliveryFee = parseFloat(this.value);
+        document.getElementById('total').textContent =
+          `Total: GHS ${(subtotal + deliveryFee).toFixed(2)}`;
+      });
+    }
+
+    // Show subtotal
+    if (document.getElementById('subtotal')) {
+      document.getElementById('subtotal').textContent = 'Subtotal: GHS ' + subtotal.toFixed(2);
+    }
+  });
+
+  // Checkout form submission
   document.getElementById('checkout-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -84,40 +134,37 @@
     const name = this.name.value.trim();
     const email = this.email.value.trim();
     const phone = this.phone.value.trim();
+    const deliveryFee = parseFloat(document.getElementById('delivery-option')?.value || 0);
 
-    // Calculate total price
-    let totalAmount = 0;
+    if (!deliveryFee) {
+      alert('Please select a delivery option.');
+      return;
+    }
+
+    let subtotal = 0;
     cart.forEach(item => {
-      totalAmount += item.price * item.quantity;
+      subtotal += item.price * item.quantity;
     });
 
-    // Convert GHS to Kobo (Paystack expects amount in minor units)
+    let totalAmount = subtotal + deliveryFee;
     let amountInKobo = totalAmount * 100;
 
-    // Start Paystack payment
     var handler = PaystackPop.setup({
-      key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6', // 🔁 Replace with your actual **Paystack public key**
+      key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6',
       email: email,
       amount: amountInKobo,
       currency: 'GHS',
       metadata: {
         custom_fields: [
-          {
-            display_name: "Customer Name",
-            variable_name: "customer_name",
-            value: name
-          },
-          {
-            display_name: "Phone Number",
-            variable_name: "phone_number",
-            value: phone
-          }
+          { display_name: "Customer Name", variable_name: "customer_name", value: name },
+          { display_name: "Phone Number", variable_name: "phone_number", value: phone },
+          { display_name: "Delivery Option", variable_name: "delivery_fee", value: `GHS ${deliveryFee.toFixed(2)}` }
         ]
       },
       callback: function(response) {
         alert('Payment complete! Reference: ' + response.reference);
         localStorage.removeItem('cart');
-        window.location.href = 'index.html'; // or an order confirmation page
+        window.location.href = 'index.html';
       },
       onClose: function() {
         alert('Payment window closed.');
@@ -127,5 +174,3 @@
     handler.openIframe();
   });
 </script>
-</body>
-</html>
