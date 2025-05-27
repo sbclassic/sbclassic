@@ -48,11 +48,26 @@
   <a href="checkout.html" id="checkout-link" style="display: none;">Proceed to Checkout 💳</a>
 
   <!-- Load external JavaScript and call renderCart -->
-<script src="cart.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    renderCart();
+  document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const productDiv = btn.closest('.product');
+      const product = {
+        id: productDiv.dataset.id,
+        name: productDiv.dataset.name,
+        price: parseFloat(productDiv.dataset.price),
+        image: productDiv.dataset.image,
+        quantity: 1
+      };
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existingProduct = cart.find(item => item.id === product.id);
+      if (existingProduct) {
+        existingProduct.quantity++;
+      } else {
+        cart.push(product);
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`Added "${product.name}" to cart!`);
+    });
   });
-</script>
-</body>
-</html>
+<script>
