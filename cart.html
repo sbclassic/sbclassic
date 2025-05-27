@@ -24,6 +24,11 @@
       width: 100px;
       height: auto;
     }
+    .cart-controls {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
     #checkout-link {
       display: inline-block;
       margin-top: 20px;
@@ -33,6 +38,18 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 5px;
+    }
+    #clear-cart-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 12px;
+      background-color: #444;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
     }
   </style>
 </head>
@@ -44,43 +61,16 @@
 
   <h1>Your Cart 🛒</h1>
   <div id="cart-items"></div>
+
+  <button id="clear-cart-btn" onclick="clearCart()">🧹 Clear Cart</button>
+
   <div id="cart-total" style="margin-top: 10px; font-weight: bold;"></div>
   <a href="checkout.html" id="checkout-link" style="display: none;">Proceed to Checkout 💳</a>
 
+  <script src="cart.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const container = document.getElementById('cart-items');
-      const totalContainer = document.getElementById('cart-total');
-      const checkoutLink = document.getElementById('checkout-link');
-
-      if (cart.length === 0) {
-        container.textContent = 'Your cart is empty.';
-        checkoutLink.style.display = 'none';
-        return;
-      }
-
-      let total = 0;
-      container.innerHTML = '';
-
-      cart.forEach(item => {
-        total += item.price * item.quantity;
-
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'cart-item';
-        itemDiv.innerHTML = `
-          <img src="${item.image}" alt="${item.name}" />
-          <div>
-            <strong>${item.name}</strong><br />
-            Price: GHS ${item.price.toFixed(2)}<br />
-            Quantity: ${item.quantity}
-          </div>
-        `;
-        container.appendChild(itemDiv);
-      });
-
-      totalContainer.textContent = `Total: GHS ${total.toFixed(2)}`;
-      checkoutLink.style.display = 'inline-block';
+      renderCart();
     });
   </script>
 </body>
