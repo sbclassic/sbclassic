@@ -32,15 +32,14 @@ function renderCart() {
 
   if (cart.length === 0) {
     container.innerHTML = '<p>Your cart is empty.</p>';
-    if (totalContainer) totalContainer.textContent = '';
-    if (checkoutLink) checkoutLink.style.display = 'none';
+    totalContainer.textContent = '';
+    checkoutLink.style.display = 'none';
     return;
   }
 
   let total = 0;
   cart.forEach((item, index) => {
     total += item.price * item.quantity;
-
     const itemDiv = document.createElement('div');
     itemDiv.className = 'cart-item';
     itemDiv.innerHTML = `
@@ -49,20 +48,21 @@ function renderCart() {
         <p><strong>${item.name}</strong></p>
         <p>Price: GHS ${item.price.toFixed(2)}</p>
         <p>
-          Quantity:
+          Quantity: 
           <button class="qty-btn decrease" data-index="${index}">−</button>
           <span>${item.quantity}</span>
           <button class="qty-btn increase" data-index="${index}">+</button>
         </p>
-        <button class="remove-btn" data-index="${index}">🗑️ Remove</button>
+        <button class="remove-btn" data-index="${index}">Remove</button>
       </div>
     `;
     container.appendChild(itemDiv);
   });
 
-  if (totalContainer) totalContainer.textContent = `Total: GHS ${total.toFixed(2)}`;
-  if (checkoutLink) checkoutLink.style.display = 'inline-block';
+  totalContainer.textContent = `Total: GHS ${total.toFixed(2)}`;
+  checkoutLink.style.display = 'inline-block';
 
+  // Attach event listeners to +, -, and remove buttons
   document.querySelectorAll('.qty-btn.increase').forEach(btn => {
     btn.addEventListener('click', () => {
       const index = parseInt(btn.dataset.index);
@@ -84,13 +84,3 @@ function renderCart() {
       renderCart();
     });
   });
-
-  document.querySelectorAll('.remove-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const index = parseInt(btn.dataset.index);
-      cart.splice(index, 1);
-      saveCart(cart);
-      renderCart();
-    });
-  });
-}
