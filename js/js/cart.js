@@ -1,5 +1,3 @@
-// cart.js
-
 function getCart() {
   return JSON.parse(localStorage.getItem('cart')) || [];
 }
@@ -8,51 +6,67 @@ function saveCart(cart) {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-function addToCart(product) {
+function removeItem(productId) {
+  let cart = getCart();
+  cart = cart.filter(item => item.id !== productId);
+  saveCart(cart);
+  renderCart();
+}
+
+function updateQuantity(productId, change) {
   const cart = getCart();
-  const existingItem = cart.find(item => item.id === product.id);
-  if (existingItem) {
-    existingItem.quantity += 1;
-  } else {
-    product.quantity = 1;
-    cart.push(product);
+  const item = cart.find(i => i.id === productId);
+  if (item) {
+    item.quantity += change;
+    if (item.quantity <= 0) {
+      removeItem(productId);
+      return;
+    }
   }
   saveCart(cart);
+  renderCart();
+}
+
+function clearCart() {
+  localStorage.removeItem('cart');
+  renderCart();
 }
 
 function renderCart() {
-  const cart = getCart();
-  const container = document.getElementById('cart-items');
-  const totalContainer = document.getElementById('cart-total');
+  const cartItemsDiv = document.getElementById('cart-items');
   const checkoutLink = document.getElementById('checkout-link');
-
-  if (!container) return;
-
-  container.innerHTML = '';
+  const cartTotalDiv = document.getElementById('cart-total');
+  const cart = getCart();
+  cartItemsDiv.innerHTML = '';
 
   if (cart.length === 0) {
-    container.innerHTML = '<p>Your cart is empty.</p>';
-    if (totalContainer) totalContainer.textContent = '';
-    if (checkoutLink) checkoutLink.style.display = 'none';
+    cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
+    checkoutLink.style.display = 'none';
+    cartTotalDiv.textContent = '';
     return;
   }
 
   let total = 0;
+
   cart.forEach(item => {
-    total += item.price * item.quantity;
     const itemDiv = document.createElement('div');
     itemDiv.className = 'cart-item';
+
+    total += item.price * item.quantity;
+
     itemDiv.innerHTML = `
       <img src="${item.image}" alt="${item.name}" />
       <div>
-        <p><strong>${item.name}</strong></p>
-        <p>Price: GHS ${item.price.toFixed(2)}</p>
-        <p>Quantity: ${item.quantity}</p>
+        <h3>${item.name}</h3>
+        <p>GHS ${item.price.toFixed(2)} × ${item.quantity} = GHS ${(item.price * item.quantity).toFixed(2)}</p>
+        <button onclick="updateQuantity('${item.id}', -1)">➖</button>
+        <button onclick="updateQuantity('${item.id}', 1)">➕</button>
+        <button onclick="removeItem('${item.id}')">❌ Remove</button>
       </div>
     `;
-    container.appendChild(itemDiv);
+    cartItemsDiv.appendChild(itemDiv);
   });
 
-  if (totalContainer) totalContainer.textContent = `Total: GHS ${total.toFixed(2)}`;
-  if (checkoutLink) checkoutLink.style.display = 'inline-block';
+  cartTotalDiv.textContent = `Total: GHS ${total.toFixed(2)}`;
+  checkoutLink.style.display = 'inline-block';
 }
