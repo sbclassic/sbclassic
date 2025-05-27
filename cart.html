@@ -34,6 +34,18 @@
       font-weight: bold;
       border-radius: 5px;
     }
+    #clear-cart-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 12px;
+      background-color: #444;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+    }
   </style>
 </head>
 <body>
@@ -44,12 +56,23 @@
 
   <h1>Your Cart 🛒</h1>
   <div id="cart-items"></div>
+
+  <!-- 🧹 Clear Cart Button -->
+  <button id="clear-cart-btn" onclick="clearCart()">🧹 Clear Cart</button>
+
   <div id="cart-total" style="margin-top: 10px; font-weight: bold;"></div>
   <a href="checkout.html" id="checkout-link" style="display: none;">Proceed to Checkout 💳</a>
 
   <script src="cart.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    renderCart();
-  });
-</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      renderCart();
+    });
+
+    function clearCart() {
+      localStorage.removeItem('cart');
+      renderCart();
+    }
+  </script>
+</body>
+</html>
