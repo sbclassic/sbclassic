@@ -1,3 +1,6 @@
+         CART.HTML
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,15 +27,6 @@
       width: 100px;
       height: auto;
     }
-    .cart-actions {
-      margin-top: 8px;
-    }
-    .cart-actions button {
-      margin-right: 5px;
-      padding: 3px 6px;
-      font-size: 14px;
-      cursor: pointer;
-    }
     #checkout-link {
       display: inline-block;
       margin-top: 20px;
@@ -56,12 +50,12 @@
   <div id="cart-total" style="margin-top: 10px; font-weight: bold;"></div>
   <a href="checkout.html" id="checkout-link" style="display: none;">Proceed to Checkout 💳</a>
 
-  <!-- Load cart.js and trigger renderCart -->
-  <script src="cart.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      renderCart();
-    });
-  </script>
+  <!-- Load external JavaScript and call renderCart -->
+<script src="cart.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    renderCart();
+  });
+</script>
 </body>
 </html>
