@@ -1,5 +1,3 @@
-// wishlist.js
-
 const wishlistKey = "sbclassic_wishlist";
 
 function getWishlist() {
@@ -7,17 +5,13 @@ function getWishlist() {
 }
 
 function saveWishlist(wishlist) {
+  console.log("Saving wishlist:", wishlist);
   localStorage.setItem(wishlistKey, JSON.stringify(wishlist));
 }
 
 function renderWishlist() {
   const container = document.getElementById('wishlist-items');
-  if (!container) return; // Don't run if not on wishlist page
-
-function saveWishlist(wishlist) {
-  console.log("Saving wishlist:", wishlist); // Debug line
-  localStorage.setItem(wishlistKey, JSON.stringify(wishlist));
-}
+  if (!container) return;
 
   const wishlist = getWishlist();
   container.innerHTML = '';
@@ -62,7 +56,6 @@ function addToCart(product) {
   alert(`${product.name} added to cart.`);
 }
 
-// Wishlist interaction on product pages
 function updateWishlistButtons() {
   const wishlist = getWishlist();
   document.querySelectorAll(".product").forEach(product => {
@@ -103,7 +96,6 @@ function handleWishlistButtons() {
   });
 }
 
-// Initialize depending on page
 document.addEventListener('DOMContentLoaded', () => {
   renderWishlist();
   updateWishlistButtons();
