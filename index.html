@@ -395,7 +395,7 @@ footer .social-links a:hover {
   // Wait until page is fully loaded
   document.addEventListener('DOMContentLoaded', function () {
     // Listen to all "Add to Cart" buttons
-    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
       button.addEventListener('click', function () {
         const productCard = this.closest('.product');
         const quantityInput = productCard.querySelector('.quantity-input');
