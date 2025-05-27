@@ -32,8 +32,8 @@ function renderCart() {
 
   if (cart.length === 0) {
     container.innerHTML = '<p>Your cart is empty.</p>';
-    totalContainer.textContent = '';
-    checkoutLink.style.display = 'none';
+    if (totalContainer) totalContainer.textContent = '';
+    if (checkoutLink) checkoutLink.style.display = 'none';
     return;
   }
 
@@ -53,80 +53,6 @@ function renderCart() {
     container.appendChild(itemDiv);
   });
 
-  totalContainer.textContent = `Total: GHS ${total.toFixed(2)}`;
-  checkoutLink.style.display = 'inline-block';
+  if (totalContainer) totalContainer.textContent = `Total: GHS ${total.toFixed(2)}`;
+  if (checkoutLink) checkoutLink.style.display = 'inline-block';
 }
-
-// ---- Payment and checkout script ----
-
-<script src="https://js.paystack.co/v1/inline.js"></script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    function calculateCartTotal() {
-      let total = 0;
-      cart.forEach(item => {
-        total += item.price * item.quantity;
-      });
-      return total;
-    }
-
-    const deliverySelect = document.getElementById('shipping'); // or 'delivery-option' if your select id is delivery-option
-    const finalTotalDiv = document.getElementById('final-total');
-
-    function updateFinalTotal() {
-      const shippingCost = parseFloat(deliverySelect.value || 0);
-      const cartTotal = calculateCartTotal();
-      const grandTotal = cartTotal + shippingCost;
-      finalTotalDiv.textContent = `Total with Shipping: GHS ${grandTotal.toFixed(2)}`;
-    }
-
-    // Update total on delivery option change
-    deliverySelect.addEventListener('change', updateFinalTotal);
-
-    // Initialize total on page load
-    updateFinalTotal();
-
-    document.getElementById('checkout-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      if (cart.length === 0) {
-        alert('Your cart is empty.');
-        return;
-      }
-
-      const name = this.name.value.trim();
-      const email = this.email.value.trim();
-      const phone = this.phone.value.trim();
-      const shippingCost = parseFloat(this.shipping.value || 0);
-      const totalAmount = calculateCartTotal() + shippingCost;
-      const amountInKobo = totalAmount * 100;
-
-      var handler = PaystackPop.setup({
-        key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6', // ← replace with your Paystack PUBLIC key
-        email: email,
-        amount: amountInKobo,
-        currency: 'GHS',
-        metadata: {
-          custom_fields: [
-            { display_name: "Customer Name", value: name },
-            { display_name: "Phone Number", value: phone },
-            { display_name: "Shipping Option", value: `GHS ${shippingCost.toFixed(2)}` }
-          ]
-        },
-        callback: function(response) {
-          alert('Payment complete! Reference: ' + response.reference);
-          localStorage.removeItem('cart');
-          window.location.href = 'index.html';
-        },
-        onClose: function() {
-          alert('Payment window closed.');
-        }
-      });
-
-      handler.openIframe();
-    });
-  });
-</script>
