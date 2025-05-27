@@ -32,13 +32,13 @@ function renderCart() {
 
   if (cart.length === 0) {
     container.innerHTML = '<p>Your cart is empty.</p>';
-    totalContainer.textContent = '';
-    checkoutLink.style.display = 'none';
+    if (totalContainer) totalContainer.textContent = '';
+    if (checkoutLink) checkoutLink.style.display = 'none';
     return;
   }
 
   let total = 0;
-  cart.forEach((item, index) => {
+  cart.forEach(item => {
     total += item.price * item.quantity;
     const itemDiv = document.createElement('div');
     itemDiv.className = 'cart-item';
@@ -47,40 +47,12 @@ function renderCart() {
       <div>
         <p><strong>${item.name}</strong></p>
         <p>Price: GHS ${item.price.toFixed(2)}</p>
-        <p>
-          Quantity: 
-          <button class="qty-btn decrease" data-index="${index}">−</button>
-          <span>${item.quantity}</span>
-          <button class="qty-btn increase" data-index="${index}">+</button>
-        </p>
-        <button class="remove-btn" data-index="${index}">Remove</button>
+        <p>Quantity: ${item.quantity}</p>
       </div>
     `;
     container.appendChild(itemDiv);
   });
 
-  totalContainer.textContent = `Total: GHS ${total.toFixed(2)}`;
-  checkoutLink.style.display = 'inline-block';
-
-  // Attach event listeners to +, -, and remove buttons
-  document.querySelectorAll('.qty-btn.increase').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const index = parseInt(btn.dataset.index);
-      cart[index].quantity += 1;
-      saveCart(cart);
-      renderCart();
-    });
-  });
-
-  document.querySelectorAll('.qty-btn.decrease').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const index = parseInt(btn.dataset.index);
-      if (cart[index].quantity > 1) {
-        cart[index].quantity -= 1;
-      } else {
-        cart.splice(index, 1);
-      }
-      saveCart(cart);
-      renderCart();
-    });
-  });
+  if (totalContainer) totalContainer.textContent = `Total: GHS ${total.toFixed(2)}`;
+  if (checkoutLink) checkoutLink.style.display = 'inline-block';
+}
