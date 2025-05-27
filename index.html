@@ -415,26 +415,36 @@ footer .social-links a:hover {
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Chat" />
   </a>
 
-<script>
-  document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const productDiv = btn.closest('.product');
-      const product = {
-        id: productDiv.dataset.id,
-        name: productDiv.dataset.name,
-        price: parseFloat(productDiv.dataset.price),
-        image: productDiv.dataset.image,
-        quantity: 1
-      };
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const existingProduct = cart.find(item => item.id === product.id);
-      if (existingProduct) {
-        existingProduct.quantity++;
-      } else {
-        cart.push(product);
-      }
-      localStorage.setItem('cart', JSON.stringify(cart));
-      alert(`Added "${product.name}" to cart!`);
+<!-- JavaScript -->
+  <script src="cart.js"></script>
+  <script src="wishlist.js"></script>
+
+  <!-- Optional: Inline Add to Cart script (use only if not in cart.js) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const productDiv = btn.closest('.product');
+          const product = {
+            id: productDiv.dataset.id,
+            name: productDiv.dataset.name,
+            price: parseFloat(productDiv.dataset.price),
+            image: productDiv.dataset.image,
+            quantity: 1
+          };
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+          const existingProduct = cart.find(item => item.id === product.id);
+          if (existingProduct) {
+            existingProduct.quantity++;
+          } else {
+            cart.push(product);
+          }
+          localStorage.setItem('cart', JSON.stringify(cart));
+          alert(`Added "${product.name}" to cart!`);
+        });
+      });
     });
-  });
-<script>
+  </script>
+
+</body>
+</html>
