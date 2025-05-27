@@ -14,6 +14,11 @@ function renderWishlist() {
   const container = document.getElementById('wishlist-items');
   if (!container) return; // Don't run if not on wishlist page
 
+function saveWishlist(wishlist) {
+  console.log("Saving wishlist:", wishlist); // Debug line
+  localStorage.setItem(wishlistKey, JSON.stringify(wishlist));
+}
+
   const wishlist = getWishlist();
   container.innerHTML = '';
 
