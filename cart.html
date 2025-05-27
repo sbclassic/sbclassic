@@ -47,27 +47,41 @@
   <div id="cart-total" style="margin-top: 10px; font-weight: bold;"></div>
   <a href="checkout.html" id="checkout-link" style="display: none;">Proceed to Checkout 💳</a>
 
-  <!-- Load external JavaScript and call renderCart -->
-<script>
-  document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const productDiv = btn.closest('.product');
-      const product = {
-        id: productDiv.dataset.id,
-        name: productDiv.dataset.name,
-        price: parseFloat(productDiv.dataset.price),
-        image: productDiv.dataset.image,
-        quantity: 1
-      };
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const existingProduct = cart.find(item => item.id === product.id);
-      if (existingProduct) {
-        existingProduct.quantity++;
-      } else {
-        cart.push(product);
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const container = document.getElementById('cart-items');
+      const totalContainer = document.getElementById('cart-total');
+      const checkoutLink = document.getElementById('checkout-link');
+
+      if (cart.length === 0) {
+        container.textContent = 'Your cart is empty.';
+        checkoutLink.style.display = 'none';
+        return;
       }
-      localStorage.setItem('cart', JSON.stringify(cart));
-      alert(`Added "${product.name}" to cart!`);
+
+      let total = 0;
+      container.innerHTML = '';
+
+      cart.forEach(item => {
+        total += item.price * item.quantity;
+
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" />
+          <div>
+            <strong>${item.name}</strong><br />
+            Price: GHS ${item.price.toFixed(2)}<br />
+            Quantity: ${item.quantity}
+          </div>
+        `;
+        container.appendChild(itemDiv);
+      });
+
+      totalContainer.textContent = `Total: GHS ${total.toFixed(2)}`;
+      checkoutLink.style.display = 'inline-block';
     });
-  });
-<script>
+  </script>
+</body>
+</html>
