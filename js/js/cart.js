@@ -40,6 +40,7 @@ function renderCart() {
   let total = 0;
   cart.forEach((item, index) => {
     total += item.price * item.quantity;
+
     const itemDiv = document.createElement('div');
     itemDiv.className = 'cart-item';
     itemDiv.innerHTML = `
@@ -53,7 +54,7 @@ function renderCart() {
           <span>${item.quantity}</span>
           <button class="qty-btn increase" data-index="${index}">+</button>
         </p>
-        <button class="remove-btn" data-index="${index}">Remove</button>
+        <button class="remove-btn" data-index="${index}">🗑️ Remove</button>
       </div>
     `;
     container.appendChild(itemDiv);
@@ -62,7 +63,6 @@ function renderCart() {
   if (totalContainer) totalContainer.textContent = `Total: GHS ${total.toFixed(2)}`;
   if (checkoutLink) checkoutLink.style.display = 'inline-block';
 
-  // Add functionality for quantity increase
   document.querySelectorAll('.qty-btn.increase').forEach(btn => {
     btn.addEventListener('click', () => {
       const index = parseInt(btn.dataset.index);
@@ -72,7 +72,6 @@ function renderCart() {
     });
   });
 
-  // Add functionality for quantity decrease
   document.querySelectorAll('.qty-btn.decrease').forEach(btn => {
     btn.addEventListener('click', () => {
       const index = parseInt(btn.dataset.index);
@@ -86,7 +85,6 @@ function renderCart() {
     });
   });
 
-  // Add functionality for removing item
   document.querySelectorAll('.remove-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const index = parseInt(btn.dataset.index);
