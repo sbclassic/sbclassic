@@ -354,6 +354,20 @@ footer .social-links a:hover {
       <a href="checkout.html" id="checkout-btn" style="display:none;">Checkout</a>
     </div>
   </section>
+  
+    <!-- Other scripts you already have -->
+  <script src="wishlist.js"></script>
+
+  <!-- Optional: any inline script initialization -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderWishlist();
+      updateWishlistButtons();
+      handleWishlistButtons();
+    });
+  </script>
+</body>
+</html>
 
   <!-- Policies Section -->
 <div class="policy-links" style="text-align: center; padding: 30px 0; background-color: #f8f8f8;">
@@ -425,9 +439,3 @@ footer .social-links a:hover {
     });
   });
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    renderWishlist();
-    updateWishlistButtons();
-    handleWishlistButtons();
-  });
-</script>
