@@ -394,24 +394,28 @@ footer .social-links a:hover {
   document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const productDiv = btn.closest('.product');
+      const quantityInput = productDiv.querySelector('.quantity-input');
+      let quantity = parseInt(quantityInput.value);
+      if (isNaN(quantity) || quantity < 1) quantity = 1;
+
       const product = {
         id: productDiv.dataset.id,
         name: productDiv.dataset.name,
         price: parseFloat(productDiv.dataset.price),
         image: productDiv.dataset.image,
-        quantity: 1
+        quantity: quantity
       };
 
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
       const existingProduct = cart.find(item => item.id === product.id);
       if (existingProduct) {
-        existingProduct.quantity += 1;
+        existingProduct.quantity += quantity;
       } else {
         cart.push(product);
       }
 
       localStorage.setItem('cart', JSON.stringify(cart));
-      alert(`✅ "${product.name}" added to cart!`);
+      alert(`✅ ${quantity} x "${product.name}" added to cart!`);
     });
   });
 </script>
