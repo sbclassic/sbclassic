@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart 🛒 – SB CLASSIC</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    nav {
+      margin-bottom: 20px;
+    }
+    .cart-item {
+      border: 1px solid #ccc;
+      padding: 12px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .cart-item img {
+      width: 100px;
+      height: auto;
+    }
+    .cart-controls {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    #checkout-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #191970;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+    #clear-cart-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 12px;
+      background-color: #444;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="checkout.html">Checkout 💳</a>
+  </nav>
+
+  <h1>Your Cart 🛒</h1>
+  <div id="cart-items"></div>
+
+  <button id="clear-cart-btn" onclick="clearCart()">🧹 Clear Cart</button>
+
+  <div id="cart-total" style="margin-top: 10px; font-weight: bold;"></div>
+  <a href="checkout.html" id="checkout-link" style="display: none;">Proceed to Checkout 💳</a>
+
+  <script src="cart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      renderCart();
+    });
+  </script>
+</body>
+</html>
