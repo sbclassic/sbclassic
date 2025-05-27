@@ -1,4 +1,3 @@
-
 function getCart() {
   return JSON.parse(localStorage.getItem('cart')) || [];
 }
@@ -29,18 +28,18 @@ function renderCart() {
 
     const itemDiv = document.createElement('div');
     itemDiv.className = 'cart-item';
-    itemDiv.innerHTML = \`
-      <img src="\${item.image}" alt="\${item.name}">
+    itemDiv.innerHTML = `
+      <img src="${item.image}" alt="${item.name}">
       <div>
-        <strong>\${item.name}</strong><br>
-        GHS \${item.price} x \${item.quantity} = GHS \${itemTotal}<br>
+        <strong>${item.name}</strong><br>
+        GHS ${item.price} x ${item.quantity} = GHS ${itemTotal.toFixed(2)}<br>
         <div class="cart-controls">
-          <button onclick="changeQuantity(\${index}, -1)">−</button>
-          <button onclick="changeQuantity(\${index}, 1)">+</button>
-          <button onclick="removeItem(\${index})">Remove</button>
+          <button onclick="changeQuantity(${index}, -1)">−</button>
+          <button onclick="changeQuantity(${index}, 1)">+</button>
+          <button onclick="removeItem(${index})">Remove</button>
         </div>
       </div>
-    \`;
+    `;
     cartItemsContainer.appendChild(itemDiv);
   });
 
