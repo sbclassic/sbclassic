@@ -2,83 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Checkout 💳 – SB CLASSIC</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
-      background-color: #f8f9fa;
-      color: #444;
+      max-width: 450px;
+      margin: auto;
     }
     nav a {
-      color: #191970;
       text-decoration: none;
-      margin-right: 15px;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #2a2a9f;
-    }
-    h1 {
-      color: #2b2b2b;
-      margin-bottom: 10px;
+      color: #191970;
+      font-weight: 600;
+      margin-right: 10px;
     }
     form {
-      max-width: 400px;
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      max-width: 100%;
     }
     label {
       font-weight: bold;
       display: block;
       margin-bottom: 6px;
+      margin-top: 12px;
     }
-    input, select {
+    input, select, button {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      padding: 8px;
       box-sizing: border-box;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
       font-size: 14px;
     }
     button {
-      width: 100%;
-      padding: 12px;
       background-color: #191970;
       color: white;
       border: none;
-      border-radius: 6px;
-      font-size: 16px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      font-weight: 600;
+      transition: background-color 0.3s;
     }
     button:hover {
       background-color: #2a2a9f;
     }
+    #promo-message {
+      font-weight: bold;
+      color: green;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      display: none;
+    }
+    #promo-error {
+      font-weight: bold;
+      color: red;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      display: none;
+    }
     #order-summary {
-      max-width: 400px;
-      background: white;
       margin-bottom: 20px;
-      padding: 15px 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      color: #2b2b2b;
+      font-weight: bold;
+      background: #f8f8f8;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
     }
     #order-summary h3 {
       margin-top: 0;
-      margin-bottom: 12px;
-      font-size: 20px;
-    }
-    #final-total {
-      font-weight: bold;
-      font-size: 18px;
-      margin-bottom: 15px;
-      color: #191970;
-      text-align: center;
     }
   </style>
 </head>
@@ -90,63 +81,128 @@
 
   <h1>Checkout 💳</h1>
 
+  <label for="promo-code">Promo Code</label>
+  <input type="text" id="promo-code" placeholder="Enter promo code" />
+  <button type="button" id="apply-promo">Apply Promo Code</button>
+  <div id="promo-message"></div>
+  <div id="promo-error"></div>
+
+  <label for="shipping">Delivery Method</label>
+  <select id="shipping" name="shipping" required>
+    <option value="">Select delivery method</option>
+    <option value="70">Accra – GHS 50–95 (Depending on the area)</option>
+    <option value="60">Kumasi – GHS 50–80 (Depending on the value of the item)</option>
+    <option value="45">Nationwide Standard (7–14 Days)</option>
+    <option value="400">International Shipping – GHS 200–700 (Depending on the country)</option>
+  </select>
+
   <div id="order-summary">
     <h3>Order Summary</h3>
     <p id="summary-subtotal">Subtotal: GHS 0.00</p>
+    <p id="summary-discount" style="display:none;">Discount: -GHS 0.00</p>
     <p id="summary-shipping">Delivery: GHS 0.00</p>
     <p id="summary-total">Total: GHS 0.00</p>
   </div>
 
   <form id="checkout-form">
-    <label for="shipping">Select Delivery Method:</label>
-    <select id="shipping" name="shipping" required>
-      <option value="">-- Select delivery method --</option>
-      <option value="70">Accra – GHS 50–95 (Depending on the area)</option>
-      <option value="60">Kumasi – GHS 50–80 (Depending on the value of the item)</option>
-      <option value="45">Nationwide Standard (7–14 Days)</option>
-      <option value="400">International Shipping – GHS 200–700 (Depending on the country)</option>
-    </select>
-
     <label for="name">Full Name:</label>
-    <input type="text" id="name" name="name" placeholder="John Doe" required />
+    <input type="text" id="name" name="name" required />
 
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" placeholder="you@example.com" required />
+    <input type="email" id="email" name="email" required />
 
     <label for="phone">Phone Number:</label>
-    <input type="tel" id="phone" name="phone" placeholder="+233..." required />
-
-    <div id="final-total">Amount to Pay: GHS 0.00</div>
+    <input type="tel" id="phone" name="phone" required />
 
     <button type="submit">Place Order</button>
   </form>
 
   <script src="https://js.paystack.co/v1/inline.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', function () {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       let subtotal = 0;
+      let discountAmount = 0;
+
       cart.forEach(item => {
         subtotal += item.price * item.quantity;
       });
 
       const deliverySelect = document.getElementById('shipping');
       const subtotalDisplay = document.getElementById('summary-subtotal');
+      const discountDisplay = document.getElementById('summary-discount');
       const deliveryDisplay = document.getElementById('summary-shipping');
       const totalDisplay = document.getElementById('summary-total');
-      const finalTotalDisplay = document.getElementById('final-total');
+      const promoInput = document.getElementById('promo-code');
+      const applyPromoBtn = document.getElementById('apply-promo');
+      const promoMessage = document.getElementById('promo-message');
+      const promoError = document.getElementById('promo-error');
 
-      subtotalDisplay.textContent = `Subtotal: GHS ${subtotal.toFixed(2)}`;
+      subtotalDisplay.textContent = 'Subtotal: GHS ' + subtotal.toFixed(2);
+
+      const promoCodes = {
+        "SBCLASSIC10": 10,  // 10% discount
+        "FREESHIP": 0      // special code for free shipping - handled later
+      };
 
       function updateTotals() {
         const deliveryFee = parseFloat(deliverySelect.value) || 0;
-        deliveryDisplay.textContent = `Delivery: GHS ${deliveryFee.toFixed(2)}`;
-        const total = subtotal + deliveryFee;
-        totalDisplay.textContent = `Total: GHS ${total.toFixed(2)}`;
-        finalTotalDisplay.textContent = `Amount to Pay: GHS ${total.toFixed(2)}`;
+        let adjustedDeliveryFee = deliveryFee;
+
+        // If FREESHIP promo applied, set delivery to 0
+        if (promoInput.value.trim().toUpperCase() === "FREESHIP") {
+          adjustedDeliveryFee = 0;
+        }
+
+        deliveryDisplay.textContent = 'Delivery: GHS ' + adjustedDeliveryFee.toFixed(2);
+
+        // Calculate total after discount
+        let totalAfterDiscount = subtotal - discountAmount + adjustedDeliveryFee;
+
+        if (discountAmount > 0) {
+          discountDisplay.style.display = 'block';
+          discountDisplay.textContent = 'Discount: -GHS ' + discountAmount.toFixed(2);
+        } else {
+          discountDisplay.style.display = 'none';
+        }
+
+        totalDisplay.textContent = 'Total: GHS ' + totalAfterDiscount.toFixed(2);
       }
 
       deliverySelect.addEventListener('change', updateTotals);
+
+      applyPromoBtn.addEventListener('click', function () {
+        const code = promoInput.value.trim().toUpperCase();
+        promoMessage.style.display = 'none';
+        promoError.style.display = 'none';
+
+        if (!code) {
+          promoError.textContent = 'Please enter a promo code.';
+          promoError.style.display = 'block';
+          discountAmount = 0;
+          updateTotals();
+          return;
+        }
+
+        if (promoCodes.hasOwnProperty(code)) {
+          // Calculate discount based on code
+          if (code === "FREESHIP") {
+            discountAmount = 0;  // no subtotal discount but free shipping handled in updateTotals
+            promoMessage.textContent = 'Promo applied: Free Shipping!';
+          } else {
+            discountAmount = (promoCodes[code] / 100) * subtotal;
+            promoMessage.textContent = `Promo applied: ${promoCodes[code]}% off!`;
+          }
+          promoMessage.style.display = 'block';
+          updateTotals();
+        } else {
+          promoError.textContent = 'Invalid promo code.';
+          promoError.style.display = 'block';
+          discountAmount = 0;
+          updateTotals();
+        }
+      });
+
       updateTotals();
 
       document.getElementById('checkout-form').addEventListener('submit', function (e) {
@@ -160,18 +216,16 @@
         const name = this.name.value.trim();
         const email = this.email.value.trim();
         const phone = this.phone.value.trim();
-        const shippingCost = parseFloat(deliverySelect.value);
-
-        if (!shippingCost) {
-          alert('Please select a delivery method.');
+        const shippingCost = parseFloat(deliverySelect.value) || 0;
+        const totalAmount = subtotal - discountAmount + (promoInput.value.trim().toUpperCase() === "FREESHIP" ? 0 : shippingCost);
+        if (totalAmount <= 0) {
+          alert('Total amount must be greater than zero.');
           return;
         }
-
-        const totalAmount = subtotal + shippingCost;
         const amountInKobo = totalAmount * 100;
 
         var handler = PaystackPop.setup({
-          key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6',
+          key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6', // Replace with your public key
           email: email,
           amount: amountInKobo,
           currency: 'GHS',
@@ -179,7 +233,8 @@
             custom_fields: [
               { display_name: "Customer Name", value: name },
               { display_name: "Phone Number", value: phone },
-              { display_name: "Shipping Option", value: `GHS ${shippingCost.toFixed(2)}` }
+              { display_name: "Shipping Option", value: `GHS ${(promoInput.value.trim().toUpperCase() === "FREESHIP" ? 0 : shippingCost).toFixed(2)}` },
+              { display_name: "Promo Code", value: promoInput.value.trim().toUpperCase() || "None" }
             ]
           },
           callback: function (response) {
