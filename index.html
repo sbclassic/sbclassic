@@ -424,4 +424,10 @@ footer .social-links a:hover {
       alert(`Added "${product.name}" to cart!`);
     });
   });
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    renderWishlist();
+    updateWishlistButtons();
+    handleWishlistButtons();
+  });
 </script>
