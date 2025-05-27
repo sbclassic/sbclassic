@@ -15,7 +15,7 @@
     label {
       font-weight: bold;
     }
-    input {
+    input, select {
       width: 100%;
       padding: 8px;
       margin-bottom: 15px;
@@ -30,6 +30,16 @@
       font-size: 16px;
       cursor: pointer;
     }
+    #promo-message {
+      font-weight: bold;
+      color: green;
+      margin-bottom: 15px;
+    }
+    #promo-error {
+      color: red;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
   </style>
 </head>
 <body>
@@ -40,156 +50,166 @@
 
   <h1>Checkout 💳</h1>
 
-<p id="subtotal" style="font-weight: bold;"></p>
+  <p id="subtotal" style="font-weight: bold;"></p>
 
-<select id="shipping" name="shipping" required>
-  <option value="">Select delivery method</option>
-  <option value="70">Accra – GHS 50–95 (Depending on the area)</option>
-  <option value="60">Kumasi – GHS 50–80 (Depending on the value of the item)</option>
-  <option value="45">Nationwide Standard (7–14 Days)</option>
-  <option value="400">International Shipping – GHS 200–700 (Depending on the country)</option>
-</select>
+  <select id="shipping" name="shipping" required>
+    <option value="">Select delivery method</option>
+    <option value="70">Accra – GHS 50–95 (Depending on the area)</option>
+    <option value="60">Kumasi – GHS 50–80 (Depending on the value of the item)</option>
+    <option value="45">Nationwide Standard (7–14 Days)</option>
+    <option value="400">International Shipping – GHS 200–700 (Depending on the country)</option>
+  </select>
 
-<div id="order-summary" style="margin-bottom: 20px; font-weight: bold;">
-  <h3>Order Summary</h3>
-  <p id="summary-subtotal">Subtotal: GHS 0.00</p>
-  <p id="summary-shipping">Delivery: GHS 0.00</p>
-  <p id="summary-total">Total: GHS 0.00</p>
-</div>
+  <!-- Promo Code Section -->
+  <div>
+    <label for="promo-code">Promo Code:</label>
+    <input type="text" id="promo-code" placeholder="Enter promo code" />
+    <button type="button" id="apply-promo">Apply</button>
+    <p id="promo-message" style="display:none;"></p>
+    <p id="promo-error" style="display:none;"></p>
+  </div>
 
-<form id="checkout-form">
-  <label for="name">Full Name:</label><br />
-  <input type="text" id="name" name="name" required /><br /><br />
+  <div id="order-summary" style="margin-bottom: 20px; font-weight: bold;">
+    <h3>Order Summary</h3>
+    <p id="summary-subtotal">Subtotal: GHS 0.00</p>
+    <p id="summary-discount" style="color: green; display:none;">Discount: -GHS 0.00</p>
+    <p id="summary-shipping">Delivery: GHS 0.00</p>
+    <p id="summary-total">Total: GHS 0.00</p>
+  </div>
 
-  <label for="email">Email:</label><br />
-  <input type="email" id="email" name="email" required /><br /><br />
+  <form id="checkout-form">
+    <label for="name">Full Name:</label><br />
+    <input type="text" id="name" name="name" required /><br /><br />
 
-  <label for="phone">Phone Number:</label><br />
-  <input type="tel" id="phone" name="phone" required /><br /><br />
+    <label for="email">Email:</label><br />
+    <input type="email" id="email" name="email" required /><br /><br />
 
-  <div id="final-total" style="font-weight:bold;"></div><br />
+    <label for="phone">Phone Number:</label><br />
+    <input type="tel" id="phone" name="phone" required /><br /><br />
 
-  <button type="submit">Place Order</button>
-</form>
+    <div id="final-total" style="font-weight:bold;"></div><br />
 
-<script src="https://js.paystack.co/v1/inline.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let subtotal = 0;
+    <button type="submit">Place Order</button>
+  </form>
 
-    cart.forEach(item => {
-      subtotal += item.price * item.quantity;
-    });
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let subtotal = 0;
+      let discount = 0;
+      let discountPercent = 0;
 
-    const deliverySelect = document.getElementById('shipping'); // corrected id here
-    const subtotalDisplay = document.getElementById('summary-subtotal');
-    const deliveryDisplay = document.getElementById('summary-shipping');
-    const totalDisplay = document.getElementById('summary-total');
+      cart.forEach(item => {
+        subtotal += item.price * item.quantity;
+      });
 
-    subtotalDisplay.textContent = 'Subtotal: GHS ' + subtotal.toFixed(2);
+      const deliverySelect = document.getElementById('shipping');
+      const subtotalDisplay = document.getElementById('summary-subtotal');
+      const discountDisplay = document.getElementById('summary-discount');
+      const deliveryDisplay = document.getElementById('summary-shipping');
+      const totalDisplay = document.getElementById('summary-total');
+      const promoCodeInput = document.getElementById('promo-code');
+      const applyPromoBtn = document.getElementById('apply-promo');
+      const promoMessage = document.getElementById('promo-message');
+      const promoError = document.getElementById('promo-error');
 
-    function updateTotals() {
-      const deliveryFee = parseFloat(deliverySelect.value) || 0;
-      deliveryDisplay.textContent = 'Delivery: GHS ' + deliveryFee.toFixed(2);
-      totalDisplay.textContent = 'Total: GHS ' + (subtotal + deliveryFee).toFixed(2);
-    }
+      subtotalDisplay.textContent = 'Subtotal: GHS ' + subtotal.toFixed(2);
 
-    deliverySelect.addEventListener('change', updateTotals);
+      function calculateTotals() {
+        const deliveryFee = parseFloat(deliverySelect.value) || 0;
+        discount = subtotal * discountPercent;
+        discountDisplay.style.display = discount > 0 ? 'block' : 'none';
+        discountDisplay.textContent = 'Discount: -GHS ' + discount.toFixed(2);
 
-    // Initialize totals on page load (in case a default is selected)
-    updateTotals();
+        deliveryDisplay.textContent = 'Delivery: GHS ' + deliveryFee.toFixed(2);
 
-    document.getElementById('checkout-form').addEventListener('submit', function (e) {
-      e.preventDefault();
+        const total = subtotal - discount + deliveryFee;
+        totalDisplay.textContent = 'Total: GHS ' + total.toFixed(2);
 
-      if (cart.length === 0) {
-        alert('Your cart is empty.');
-        return;
+        return total;
       }
 
-      const name = this.name.value.trim();
-      const email = this.email.value.trim();
-      const phone = this.phone.value.trim();
-      const shippingCost = parseFloat(deliverySelect.value) || 0;
-      const totalAmount = subtotal + shippingCost;
-      const amountInKobo = totalAmount * 100;
+      deliverySelect.addEventListener('change', () => {
+        promoMessage.style.display = 'none';
+        promoError.style.display = 'none';
+        calculateTotals();
+      });
 
-      var handler = PaystackPop.setup({
-        key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6', // Replace with your public key
-        email: email,
-        amount: amountInKobo,
-        currency: 'GHS',
-        metadata: {
-          custom_fields: [
-            { display_name: "Customer Name", value: name },
-            { display_name: "Phone Number", value: phone },
-            { display_name: "Shipping Option", value: `GHS ${shippingCost.toFixed(2)}` }
-          ]
-        },
-        callback: function (response) {
-          alert('Payment complete! Reference: ' + response.reference);
-          localStorage.removeItem('cart');
-          window.location.href = 'index.html';
-        },
-        onClose: function () {
-          alert('Payment window closed.');
+      applyPromoBtn.addEventListener('click', () => {
+        const code = promoCodeInput.value.trim().toUpperCase();
+        promoMessage.style.display = 'none';
+        promoError.style.display = 'none';
+
+        // Example promo codes - add yours here
+        if (code === 'SBCLASSIC10') {
+          discountPercent = 0.10;
+          promoMessage.textContent = 'Promo code applied: 10% off!';
+          promoMessage.style.display = 'block';
+          calculateTotals();
+        } else if (code === '') {
+          promoError.textContent = 'Please enter a promo code.';
+          promoError.style.display = 'block';
+          discountPercent = 0;
+          calculateTotals();
+        } else {
+          promoError.textContent = 'Invalid promo code.';
+          promoError.style.display = 'block';
+          discountPercent = 0;
+          calculateTotals();
         }
       });
 
-      handler.openIframe();
+      // Initialize totals on page load
+      calculateTotals();
+
+      document.getElementById('checkout-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        if (cart.length === 0) {
+          alert('Your cart is empty.');
+          return;
+        }
+
+        const name = this.name.value.trim();
+        const email = this.email.value.trim();
+        const phone = this.phone.value.trim();
+        const shippingCost = parseFloat(deliverySelect.value) || 0;
+
+        if (!shippingCost) {
+          alert('Please select a delivery option.');
+          return;
+        }
+
+        const totalAmount = subtotal - discount + shippingCost;
+        const amountInKobo = totalAmount * 100;
+
+        var handler = PaystackPop.setup({
+          key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6', // Replace with your public key
+          email: email,
+          amount: amountInKobo,
+          currency: 'GHS',
+          metadata: {
+            custom_fields: [
+              { display_name: "Customer Name", value: name },
+              { display_name: "Phone Number", value: phone },
+              { display_name: "Shipping Option", value: `GHS ${shippingCost.toFixed(2)}` },
+              { display_name: "Promo Code Discount", value: `-GHS ${discount.toFixed(2)}` }
+            ]
+          },
+          callback: function (response) {
+            alert('Payment complete! Reference: ' + response.reference);
+            localStorage.removeItem('cart');
+            window.location.href = 'index.html';
+          },
+          onClose: function () {
+            alert('Payment window closed.');
+          }
+        });
+
+        handler.openIframe();
+      });
     });
-  });
-
-  document.getElementById('checkout-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    if (cart.length === 0) {
-      alert('Your cart is empty.');
-      return;
-    }
-
-    const name = this.name.value.trim();
-    const email = this.email.value.trim();
-    const phone = this.phone.value.trim();
-    const deliveryFee = parseFloat(document.getElementById('delivery-option')?.value || 0);
-
-    if (!deliveryFee) {
-      alert('Please select a delivery option.');
-      return;
-    }
-
-    let subtotal = 0;
-    cart.forEach(item => {
-      subtotal += item.price * item.quantity;
-    });
-
-    let totalAmount = subtotal + deliveryFee;
-    let amountInKobo = totalAmount * 100;
-
-    var handler = PaystackPop.setup({
-      key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6',
-      email: email,
-      amount: amountInKobo,
-      currency: 'GHS',
-      metadata: {
-        custom_fields: [
-          { display_name: "Customer Name", variable_name: "customer_name", value: name },
-          { display_name: "Phone Number", variable_name: "phone_number", value: phone },
-          { display_name: "Delivery Option", variable_name: "delivery_fee", value: `GHS ${deliveryFee.toFixed(2)}` }
-        ]
-      },
-      callback: function(response) {
-        alert('Payment complete! Reference: ' + response.reference);
-        localStorage.removeItem('cart');
-        window.location.href = 'index.html';
-      },
-      onClose: function() {
-        alert('Payment window closed.');
-      }
-    });
-
-    handler.openIframe();
-  });
-</script>
+  </script>
+</body>
+</html>
