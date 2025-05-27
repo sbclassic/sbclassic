@@ -2,43 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Checkout 💳 – SB CLASSIC</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
+      background-color: #f8f9fa;
+      color: #444;
+    }
+    nav a {
+      color: #191970;
+      text-decoration: none;
+      margin-right: 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #2a2a9f;
+    }
+    h1 {
+      color: #2b2b2b;
+      margin-bottom: 10px;
     }
     form {
       max-width: 400px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     label {
       font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
     }
     input, select {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
       box-sizing: border-box;
+      font-size: 14px;
     }
     button {
-      padding: 10px 20px;
+      width: 100%;
+      padding: 12px;
       background-color: #191970;
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 16px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    #promo-message {
-      font-weight: bold;
-      color: green;
-      margin-bottom: 15px;
+    button:hover {
+      background-color: #2a2a9f;
     }
-    #promo-error {
-      color: red;
+    #order-summary {
+      max-width: 400px;
+      background: white;
+      margin-bottom: 20px;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      color: #2b2b2b;
+    }
+    #order-summary h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+    #final-total {
       font-weight: bold;
+      font-size: 18px;
       margin-bottom: 15px;
+      color: #191970;
+      text-align: center;
     }
   </style>
 </head>
@@ -50,118 +90,64 @@
 
   <h1>Checkout 💳</h1>
 
-  <p id="subtotal" style="font-weight: bold;"></p>
-
-  <select id="shipping" name="shipping" required>
-    <option value="">Select delivery method</option>
-    <option value="70">Accra – GHS 50–95 (Depending on the area)</option>
-    <option value="60">Kumasi – GHS 50–80 (Depending on the value of the item)</option>
-    <option value="45">Nationwide Standard (7–14 Days)</option>
-    <option value="400">International Shipping – GHS 200–700 (Depending on the country)</option>
-  </select>
-
-  <!-- Promo Code Section -->
-  <div>
-    <label for="promo-code">Promo Code:</label>
-    <input type="text" id="promo-code" placeholder="Enter promo code" />
-    <button type="button" id="apply-promo">Apply</button>
-    <p id="promo-message" style="display:none;"></p>
-    <p id="promo-error" style="display:none;"></p>
-  </div>
-
-  <div id="order-summary" style="margin-bottom: 20px; font-weight: bold;">
+  <div id="order-summary">
     <h3>Order Summary</h3>
     <p id="summary-subtotal">Subtotal: GHS 0.00</p>
-    <p id="summary-discount" style="color: green; display:none;">Discount: -GHS 0.00</p>
     <p id="summary-shipping">Delivery: GHS 0.00</p>
     <p id="summary-total">Total: GHS 0.00</p>
   </div>
 
   <form id="checkout-form">
-    <label for="name">Full Name:</label><br />
-    <input type="text" id="name" name="name" required /><br /><br />
+    <label for="shipping">Select Delivery Method:</label>
+    <select id="shipping" name="shipping" required>
+      <option value="">-- Select delivery method --</option>
+      <option value="70">Accra – GHS 50–95 (Depending on the area)</option>
+      <option value="60">Kumasi – GHS 50–80 (Depending on the value of the item)</option>
+      <option value="45">Nationwide Standard (7–14 Days)</option>
+      <option value="400">International Shipping – GHS 200–700 (Depending on the country)</option>
+    </select>
 
-    <label for="email">Email:</label><br />
-    <input type="email" id="email" name="email" required /><br /><br />
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="name" placeholder="John Doe" required />
 
-    <label for="phone">Phone Number:</label><br />
-    <input type="tel" id="phone" name="phone" required /><br /><br />
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="you@example.com" required />
 
-    <div id="final-total" style="font-weight:bold;"></div><br />
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" placeholder="+233..." required />
+
+    <div id="final-total">Amount to Pay: GHS 0.00</div>
 
     <button type="submit">Place Order</button>
   </form>
 
   <script src="https://js.paystack.co/v1/inline.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', () => {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
       let subtotal = 0;
-      let discount = 0;
-      let discountPercent = 0;
-
       cart.forEach(item => {
         subtotal += item.price * item.quantity;
       });
 
       const deliverySelect = document.getElementById('shipping');
       const subtotalDisplay = document.getElementById('summary-subtotal');
-      const discountDisplay = document.getElementById('summary-discount');
       const deliveryDisplay = document.getElementById('summary-shipping');
       const totalDisplay = document.getElementById('summary-total');
-      const promoCodeInput = document.getElementById('promo-code');
-      const applyPromoBtn = document.getElementById('apply-promo');
-      const promoMessage = document.getElementById('promo-message');
-      const promoError = document.getElementById('promo-error');
+      const finalTotalDisplay = document.getElementById('final-total');
 
-      subtotalDisplay.textContent = 'Subtotal: GHS ' + subtotal.toFixed(2);
+      subtotalDisplay.textContent = `Subtotal: GHS ${subtotal.toFixed(2)}`;
 
-      function calculateTotals() {
+      function updateTotals() {
         const deliveryFee = parseFloat(deliverySelect.value) || 0;
-        discount = subtotal * discountPercent;
-        discountDisplay.style.display = discount > 0 ? 'block' : 'none';
-        discountDisplay.textContent = 'Discount: -GHS ' + discount.toFixed(2);
-
-        deliveryDisplay.textContent = 'Delivery: GHS ' + deliveryFee.toFixed(2);
-
-        const total = subtotal - discount + deliveryFee;
-        totalDisplay.textContent = 'Total: GHS ' + total.toFixed(2);
-
-        return total;
+        deliveryDisplay.textContent = `Delivery: GHS ${deliveryFee.toFixed(2)}`;
+        const total = subtotal + deliveryFee;
+        totalDisplay.textContent = `Total: GHS ${total.toFixed(2)}`;
+        finalTotalDisplay.textContent = `Amount to Pay: GHS ${total.toFixed(2)}`;
       }
 
-      deliverySelect.addEventListener('change', () => {
-        promoMessage.style.display = 'none';
-        promoError.style.display = 'none';
-        calculateTotals();
-      });
-
-      applyPromoBtn.addEventListener('click', () => {
-        const code = promoCodeInput.value.trim().toUpperCase();
-        promoMessage.style.display = 'none';
-        promoError.style.display = 'none';
-
-        // Example promo codes - add yours here
-        if (code === 'SBCLASSIC10') {
-          discountPercent = 0.10;
-          promoMessage.textContent = 'Promo code applied: 10% off!';
-          promoMessage.style.display = 'block';
-          calculateTotals();
-        } else if (code === '') {
-          promoError.textContent = 'Please enter a promo code.';
-          promoError.style.display = 'block';
-          discountPercent = 0;
-          calculateTotals();
-        } else {
-          promoError.textContent = 'Invalid promo code.';
-          promoError.style.display = 'block';
-          discountPercent = 0;
-          calculateTotals();
-        }
-      });
-
-      // Initialize totals on page load
-      calculateTotals();
+      deliverySelect.addEventListener('change', updateTotals);
+      updateTotals();
 
       document.getElementById('checkout-form').addEventListener('submit', function (e) {
         e.preventDefault();
@@ -174,18 +160,18 @@
         const name = this.name.value.trim();
         const email = this.email.value.trim();
         const phone = this.phone.value.trim();
-        const shippingCost = parseFloat(deliverySelect.value) || 0;
+        const shippingCost = parseFloat(deliverySelect.value);
 
         if (!shippingCost) {
-          alert('Please select a delivery option.');
+          alert('Please select a delivery method.');
           return;
         }
 
-        const totalAmount = subtotal - discount + shippingCost;
+        const totalAmount = subtotal + shippingCost;
         const amountInKobo = totalAmount * 100;
 
         var handler = PaystackPop.setup({
-          key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6', // Replace with your public key
+          key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6',
           email: email,
           amount: amountInKobo,
           currency: 'GHS',
@@ -193,8 +179,7 @@
             custom_fields: [
               { display_name: "Customer Name", value: name },
               { display_name: "Phone Number", value: phone },
-              { display_name: "Shipping Option", value: `GHS ${shippingCost.toFixed(2)}` },
-              { display_name: "Promo Code Discount", value: `-GHS ${discount.toFixed(2)}` }
+              { display_name: "Shipping Option", value: `GHS ${shippingCost.toFixed(2)}` }
             ]
           },
           callback: function (response) {
