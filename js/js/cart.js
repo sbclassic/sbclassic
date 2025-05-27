@@ -38,8 +38,9 @@ function renderCart() {
   }
 
   let total = 0;
-  cart.forEach(item => {
+  cart.forEach((item, index) => {
     total += item.price * item.quantity;
+
     const itemDiv = document.createElement('div');
     itemDiv.className = 'cart-item';
     itemDiv.innerHTML = `
@@ -47,7 +48,13 @@ function renderCart() {
       <div>
         <p><strong>${item.name}</strong></p>
         <p>Price: GHS ${item.price.toFixed(2)}</p>
-        <p>Quantity: ${item.quantity}</p>
+        <p>
+          Quantity:
+          <button class="qty-btn decrease" data-index="${index}">−</button>
+          <span>${item.quantity}</span>
+          <button class="qty-btn increase" data-index="${index}">+</button>
+        </p>
+        <button class="remove-btn" data-index="${index}">🗑️ Remove</button>
       </div>
     `;
     container.appendChild(itemDiv);
@@ -55,4 +62,44 @@ function renderCart() {
 
   if (totalContainer) totalContainer.textContent = `Total: GHS ${total.toFixed(2)}`;
   if (checkoutLink) checkoutLink.style.display = 'inline-block';
+
+  // Quantity Increase
+  document.querySelectorAll('.qty-btn.increase').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const index = parseInt(btn.dataset.index);
+      cart[index].quantity += 1;
+      saveCart(cart);
+      renderCart();
+    });
+  });
+
+  // Quantity Decrease
+  document.querySelectorAll('.qty-btn.decrease').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const index = parseInt(btn.dataset.index);
+      if (cart[index].quantity > 1) {
+        cart[index].quantity -= 1;
+      } else {
+        cart.splice(index, 1);
+      }
+      saveCart(cart);
+      renderCart();
+    });
+  });
+
+  // Remove Individual Item
+  document.querySelectorAll('.remove-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const index = parseInt(btn.dataset.index);
+      cart.splice(index, 1);
+      saveCart(cart);
+      renderCart();
+    });
+  });
+}
+
+// 🧹 Clear Entire Cart Function
+function clearCart() {
+  localStorage.removeItem('cart');
+  renderCart();
 }
