@@ -211,7 +211,7 @@
       deliverySelect.addEventListener('change', updateTotals);
       updateTotals();
 
-      document.getElementById('checkout-form').addEventListener('submit', function (e) {
+      document.getElementById('checkout-form').addEventListener('submit', async function (e) {
         e.preventDefault();
 
         if (cart.length === 0) {
@@ -244,19 +244,55 @@
               { display_name: "Customer Name", value: name },
               { display_name: "Phone Number", value: phone },
               { display_name: "Shipping Option", value: `GHS ${finalShipping.toFixed(2)}` },
-              { display_name: "Promo Code", value: code || "None" }
+              { display_name: "Promo Code", value: code || 'N/A' }
             ]
           },
-          callback: function (response) {
-            alert('Payment complete! Reference: ' + response.reference);
-            localStorage.removeItem('cart');
-            window.location.href = `thankyou.html?reference=${response.reference}`;
+          callback: async function (response) {
+            // On successful payment, send order details to backend
+            const orderData = {
+              reference: response.reference,
+              name,
+              email,
+              phone,
+              promoCode: code,
+              shippingCost: finalShipping,
+              discount: discountAmount,
+              subtotal,
+              total: totalAmount,
+              cart
+            };
+
+            try {
+              const res = await fetch('/api/send-order', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(orderData)
+              });
+
+              if (!res.ok) {
+                throw new Error('Failed to send order data to the server.');
+              }
+
+              const result = await res.json();
+
+              if (result.success) {
+                // Clear cart and save order ref for thank you page
+                localStorage.removeItem('cart');
+                sessionStorage.setItem('orderReference', response.reference);
+                window.location.href = 'thankyou.html';
+              } else {
+                alert('Order was processed, but there was a problem recording it on the server. Please contact support.');
+              }
+            } catch (error) {
+              alert('Error sending order details: ' + error.message);
+            }
           },
           onClose: function () {
-            alert('Payment window closed.');
+            alert('Payment window closed. Payment was not completed.');
           }
         });
-
         handler.openIframe();
       });
     });
