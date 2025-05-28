@@ -32,6 +32,7 @@ function renderCart() {
       <img src="${item.image}" alt="${item.name}">
       <div>
         <strong>${item.name}</strong><br>
+        <span>Size: ${item.size || 'N/A'}</span><br>
         GHS ${item.price} x ${item.quantity} = GHS ${itemTotal.toFixed(2)}<br>
         <div class="cart-controls">
           <button onclick="changeQuantity(${index}, -1)">−</button>
