@@ -33,6 +33,7 @@ function renderCart() {
       <div>
         <strong>${item.name}</strong><br>
         <span>Size: ${item.size || 'N/A'}</span><br>
+        <span>Color: ${item.color || 'N/A'}</span><br>
         GHS ${item.price} x ${item.quantity} = GHS ${itemTotal.toFixed(2)}<br>
         <div class="cart-controls">
           <button onclick="changeQuantity(${index}, -1)">−</button>
@@ -69,3 +70,44 @@ function clearCart() {
   localStorage.removeItem('cart');
   renderCart();
 }
+
+// 👇 Handle dynamic Add to Cart with sizes and colors
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+    button.addEventListener('click', function () {
+      const product = this.closest('.product');
+      const name = product.getAttribute('data-name');
+      const price = parseFloat(product.getAttribute('data-price'));
+      const image = product.getAttribute('data-image');
+      const size = product.querySelector('.size-select')?.value || null;
+      const color = product.querySelector('.color-select')?.value || null;
+      const quantity = parseInt(product.querySelector('.quantity-input')?.value) || 1;
+
+      const newItem = {
+        id: `${name}-${size}-${color}`.toLowerCase().replace(/\s+/g, '-'),
+        name,
+        price,
+        image,
+        size,
+        color,
+        quantity
+      };
+
+      const cart = getCart();
+      const existingIndex = cart.findIndex(item =>
+        item.name === newItem.name &&
+        item.size === newItem.size &&
+        item.color === newItem.color
+      );
+
+      if (existingIndex !== -1) {
+        cart[existingIndex].quantity += quantity;
+      } else {
+        cart.push(newItem);
+      }
+
+      saveCart(cart);
+      alert('Item added to cart!');
+    });
+  });
+});
