@@ -9,19 +9,18 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// API endpoint to receive order and send email/WhatsApp
+// Route to handle order data sent from frontend
 app.post('/api/send-order', (req, res) => {
   const order = req.body;
+  console.log('Order received:', order);
 
-  console.log('Received order:', order);
+  // TODO: Add email sending or WhatsApp notifications here
 
-  // TODO: Add email and WhatsApp notification logic here
-
-  // Simulate success response
-  res.status(200).json({ message: 'Order received and notifications sent.' });
+  // Respond to frontend that order was received successfully
+  res.json({ success: true, message: 'Order received' });
 });
 
-// Start server
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
