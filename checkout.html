@@ -237,7 +237,8 @@
           callback: function (response) {
             alert('Payment complete! Reference: ' + response.reference);
             localStorage.removeItem('cart');
-            window.location.href = 'index.html';
+            // Redirect to thankyou.html with order reference
+            window.location.href = `thankyou.html?reference=${response.reference}`;
           },
           onClose: function () {
             alert('Payment window closed.');
