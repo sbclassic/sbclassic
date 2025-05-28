@@ -135,29 +135,35 @@
       const deliverySelect = document.getElementById('delivery');
 
       const promoCodes = {
-        "SB10": 10,      // 10% discount
-        "FREESHIP": 0    // Free delivery
+        "SB10": 10,
+        "FREESHIP": 0
       };
 
-      // Show cart items and calculate subtotal
       function renderCart() {
         itemList.innerHTML = '';
         subtotal = 0;
         cart.forEach(item => {
-          subtotal += item.price * item.quantity;
-          const div = document.createElement('div');
-          div.textContent = `${item.name} × ${item.quantity} – GHS ${(item.price * item.quantity).toFixed(2)}`;
-          itemList.appendChild(div);
+          const itemSubtotal = item.price * item.quantity;
+          subtotal += itemSubtotal;
+
+          const itemDiv = document.createElement('div');
+          itemDiv.innerHTML = `
+            <div>
+              <strong>${item.name}</strong><br>
+              ${item.size ? 'Size: ' + item.size + '<br>' : ''}
+              ${item.color ? 'Color: ' + item.color + '<br>' : ''}
+              GHS ${item.price.toFixed(2)} x ${item.quantity} = GHS ${itemSubtotal.toFixed(2)}
+            </div>
+          `;
+          itemList.appendChild(itemDiv);
         });
         subtotalDisplay.textContent = 'Subtotal: GHS ' + subtotal.toFixed(2);
       }
 
-      // Update totals display
       function updateTotals() {
         const code = promoInput.value.trim().toUpperCase();
         let deliveryFee = parseFloat(deliverySelect.value);
 
-        // If international delivery is selected, no fixed fee shown; prompt user to contact you
         if (deliverySelect.value === "0") {
           deliveryDisplay.textContent = 'Delivery: International delivery – please contact us for a quote';
           deliveryFee = 0;
@@ -180,7 +186,6 @@
         totalDisplay.textContent = 'Total: GHS ' + total.toFixed(2);
       }
 
-      // Apply promo code
       function applyPromoCode() {
         const code = promoInput.value.trim().toUpperCase();
         promoMessage.style.display = 'none';
@@ -212,7 +217,6 @@
       renderCart();
       updateTotals();
 
-      // Handle form submission & Paystack payment
       document.getElementById('checkout-form').addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -243,10 +247,9 @@
 
         const amountInKobo = Math.round(totalAmount * 100);
 
-        // Debug logs (remove in production)
-        console.log('Starting Paystack payment...');
-        console.log('Amount:', amountInKobo);
-        console.log('Email:', email);
+        const orderDetails = cart.map(item => {
+          return `${item.name} (Qty: ${item.quantity}, Size: ${item.size || 'N/A'}, Color: ${item.color || 'N/A'})`;
+        }).join(' | ');
 
         const handler = PaystackPop.setup({
           key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6',
@@ -258,15 +261,14 @@
               { display_name: "Customer Name", value: name },
               { display_name: "Phone Number", value: phone },
               { display_name: "Delivery Option", value: deliveryOption === "0" ? 'International delivery' : `GHS ${finalDelivery.toFixed(2)}` },
-              { display_name: "Promo Code", value: code || 'N/A' }
+              { display_name: "Promo Code", value: code || 'N/A' },
+              { display_name: "Order Details", value: orderDetails }
             ]
           },
           callback: function (response) {
             alert('Payment successful! Reference: ' + response.reference);
-
             localStorage.removeItem('cart');
             sessionStorage.setItem('orderReference', response.reference);
-
             window.location.href = 'thankyou.html';
           },
           onClose: function () {
