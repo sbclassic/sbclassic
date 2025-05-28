@@ -187,265 +187,504 @@
   <h2>Shoes</h2>
   <div class="products">
 
-    <div class="product">
-      <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
-      <h3>Versace Sneaker - Black</h3>
-      <p class="price">GHS 1,890</p>
-      <button onclick="addToCart({ 
-        id: 'versace-black', 
-        name: 'Versace Sneaker - Black', 
-        price: 1890, 
-        image: 'shoes/versace_sneaker_black.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
+    <div class="product"
+     data-name="Versace Sneaker - Black"
+     data-price="1890"
+     data-image="shoes/versace_sneaker_black.jpeg"
+     data-type="shoes">
+  <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker - Black" />
+  <h3>Versace Sneaker - Black</h3>
+  <p class="price">GHS 1,890</p>
+  <label>Size:
+    <select class="size-select">
+      <option value="38">38</option>
+      <option value="39">39</option>
+      <option value="40">40</option>
+      <option value="41">41</option>
+      <option value="42">42</option>
+      <option value="43">43</option>
+      <option value="44">44</option>
+      <option value="45">45</option>
+      <option value="46">46</option>
+    </select>
+  </label>
+  <label>Qty:
+    <input type="number" class="quantity-input" value="1" min="1" />
+  </label>
+  <button class="add-to-cart-btn">Add to Cart</button>
+</div>
+
+<div class="product"
+     data-name="Versace Sneaker - White"
+     data-price="1890"
+     data-image="shoes/versace_sneaker_white.jpeg"
+     data-type="shoes">
+  <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker - White" />
+  <h3>Versace Sneaker - White</h3>
+  <p class="price">GHS 1,890</p>
+  <label>Size:
+    <select class="size-select">
+      <option value="38">38</option>
+      <option value="39">39</option>
+      <option value="40">40</option>
+      <option value="41">41</option>
+      <option value="42">42</option>
+      <option value="43">43</option>
+      <option value="44">44</option>
+      <option value="45">45</option>
+      <option value="46">46</option>
+    </select>
+  </label>
+  <label>Qty:
+    <input type="number" class="quantity-input" value="1" min="1" />
+  </label>
+  <button class="add-to-cart-btn">Add to Cart</button>
+</div>
 
     <div class="product">
-      <img src="shoes/versace_sneaker_white.jpeg" alt="Versace Sneaker White" />
-      <h3>Versace Sneaker - White</h3>
-      <p class="price">GHS 1,890</p>
-      <button onclick="addToCart({ 
-        id: 'versace-white', 
-        name: 'Versace Sneaker - White', 
-        price: 1890, 
-        image: 'shoes/versace_sneaker_white.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
+  <img src="shoes/luxury_louis_vuitton_dress_shoe_3colors.jpeg" alt="Luxury Louis Vuitton Dress Shoe - 3Colors" />
+  <h3>Luxury Louis Vuitton Dress Shoe - 3Colors</h3>
+  <p class="price">GHC 1,990</p>
+
+  <label for="color-select-lv">Color:</label>
+  <select id="color-select-lv" class="color-select">
+    <option value="black">Black</option>
+    <option value="blueblack">BlueBlack</option>
+    <option value="brown">Brown</option>
+  </select>
+
+  <label for="size-select-lv">Size:</label>
+  <select id="size-select-lv" class="size-select">
+    <!-- Sizes 38 to 46 -->
+    <option value="38">38</option>
+    <option value="39">39</option>
+    <option value="40">40</option>
+    <option value="41">41</option>
+    <option value="42">42</option>
+    <option value="43">43</option>
+    <option value="44">44</option>
+    <option value="45">45</option>
+    <option value="46">46</option>
+  </select>
+
+  <button onclick="addToCart({
+    id: 'lv-dress-3colors',
+    name: 'Luxury Louis Vuitton Dress Shoe - ' + document.getElementById('color-select-lv').value,
+    price: 1990,
+    image: 'shoes/luxury_louis_vuitton_dress_shoe_3colors.jpeg',
+    quantity: 1,
+    color: document.getElementById('color-select-lv').value,
+    size: document.getElementById('size-select-lv').value
+  })">Add to Cart</button>
+</div>
+
+    <div class="product"
+     data-name="Luxury Louis Vuitton Dress Shoe - Black"
+     data-price="1990"
+     data-image="shoes/luxury_louis_vuitton_dress_shoe_black.jpeg"
+     data-type="shoes">
+  <img src="shoes/luxury_louis_vuitton_dress_shoe_black.jpeg" alt="Luxury Louis Vuitton Dress Shoe - Black" />
+  <h3>Luxury Louis Vuitton Dress Shoe - Black</h3>
+  <p class="price">GHC 1,990</p>
+  <label>Size:
+    <select class="size-select">
+      <option value="38">38</option><option value="39">39</option><option value="40">40</option>
+      <option value="41">41</option><option value="42">42</option><option value="43">43</option>
+      <option value="44">44</option><option value="45">45</option><option value="46">46</option>
+    </select>
+  </label>
+  <label>Qty:
+    <input type="number" class="quantity-input" value="1" min="1" />
+  </label>
+  <button class="add-to-cart-btn">Add to Cart</button>
+</div>
+
+<div class="product"
+     data-name="Luxury Louis Vuitton Dress Shoe - Black1"
+     data-price="1990"
+     data-image="shoes/luxury_louis_vuitton_dress_shoe_black1.jpeg"
+     data-type="shoes">
+  <img src="shoes/luxury_louis_vuitton_dress_shoe_black1.jpeg" alt="Luxury Louis Vuitton Dress Shoe - Black1" />
+  <h3>Luxury Louis Vuitton Dress Shoe - Black1</h3>
+  <p class="price">GHC 1,990</p>
+  <label>Size:
+    <select class="size-select">...</select>
+  </label>
+  <label>Qty:
+    <input type="number" class="quantity-input" value="1" min="1" />
+  </label>
+  <button class="add-to-cart-btn">Add to Cart</button>
+</div>
+
+<div class="product"
+     data-name="Luxury Louis Vuitton Dress Shoe"
+     data-price="1990"
+     data-image="shoes/luxury_louis_vuitton_dress_shoe_brown_black.jpeg"
+     data-type="shoes">
+  <img src="shoes/luxury_louis_vuitton_dress_shoe_brown_black.jpeg" alt="Luxury Louis Vuitton Dress Shoe - Brown - Black" />
+  <h3>Luxury Louis Vuitton Dress Shoe</h3>
+  <p class="price">GHC 1,990</p>
+
+  <label for="color-select-luxury-shoe">Color:
+    <select id="color-select-luxury-shoe" class="color-select">
+      <option value="black">Black</option>
+      <option value="brown">Brown</option>
+    </select>
+  </label>
+
+  <label for="size-select-luxury-shoe">Size:
+    <select id="size-select-luxury-shoe" class="size-select">
+      <option value="38">38</option>
+      <option value="39">39</option>
+      <option value="40">40</option>
+      <option value="41">41</option>
+      <option value="42">42</option>
+      <option value="43">43</option>
+      <option value="44">44</option>
+      <option value="45">45</option>
+      <option value="46">46</option>
+    </select>
+  </label>
+
+  <label>Qty:
+    <input type="number" class="quantity-input" value="1" min="1" />
+  </label>
+
+  <button onclick="
+    addToCart({ 
+      id: 'luxury-louis-vuitton-dress-shoe-' + document.getElementById('color-select-luxury-shoe').value + '-' + document.getElementById('size-select-luxury-shoe').value,
+      name: 'Luxury Louis Vuitton Dress Shoe - ' + document.getElementById('color-select-luxury-shoe').value + ' - Size ' + document.getElementById('size-select-luxury-shoe').value,
+      price: 1990,
+      image: 'shoes/luxury_louis_vuitton_dress_shoe_brown_black.jpeg',
+      quantity: parseInt(this.previousElementSibling.querySelector('.quantity-input').value)
+    })">Add to Cart</button>
+</div>
+
+<div class="product"
+     data-name="Luxury Louis Vuitton Dress Shoe - Mirror- Black"
+     data-price="1990"
+     data-image="shoes/luxury_louis_vuitton_dress_shoe_mirror_black.jpeg"
+     data-type="shoes">
+  <img src="shoes/luxury_louis_vuitton_dress_shoe_mirror_black.jpeg" alt="Luxury Louis Vuitton Dress Shoe - Mirror- Black" />
+  <h3>Luxury Louis Vuitton Dress Shoe - Mirror- Black</h3>
+  <p class="price">GHC 1,990</p>
+  <label>Size:
+    <select class="size-select">...</select>
+  </label>
+  <label>Qty:
+    <input type="number" class="quantity-input" value="1" min="1" />
+  </label>
+  <button class="add-to-cart-btn">Add to Cart</button>
+</div>
+
+<div class="product"
+     data-name="Luxury Prada Half - Shoe - Black"
+     data-price="1790"
+     data-image="shoes/luxury_prada_halfshoe_black.jpeg"
+     data-type="shoes">
+  <img src="shoes/luxury_prada_halfshoe_black.jpeg" alt="Luxury Prada Half - Shoe - Black" />
+  <h3>Luxury Prada Half - Shoe - Black</h3>
+  <p class="price">GHC 1,790</p>
+  <label>Size:
+    <select class="size-select">...</select>
+  </label>
+  <label>Qty:
+    <input type="number" class="quantity-input" value="1" min="1" />
+  </label>
+  <button class="add-to-cart-btn">Add to Cart</button>
+</div>
+
+<div class="product"
+     data-name="Luxury Prada - Slippers - Black"
+     data-price="1790"
+     data-image="shoes/luxury_prada_slippers_black.jpeg"
+     data-type="shoes">
+  <img src="shoes/luxury_prada_slippers_black.jpeg" alt="Luxury Prada - Slippers - Black" />
+  <h3>Luxury Prada - Slippers - Black</h3>
+  <p class="price">GHC 1,790</p>
+  <label>Size:
+    <select class="size-select">...</select>
+  </label>
+  <label>Qty:
+    <input type="number" class="quantity-input" value="1" min="1" />
+  </label>
+  <button class="add-to-cart-btn">Add to Cart</button>
+</div>
+
+<div class="product"
+     data-name="Luxury Prada - Slippers - Black1"
+     data-price="1790"
+     data-image="shoes/luxury_prada_slippers_black1.jpeg"
+     data-type="shoes">
+  <img src="shoes/luxury_prada_slippers_black1.jpeg" alt="Luxury Prada - Slippers - Black1" />
+  <h3>Luxury Prada - Slippers - Black1</h3>
+  <p class="price">GHC 1,790</p>
+  <label>Size:
+    <select class="size-select">...</select>
+  </label>
+  <label>Qty:
+    <input type="number" class="quantity-input" value="1" min="1" />
+  </label>
+  <button class="add-to-cart-btn">Add to Cart</button>
+</div>
+
+<div class="product"
+     data-name="Louis Vuitton - Shoe - Brown"
+     data-price="1790"
+     data-image="shoes/louis_vuitton_shoe_brown.jpeg"
+     data-type="shoes">
+  <img src="shoes/louis_vuitton_shoe_brown.jpeg" alt="Louis Vuitton - Shoe - Brown" />
+  <h3>Louis Vuitton - Shoe - Brown</h3>
+  <p class="price">GHC 1,790</p>
+  <label>Size:
+    <select class="size-select">...</select>
+  </label>
+  <label>Qty:
+    <input type="number" class="quantity-input" value="1" min="1" />
+  </label>
+  <button class="add-to-cart-btn">Add to Cart</button>
+</div>
+
+<div class="product"
+     data-name="British Oxford Shoe - Black"
+     data-price="1280"
+     data-image="shoes/british_oxford_shoe_black.jpeg"
+     data-type="shoes">
+  <img src="shoes/british_oxford_shoe_black.jpeg" alt="British Oxford Shoe - Black" />
+  <h3>British Oxford Shoe - Black</h3>
+  <p class="price">GHC 1,280</p>
+  <label>Size:
+    <select class="size-select">...</select>
+  </label>
+  <label>Qty:
+    <input type="number" class="quantity-input" value="1" min="1" />
+  </label>
+  <button class="add-to-cart-btn">Add to Cart</button>
+</div>
 
     <div class="product">
-      <img src="shoes/luxury_louis_vuitton_dress_shoe_3colors.jpeg" alt="Luxury Louis Vuitton Dress Shoe - 3Colors" />
-      <h3>Luxury Louis Vuitton Dress Shoe - 3Colors</h3>
-      <p class="price">GHC 1,990</p>
-      <button onclick="addToCart({ 
-        id: 'lv-dress-3colors', 
-        name: 'Luxury Louis Vuitton Dress Shoe - 3Colors', 
-        price: 1990, 
-        image: 'shoes/luxury_louis_vuitton_dress_shoe_3colors.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
+  <img src="shoes/european_leather_thick_bottom_boot_black.jpeg" alt="European Leather Thick Bottom Boot - Black" />
+  <h3>European Leather Thick Bottom Boot - Black</h3>
+  <p class="price">GHC 1,960</p>
+  <label for="size-european-boot-black">Size:</label>
+  <select id="size-european-boot-black">
+    <option value="38">38</option>
+    <option value="39">39</option>
+    <option value="40">40</option>
+    <option value="41">41</option>
+    <option value="42">42</option>
+    <option value="43">43</option>
+    <option value="44">44</option>
+    <option value="45">45</option>
+    <option value="46">46</option>
+  </select>
+  <button onclick="addToCart({ 
+    id: 'european-boot-black', 
+    name: 'European Leather Thick Bottom Boot - Black', 
+    price: 1960, 
+    image: 'shoes/european_leather_thick_bottom_boot_black.jpeg', 
+    size: document.getElementById('size-european-boot-black').value,
+    quantity: 1 
+  })">Add to Cart</button>
+</div>
+
+<div class="product">
+  <img src="shoes/european_leather_thick_bottom_boot_brown.jpeg" alt="European Leather Thick Bottom Boot - Brown" />
+  <h3>European Leather Thick Bottom Boot - Brown</h3>
+  <p class="price">GHC 1,960</p>
+  <label for="size-european-boot-brown">Size:</label>
+  <select id="size-european-boot-brown">
+    <option value="38">38</option>
+    <option value="39">39</option>
+    <option value="40">40</option>
+    <option value="41">41</option>
+    <option value="42">42</option>
+    <option value="43">43</option>
+    <option value="44">44</option>
+    <option value="45">45</option>
+    <option value="46">46</option>
+  </select>
+  <button onclick="addToCart({ 
+    id: 'european-boot-brown', 
+    name: 'European Leather Thick Bottom Boot - Brown', 
+    price: 1960, 
+    image: 'shoes/european_leather_thick_bottom_boot_brown.jpeg', 
+    size: document.getElementById('size-european-boot-brown').value,
+    quantity: 1 
+  })">Add to Cart</button>
+</div>
+
+<div class="product">
+  <img src="shoes/european_leather_thick_bottom_boot_black1.jpeg" alt="European Leather Thick Bottom Boot - Black1" />
+  <h3>European Leather Thick Bottom Boot - Black1</h3>
+  <p class="price">GHC 1,960</p>
+  <label for="size-european-boot-black1">Size:</label>
+  <select id="size-european-boot-black1">
+    <option value="38">38</option>
+    <option value="39">39</option>
+    <option value="40">40</option>
+    <option value="41">41</option>
+    <option value="42">42</option>
+    <option value="43">43</option>
+    <option value="44">44</option>
+    <option value="45">45</option>
+    <option value="46">46</option>
+  </select>
+  <button onclick="addToCart({ 
+    id: 'european-boot-black1', 
+    name: 'European Leather Thick Bottom Boot - Black1', 
+    price: 1960, 
+    image: 'shoes/european_leather_thick_bottom_boot_black1.jpeg', 
+    size: document.getElementById('size-european-boot-black1').value,
+    quantity: 1 
+  })">Add to Cart</button>
+</div>
+
+<div class="product">
+  <img src="shoes/european_leather_thick_bottom_boot_brown1.jpeg" alt="European Leather Thick Bottom Boot - Brown1" />
+  <h3>European Leather Thick Bottom Boot - Brown1</h3>
+  <p class="price">GHC 1,960</p>
+  <label for="size-european-boot-brown1">Size:</label>
+  <select id="size-european-boot-brown1">
+    <option value="38">38</option>
+    <option value="39">39</option>
+    <option value="40">40</option>
+    <option value="41">41</option>
+    <option value="42">42</option>
+    <option value="43">43</option>
+    <option value="44">44</option>
+    <option value="45">45</option>
+    <option value="46">46</option>
+  </select>
+  <button onclick="addToCart({ 
+    id: 'european-boot-brown1', 
+    name: 'European Leather Thick Bottom Boot - Brown1', 
+    price: 1960, 
+    image: 'shoes/european_leather_thick_bottom_boot_brown1.jpeg', 
+    size: document.getElementById('size-european-boot-brown1').value,
+    quantity: 1 
+  })">Add to Cart</button>
+</div>
 
     <div class="product">
-      <img src="shoes/luxury_louis_vuitton_dress_shoe_black.jpeg" alt="Luxury Louis Vuitton Dress Shoe - Black" />
-      <h3>Luxury Louis Vuitton Dress Shoe - Black</h3>
-      <p class="price">GHC 1,990</p>
-      <button onclick="addToCart({ 
-        id: 'lv-dress-black', 
-        name: 'Luxury Louis Vuitton Dress Shoe - Black', 
-        price: 1990, 
-        image: 'shoes/luxury_louis_vuitton_dress_shoe_black.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
+  <img src="shoes/berluti_slippers_mixed.jpeg" alt="Berluti Slippers - Mixed" />
+  <h3>Berluti Slippers - Mixed</h3>
+  <p class="price">GHC 1,580</p>
+
+  <!-- Color selector -->
+  <label for="color-berluti">Color:</label>
+  <select id="color-berluti" name="color-berluti">
+    <option value="Black">Black</option>
+    <option value="BlueBlack">BlueBlack</option>
+    <option value="Dark Grey">Dark Grey</option>
+    <option value="Brown">Brown</option>
+  </select>
+
+  <!-- Size selector -->
+  <label for="size-berluti">Size:</label>
+  <select id="size-berluti" name="size-berluti">
+    <!-- Assuming shoe sizes 38 to 46 -->
+    <option value="38">38</option>
+    <option value="39">39</option>
+    <option value="40">40</option>
+    <option value="41">41</option>
+    <option value="42">42</option>
+    <option value="43">43</option>
+    <option value="44">44</option>
+    <option value="45">45</option>
+    <option value="46">46</option>
+  </select>
+
+  <button onclick="
+    addToCart({ 
+      id: 'berluti-mixed-' + document.getElementById('color-berluti').value + '-' + document.getElementById('size-berluti').value, 
+      name: 'Berluti Slippers - Mixed', 
+      price: 1580, 
+      image: 'shoes/berluti_slippers_mixed.jpeg', 
+      quantity: 1,
+      color: document.getElementById('color-berluti').value,
+      size: document.getElementById('size-berluti').value
+    })
+  ">Add to Cart</button>
+</div>
 
     <div class="product">
-      <img src="shoes/luxury_louis_vuitton_dress_shoe_black1.jpeg" alt="Luxury Louis Vuitton Dress Shoe - Black1" />
-      <h3>Luxury Louis Vuitton Dress Shoe - Black1</h3>
-      <p class="price">GHC 1,990</p>
-      <button onclick="addToCart({ 
-        id: 'lv-dress-black1', 
-        name: 'Luxury Louis Vuitton Dress Shoe - Black1', 
-        price: 1990, 
-        image: 'shoes/luxury_louis_vuitton_dress_shoe_black1.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
+  <img src="shoes/dg_slide_black.jpeg" alt="DG Slide - Black" />
+  <h3>DG Slide - Black</h3>
+  <p class="price">GHC 1,290</p>
+  <label for="size-dg-slide-black">Size:</label>
+  <select id="size-dg-slide-black">
+    <option value="38">38</option>
+    <option value="39">39</option>
+    <option value="40">40</option>
+    <option value="41">41</option>
+    <option value="42">42</option>
+    <option value="43">43</option>
+    <option value="44">44</option>
+    <option value="45">45</option>
+    <option value="46">46</option>
+  </select>
+  <button onclick="addToCart({ 
+    id: 'dg-slide-black', 
+    name: 'DG Slide - Black', 
+    price: 1290, 
+    image: 'shoes/dg_slide_black.jpeg', 
+    size: document.getElementById('size-dg-slide-black').value,
+    quantity: 1 
+  })">Add to Cart</button>
+</div>
 
-    <div class="product">
-      <img src="shoes/luxury_louis_vuitton_dress_shoe_brown_black.jpeg" alt="Luxury Louis Vuitton Dress Shoe - Brown - Black" />
-      <h3>Luxury Louis Vuitton Dress Shoe - Brown - Black</h3>
-      <p class="price">GHC 1,990</p>
-      <button onclick="addToCart({ 
-        id: 'lv-dress-brown-black', 
-        name: 'Luxury Louis Vuitton Dress Shoe - Brown - Black', 
-        price: 1990, 
-        image: 'shoes/luxury_louis_vuitton_dress_shoe_brown_black.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
+<div class="product">
+  <img src="shoes/dior_boot_khaki.jpeg" alt="Dior Boot - Khaki" />
+  <h3>Dior Boot - Khaki</h3>
+  <p class="price">GHC 1,980</p>
+  <label for="size-dior-boot-khaki">Size:</label>
+  <select id="size-dior-boot-khaki">
+    <option value="38">38</option>
+    <option value="39">39</option>
+    <option value="40">40</option>
+    <option value="41">41</option>
+    <option value="42">42</option>
+    <option value="43">43</option>
+    <option value="44">44</option>
+    <option value="45">45</option>
+    <option value="46">46</option>
+  </select>
+  <button onclick="addToCart({ 
+    id: 'dior-boot-khaki', 
+    name: 'Dior Boot - Khaki', 
+    price: 1980, 
+    image: 'shoes/dior_boot_khaki.jpeg', 
+    size: document.getElementById('size-dior-boot-khaki').value,
+    quantity: 1 
+  })">Add to Cart</button>
+</div>
 
-    <div class="product">
-      <img src="shoes/luxury_louis_vuitton_dress_shoe_mirror_black.jpeg" alt="Luxury Louis Vuitton Dress Shoe - Mirror- Black" />
-      <h3>Luxury Louis Vuitton Dress Shoe - Mirror- Black</h3>
-      <p class="price">GHC 1,990</p>
-      <button onclick="addToCart({ 
-        id: 'lv-dress-mirror-black', 
-        name: 'Luxury Louis Vuitton Dress Shoe - Mirror- Black', 
-        price: 1990, 
-        image: 'shoes/luxury_louis_vuitton_dress_shoe_mirror_black.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="shoes/luxury_prada_halfshoe_black.jpeg" alt="Luxury Prada Half - Shoe - Black" />
-      <h3>Luxury Prada Half - Shoe - Black</h3>
-      <p class="price">GHC 1,790</p>
-      <button onclick="addToCart({ 
-        id: 'prada-half-black', 
-        name: 'Luxury Prada Half - Shoe - Black', 
-        price: 1790, 
-        image: 'shoes/luxury_prada_halfshoe_black.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="shoes/luxury_prada_slippers_black.jpeg" alt="Luxury Prada - Slippers - Black" />
-      <h3>Luxury Prada - Slippers - Black</h3>
-      <p class="price">GHC 1,790</p>
-      <button onclick="addToCart({ 
-        id: 'prada-slippers-black', 
-        name: 'Luxury Prada - Slippers - Black', 
-        price: 1790, 
-        image: 'shoes/luxury_prada_slippers_black.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="shoes/luxury_prada_slippers_black1.jpeg" alt="Luxury Prada - Slippers - Black1" />
-      <h3>Luxury Prada - Slippers - Black1</h3>
-      <p class="price">GHC 1,790</p>
-      <button onclick="addToCart({ 
-        id: 'prada-slippers-black1', 
-        name: 'Luxury Prada - Slippers - Black1', 
-        price: 1790, 
-        image: 'shoes/luxury_prada_slippers_black1.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="shoes/louis_vuitton_shoe_brown.jpeg" alt="Louis Vuitton - Shoe - Brown" />
-      <h3>Louis Vuitton - Shoe - Brown</h3>
-      <p class="price">GHC 1,790</p>
-      <button onclick="addToCart({ 
-        id: 'lv-brown', 
-        name: 'Louis Vuitton - Shoe - Brown', 
-        price: 1790, 
-        image: 'shoes/louis_vuitton_shoe_brown.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="shoes/british_oxford_shoe_black.jpeg" alt="British Oxford Shoe - Black" />
-      <h3>British Oxford Shoe - Black</h3>
-      <p class="price">GHC 1,280</p>
-      <button onclick="addToCart({ 
-        id: 'british-oxford-black', 
-        name: 'British Oxford Shoe - Black', 
-        price: 1280, 
-        image: 'shoes/british_oxford_shoe_black.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="shoes/european_leather_thick_bottom_boot_black.jpeg" alt="European Leather Thick Bottom Boot - Black" />
-      <h3>European Leather Thick Bottom Boot - Black</h3>
-      <p class="price">GHC 1,960</p>
-      <button onclick="addToCart({ 
-        id: 'european-boot-black', 
-        name: 'European Leather Thick Bottom Boot - Black', 
-        price: 1960, 
-        image: 'shoes/european_leather_thick_bottom_boot_black.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="shoes/european_leather_thick_bottom_boot_brown.jpeg" alt="European Leather Thick Bottom Boot - Brown" />
-      <h3>European Leather Thick Bottom Boot - Brown</h3>
-      <p class="price">GHC 1,960</p>
-      <button onclick="addToCart({ 
-        id: 'european-boot-brown', 
-        name: 'European Leather Thick Bottom Boot - Brown', 
-        price: 1960, 
-        image: 'shoes/european_leather_thick_bottom_boot_brown.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="shoes/european_leather_thick_bottom_boot_black1.jpeg" alt="European Leather Thick Bottom Boot - Black1" />
-      <h3>European Leather Thick Bottom Boot - Black1</h3>
-      <p class="price">GHC 1,960</p>
-      <button onclick="addToCart({ 
-        id: 'european-boot-black1', 
-        name: 'European Leather Thick Bottom Boot - Black1', 
-        price: 1960, 
-        image: 'shoes/european_leather_thick_bottom_boot_black1.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
-    
-    <div class="product">
-      <img src="shoes/european_leather_thick_bottom_boot_brown1.jpeg" alt="European Leather Thick Bottom Boot - Brown1" />
-      <h3>European Leather Thick Bottom Boot - Brown1</h3>
-      <p class="price">GHC 1,960</p>
-      <button onclick="addToCart({ 
-        id: 'european-boot-brown1', 
-        name: 'European Leather Thick Bottom Boot - Brown1', 
-        price: 1960, 
-        image: 'shoes/european_leather_thick_bottom_boot_brown1.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="shoes/berluti_slippers_mixed.jpeg" alt="Berluti Slippers - Mixed" />
-      <h3>Berluti Slippers - Mixed</h3>
-      <p class="price">GHC 1,580</p>
-      <button onclick="addToCart({ 
-        id: 'berluti-mixed', 
-        name: 'Berluti Slippers - Mixed', 
-        price: 1580, 
-        image: 'shoes/berluti_slippers_mixed.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="shoes/dg_slide_black.jpeg" alt="DG Slide - Black" />
-      <h3>DG Slide - Black</h3>
-      <p class="price">GHC 1,290</p>
-      <button onclick="addToCart({ 
-        id: 'dg-slide-black', 
-        name: 'DG Slide - Black', 
-        price: 1290, 
-        image: 'shoes/dg_slide_black.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="shoes/dior_boot_khaki.jpeg" alt="Dior Boot - Khaki" />
-      <h3>Dior Boot - Khaki</h3>
-      <p class="price">GHC 1,980</p>
-      <button onclick="addToCart({ 
-        id: 'dior-boot-khaki', 
-        name: 'Dior Boot - Khaki', 
-        price: 1980, 
-        image: 'shoes/dior_boot_khaki.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="shoes/versace_slippers_black.jpeg" alt="Versace Slippers - Black" />
-      <h3>Versace Slippers - Black</h3>
-      <p class="price">GHC 1,290</p>
-      <button onclick="addToCart({ 
-        id: 'versace-slippers-black', 
-        name: 'Versace Slippers - Black', 
-        price: 1290, 
-        image: 'shoes/versace_slippers_black.jpeg', 
-        quantity: 1 
-      })">Add to Cart</button>
-    </div>
+<div class="product">
+  <img src="shoes/versace_slippers_black.jpeg" alt="Versace Slippers - Black" />
+  <h3>Versace Slippers - Black</h3>
+  <p class="price">GHC 1,290</p>
+  <label for="size-versace-slippers-black">Size:</label>
+  <select id="size-versace-slippers-black">
+    <option value="38">38</option>
+    <option value="39">39</option>
+    <option value="40">40</option>
+    <option value="41">41</option>
+    <option value="42">42</option>
+    <option value="43">43</option>
+    <option value="44">44</option>
+    <option value="45">45</option>
+    <option value="46">46</option>
+  </select>
+  <button onclick="addToCart({ 
+    id: 'versace-slippers-black', 
+    name: 'Versace Slippers - Black', 
+    price: 1290, 
+    image: 'shoes/versace_slippers_black.jpeg', 
+    size: document.getElementById('size-versace-slippers-black').value,
+    quantity: 1 
+  })">Add to Cart</button>
+</div>
 
   <!-- Policies Section -->
 <div class="policy-links" style="text-align: center; padding: 30px 0; background-color: #f8f8f8;">
