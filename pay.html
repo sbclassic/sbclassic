@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Processing Payment – SB CLASSIC</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      max-width: 400px;
+      margin: auto;
+    }
+    h1 {
+      color: #191970;
+    }
+    p {
+      font-size: 18px;
+      margin-top: 20px;
+      color: #444;
+    }
+    .spinner {
+      margin: 40px auto;
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #191970;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+  </style>
+</head>
+<body>
+  <h1>Processing your payment...</h1>
+  <div class="spinner"></div>
+  <p>Please do not close this window until payment is complete.</p>
+</body>
+</html>
