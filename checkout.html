@@ -138,26 +138,24 @@
       const promoMessage = document.getElementById('promo-message');
       const promoError = document.getElementById('promo-error');
 
-      subtotalDisplay.textContent = 'Subtotal: GHS ' + subtotal.toFixed(2);
-
       const promoCodes = {
-        "SBCLASSIC10": 10,  // 10% discount
-        "FREESHIP": 0      // special code for free shipping - handled later
+        "SBCLASSIC10": 10,
+        "FREESHIP": 0
       };
 
-      function updateTotals() {
-        const deliveryFee = parseFloat(deliverySelect.value) || 0;
-        let adjustedDeliveryFee = deliveryFee;
+      subtotalDisplay.textContent = 'Subtotal: GHS ' + subtotal.toFixed(2);
 
-        // If FREESHIP promo applied, set delivery to 0
-        if (promoInput.value.trim().toUpperCase() === "FREESHIP") {
-          adjustedDeliveryFee = 0;
+      function updateTotals() {
+        const code = promoInput.value.trim().toUpperCase();
+        let deliveryFee = parseFloat(deliverySelect.value) || 0;
+
+        if (code === "FREESHIP") {
+          deliveryFee = 0;
         }
 
-        deliveryDisplay.textContent = 'Delivery: GHS ' + adjustedDeliveryFee.toFixed(2);
+        deliveryDisplay.textContent = 'Delivery: GHS ' + deliveryFee.toFixed(2);
 
-        // Calculate total after discount
-        let totalAfterDiscount = subtotal - discountAmount + adjustedDeliveryFee;
+        let total = subtotal - discountAmount + deliveryFee;
 
         if (discountAmount > 0) {
           discountDisplay.style.display = 'block';
@@ -166,43 +164,38 @@
           discountDisplay.style.display = 'none';
         }
 
-        totalDisplay.textContent = 'Total: GHS ' + totalAfterDiscount.toFixed(2);
+        totalDisplay.textContent = 'Total: GHS ' + total.toFixed(2);
       }
 
-      deliverySelect.addEventListener('change', updateTotals);
-
-      applyPromoBtn.addEventListener('click', function () {
+      function applyPromoCode() {
         const code = promoInput.value.trim().toUpperCase();
         promoMessage.style.display = 'none';
         promoError.style.display = 'none';
+        discountAmount = 0;
 
         if (!code) {
           promoError.textContent = 'Please enter a promo code.';
           promoError.style.display = 'block';
-          discountAmount = 0;
-          updateTotals();
-          return;
-        }
-
-        if (promoCodes.hasOwnProperty(code)) {
-          // Calculate discount based on code
+        } else if (promoCodes.hasOwnProperty(code)) {
           if (code === "FREESHIP") {
-            discountAmount = 0;  // no subtotal discount but free shipping handled in updateTotals
             promoMessage.textContent = 'Promo applied: Free Shipping!';
           } else {
             discountAmount = (promoCodes[code] / 100) * subtotal;
             promoMessage.textContent = `Promo applied: ${promoCodes[code]}% off!`;
           }
           promoMessage.style.display = 'block';
-          updateTotals();
         } else {
           promoError.textContent = 'Invalid promo code.';
           promoError.style.display = 'block';
-          discountAmount = 0;
-          updateTotals();
         }
-      });
 
+        updateTotals();
+      }
+
+      applyPromoBtn.addEventListener('click', applyPromoCode);
+      deliverySelect.addEventListener('change', updateTotals);
+
+      // Initial load
       updateTotals();
 
       document.getElementById('checkout-form').addEventListener('submit', function (e) {
@@ -216,16 +209,20 @@
         const name = this.name.value.trim();
         const email = this.email.value.trim();
         const phone = this.phone.value.trim();
+        const code = promoInput.value.trim().toUpperCase();
         const shippingCost = parseFloat(deliverySelect.value) || 0;
-        const totalAmount = subtotal - discountAmount + (promoInput.value.trim().toUpperCase() === "FREESHIP" ? 0 : shippingCost);
+        const finalShipping = (code === "FREESHIP") ? 0 : shippingCost;
+        const totalAmount = subtotal - discountAmount + finalShipping;
+
         if (totalAmount <= 0) {
           alert('Total amount must be greater than zero.');
           return;
         }
+
         const amountInKobo = totalAmount * 100;
 
         var handler = PaystackPop.setup({
-          key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6', // Replace with your public key
+          key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6',
           email: email,
           amount: amountInKobo,
           currency: 'GHS',
@@ -233,8 +230,8 @@
             custom_fields: [
               { display_name: "Customer Name", value: name },
               { display_name: "Phone Number", value: phone },
-              { display_name: "Shipping Option", value: `GHS ${(promoInput.value.trim().toUpperCase() === "FREESHIP" ? 0 : shippingCost).toFixed(2)}` },
-              { display_name: "Promo Code", value: promoInput.value.trim().toUpperCase() || "None" }
+              { display_name: "Shipping Option", value: `GHS ${finalShipping.toFixed(2)}` },
+              { display_name: "Promo Code", value: code || "None" }
             ]
           },
           callback: function (response) {
