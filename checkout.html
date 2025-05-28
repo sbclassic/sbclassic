@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Checkout 💳 – SB CLASSIC</title>
   <style>
     body {
@@ -11,49 +11,41 @@
       background-color: #fff;
       color: #444;
     }
-
     h1 {
       color: #2b2b2b;
       margin-bottom: 10px;
     }
-
     form {
       max-width: 600px;
       margin: auto;
     }
-
     label {
       display: block;
       margin-top: 10px;
     }
-
     input, select {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
+      box-sizing: border-box;
     }
-
     .promo-section {
       margin-top: 20px;
       display: flex;
       gap: 10px;
     }
-
     .promo-section input {
       flex: 1;
     }
-
     .summary {
       margin-top: 20px;
       padding: 15px;
       border: 1px solid #ccc;
       border-radius: 5px;
     }
-
     .summary div {
       margin: 5px 0;
     }
-
     button {
       margin-top: 20px;
       background-color: #191970;
@@ -63,16 +55,13 @@
       font-weight: bold;
       cursor: pointer;
     }
-
     button:hover {
       background-color: #2a2a9f;
     }
-
     .message {
       color: green;
       margin-top: 10px;
     }
-
     .error {
       color: red;
       margin-top: 10px;
@@ -83,40 +72,39 @@
 
   <h1>Checkout 💳</h1>
 
-  <form id="checkout-form" novalidate>
+  <form id="checkout-form">
     <label>Full Name</label>
-    <input type="text" name="name" required>
+    <input type="text" name="name" required />
 
     <label>Email Address</label>
-    <input type="email" name="email" required>
+    <input type="email" name="email" required />
 
     <label>Phone Number</label>
-    <input type="tel" name="phone" required>
+    <input type="tel" name="phone" required />
 
-    <label>Shipping Option</label>
-    <select id="shipping" required>
-      <option value="0">Free Pickup (0 GHS)</option>
-      <option value="30">Standard Delivery – Accra (GHS 30)</option>
-      <option value="50">Nationwide Delivery (GHS 50)</option>
+    <label>Delivery Option</label>
+    <select id="delivery" required>
+      <option value="70">Standard Delivery – Accra (GHS 70–95 depending on exact location)</option>
+      <option value="60">Nationwide Delivery (GHS 60–80 depending on item value)</option>
     </select>
 
     <div class="promo-section">
-      <input type="text" id="promo-code" placeholder="Enter promo code">
+      <input type="text" id="promo-code" placeholder="Enter promo code" />
       <button type="button" id="apply-promo">Apply</button>
     </div>
-    <div id="promo-message" class="message" style="display: none;"></div>
-    <div id="promo-error" class="error" style="display: none;"></div>
+    <div id="promo-message" class="message" style="display:none;"></div>
+    <div id="promo-error" class="error" style="display:none;"></div>
 
     <div class="summary">
       <h3>Order Summary</h3>
       <div id="item-list"></div>
       <div id="summary-subtotal"></div>
-      <div id="summary-discount" style="display: none;"></div>
-      <div id="summary-shipping"></div>
+      <div id="summary-discount" style="display:none;"></div>
+      <div id="summary-delivery"></div>
       <div id="summary-total"></div>
     </div>
 
-    <button type="button" id="paystack-btn">Pay with Paystack</button>
+    <button type="submit" id="paystack-btn">Pay with Paystack</button>
   </form>
 
   <script src="https://js.paystack.co/v1/inline.js"></script>
@@ -129,29 +117,33 @@
       const itemList = document.getElementById('item-list');
       const subtotalDisplay = document.getElementById('summary-subtotal');
       const discountDisplay = document.getElementById('summary-discount');
-      const deliveryDisplay = document.getElementById('summary-shipping');
+      const deliveryDisplay = document.getElementById('summary-delivery');
       const totalDisplay = document.getElementById('summary-total');
       const promoInput = document.getElementById('promo-code');
       const applyPromoBtn = document.getElementById('apply-promo');
       const promoMessage = document.getElementById('promo-message');
       const promoError = document.getElementById('promo-error');
-      const deliverySelect = document.getElementById('shipping');
+      const deliverySelect = document.getElementById('delivery');
 
       const promoCodes = {
-        "SB10": 10,
-        "FREESHIP": 0
+        "SB10": 10,      // 10% discount
+        "FREESHIP": 0    // Free delivery
       };
 
-      itemList.innerHTML = '';
-      cart.forEach(item => {
-        subtotal += item.price * item.quantity;
-        const div = document.createElement('div');
-        div.textContent = `${item.name} × ${item.quantity} – GHS ${(item.price * item.quantity).toFixed(2)}`;
-        itemList.appendChild(div);
-      });
+      // Show cart items and calculate subtotal
+      function renderCart() {
+        itemList.innerHTML = '';
+        subtotal = 0;
+        cart.forEach(item => {
+          subtotal += item.price * item.quantity;
+          const div = document.createElement('div');
+          div.textContent = `${item.name} × ${item.quantity} – GHS ${(item.price * item.quantity).toFixed(2)}`;
+          itemList.appendChild(div);
+        });
+        subtotalDisplay.textContent = 'Subtotal: GHS ' + subtotal.toFixed(2);
+      }
 
-      subtotalDisplay.textContent = 'Subtotal: GHS ' + subtotal.toFixed(2);
-
+      // Update totals display
       function updateTotals() {
         const code = promoInput.value.trim().toUpperCase();
         let deliveryFee = parseFloat(deliverySelect.value) || 0;
@@ -174,6 +166,7 @@
         totalDisplay.textContent = 'Total: GHS ' + total.toFixed(2);
       }
 
+      // Apply promo code
       function applyPromoCode() {
         const code = promoInput.value.trim().toUpperCase();
         promoMessage.style.display = 'none';
@@ -185,7 +178,7 @@
           promoError.style.display = 'block';
         } else if (promoCodes.hasOwnProperty(code)) {
           if (code === "FREESHIP") {
-            promoMessage.textContent = 'Promo applied: Free Shipping!';
+            promoMessage.textContent = 'Promo applied: Free Delivery!';
           } else {
             discountAmount = (promoCodes[code] / 100) * subtotal;
             promoMessage.textContent = `Promo applied: ${promoCodes[code]}% off!`;
@@ -201,89 +194,65 @@
 
       applyPromoBtn.addEventListener('click', applyPromoCode);
       deliverySelect.addEventListener('change', updateTotals);
+
+      renderCart();
       updateTotals();
 
-      // Payment button click handler
-      document.getElementById('paystack-btn').addEventListener('click', async function (e) {
+      // Handle form submission & Paystack payment
+      document.getElementById('checkout-form').addEventListener('submit', function (e) {
         e.preventDefault();
-
-        // Manual form validation
-        const form = document.getElementById('checkout-form');
-        if (!form.checkValidity()) {
-          form.reportValidity();
-          return;
-        }
 
         if (cart.length === 0) {
           alert('Your cart is empty.');
           return;
         }
 
-        const name = form.name.value.trim();
-        const email = form.email.value.trim();
-        const phone = form.phone.value.trim();
+        const name = this.name.value.trim();
+        const email = this.email.value.trim();
+        const phone = this.phone.value.trim();
         const code = promoInput.value.trim().toUpperCase();
-        const shippingCost = parseFloat(deliverySelect.value) || 0;
-        const finalShipping = (code === "FREESHIP") ? 0 : shippingCost;
-        const totalAmount = subtotal - discountAmount + finalShipping;
+        const deliveryCost = parseFloat(deliverySelect.value) || 0;
+        const finalDelivery = (code === "FREESHIP") ? 0 : deliveryCost;
+        const totalAmount = subtotal - discountAmount + finalDelivery;
 
         if (totalAmount <= 0) {
           alert('Total amount must be greater than zero.');
           return;
         }
 
-        const amountInKobo = totalAmount * 100;
+        const amountInKobo = Math.round(totalAmount * 100);
+
+        // Debug logs (remove in production)
+        console.log('Starting Paystack payment...');
+        console.log('Amount:', amountInKobo);
+        console.log('Email:', email);
 
         const handler = PaystackPop.setup({
           key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6',
-          email,
+          email: email,
           amount: amountInKobo,
           currency: 'GHS',
           metadata: {
             custom_fields: [
               { display_name: "Customer Name", value: name },
               { display_name: "Phone Number", value: phone },
-              { display_name: "Shipping Option", value: `GHS ${finalShipping.toFixed(2)}` },
+              { display_name: "Delivery Option", value: `GHS ${finalDelivery.toFixed(2)}` },
               { display_name: "Promo Code", value: code || 'N/A' }
             ]
           },
-          callback: async function (response) {
-            const orderSummary = cart.map(item => {
-              return `${item.name} x${item.quantity} = GHS ${(item.price * item.quantity).toFixed(2)}`
-            }).join(', ');
+          callback: function (response) {
+            // On successful payment
+            alert('Payment successful! Reference: ' + response.reference);
 
-            const backendData = {
-              fullName: name,
-              email,
-              phone,
-              address: `Shipping: GHS ${finalShipping.toFixed(2)} | Promo: ${code || 'N/A'}`,
-              orderSummary
-            };
+            // Clear cart and store order reference
+            localStorage.removeItem('cart');
+            sessionStorage.setItem('orderReference', response.reference);
 
-            try {
-              const res = await fetch('https://sbclassic-backend.glitch.me/confirm-order', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(backendData)
-              });
-
-              const result = await res.json();
-
-              if (result.success) {
-                localStorage.removeItem('cart');
-                sessionStorage.setItem('orderReference', response.reference);
-                window.location.href = 'thankyou.html';
-              } else {
-                alert('Order processed but backend failed. Please contact support.');
-              }
-            } catch (error) {
-              alert('Error sending order to backend: ' + error.message);
-            }
+            // Redirect to thank you page
+            window.location.href = 'thankyou.html';
           },
           onClose: function () {
-            alert('Payment window closed. Payment not completed.');
+            alert('Payment window closed.');
           }
         });
 
@@ -291,5 +260,6 @@
       });
     });
   </script>
+
 </body>
 </html>
