@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Checkout 💳 – SB CLASSIC</title>
   <style>
     body {
@@ -60,7 +60,7 @@
       margin-bottom: 10px;
       display: none;
     }
-    #order-summary {
+    #order-summary, #item-summary {
       margin-bottom: 20px;
       font-weight: bold;
       background: #f8f8f8;
@@ -68,8 +68,12 @@
       border-radius: 6px;
       border: 1px solid #ddd;
     }
-    #order-summary h3 {
+    #order-summary h3, #item-summary h3 {
       margin-top: 0;
+    }
+    .item-row {
+      font-weight: normal;
+      margin: 4px 0;
     }
   </style>
 </head>
@@ -104,6 +108,11 @@
     <p id="summary-total">Total: GHS 0.00</p>
   </div>
 
+  <div id="item-summary">
+    <h3>Items</h3>
+    <div id="item-list"></div>
+  </div>
+
   <form id="checkout-form">
     <label for="name">Full Name:</label>
     <input type="text" id="name" name="name" required />
@@ -124,8 +133,14 @@
       let subtotal = 0;
       let discountAmount = 0;
 
+      const itemList = document.getElementById('item-list');
+      itemList.innerHTML = '';
       cart.forEach(item => {
         subtotal += item.price * item.quantity;
+        const div = document.createElement('div');
+        div.className = 'item-row';
+        div.textContent = `${item.name} × ${item.quantity} – GHS ${(item.price * item.quantity).toFixed(2)}`;
+        itemList.appendChild(div);
       });
 
       const deliverySelect = document.getElementById('shipping');
@@ -194,8 +209,6 @@
 
       applyPromoBtn.addEventListener('click', applyPromoCode);
       deliverySelect.addEventListener('change', updateTotals);
-
-      // Initial load
       updateTotals();
 
       document.getElementById('checkout-form').addEventListener('submit', function (e) {
@@ -235,17 +248,9 @@
             ]
           },
           callback: function (response) {
+            alert('Payment complete! Reference: ' + response.reference);
             localStorage.removeItem('cart');
-            document.body.innerHTML = `
-              <div style="text-align: center; padding: 40px; max-width: 500px; margin: auto; font-family: Arial, sans-serif;">
-                <h1 style="color: #191970;">🎉 Thank You for Your Order!</h1>
-                <p style="font-size: 18px;">Your payment was successful.</p>
-                <p style="margin-top: 20px; font-size: 16px;">Order Reference:</p>
-                <p style="font-weight: bold; font-size: 20px; color: #2b2b2b;">${response.reference}</p>
-                <p style="margin-top: 30px;">We’ll contact you shortly to confirm delivery.</p>
-                <a href="index.html" style="display: inline-block; margin-top: 30px; background-color: #191970; color: white; padding: 12px 24px; border-radius: 4px; text-decoration: none;">Back to Home</a>
-              </div>
-            `;
+            window.location.href = `thankyou.html?reference=${response.reference}`;
           },
           onClose: function () {
             alert('Payment window closed.');
