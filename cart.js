@@ -83,6 +83,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const color = product.querySelector('.color-select')?.value || null;
       const quantity = parseInt(product.querySelector('.quantity-input')?.value) || 1;
 
+      if (!size) {
+        alert('Please select a size.');
+        return;
+      }
+
+      if (!color) {
+        alert('Please select a color.');
+        return;
+      }
+
       const newItem = {
         id: `${name}-${size}-${color}`.toLowerCase().replace(/\s+/g, '-'),
         name,
@@ -108,6 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       saveCart(cart);
       alert('Item added to cart!');
+      renderCart(); // Optional: refresh cart UI if visible on same page
     });
   });
+
+  renderCart(); // Initial render on page load
 });
