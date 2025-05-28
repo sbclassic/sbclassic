@@ -740,39 +740,40 @@
 <script src="https://static.elfsight.com/platform/platform.js" async></script>
 
   <script>
-  // Get cart from localStorage or empty array
   function getCart() {
     return JSON.parse(localStorage.getItem('cart')) || [];
   }
 
-  // Save cart to localStorage
   function saveCart(cart) {
     localStorage.setItem('cart', JSON.stringify(cart));
   }
 
-  // Update the cart count display in navbar
   function updateCartCount() {
     const cart = getCart();
     const count = cart.reduce((total, item) => total + item.quantity, 0);
     document.getElementById('cart-count').textContent = count;
   }
 
-  // Add product to cart, increment quantity if already present
   function addToCart(product, quantity = 1) {
     let cart = getCart();
-    const existing = cart.find(item => item.id === product.id);
+    const existing = cart.find(item =>
+      item.name === product.name &&
+      item.size === product.size &&
+      item.color === product.color
+    );
+
     if (existing) {
       existing.quantity += quantity;
     } else {
       product.quantity = quantity;
       cart.push(product);
     }
+
     saveCart(cart);
     updateCartCount();
     alert(`${product.name} (x${quantity}) added to cart!`);
   }
 
-  // Initialize cart count on page load
   updateCartCount();
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -781,16 +782,23 @@
     productCards.forEach(card => {
       const addBtn = card.querySelector('.add-to-cart-btn');
       const qtyInput = card.querySelector('.quantity-input') || { value: 1 };
+      const sizeSelect = card.querySelector('.size-select');
+      const colorSelect = card.querySelector('.color-select');
 
       addBtn?.addEventListener('click', () => {
+        const size = sizeSelect?.value || null;
+        const color = colorSelect?.value || null;
+        const quantity = parseInt(qtyInput.value) || 1;
+
         const product = {
-          id: card.dataset.name.toLowerCase().replace(/\s+/g, '-'),
+          id: `${card.dataset.name}-${size}-${color}`.toLowerCase().replace(/\s+/g, '-'),
           name: card.dataset.name,
           price: parseFloat(card.dataset.price),
-          image: card.dataset.image
+          image: card.dataset.image,
+          size,
+          color
         };
 
-        const quantity = parseInt(qtyInput.value) || 1;
         addToCart(product, quantity);
       });
     });
