@@ -71,7 +71,7 @@ function clearCart() {
   renderCart();
 }
 
-// 👇 Handle dynamic Add to Cart with sizes and colors
+// Handle Add to Cart with size and optional color
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.add-to-cart-btn').forEach(button => {
     button.addEventListener('click', function () {
@@ -83,18 +83,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const color = product.querySelector('.color-select')?.value || null;
       const quantity = parseInt(product.querySelector('.quantity-input')?.value) || 1;
 
-      if (!size) {
+      // Validate size
+      if (size === null || size === '') {
         alert('Please select a size.');
         return;
       }
 
-      if (!color) {
+      // If color-select exists, validate it
+      if (product.querySelector('.color-select') && (color === null || color === '')) {
         alert('Please select a color.');
         return;
       }
 
       const newItem = {
-        id: `${name}-${size}-${color}`.toLowerCase().replace(/\s+/g, '-'),
+        id: `${name}-${size}-${color || 'none'}`.toLowerCase().replace(/\s+/g, '-'),
         name,
         price,
         image,
@@ -118,9 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       saveCart(cart);
       alert('Item added to cart!');
-      renderCart(); // Optional: refresh cart UI if visible on same page
+      renderCart(); // Update cart display if visible
     });
   });
 
-  renderCart(); // Initial render on page load
+  renderCart(); // Show cart if already populated
 });
