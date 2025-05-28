@@ -259,91 +259,177 @@ footer .social-links a:hover {
   <section class="hero"></section>
 
       <!-- Product Cards -->
-<div class="product" data-id="1" data-name="Elegant 2pcs Set – Apricot" data-price="1980" data-image="clothes/elegant_2pcs_set_apricot.jpeg">
+
+<!-- 1. Elegant 2pcs Set – Apricot (Clothes) -->
+<div class="product" data-id="1" data-name="Elegant 2pcs Set – Apricot" data-price="1980" data-image="clothes/elegant_2pcs_set_apricot.jpeg" data-type="clothes">
   <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set – Apricot" />
   <div>Elegant 2pcs Set – Apricot</div>
   <p>GHS 1,980</p>
-  <label>Quantity:</label> 
+  <label>Size:</label>
+  <select class="size-select">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <label>Quantity:</label>
   <input type="number" class="quantity-input" min="1" value="1" />
   <button class="btn add-to-cart-btn">Add to Cart</button>
 </div>
 
-<div class="product" data-id="2" data-name="Luxury Leather Jacket Brown" data-price="1299" data-image="clothes/luxury_leather_jacket_brown.jpeg">
+<!-- 2. Luxury Leather Jacket Brown (Clothes) -->
+<div class="product" data-id="2" data-name="Luxury Leather Jacket Brown" data-price="1299" data-image="clothes/luxury_leather_jacket_brown.jpeg" data-type="clothes">
   <img src="clothes/luxury_leather_jacket_brown.jpeg" alt="Luxury Leather Jacket Brown" />
   <h3>Luxury - Leather - Jacket - Brown</h3>
   <p>GHS 1,299</p>
-  <label>Quantity:</label> 
+  <label>Size:</label>
+  <select class="size-select">
+    <!-- Same size options as above -->
+    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
+    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <label>Quantity:</label>
   <input type="number" class="quantity-input" min="1" value="1" />
   <button class="btn add-to-cart-btn">Add to Cart</button>
 </div>
 
-<div class="product" data-id="3" data-name="Luxury Jacket Coffee" data-price="1299" data-image="clothes/luxury_jacket_coffee.jpeg">
+<!-- 3. Luxury Jacket Coffee (Clothes) -->
+<div class="product" data-id="3" data-name="Luxury Jacket Coffee" data-price="1299" data-image="clothes/luxury_jacket_coffee.jpeg" data-type="clothes">
   <img src="clothes/luxury_jacket_coffee.jpeg" alt="Luxury Jacket Coffee" />
   <h3>Luxury - Jacket - Coffee</h3>
   <p>GHS 1,299</p>
-  <label>Quantity:</label> 
+  <label>Size:</label>
+  <select class="size-select">
+    <!-- Sizes -->
+    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
+    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <label>Quantity:</label>
   <input type="number" class="quantity-input" min="1" value="1" />
   <button class="btn add-to-cart-btn">Add to Cart</button>
 </div>
 
-<div class="product" data-id="4" data-name="Fashion Elegant 3pcs Suit Set Brown1" data-price="2480" data-image="clothes/fashion_elegant_3pcs_set_suit_brown1.jpeg">
+<!-- 4. Fashion Elegant 3pcs Suit Set Brown1 (Clothes) -->
+<div class="product" data-id="4" data-name="Fashion Elegant 3pcs Suit Set Brown1" data-price="2480" data-image="clothes/fashion_elegant_3pcs_set_suit_brown1.jpeg" data-type="clothes">
   <img src="clothes/fashion_elegant_3pcs_set_suit_brown1.jpeg" alt="Fashion Elegant 3pcs Suit Set Brown1" />
   <h3>Fashion - Elegant - 3pcs - Suit - Set - Brown1</h3>
   <p>GHS 2,480</p>
-  <label>Quantity:</label> 
+  <label>Size:</label>
+  <select class="size-select">
+    <!-- Sizes -->
+    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
+    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <label>Quantity:</label>
   <input type="number" class="quantity-input" min="1" value="1" />
   <button class="btn add-to-cart-btn">Add to Cart</button>
 </div>
 
-<div class="product" data-id="5" data-name="Fashion Sweater Mixed" data-price="899" data-image="clothes/fashion_sweater_mixed.jpeg">
+<!-- 5. Fashion Sweater Mixed (Clothes) -->
+<div class="product" data-id="5" data-name="Fashion Sweater Mixed" data-price="899" data-image="clothes/fashion_sweater_mixed.jpeg" data-type="clothes">
   <img src="clothes/fashion_sweater_mixed.jpeg" alt="Fashion Sweater Mixed" />
   <h3>Fashion - Sweater - Mixed</h3>
   <p>GHS 899</p>
-  <label>Quantity:</label> 
+  <label>Size:</label>
+  <select class="size-select">
+    <!-- Sizes -->
+    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
+    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <label>Quantity:</label>
   <input type="number" class="quantity-input" min="1" value="1" />
   <button class="btn add-to-cart-btn">Add to Cart</button>
 </div>
 
-<div class="product" data-id="6" data-name="Luxury Prada Half Shoe Black" data-price="1790" data-image="shoes/luxury_prada_halfshoe_black.jpeg">
+<!-- 6. Luxury Prada Half Shoe Black (Shoes) -->
+<div class="product" data-id="6" data-name="Luxury Prada Half Shoe Black" data-price="1790" data-image="shoes/luxury_prada_halfshoe_black.jpeg" data-type="shoes">
   <img src="shoes/luxury_prada_halfshoe_black.jpeg" alt="Luxury Prada Half - Shoe - Black" />
   <h3>Luxury Prada Half - Shoe - Black</h3>
   <p>GHS 1,790</p>
-  <label>Quantity:</label> 
+  <label>Size:</label>
+  <select class="size-select">
+    <!-- Shoe sizes -->
+    <option value="38">38</option> <option value="39">39</option> <option value="40">40</option>
+    <option value="41">41</option> <option value="42">42</option> <option value="43">43</option>
+    <option value="44">44</option> <option value="45">45</option> <option value="46">46</option>
+  </select>
+  <label>Quantity:</label>
   <input type="number" class="quantity-input" min="1" value="1" />
   <button class="btn add-to-cart-btn">Add to Cart</button>
 </div>
 
-<div class="product" data-id="7" data-name="Luxury Jeans SeaBlue" data-price="999" data-image="clothes/luxury_jeans_seablue.jpeg">
+<!-- 7. Luxury Jeans SeaBlue (Clothes) -->
+<div class="product" data-id="7" data-name="Luxury Jeans SeaBlue" data-price="999" data-image="clothes/luxury_jeans_seablue.jpeg" data-type="clothes">
   <img src="clothes/luxury_jeans_seablue.jpeg" alt="Luxury Jeans SeaBlue" />
   <h3>Luxury - Jeans - SeaBlue</h3>
   <p>GHS 999</p>
-  <label>Quantity:</label> 
+  <label>Size:</label>
+  <select class="size-select">
+    <!-- Sizes -->
+    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
+    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <label>Quantity:</label>
   <input type="number" class="quantity-input" min="1" value="1" />
   <button class="btn add-to-cart-btn">Add to Cart</button>
 </div>
 
-<div class="product" data-id="8" data-name="Dior Boot Khaki" data-price="1970" data-image="shoes/dior_boot_khaki.jpeg">
+<!-- 8. Dior Boot Khaki (Shoes) -->
+<div class="product" data-id="8" data-name="Dior Boot Khaki" data-price="1970" data-image="shoes/dior_boot_khaki.jpeg" data-type="shoes">
   <img src="shoes/dior_boot_khaki.jpeg" alt="Dior Boot - Khaki" />
   <h3>Dior Boot - Khaki</h3>
   <p>GHS 1,970</p>
+  <label>Size:</label>
+  <select class="size-select">
+    <!-- Shoe sizes -->
+    <option value="38">38</option> <option value="39">39</option> <option value="40">40</option>
+    <option value="41">41</option> <option value="42">42</option> <option value="43">43</option>
+    <option value="44">44</option> <option value="45">45</option> <option value="46">46</option>
+  </select>
   <label>Quantity:</label>
   <input type="number" class="quantity-input" min="1" value="1" />
   <button class="btn add-to-cart-btn">Add to Cart</button>
 </div>
 
-<div class="product" data-id="9" data-name="Versace Sneaker – Black" data-price="1899" data-image="shoes/versace_sneaker_black.jpeg">
+<!-- 9. Versace Sneaker – Black (Shoes) -->
+<div class="product" data-id="9" data-name="Versace Sneaker – Black" data-price="1899" data-image="shoes/versace_sneaker_black.jpeg" data-type="shoes">
   <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
   <h3>Versace Sneaker – Black</h3>
   <p>GHS 1,899</p>
+  <label>Size:</label>
+  <select class="size-select">
+    <!-- Shoe sizes -->
+    <option value="38">38</option> <option value="39">39</option> <option value="40">40</option>
+    <option value="41">41</option> <option value="42">42</option> <option value="43">43</option>
+    <option value="44">44</option> <option value="45">45</option> <option value="46">46</option>
+  </select>
   <label>Quantity:</label>
   <input type="number" class="quantity-input" min="1" value="1" />
   <button class="btn add-to-cart-btn">Add to Cart</button>
 </div>
 
-<div class="product" data-id="10" data-name="Luxury Louis Vuitton Dress Shoe - Black" data-price="1990" data-image="shoes/luxury_louis_vuitton_dress_shoe_black.jpeg">
+<!-- 10. Luxury Louis Vuitton Dress Shoe - Black (Shoes) -->
+<div class="product" data-id="10" data-name="Luxury Louis Vuitton Dress Shoe - Black" data-price="1990" data-image="shoes/luxury_louis_vuitton_dress_shoe_black.jpeg" data-type="shoes">
   <img src="shoes/luxury_louis_vuitton_dress_shoe_black.jpeg" alt="Luxury Louis Vuitton Dress Shoe - Black" />
   <h3>Luxury Louis Vuitton Dress Shoe - Black</h3>
   <p>GHS 1,990</p>
+  <label>Size:</label>
+  <select class="size-select">
+    <!-- Shoe sizes -->
+    <option value="38">38</option> <option value="39">39</option> <option value="40">40</option>
+    <option value="41">41</option> <option value="42">42</option> <option value="43">43</option>
+    <option value="44">44</option> <option value="45">45</option> <option value="46">46</option>
+  </select>
   <label>Quantity:</label>
   <input type="number" class="quantity-input" min="1" value="1" />
   <button class="btn add-to-cart-btn">Add to Cart</button>
