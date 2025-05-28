@@ -66,6 +66,11 @@
       color: red;
       margin-top: 10px;
     }
+    .delivery-note {
+      font-size: 0.85em;
+      color: #666;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
@@ -82,11 +87,15 @@
     <label>Phone Number</label>
     <input type="tel" name="phone" required />
 
-    <label>Delivery Option</label>
+    <label for="delivery">Delivery Option</label>
     <select id="delivery" required>
       <option value="70">Standard Delivery – Accra (GHS 70–95 depending on exact location)</option>
       <option value="60">Nationwide Delivery (GHS 60–80 depending on item value)</option>
+      <option value="0">International Delivery – Contact us for a quote</option>
     </select>
+    <p class="delivery-note">
+      Delivery fee shown is a base value used for calculation and may vary depending on your exact location or order details.
+    </p>
 
     <div class="promo-section">
       <input type="text" id="promo-code" placeholder="Enter promo code" />
@@ -146,13 +155,18 @@
       // Update totals display
       function updateTotals() {
         const code = promoInput.value.trim().toUpperCase();
-        let deliveryFee = parseFloat(deliverySelect.value) || 0;
+        let deliveryFee = parseFloat(deliverySelect.value);
 
-        if (code === "FREESHIP") {
+        // If international delivery is selected, no fixed fee shown; prompt user to contact you
+        if (deliverySelect.value === "0") {
+          deliveryDisplay.textContent = 'Delivery: International delivery – please contact us for a quote';
           deliveryFee = 0;
+        } else {
+          if (code === "FREESHIP") {
+            deliveryFee = 0;
+          }
+          deliveryDisplay.textContent = 'Delivery: GHS ' + deliveryFee.toFixed(2);
         }
-
-        deliveryDisplay.textContent = 'Delivery: GHS ' + deliveryFee.toFixed(2);
 
         let total = subtotal - discountAmount + deliveryFee;
 
@@ -211,7 +225,14 @@
         const email = this.email.value.trim();
         const phone = this.phone.value.trim();
         const code = promoInput.value.trim().toUpperCase();
-        const deliveryCost = parseFloat(deliverySelect.value) || 0;
+        const deliveryOption = deliverySelect.value;
+
+        if (deliveryOption === "0") {
+          alert('For international delivery, please contact us directly to arrange shipping and payment.');
+          return;
+        }
+
+        let deliveryCost = parseFloat(deliveryOption);
         const finalDelivery = (code === "FREESHIP") ? 0 : deliveryCost;
         const totalAmount = subtotal - discountAmount + finalDelivery;
 
@@ -236,19 +257,16 @@
             custom_fields: [
               { display_name: "Customer Name", value: name },
               { display_name: "Phone Number", value: phone },
-              { display_name: "Delivery Option", value: `GHS ${finalDelivery.toFixed(2)}` },
+              { display_name: "Delivery Option", value: deliveryOption === "0" ? 'International delivery' : `GHS ${finalDelivery.toFixed(2)}` },
               { display_name: "Promo Code", value: code || 'N/A' }
             ]
           },
           callback: function (response) {
-            // On successful payment
             alert('Payment successful! Reference: ' + response.reference);
 
-            // Clear cart and store order reference
             localStorage.removeItem('cart');
             sessionStorage.setItem('orderReference', response.reference);
 
-            // Redirect to thank you page
             window.location.href = 'thankyou.html';
           },
           onClose: function () {
