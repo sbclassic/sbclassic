@@ -171,511 +171,1016 @@
   <div class="products">
 
     <div class="product">
-      <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Apricot" />
-      <h3>Elegant 2pcs Set – Apricot</h3>
-      <p class="price">GHS 1,980</p>
-      <button onclick="addToCart({ 
-        id: 'elegant-apricot', 
-        name: 'Elegant 2pcs Set – Apricot', 
-        price: 1980, 
-        image: 'clothes/elegant_2pcs_set_apricot.jpeg', 
-        quantity: 1
-      })">Add to Cart</button>
-    </div>
+  <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Apricot" />
+  <h3>Elegant 2pcs Set – Apricot</h3>
+  <p class="price">GHS 1,980</p>
+  <label for="size-elegant-apricot">Size:</label>
+  <select id="size-elegant-apricot">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'elegant-apricot',
+    name: 'Elegant 2pcs Set – Apricot',
+    price: 1980,
+    image: 'clothes/elegant_2pcs_set_apricot.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-elegant-apricot').value
+  })">Add to Cart</button>
+</div>
+
+<!-- Repeat for each product below -->
+
+<div class="product">
+  <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Black" />
+  <h3>Elegant 2pcs Set – Black</h3>
+  <p class="price">GHS 1,980</p>
+  <label for="size-elegant-black">Size:</label>
+  <select id="size-elegant-black">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'elegant-black',
+    name: 'Elegant 2pcs Set – Black',
+    price: 1980,
+    image: 'clothes/elegant_2pcs_set_black.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-elegant-black').value
+  })">Add to Cart</button>
+</div>
+
+<div class="product">
+  <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Blue Black" />
+  <h3>Elegant 2pcs Set – Blue Black</h3>
+  <p class="price">GHS 1,980</p>
+  <label for="size-elegant-blueblack">Size:</label>
+  <select id="size-elegant-blueblack">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'elegant-blueblack',
+    name: 'Elegant 2pcs Set – Blue Black',
+    price: 1980,
+    image: 'clothes/elegant_2pcs_set_blueblack.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-elegant-blueblack').value
+  })">Add to Cart</button>
+</div>
+
+<div class="product">
+  <img src="clothes/luxury_leather_jacket_brown.jpeg" alt="Luxury Leather Jacket Brown" />
+  <h3>Luxury - Leather - Jacket - Brown</h3>
+  <p class="price">GHS 1,299</p>
+  <label for="size-luxury-leather-jacket-brown">Size:</label>
+  <select id="size-luxury-leather-jacket-brown">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'luxury-leather-jacket-brown',
+    name: 'Luxury - Leather - Jacket - Brown',
+    price: 1299,
+    image: 'clothes/luxury_leather_jacket_brown.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-luxury-leather-jacket-brown').value
+  })">Add to Cart</button>
+</div>
+
+<div class="product">
+  <img src="clothes/luxury_leather_jacket_black.jpeg" alt="Luxury Leather Jacket Black" />
+  <h3>Luxury - Leather - Jacket - Black</h3>
+  <p class="price">GHS 1,299</p>
+  <label for="size-luxury-leather-jacket-black">Size:</label>
+  <select id="size-luxury-leather-jacket-black">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'luxury-leather-jacket-black',
+    name: 'Luxury - Leather - Jacket - Black',
+    price: 1299,
+    image: 'clothes/luxury_leather_jacket_black.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-luxury-leather-jacket-black').value
+  })">Add to Cart</button>
+</div>
+
+<div class="product">
+  <img src="clothes/luxury_jacket_coffee.jpeg" alt="Luxury Jacket Coffee" />
+  <h3>Luxury - Jacket - Coffee</h3>
+  <p class="price">GHS 1,299</p>
+  <label for="size-luxury-jacket-coffee">Size:</label>
+  <select id="size-luxury-jacket-coffee">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'luxury-jacket-coffee',
+    name: 'Luxury - Jacket - Coffee',
+    price: 1299,
+    image: 'clothes/luxury_jacket_coffee.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-luxury-jacket-coffee').value
+  })">Add to Cart</button>
+</div>
+
+<div class="product">
+  <img src="clothes/luxury_jacket_grey.jpeg" alt="Luxury Jacket Grey" />
+  <h3>Luxury - Jacket - Grey</h3>
+  <p class="price">GHS 1,299</p>
+  <label for="size-luxury-jacket-grey">Size:</label>
+  <select id="size-luxury-jacket-grey">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'luxury-jacket-grey',
+    name: 'Luxury - Jacket - Grey',
+    price: 1299,
+    image: 'clothes/luxury_jacket_grey.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-luxury-jacket-grey').value
+  })">Add to Cart</button>
+</div>
+
+<div class="product">
+  <img src="clothes/simple_classy_jacket_cream.jpeg" alt="Simple Classy Jacket Cream" />
+  <h3>Simple - Classy - Jacket - Cream</h3>
+  <p class="price">GHS 899</p>
+  <label for="size-simple-classy-jacket-cream">Size:</label>
+  <select id="size-simple-classy-jacket-cream">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'simple-classy-jacket-cream',
+    name: 'Simple - Classy - Jacket - Cream',
+    price: 899,
+    image: 'clothes/simple_classy_jacket_cream.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-simple-classy-jacket-cream').value
+  })">Add to Cart</button>
+</div>
+
+<div class="product">
+  <img src="clothes/simple_classy_jacket_black.jpeg" alt="Simple Classy Jacket Black" />
+  <h3>Simple - Classy - Jacket - Black</h3>
+  <p class="price">GHS 899</p>
+  <label for="size-simple-classy-jacket-black">Size:</label>
+  <select id="size-simple-classy-jacket-black">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'simple-classy-jacket-black',
+    name: 'Simple - Classy - Jacket - Black',
+    price: 899,
+    image: 'clothes/simple_classy_jacket_black.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-simple-classy-jacket-black').value
+  })">Add to Cart</button>
+</div>
 
     <div class="product">
-      <img src="clothes/elegant_2pcs_set_black.jpeg" alt="Elegant 2pcs Black" />
-      <h3>Elegant 2pcs Set – Black</h3>
-      <p class="price">GHS 1,980</p>
-      <button onclick="addToCart({ 
-        id: 'elegant-black', 
-        name: 'Elegant 2pcs Set – Black', 
-        price: 1980, 
-        image: 'clothes/elegant_2pcs_set_black.jpeg', 
-        quantity: 1
-      })">Add to Cart</button>
-    </div>
+  <img src="clothes/simple_classy_jacket_cream1.jpeg" alt="Simple Classy Jacket Cream1" />
+  <h3>Simple - Classy - Jacket - Cream1</h3>
+  <p class="price">GHS 899</p>
+  <label for="size-simple-classy-jacket-cream1">Size:</label>
+  <select id="size-simple-classy-jacket-cream1">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'simple-classy-jacket-cream1',
+    name: 'Simple - Classy - Jacket - Cream1',
+    price: 899,
+    image: 'clothes/simple_classy_jacket_cream1.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-simple-classy-jacket-cream1').value
+  })">Add to Cart</button>
+</div>
 
-    <div class="product">
-      <img src="clothes/elegant_2pcs_set_blueblack.jpeg" alt="Elegant 2pcs Blue Black" />
-      <h3>Elegant 2pcs Set – Blue Black</h3>
-      <p class="price">GHS 1,980</p>
-      <button onclick="addToCart({ 
-        id: 'elegant-blueblack', 
-        name: 'Elegant 2pcs Set – Blue Black', 
-        price: 1980, 
-        image: 'clothes/elegant_2pcs_set_blueblack.jpeg', 
-        quantity: 1
-      })">Add to Cart</button>
-    </div>
+<div class="product">
+  <img src="clothes/simple_classy_jacket_black1.jpeg" alt="Simple Classy Jacket Black1" />
+  <h3>Simple - Classy - Jacket - Black1</h3>
+  <p class="price">GHS 899</p>
+  <label for="size-simple-classy-jacket-black1">Size:</label>
+  <select id="size-simple-classy-jacket-black1">
+    <!-- same size options as above -->
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'simple-classy-jacket-black1',
+    name: 'Simple - Classy - Jacket - Black1',
+    price: 899,
+    image: 'clothes/simple_classy_jacket_black1.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-simple-classy-jacket-black1').value
+  })">Add to Cart</button>
+</div>
 
-    <div class="product">
-      <img src="clothes/luxury_leather_jacket_brown.jpeg" alt="Luxury Leather Jacket Brown" />
-      <h3>Luxury - Leather - Jacket - Brown</h3>
-      <p class="price">GHS 1,299</p>
-      <button onclick="addToCart({ 
-        id: 'luxury-leather-jacket-brown', 
-        name: 'Luxury - Leather - Jacket - Brown', 
-        price: 1299, 
-        image: 'clothes/luxury_leather_jacket_brown.jpeg', 
-        quantity: 1
-      })">Add to Cart</button>
-    </div>
+<div class="product">
+  <img src="clothes/simple_classy_jacket_brown.jpeg" alt="Simple Classy Jacket Brown" />
+  <h3>Simple - Classy - Jacket - Brown</h3>
+  <p class="price">GHS 899</p>
+  <label for="size-simple-classy-jacket-brown">Size:</label>
+  <select id="size-simple-classy-jacket-brown">
+    <!-- same size options -->
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'simple-classy-jacket-brown',
+    name: 'Simple - Classy - Jacket - Brown',
+    price: 899,
+    image: 'clothes/simple_classy_jacket_brown.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-simple-classy-jacket-brown').value
+  })">Add to Cart</button>
+</div>
 
-    <div class="product">
-      <img src="clothes/luxury_leather_jacket_black.jpeg" alt="Luxury Leather Jacket Black" />
-      <h3>Luxury - Leather - Jacket - Black</h3>
-      <p class="price">GHS 1,299</p>
-      <button onclick="addToCart({ 
-        id: 'luxury-leather-jacket-black', 
-        name: 'Luxury - Leather - Jacket - Black', 
-        price: 1299, 
-        image: 'clothes/luxury_leather_jacket_black.jpeg', 
-        quantity: 1
-      })">Add to Cart</button>
-    </div>
+<div class="product">
+  <img src="clothes/denim_jacket_blue.jpeg" alt="Denim Jacket Blue" />
+  <h3>Denim - Jacket - Blue</h3>
+  <p class="price">GHS 899</p>
+  <label for="size-denim-jacket-blue">Size:</label>
+  <select id="size-denim-jacket-blue">
+    <!-- size options -->
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'denim-jacket-blue',
+    name: 'Denim - Jacket - Blue',
+    price: 899,
+    image: 'clothes/denim_jacket_blue.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-denim-jacket-blue').value
+  })">Add to Cart</button>
+</div>
 
-    <div class="product">
-      <img src="clothes/luxury_jacket_coffee.jpeg" alt="Luxury Jacket Coffee" />
-      <h3>Luxury - Jacket - Coffee</h3>
-      <p class="price">GHS 1,299</p>
-      <button onclick="addToCart({ 
-        id: 'luxury-jacket-coffee', 
-        name: 'Luxury - Jacket - Coffee', 
-        price: 1299, 
-        image: 'clothes/luxury_jacket_coffee.jpeg', 
-        quantity: 1
-      })">Add to Cart</button>
-    </div>
+<div class="product">
+  <img src="clothes/denim_jacket_ash.jpeg" alt="Denim Jacket Ash" />
+  <h3>Denim - Jacket - Ash</h3>
+  <p class="price">GHS 899</p>
+  <label for="size-denim-jacket-ash">Size:</label>
+  <select id="size-denim-jacket-ash">
+    <!-- size options -->
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'denim-jacket-ash',
+    name: 'Denim - Jacket - Ash',
+    price: 899,
+    image: 'clothes/denim_jacket_ash.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-denim-jacket-ash').value
+  })">Add to Cart</button>
+</div>
 
-    <div class="product">
-      <img src="clothes/luxury_jacket_grey.jpeg" alt="Luxury Jacket Grey" />
-      <h3>Luxury - Jacket - Grey</h3>
-      <p class="price">GHS 1,299</p>
-      <button onclick="addToCart({ 
-        id: 'luxury-jacket-grey', 
-        name: 'Luxury - Jacket - Grey', 
-        price: 1299, 
-        image: 'clothes/luxury_jacket_grey.jpeg', 
-        quantity: 1
-      })">Add to Cart</button>
-    </div>
+<div class="product">
+  <img src="clothes/luxury_jeans_seablue.jpeg" alt="Luxury Jeans SeaBlue" />
+  <h3>Luxury - Jeans - SeaBlue</h3>
+  <p class="price">GHS 999</p>
+  <label for="size-luxury-jeans-seablue">Size:</label>
+  <select id="size-luxury-jeans-seablue">
+    <!-- size options -->
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'luxury-jeans-seablue',
+    name: 'Luxury - Jeans - SeaBlue',
+    price: 999,
+    image: 'clothes/luxury_jeans_seablue.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-luxury-jeans-seablue').value
+  })">Add to Cart</button>
+</div>
 
-    <div class="product">
-      <img src="clothes/simple_classy_jacket_cream.jpeg" alt="Simple Classy Jacket Cream" />
-      <h3>Simple - Classy - Jacket - Cream</h3>
-      <p class="price">GHS 899</p>
-      <button onclick="addToCart({ 
-        id: 'simple-classy-jacket-cream', 
-        name: 'Simple - Classy - Jacket - Cream', 
-        price: 899, 
-        image: 'clothes/simple_classy_jacket_cream.jpeg', 
-        quantity: 1
-      })">Add to Cart</button>
-    </div>
+<div class="product">
+  <img src="clothes/luxury_jeans_black.jpeg" alt="Luxury Jeans Black" />
+  <h3>Luxury - Jeans - Black</h3>
+  <p class="price">GHS 999</p>
+  <label for="size-luxury-jeans-black">Size:</label>
+  <select id="size-luxury-jeans-black">
+    <!-- size options -->
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'luxury-jeans-black',
+    name: 'Luxury - Jeans - Black',
+    price: 999,
+    image: 'clothes/luxury_jeans_black.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-luxury-jeans-black').value
+  })">Add to Cart</button>
+</div>
 
-    <div class="product">
-      <img src="clothes/simple_classy_jacket_black.jpeg" alt="Simple Classy Jacket Black" />
-      <h3>Simple - Classy - Jacket - Black</h3>
-      <p class="price">GHS 899</p>
-      <button onclick="addToCart({ 
-        id: 'simple-classy-jacket-black', 
-        name: 'Simple - Classy - Jacket - Black', 
-        price: 899, 
-        image: 'clothes/simple_classy_jacket_black.jpeg', 
-        quantity: 1
-      })">Add to Cart</button>
-    </div>
+<div class="product">
+  <img src="clothes/luxury_jeans_ash.jpeg" alt="Luxury Jeans Ash" />
+  <h3>Luxury - Jeans - Ash</h3>
+  <p class="price">GHS 999</p>
+  <label for="size-luxury-jeans-ash">Size:</label>
+  <select id="size-luxury-jeans-ash">
+    <!-- size options -->
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'luxury-jeans-ash',
+    name: 'Luxury - Jeans - Ash',
+    price: 999,
+    image: 'clothes/luxury_jeans_ash.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-luxury-jeans-ash').value
+  })">Add to Cart</button>
+</div>
 
-    <div class="product">
-      <img src="clothes/simple_classy_jacket_cream1.jpeg" alt="Simple Classy Jacket Cream1" />
-      <h3>Simple - Classy - Jacket - Cream1</h3>
-      <p class="price">GHS 899</p>
-      <button onclick="addToCart({ 
-        id: 'simple-classy-jacket-cream1', 
-        name: 'Simple - Classy - Jacket - Cream1', 
-        price: 899, 
-        image: 'clothes/simple_classy_jacket_cream1.jpeg', 
-        quantity: 1
-      })">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="clothes/simple_classy_jacket_black1.jpeg" alt="Simple Classy Jacket Black1" />
-      <h3>Simple - Classy - Jacket - Black1</h3>
-      <p class="price">GHS 899</p>
-      <button onclick="addToCart({ 
-        id: 'simple-classy-jacket-black1', 
-        name: 'Simple - Classy - Jacket - Black1', 
-        price: 899, 
-        image: 'clothes/simple_classy_jacket_black1.jpeg', 
-        quantity: 1
-      })">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="clothes/simple_classy_jacket_brown.jpeg" alt="Simple Classy Jacket Brown" />
-      <h3>Simple - Classy - Jacket - Brown</h3>
-      <p class="price">GHS 899</p>
-      <button onclick="addToCart({ 
-        id: 'simple-classy-jacket-brown', 
-        name: 'Simple - Classy - Jacket - Brown', 
-        price: 899, 
-        image: 'clothes/simple_classy_jacket_brown.jpeg', 
-        quantity: 1
-      })">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="clothes/denim_jacket_blue.jpeg" alt="Denim Jacket Blue" />
-      <h3>Denim - Jacket - Blue</h3>
-      <p class="price">GHS 899</p>
-      <button onclick="addToCart({ 
-        id: 'denim-jacket-blue', 
-        name: 'Denim - Jacket - Blue', 
-        price: 899, 
-        image: 'clothes/denim_jacket_blue.jpeg', 
-        quantity: 1
-      })">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="clothes/denim_jacket_ash.jpeg" alt="Denim Jacket Ash" />
-      <h3>Denim - Jacket - Ash</h3>
-      <p class="price">GHS 899</p>
-      <button onclick="addToCart({ 
-        id: 'denim-jacket-ash', 
-        name: 'Denim - Jacket - Ash', 
-        price: 899, 
-        image: 'clothes/denim_jacket_ash.jpeg', 
-        quantity: 1
-      })">Add to Cart</button>
-    </div>
-
-    <div class="product">
-      <img src="clothes/luxury_jeans_seablue.jpeg" alt="Luxury Jeans SeaBlue" />
-      <h3>Luxury - Jeans - SeaBlue</h3>
-      <p class="price">GHS 999</p>
-      <button onclick="addToCart({ 
-        id: 'luxury-jeans-seablue', 
-        name: 'Luxury - Jeans - SeaBlue', 
-        price: 999, 
-        image: 'clothes/luxury_jeans_seablue.jpeg', 
-        quantity: 1
-     })">Add to Cart</button>
-   </div>
+<div class="product">
+  <img src="clothes/luxury_jeans_black1.jpeg" alt="Luxury Jeans Black1" />
+  <h3>Luxury - Jeans - Black1</h3>
+  <p class="price">GHS 999</p>
+  <label for="size-luxury-jeans-black1">Size:</label>
+  <select id="size-luxury-jeans-black1">
+    <!-- size options -->
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXL">XXXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'luxury-jeans-black1',
+    name: 'Luxury - Jeans - Black1',
+    price: 999,
+    image: 'clothes/luxury_jeans_black1.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-luxury-jeans-black1').value
+  })">Add to Cart</button>
+</div>
 
    <div class="product">
-     <img src="clothes/luxury_jeans_black.jpeg" alt="Luxury Jeans Black" />
-     <h3>Luxury - Jeans - Black</h3>
-     <p class="price">GHS 999</p>
-     <button onclick="addToCart({ 
-       id: 'luxury-jeans-black', 
-       name: 'Luxury - Jeans - Black', 
-       price: 999, 
-       image: 'clothes/luxury_jeans_black.jpeg', 
-       quantity: 1
-    })">Add to Cart</button>
-  </div>
+  <img src="clothes/fashion_sweater_mixed.jpeg" alt="Fashion Sweater - Mixed" />
+  <h3>Fashion - Sweater - Mixed</h3>
+  <p class="price">GHS 899</p>
+  <label for="size-fashion-sweater-mixed">Size:</label>
+  <select id="size-fashion-sweater-mixed">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'fashion-sweater-mixed',
+    name: 'Fashion - Sweater - Mixed',
+    price: 899,
+    image: 'clothes/fashion_sweater_mixed.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-fashion-sweater-mixed').value
+  })">Add to Cart</button>
+</div>
 
-  <div class="product">
-    <img src="clothes/luxury_jeans_ash.jpeg" alt="Luxury Jeans Ash" />
-    <h3>Luxury - Jeans - Ash</h3>
-    <p class="price">GHS 999</p>
-    <button onclick="addToCart({ 
-      id: 'luxury-jeans-ash', 
-      name: 'Luxury - Jeans - Ash', 
-      price: 999, 
-      image: 'clothes/luxury_jeans_ash.jpeg', 
-      quantity: 1
-   })">Add to Cart</button>
-  </div>
+<div class="product">
+  <img src="clothes/fashion_sweater_mixed1.jpeg" alt="Fashion Sweater - Mixed1" />
+  <h3>Fashion - Sweater - Mixed1</h3>
+  <p class="price">GHS 899</p>
+  <label for="size-fashion-sweater-mixed1">Size:</label>
+  <select id="size-fashion-sweater-mixed1">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'fashion-sweater-mixed1',
+    name: 'Fashion - Sweater - Mixed1',
+    price: 899,
+    image: 'clothes/fashion_sweater_mixed1.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-fashion-sweater-mixed1').value
+  })">Add to Cart</button>
+</div>
 
-  <div class="product">
-    <img src="clothes/luxury_jeans_black1.jpeg" alt="Luxury Jeans Black1" />
-    <h3>Luxury - Jeans - Black1</h3>
-    <p class="price">GHS 999</p>
-    <button onclick="addToCart({ 
-      id: 'luxury-jeans-black1', 
-      name: 'Luxury - Jeans - Black1', 
-      price: 999, 
-      image: 'clothes/luxury_jeans_black1.jpeg', 
-      quantity: 1
-    })">Add to Cart</button>
-   </div>
+<div class="product">
+  <img src="clothes/fashion_elegant_3pcs_suit_set_midnight_blue.jpeg" alt="Elegant 3pcs Suit Set - Midnight Blue" />
+  <h3>Elegant 3pcs Suit Set – Midnight Blue</h3>
+  <p class="price">GHS 2,480</p>
+  <label for="size-elegant-3pcs-midnight-blue">Size:</label>
+  <select id="size-elegant-3pcs-midnight-blue">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'fashion-elegant-3pcs-suit-midnight-blue',
+    name: 'Elegant 3pcs Suit Set – Midnight Blue',
+    price: 2480,
+    image: 'clothes/fashion_elegant_3pcs_suit_set_midnight_blue.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-elegant-3pcs-midnight-blue').value
+  })">Add to Cart</button>
+</div>
 
-   <div class="product">
-     <img src="clothes/fashion_sweater_mixed.jpeg" alt="Fashion Sweater Mixed" />
-     <h3>Fashion - Sweater - Mixed</h3>
-     <p class="price">GHS 899</p>
-     <button onclick="addToCart({ 
-       id: 'fashion-sweater-mixed', 
-       name: 'Fashion - Sweater - Mixed', 
-       price: 899, 
-       image: 'clothes/fashion_sweater_mixed.jpeg', 
-       quantity: 1
-     })">Add to Cart</button>
-   </div>
+<div class="product">
+  <img src="clothes/fashion_elegant_3pcs_suit_set_khaki1.jpeg" alt="Elegant 3pcs Suit Set - Khaki" />
+  <h3>Elegant 3pcs Suit Set – Khaki</h3>
+  <p class="price">GHS 2,480</p>
+  <label for="size-elegant-3pcs-khaki">Size:</label>
+  <select id="size-elegant-3pcs-khaki">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'fashion-elegant-3pcs-suit-khaki1',
+    name: 'Elegant 3pcs Suit Set – Khaki',
+    price: 2480,
+    image: 'clothes/fashion_elegant_3pcs_suit_set_khaki1.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-elegant-3pcs-khaki').value
+  })">Add to Cart</button>
+</div>
 
-   <div class="product">
-     <img src="clothes/fashion_sweater_mixed1.jpeg" alt="Fashion Sweater Mixed1" />
-     <h3>Fashion - Sweater - Mixed1</h3>
-     <p class="price">GHS 899</p>
-     <button onclick="addToCart({ 
-       id: 'fashion-sweater-mixed1', 
-       name: 'Fashion - Sweater - Mixed1', 
-       price: 899, 
-       image: 'clothes/fashion_sweater_mixed1.jpeg', 
-       quantity: 1
-      })">Add to Cart</button>
-    </div>
+<div class="product">
+  <img src="clothes/fashion_elegant_3pcs_set_suit_lightbrown.jpeg" alt="Elegant 3pcs Suit Set - Light Brown" />
+  <h3>Elegant 3pcs Suit Set – Light Brown</h3>
+  <p class="price">GHS 2,480</p>
+  <label for="size-elegant-3pcs-lightbrown">Size:</label>
+  <select id="size-elegant-3pcs-lightbrown">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'fashion-elegant-3pcs-suit-lightbrown',
+    name: 'Elegant 3pcs Suit Set – Light Brown',
+    price: 2480,
+    image: 'clothes/fashion_elegant_3pcs_set_suit_lightbrown.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-elegant-3pcs-lightbrown').value
+  })">Add to Cart</button>
+</div>
 
-    <div class="product">
-      <img src="clothes/fashion_elegant_3pcs_suit_set_midnight_blue.jpeg" alt="Fashion Elegant 3pcs Suit Set Midnight Blue" />
-      <h3>Fashion - Elegant - 3pcs - Suit - Set - Midnight Blue</h3>
-      <p class="price">GHS 2,480</p>
-      <button onclick="addToCart({ 
-        id: 'fashion-elegant-3pcs-suit-midnight-blue', 
-        name: 'Fashion - Elegant - 3pcs - Suit - Set - Midnight Blue', 
-        price: 2480, 
-        image: 'clothes/fashion_elegant_3pcs_suit_set_midnight_blue.jpeg', 
-        quantity: 1
-       })">Add to Cart</button>
-     </div>
+<div class="product">
+  <img src="clothes/fashion_elegant_3pcs_set_suit_brown1.jpeg" alt="Elegant 3pcs Suit Set - Brown" />
+  <h3>Elegant 3pcs Suit Set – Brown</h3>
+  <p class="price">GHS 2,480</p>
+  <label for="size-elegant-3pcs-brown">Size:</label>
+  <select id="size-elegant-3pcs-brown">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'fashion-elegant-3pcs-suit-brown1',
+    name: 'Elegant 3pcs Suit Set – Brown',
+    price: 2480,
+    image: 'clothes/fashion_elegant_3pcs_set_suit_brown1.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-elegant-3pcs-brown').value
+  })">Add to Cart</button>
+</div>
+
+<div class="product">
+  <img src="clothes/fashion_elegant_2pcs_set_suit_lightgreen.jpeg" alt="Elegant 2pcs Suit Set - Light Green" />
+  <h3>Elegant 2pcs Suit Set – Light Green</h3>
+  <p class="price">GHS 1,999</p>
+  <label for="size-elegant-2pcs-lightgreen">Size:</label>
+  <select id="size-elegant-2pcs-lightgreen">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'fashion-elegant-2pcs-suit-lightgreen',
+    name: 'Elegant 2pcs Suit Set – Light Green',
+    price: 1999,
+    image: 'clothes/fashion_elegant_2pcs_set_suit_lightgreen.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-elegant-2pcs-lightgreen').value
+  })">Add to Cart</button>
+</div>
+
+<div class="product">
+  <img src="clothes/fashion_elegant_2pcs_set_suit_deepgreen.jpeg" alt="Elegant 2pcs Suit Set - Deep Green" />
+  <h3>Elegant 2pcs Suit Set – Deep Green</h3>
+  <p class="price">GHS 1,999</p>
+  <label for="size-elegant-2pcs-deepgreen">Size:</label>
+  <select id="size-elegant-2pcs-deepgreen">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({
+    id: 'fashion-elegant-2pcs-suit-deepgreen',
+    name: 'Elegant 2pcs Suit Set – Deep Green',
+    price: 1999,
+    image: 'clothes/fashion_elegant_2pcs_set_suit_deepgreen.jpeg',
+    quantity: 1,
+    size: document.getElementById('size-elegant-2pcs-deepgreen').value
+  })">Add to Cart</button>
+</div>
+
+     <!-- 1. Fashion Elegant 2pcs Suit Set Khaki -->
+<div class="product">
+  <img src="clothes/fashion_elegant_2pcs_set_suit_coffee.jpeg" alt="Fashion Elegant 2pcs Suit Set Khaki" />
+  <h3>Fashion - Elegant - 2pcs - Suit - Set - Khaki</h3>
+  <p class="price">GHS 1,999</p>
+  <label>Size:
+    <select id="size-fashion-elegant-2pcs-suit-khaki">
+      <option value="S">S</option>
+      <option value="M">M</option>
+      <option value="L">L</option>
+      <option value="XL">XL</option>
+      <option value="XXL">XXL</option>
+      <option value="XXXL">XXXL</option>
+      <option value="XXXXL">XXXXL</option>
+      <option value="XXXXXL">XXXXXL</option>
+      <option value="XXXXXXL">XXXXXXL</option>
+      <option value="XXXXXXXL">XXXXXXXL</option>
+    </select>
+  </label>
+  <button onclick="addToCart({ 
+    id: 'fashion-elegant-2pcs-suit-khaki', 
+    name: 'Fashion - Elegant - 2pcs - Suit - Set - Khaki', 
+    price: 1999, 
+    image: 'clothes/fashion_elegant_2pcs_set_suit_coffee.jpeg', 
+    quantity: 1,
+    size: document.getElementById('size-fashion-elegant-2pcs-suit-khaki').value
+  })">Add to Cart</button>
+</div>
+
+<!-- 2. Brown -->
+<div class="product">
+  <img src="clothes/fashion_elegant_2pcs_set_suit_brown.jpeg" alt="Fashion Elegant 2pcs Suit Set Brown" />
+  <h3>Fashion - Elegant - 2pcs - Suit - Set - Brown</h3>
+  <p class="price">GHS 1,999</p>
+  <label>Size:
+    <select id="size-fashion-elegant-2pcs-suit-brown">
+      <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
+      <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
+      <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option>
+      <option value="XXXXXXL">XXXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
+    </select>
+  </label>
+  <button onclick="addToCart({ 
+    id: 'fashion-elegant-2pcs-suit-brown', 
+    name: 'Fashion - Elegant - 2pcs - Suit - Set - Brown', 
+    price: 1999, 
+    image: 'clothes/fashion_elegant_2pcs_set_suit_brown.jpeg', 
+    quantity: 1,
+    size: document.getElementById('size-fashion-elegant-2pcs-suit-brown').value
+  })">Add to Cart</button>
+</div>
+
+<!-- 3. Black -->
+<div class="product">
+  <img src="clothes/fashion_elegant_2pcs_set_suit_black.jpeg" alt="Fashion Elegant 2pcs Suit Set Black" />
+  <h3>Fashion - Elegant - 2pcs - Suit - Set - Black</h3>
+  <p class="price">GHS 1,999</p>
+  <label>Size:
+    <select id="size-fashion-elegant-2pcs-suit-black">
+      <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
+      <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
+      <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option>
+      <option value="XXXXXXL">XXXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
+    </select>
+  </label>
+  <button onclick="addToCart({ 
+    id: 'fashion-elegant-2pcs-suit-black', 
+    name: 'Fashion - Elegant - 2pcs - Suit - Set - Black', 
+    price: 1999, 
+    image: 'clothes/fashion_elegant_2pcs_set_suit_black.jpeg', 
+    quantity: 1,
+    size: document.getElementById('size-fashion-elegant-2pcs-suit-black').value
+  })">Add to Cart</button>
+</div>
+
+<!-- 4. Ash -->
+<div class="product">
+  <img src="clothes/fashion_elegant_2pcs_set_suit_ash.jpeg" alt="Fashion Elegant 2pcs Suit Set Ash" />
+  <h3>Fashion - Elegant - 2pcs - Suit - Set - Ash</h3>
+  <p class="price">GHS 1,999</p>
+  <label>Size:
+    <select id="size-fashion-elegant-2pcs-suit-ash">
+      <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
+      <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
+      <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option>
+      <option value="XXXXXXL">XXXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
+    </select>
+  </label>
+  <button onclick="addToCart({ 
+    id: 'fashion-elegant-2pcs-suit-ash', 
+    name: 'Fashion - Elegant - 2pcs - Suit - Set - Ash', 
+    price: 1999, 
+    image: 'clothes/fashion_elegant_2pcs_set_suit_ash.jpeg', 
+    quantity: 1,
+    size: document.getElementById('size-fashion-elegant-2pcs-suit-ash').value
+  })">Add to Cart</button>
+</div>
+
+<!-- 5. Burberry Boxers -->
+<div class="product">
+  <img src="clothes/burberry_3pcs_boxers_mixed.jpeg" alt="Burberry 3pcs Boxers Mixed" />
+  <h3>Burberry - 3pcs - Boxers - Mixed</h3>
+  <p class="price">GHS 899</p>
+  <label>Size:
+    <select id="size-burberry-3pcs-boxers-mixed">
+      <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
+      <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
+    </select>
+  </label>
+  <button onclick="addToCart({ 
+    id: 'burberry-3pcs-boxers-mixed', 
+    name: 'Burberry - 3pcs - Boxers - Mixed', 
+    price: 899, 
+    image: 'clothes/burberry_3pcs_boxers_mixed.jpeg', 
+    quantity: 1,
+    size: document.getElementById('size-burberry-3pcs-boxers-mixed').value
+  })">Add to Cart</button>
+</div>
+
+<!-- 6. Gucci Boxers -->
+<div class="product">
+  <img src="clothes/gucci_3pcs_boxers_mixed.jpeg" alt="Gucci 3pcs Boxers Mixed" />
+  <h3>Gucci - 3pcs - Boxers - Mixed</h3>
+  <p class="price">GHS 899</p>
+  <label>Size:
+    <select id="size-gucci-3pcs-boxers-mixed">
+      <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
+      <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
+    </select>
+  </label>
+  <button onclick="addToCart({ 
+    id: 'gucci-3pcs-boxers-mixed', 
+    name: 'Gucci - 3pcs - Boxers - Mixed', 
+    price: 899, 
+    image: 'clothes/gucci_3pcs_boxers_mixed.jpeg', 
+    quantity: 1,
+    size: document.getElementById('size-gucci-3pcs-boxers-mixed').value
+  })">Add to Cart</button>
+</div>
+
+<!-- 7. Prada Boxers -->
+<div class="product">
+  <img src="clothes/prada_3pcs_boxers_mixed.jpeg" alt="Prada 3pcs Boxers Mixed" />
+  <h3>Prada - 3pcs - Boxers - Mixed</h3>
+  <p class="price">GHS 899</p>
+  <label>Size:
+    <select id="size-prada-3pcs-boxers-mixed">
+      <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
+      <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
+    </select>
+  </label>
+  <button onclick="addToCart({ 
+    id: 'prada-3pcs-boxers-mixed', 
+    name: 'Prada - 3pcs - Boxers - Mixed', 
+    price: 899, 
+    image: 'clothes/prada_3pcs_boxers_mixed.jpeg', 
+    quantity: 1,
+    size: document.getElementById('size-prada-3pcs-boxers-mixed').value
+  })">Add to Cart</button>
+</div>
 
      <div class="product">
-       <img src="clothes/fashion_elegant_3pcs_suit_set_khaki1.jpeg" alt="Fashion Elegant 3pcs Suit Set Khaki1" />
-       <h3>Fashion - Elegant - 3pcs - Suit - Set - Khaki1</h3>
-       <p class="price">GHS 2,480</p>
-       <button onclick="addToCart({ 
-         id: 'fashion-elegant-3pcs-suit-khaki1', 
-         name: 'Fashion - Elegant - 3pcs - Suit - Set - Khaki1', 
-         price: 2480, 
-         image: 'clothes/fashion_elegant_3pcs_suit_set_khaki1.jpeg', 
-         quantity: 1
-        })">Add to Cart</button>
-      </div>
+  <img src="clothes/fashion_versatile_polo_tshirt_brown.jpeg" alt="Fashion Versatile Polo Tshirt Brown" />
+  <h3>Fashion - Versatile - Polo - Tshirt - Brown</h3>
+  <p class="price">GHS 780</p>
+  <label>Size:</label>
+  <select onchange="updateCartSize('fashion-versatile-polo-tshirt-brown', this.value)">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({ 
+    id: 'fashion-versatile-polo-tshirt-brown', 
+    name: 'Fashion - Versatile - Polo - Tshirt - Brown', 
+    price: 780, 
+    image: 'clothes/fashion_versatile_polo_tshirt_brown.jpeg', 
+    quantity: 1,
+    size: 'M'
+  })">Add to Cart</button>
+</div>
 
-      <div class="product">
-        <img src="clothes/fashion_elegant_3pcs_set_suit_lightbrown.jpeg" alt="Fashion Elegant 3pcs Suit Set LightBrown" />
-        <h3>Fashion - Elegant - 3pcs - Suit - Set - LightBrown</h3>
-        <p class="price">GHS 2,480</p>
-        <button onclick="addToCart({ 
-          id: 'fashion-elegant-3pcs-suit-lightbrown', 
-          name: 'Fashion - Elegant - 3pcs - Suit - Set - LightBrown', 
-          price: 2480, 
-          image: 'clothes/fashion_elegant_3pcs_set_suit_lightbrown.jpeg', 
-          quantity: 1
-        })">Add to Cart</button>
-     </div>
+<div class="product">
+  <img src="clothes/fashion_versatile_polo_tshirt_black.jpeg" alt="Fashion Versatile Polo Tshirt Black" />
+  <h3>Fashion - Versatile - Polo - Tshirt - Black</h3>
+  <p class="price">GHS 780</p>
+  <label>Size:</label>
+  <select onchange="updateCartSize('fashion-versatile-polo-tshirt-black', this.value)">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({ 
+    id: 'fashion-versatile-polo-tshirt-black', 
+    name: 'Fashion - Versatile - Polo - Tshirt - Black', 
+    price: 780, 
+    image: 'clothes/fashion_versatile_polo_tshirt_black.jpeg', 
+    quantity: 1,
+    size: 'M'
+  })">Add to Cart</button>
+</div>
 
-     <div class="product">
-       <img src="clothes/fashion_elegant_3pcs_set_suit_brown1.jpeg" alt="Fashion Elegant 3pcs Suit Set Brown1" />
-       <h3>Fashion - Elegant - 3pcs - Suit - Set - Brown1</h3>
-       <p class="price">GHS 2,480</p>
-       <button onclick="addToCart({ 
-         id: 'fashion-elegant-3pcs-suit-brown1', 
-         name: 'Fashion - Elegant - 3pcs - Suit - Set - Brown1', 
-         price: 2480, 
-         image: 'clothes/fashion_elegant_3pcs_set_suit_brown1.jpeg', 
-         quantity: 1
-        })">Add to Cart</button>
-      </div>
+<div class="product">
+  <img src="clothes/fashion_versatile_polo_tshirt_khaki.jpeg" alt="Fashion Versatile Polo Tshirt Khaki" />
+  <h3>Fashion - Versatile - Polo - Tshirt - Khaki</h3>
+  <p class="price">GHS 780</p>
+  <label>Size:</label>
+  <select onchange="updateCartSize('fashion-versatile-polo-tshirt-khaki', this.value)">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({ 
+    id: 'fashion-versatile-polo-tshirt-khaki', 
+    name: 'Fashion - Versatile - Polo - Tshirt - Khaki', 
+    price: 780, 
+    image: 'clothes/fashion_versatile_polo_tshirt_khaki.jpeg', 
+    quantity: 1,
+    size: 'M'
+  })">Add to Cart</button>
+</div>
 
-      <div class="product">
-        <img src="clothes/fashion_elegant_2pcs_set_suit_lightgreen.jpeg" alt="Fashion Elegant 2pcs Suit Set Lightgreen" />
-        <h3>Fashion - Elegant - 2pcs - Suit - Set - Lightgreen</h3>
-        <p class="price">GHS 1,999</p>
-        <button onclick="addToCart({ 
-          id: 'fashion-elegant-2pcs-suit-lightgreen', 
-          name: 'Fashion - Elegant - 2pcs - Suit - Set - Lightgreen', 
-          price: 1999, 
-          image: 'clothes/fashion_elegant_2pcs_set_suit_lightgreen.jpeg', 
-          quantity: 1
-        })">Add to Cart</button>
-      </div>
+<div class="product">
+  <img src="clothes/classy_2pcs_set_white.jpeg" alt="Classy 2pcs Set White" />
+  <h3>Classy - 2pcs - Set - White</h3>
+  <p class="price">GHS 1,960</p>
+  <label>Size:</label>
+  <select onchange="updateCartSize('classy-2pcs-set-white', this.value)">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({ 
+    id: 'classy-2pcs-set-white', 
+    name: 'Classy - 2pcs - Set - White', 
+    price: 1960, 
+    image: 'clothes/classy_2pcs_set_white.jpeg', 
+    quantity: 1,
+    size: 'M'
+  })">Add to Cart</button>
+</div>
 
-     <div class="product">
-       <img src="clothes/fashion_elegant_2pcs_set_suit_deepgreen.jpeg" alt="Fashion Elegant 2pcs Suit Set DeepGreen" />
-       <h3>Fashion - Elegant - 2pcs - Suit - Set - DeepGreen</h3>
-       <p class="price">GHS 1,999</p>
-       <button onclick="addToCart({ 
-         id: 'fashion-elegant-2pcs-suit-deepgreen', 
-         name: 'Fashion - Elegant - 2pcs - Suit - Set - DeepGreen', 
-         price: 1999, 
-         image: 'clothes/fashion_elegant_2pcs_set_suit_deepgreen.jpeg', 
-         quantity: 1
-       })">Add to Cart</button>
-     </div>
+<div class="product">
+  <img src="clothes/classy_2pcs_set_black.jpeg" alt="Classy 2pcs Set Black" />
+  <h3>Classy - 2pcs - Set - Black</h3>
+  <p class="price">GHS 1,960</p>
+  <label>Size:</label>
+  <select onchange="updateCartSize('classy-2pcs-set-black', this.value)">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({ 
+    id: 'classy-2pcs-set-black', 
+    name: 'Classy - 2pcs - Set - Black', 
+    price: 1960, 
+    image: 'clothes/classy_2pcs_set_black.jpeg', 
+    quantity: 1,
+    size: 'M'
+  })">Add to Cart</button>
+</div>
 
-     <div class="product">
-       <img src="clothes/fashion_elegant_2pcs_set_suit_coffee.jpeg" alt="Fashion Elegant 2pcs Suit Set Khaki" />
-       <h3>Fashion - Elegant - 2pcs - Suit - Set - Khaki</h3>
-       <p class="price">GHS 1,999</p>
-       <button onclick="addToCart({ 
-         id: 'fashion-elegant-2pcs-suit-khaki', 
-         name: 'Fashion - Elegant - 2pcs - Suit - Set - Khaki', 
-         price: 1999, 
-         image: 'clothes/fashion_elegant_2pcs_set_suit_coffee.jpeg', 
-         quantity: 1
-       })">Add to Cart</button>
-     </div>
-
-     <div class="product">
-       <img src="clothes/fashion_elegant_2pcs_set_suit_brown.jpeg" alt="Fashion Elegant 2pcs Suit Set Brown" />
-       <h3>Fashion - Elegant - 2pcs - Suit - Set - Brown</h3>
-       <p class="price">GHS 1,999</p>
-       <button onclick="addToCart({ 
-         id: 'fashion-elegant-2pcs-suit-brown', 
-         name: 'Fashion - Elegant - 2pcs - Suit - Set - Brown', 
-         price: 1999, 
-         image: 'clothes/fashion_elegant_2pcs_set_suit_brown.jpeg', 
-         quantity: 1
-       })">Add to Cart</button>
-     </div>
-
-     <div class="product">
-       <img src="clothes/fashion_elegant_2pcs_set_suit_black.jpeg" alt="Fashion Elegant 2pcs Suit Set Black" />
-       <h3>Fashion - Elegant - 2pcs - Suit - Set - Black</h3>
-       <p class="price">GHS 1,999</p>
-       <button onclick="addToCart({ 
-         id: 'fashion-elegant-2pcs-suit-black', 
-         name: 'Fashion - Elegant - 2pcs - Suit - Set - Black', 
-         price: 1999, 
-         image: 'clothes/fashion_elegant_2pcs_set_suit_black.jpeg', 
-         quantity: 1
-       })">Add to Cart</button>
-     </div>
-
-     <div class="product">
-       <img src="clothes/fashion_elegant_2pcs_set_suit_ash.jpeg" alt="Fashion Elegant 2pcs Suit Set Ash" />
-       <h3>Fashion - Elegant - 2pcs - Suit - Set - Ash</h3>
-       <p class="price">GHS 1,999</p>
-       <button onclick="addToCart({ 
-         id: 'fashion-elegant-2pcs-suit-ash', 
-         name: 'Fashion - Elegant - 2pcs - Suit - Set - Ash', 
-         price: 1999, 
-         image: 'clothes/fashion_elegant_2pcs_set_suit_ash.jpeg', 
-         quantity: 1
-       })">Add to Cart</button>
-     </div>
-
-     <div class="product">
-       <img src="clothes/burberry_3pcs_boxers_mixed.jpeg" alt="Burberry 3pcs Boxers Mixed" />
-       <h3>Burberry - 3pcs - Boxers - Mixed</h3>
-       <p class="price">GHS 899</p>
-       <button onclick="addToCart({ 
-         id: 'burberry-3pcs-boxers-mixed', 
-         name: 'Burberry - 3pcs - Boxers - Mixed', 
-         price: 899, 
-         image: 'clothes/burberry_3pcs_boxers_mixed.jpeg', 
-         quantity: 1
-       })">Add to Cart</button>
-     </div>
-
-     <div class="product">
-       <img src="clothes/gucci_3pcs_boxers_mixed.jpeg" alt="Gucci 3pcs Boxers Mixed" />
-       <h3>Gucci - 3pcs - Boxers - Mixed</h3>
-       <p class="price">GHS 899</p>
-       <button onclick="addToCart({ 
-         id: 'gucci-3pcs-boxers-mixed', 
-         name: 'Gucci - 3pcs - Boxers - Mixed', 
-         price: 899, 
-         image: 'clothes/gucci_3pcs_boxers_mixed.jpeg', 
-         quantity: 1
-       })">Add to Cart</button>
-     </div>
-
-     <div class="product">
-       <img src="clothes/prada_3pcs_boxers_mixed.jpeg" alt="Prada 3pcs Boxers Mixed" />
-       <h3>Prada - 3pcs - Boxers - Mixed</h3>
-       <p class="price">GHS 899</p>
-       <button onclick="addToCart({ 
-         id: 'prada-3pcs-boxers-mixed', 
-         name: 'Prada - 3pcs - Boxers - Mixed', 
-         price: 899, 
-         image: 'clothes/prada_3pcs_boxers_mixed.jpeg', 
-         quantity: 1
-       })">Add to Cart</button>
-     </div>
-
-     <div class="product">
-       <img src="clothes/fashion_versatile_polo_tshirt_brown.jpeg" alt="Fashion Versatile Polo Tshirt Brown" />
-       <h3>Fashion - Versatile - Polo - Tshirt - Brown</h3>
-       <p class="price">GHS 780</p>
-       <button onclick="addToCart({ 
-         id: 'fashion-versatile-polo-tshirt-brown', 
-         name: 'Fashion - Versatile - Polo - Tshirt - Brown', 
-         price: 780, 
-         image: 'clothes/fashion_versatile_polo_tshirt_brown.jpeg', 
-         quantity: 1
-       })">Add to Cart</button>
-     </div>
-
-     <div class="product">
-       <img src="clothes/fashion_versatile_polo_tshirt_black.jpeg" alt="Fashion Versatile Polo Tshirt Black" />
-       <h3>Fashion - Versatile - Polo - Tshirt - Black</h3>
-       <p class="price">GHS 780</p>
-       <button onclick="addToCart({ 
-         id: 'fashion-versatile-polo-tshirt-black', 
-         name: 'Fashion - Versatile - Polo - Tshirt - Black', 
-         price: 780, 
-         image: 'clothes/fashion_versatile_polo_tshirt_black.jpeg', 
-         quantity: 1
-       })">Add to Cart</button>
-     </div>
-
-     <div class="product">
-       <img src="clothes/fashion_versatile_polo_tshirt_brown.jpeg" alt="Fashion Versatile Polo Tshirt Khaki" />
-       <h3>Fashion - Versatile - Polo - Tshirt - brown</h3>
-       <p class="price">GHS 780</p>
-       <button onclick="addToCart({ 
-         id: 'fashion-versatile-polo-tshirt-brown', 
-         name: 'Fashion - Versatile - Polo - Tshirt - Brown', 
-         price: 780, 
-         image: 'clothes/fashion_versatile_polo_tshirt_brown.jpeg', 
-         quantity: 1
-       })">Add to Cart</button>
-     </div>
-
-     <div class="product">
-       <img src="clothes/classy_2pcs_set_white.jpeg" alt="Classy 2pcs Set White" />
-       <h3>Classy - 2pcs - Set - White</h3>
-       <p class="price">GHS 1,960</p>
-       <button onclick="addToCart({ 
-         id: 'classy-2pcs-set-white', 
-         name: 'Classy - 2pcs - Set - White', 
-         price: 1960, 
-         image: 'clothes/classy_2pcs_set_white.jpeg', 
-         quantity: 1
-       })">Add to Cart</button>
-     </div>
-
-     <div class="product">
-     <img src="clothes/classy_2pcs_set_black.jpeg" alt="Classy 2pcs Set Black" />
-     <h3>Classy - 2pcs - Set - Black</h3>
-     <p class="price">GHS 1,960</p>
-     <button onclick="addToCart({ 
-       id: 'classy-2pcs-set-black', 
-       name: 'Classy - 2pcs - Set - Black', 
-       price: 1960, 
-       image: 'clothes/classy_2pcs_set_black.jpeg', 
-       quantity: 1
-     })">Add to Cart</button>
-   </div>
-
-   <div class="product">
-     <img src="clothes/classy_2pcs_set_green.jpeg" alt="Classy 2pcs Set Green" />
-     <h3>Classy - 2pcs - Set - Green</h3>
-     <p class="price">GHS 1,960</p>
-     <button onclick="addToCart({ 
-       id: 'classy-2pcs-set-green', 
-       name: 'Classy - 2pcs - Set - Green', 
-       price: 1960, 
-       image: 'clothes/classy_2pcs_set_green.jpeg', 
-       quantity: 1
-     })">Add to Cart</button>
-   </div>
+<div class="product">
+  <img src="clothes/classy_2pcs_set_green.jpeg" alt="Classy 2pcs Set Green" />
+  <h3>Classy - 2pcs - Set - Green</h3>
+  <p class="price">GHS 1,960</p>
+  <label>Size:</label>
+  <select onchange="updateCartSize('classy-2pcs-set-green', this.value)">
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+    <option value="XXXL">XXXL</option>
+    <option value="XXXXL">XXXXL</option>
+    <option value="XXXXXL">XXXXXL</option>
+    <option value="XXXXXXXL">XXXXXXXL</option>
+  </select>
+  <button onclick="addToCart({ 
+    id: 'classy-2pcs-set-green', 
+    name: 'Classy - 2pcs - Set - Green', 
+    price: 1960, 
+    image: 'clothes/classy_2pcs_set_green.jpeg', 
+    quantity: 1,
+    size: 'M'
+  })">Add to Cart</button>
+</div>
 
   </div>
 </div>
@@ -734,20 +1239,27 @@
 <script src="https://static.elfsight.com/platform/platform.js" async></script>
 
   <script>
+  // Get cart from localStorage or return empty array
   function getCart() {
     return JSON.parse(localStorage.getItem('cart')) || [];
   }
 
+  // Save cart to localStorage
   function saveCart(cart) {
     localStorage.setItem('cart', JSON.stringify(cart));
   }
 
+  // Update cart item count in the UI (assumes an element with id="cart-count")
   function updateCartCount() {
     const cart = getCart();
     const count = cart.reduce((total, item) => total + item.quantity, 0);
-    document.getElementById('cart-count').textContent = count;
+    const countElem = document.getElementById('cart-count');
+    if (countElem) {
+      countElem.textContent = count;
+    }
   }
 
+  // Add a product to the cart or update quantity if it already exists
   function addToCart(product, quantity = 1) {
     let cart = getCart();
     const existing = cart.find(item => item.id === product.id);
@@ -762,10 +1274,12 @@
     alert(`${product.name} (x${quantity}) added to cart!`);
   }
 
+  // Initialize cart count on page load
   updateCartCount();
 </script>
 
 <script>
+  // Wait for DOM to load
   document.addEventListener('DOMContentLoaded', function () {
     const productCards = document.querySelectorAll('.product');
 
@@ -774,14 +1288,23 @@
       const qtyInput = card.querySelector('.quantity-input') || { value: 1 };
 
       addBtn?.addEventListener('click', () => {
+        // Build product object from data attributes
+        const idRaw = card.dataset.id || card.dataset.name || '';
+        const id = idRaw.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
+        
         const product = {
-          id: card.dataset.name.toLowerCase().replace(/\s+/g, '-'),
-          name: card.dataset.name,
-          price: parseFloat(card.dataset.price),
-          image: card.dataset.image
+          id: id,
+          name: card.dataset.name || 'Unnamed Product',
+          price: parseFloat(card.dataset.price) || 0,
+          image: card.dataset.image || ''
         };
 
         const quantity = parseInt(qtyInput.value) || 1;
+        if (quantity < 1) {
+          alert('Please enter a valid quantity (1 or more).');
+          return;
+        }
+
         addToCart(product, quantity);
       });
     });
