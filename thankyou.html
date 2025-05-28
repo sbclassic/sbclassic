@@ -7,59 +7,60 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 500px;
-      margin: auto;
-      padding: 30px;
+      max-width: 450px;
+      margin: 80px auto;
       text-align: center;
       color: #2b2b2b;
+      padding: 20px;
+      background-color: #f9f9f9;
     }
     h1 {
       color: #191970;
+      margin-bottom: 10px;
     }
     p {
-      font-size: 18px;
-      margin-top: 10px;
+      font-size: 1.1rem;
+      margin: 15px 0;
+      color: #444;
     }
     .order-ref {
-      margin: 20px 0;
       font-weight: bold;
-      color: #444;
-      font-size: 16px;
-      word-wrap: break-word;
+      font-size: 1.3rem;
+      color: #191970;
+      margin: 20px 0;
     }
-    button {
+    a.button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 28px;
       background-color: #191970;
       color: white;
-      border: none;
-      padding: 12px 25px;
-      font-size: 16px;
+      text-decoration: none;
+      font-weight: 600;
       border-radius: 5px;
-      cursor: pointer;
-      margin-top: 30px;
+      transition: background-color 0.3s ease;
     }
-    button:hover {
+    a.button:hover {
       background-color: #2a2a9f;
     }
   </style>
 </head>
 <body>
-  <h1>Thank You for Your Purchase!</h1>
-  <p>Your payment was successful.</p>
-  <p class="order-ref" id="order-reference">Order Reference: <em>Loading...</em></p>
-  <button onclick="window.location.href='index.html'">Back to Home</button>
+
+  <h1>Thank You for Your Order! 🎉</h1>
+  <p>Your purchase from <strong>SB CLASSIC</strong> has been successfully received.</p>
+  <p>We are preparing your order and will notify you once it’s shipped.</p>
+  
+  <p class="order-ref">Order Reference: <span id="orderReference">N/A</span></p>
+
+  <a href="index.html" class="button">Continue Shopping</a>
 
   <script>
-    // Grab reference from URL params and display
+    // Get the order reference from URL parameters
     const params = new URLSearchParams(window.location.search);
-    const reference = params.get('reference');
-    const refElem = document.getElementById('order-reference');
-    if(reference){
-      refElem.innerHTML = `Order Reference: <strong>${reference}</strong>`;
-      // Clear cart as order is complete
-      localStorage.removeItem('cart');
-    } else {
-      refElem.innerHTML = 'Order reference not found.';
-    }
+    const reference = params.get('reference') || 'N/A';
+    document.getElementById('orderReference').textContent = reference;
   </script>
+  
 </body>
 </html>
