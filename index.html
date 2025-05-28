@@ -5,224 +5,305 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SB CLASSIC – Style with Class</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
+  <!-- Google Analytics (Temporary Measurement ID) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YEDP3W56VK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-YEDP3W56VK');
+</script>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    font-size: 15px;
+  }
+
+  header {
+    background-color: #191970;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo img {
+    height: 80px;
+    width: auto;
+  }
+
+  .nav-container {
+    flex: 1;
+    text-align: center;
+  }
+
+  .nav-title {
+    font-weight: 700;
+    font-size: 24px;
+    color: #f8f8ff;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 6px;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 14px;
+    color: #f8f8ff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+
+  nav a:focus,
+  nav a:hover {
+    color: #2a2a9f;
+    outline: none;
+  }
+
+  .hero {
+    background-image: url('images/hero-sbclassic.png');
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    min-height: 250px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 26px;
+    color: #2b2b2b;
+  }
+
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .product {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 16px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .product img {
+    width: 100%;
+    height: auto;
+  }
+
+  .quantity-input {
+    width: 60px;
+    padding: 4px;
+    margin-top: 4px;
+  }
+
+  .btn {
+    margin-top: 10px;
+    padding: 10px 14px;
+    font-size: 14px;
+    background-color: #191970;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn:hover,
+  .btn:focus {
+    background-color: #2a2a9f;
+    outline: none;
+  }
+
+  .cart-buttons {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .cart-buttons a {
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px 16px;
+    background-color: #2c2c2c;
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+
+  .cart-buttons a:hover,
+  .cart-buttons a:focus {
+    background-color: #444;
+    outline: none;
+  }
+
+  footer {
+    background-color: #fafafa;
+    color: #444;
+    padding: 40px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    border-top: 1px solid #e2e2e2;
+    text-align: center;
+  }
+
+  footer h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #191970;
+    font-weight: 600;
+  }
+
+  footer ul {
+    padding-left: 20px;
+    list-style-type: disc;
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto 20px;
+    color: #555;
+  }
+
+  footer p {
+    margin-bottom: 10px;
+    color: #555;
+  }
+
+  footer p strong {
+    color: #000;
+    font-weight: 700;
+  }
+
+  footer .highlight {
+    color: #191970;
+    font-weight: 700;
+  }
+
+  footer .social-links {
+    margin-top: 10px;
+  }
+
+  footer .social-links a {
+    color: #191970;
+    font-weight: 700;
+    margin: 0 5px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  footer .social-links a:hover,
+  footer .social-links a:focus {
+    color: #000;
+    outline: none;
+  }
+
+  .whatsapp-chat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+  }
+
+  .whatsapp-chat img {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      justify-content: center;
     }
 
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #ffffff;
-      color: #333;
-      font-size: 15px;
-    }
-
-header {
-  background-color: #191970;
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.logo {
-   display: flex;
-   align-items: center;
-   gap: 10px;
-}
-.logo img {
-  height: 80px;
-  width: auto;
-}
-
-.nav-container {
-  flex: 1;
-  text-align: center;
-}
-
-.nav-title {
-  font-weight: 700;
-  font-size: 24px;
-  color: #f8f8ff;
-  font-family: 'Poppins', sans-serif;
-  margin-bottom: 6px;
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-nav a {
-  font-size: 14px;
-  color: #f8f8ff;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s;
-}
-
-    .hero {
-      background-image: url('images/hero-sbclassic.png');
-      background-size: cover;
-      background-position: center;
-      height: 40vh;
-      min-height: 250px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
+    .logo img {
+      height: 50px;
     }
 
     .section h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      font-size: 20px;
     }
 
     .product {
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 16px;
-      text-align: center;
-      font-size: 14px;
+      font-size: 13px;
     }
 
-    .product img {
-      width: 100%;
-      height: auto;
-    }
-    .quantity-input {
-      width: 60px;
-      padding: 4px;
-      margin-top: 4px;
+    .nav-title {
+      font-size: 20px;
     }
 
     .btn {
-      margin-top: 10px;
       padding: 8px 12px;
       font-size: 13px;
-      background-color: #191970;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .cart-buttons {
-      text-align: center;
-      margin-top: 30px;
     }
 
     .cart-buttons a {
-      text-decoration: none;
-      margin: 0 10px;
-      padding: 10px 16px;
-      background-color: #2c2c2c;
-      color: white;
-      border-radius: 4px;
-      font-weight: bold;
+      padding: 8px 12px;
     }
 
-footer {
-  background-color: #fafafa; /* soft background */
-  color: #444;
-  padding: 40px 20px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  line-height: 1.7;
-  border-top: 1px solid #e2e2e2;
-  text-align: center;
-}
+    .hero {
+      height: 30vh;
+      background-position: top;
+    }
+  }
 
-footer h2 {
-  font-size: 20px;
-  margin-bottom: 12px;
-  color: #191970;
-  font-weight: 600;
-}
-
-footer ul {
-  padding-left: 20px;
-  list-style-type: disc;
-  text-align: left;
-  max-width: 600px;
-  margin: 0 auto 20px;
-  color: #555;
-}
-
-footer p {
-  margin-bottom: 10px;
-  color: #555;
-}
-
-footer p strong {
-  color: #000; /* for “CONTACT” and “FOLLOW US ON” */
-  font-weight: 700;
-}
-
-footer .highlight {
-  color: #191970; /* midnight blue */
-  font-weight: 700;
-}
-
-footer .social-links {
-  margin-top: 10px;
-}
-
-footer .social-links a {
-  color: #191970;
-  font-weight: 700;
-  margin: 0 5px;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-footer .social-links a:hover {
-  color: #000;
-}
-    .whatsapp-chat {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 999;
+  @media (max-width: 480px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
     }
 
-    .whatsapp-chat img {
-      width: 60px;
-      height: 60px;
-      cursor: pointer;
+    .nav-container {
+      text-align: left;
+      margin-top: 10px;
     }
 
-    @media (max-width: 768px) {
-      nav {
-        justify-content: center;
-      }
-
-      .logo img {
-        height: 40px;
-      }
-
-      .section h2 {
-        font-size: 20px;
-      }
+    .logo img {
+      height: 40px;
     }
-  </style>
-</head>
-<body>
+
+    .section {
+      padding: 10px;
+    }
+
+    footer {
+      padding: 30px 15px;
+    }
+  }
+</style>
 
   <!-- HEADER -->
   <header>
