@@ -77,21 +77,13 @@
       color: red;
       margin-top: 10px;
     }
-
-    /* Additional styling for shipping info text */
-    .shipping-info {
-      font-size: 0.9em;
-      color: #666;
-      margin-top: 5px;
-      margin-bottom: 15px;
-    }
   </style>
 </head>
 <body>
 
   <h1>Checkout 💳</h1>
 
-  <form id="checkout-form">
+  <form id="checkout-form" novalidate>
     <label>Full Name</label>
     <input type="text" name="name" required>
 
@@ -101,14 +93,12 @@
     <label>Phone Number</label>
     <input type="tel" name="phone" required>
 
-    <label for="shipping">Shipping Option</label>
+    <label>Shipping Option</label>
     <select id="shipping" required>
-      <option value="70">Standard Delivery – Accra (GHS 70–95 depending on exact location)</option>
-      <option value="60">Nationwide Delivery (GHS 60–80 depending on item value)</option>
+      <option value="0">Free Pickup (0 GHS)</option>
+      <option value="30">Standard Delivery – Accra (GHS 30)</option>
+      <option value="50">Nationwide Delivery (GHS 50)</option>
     </select>
-    <p class="shipping-info">
-      *Final delivery fee may vary depending on your exact location and item value. You will be contacted to confirm.
-    </p>
 
     <div class="promo-section">
       <input type="text" id="promo-code" placeholder="Enter promo code">
@@ -126,7 +116,7 @@
       <div id="summary-total"></div>
     </div>
 
-    <button type="submit">Pay with Paystack</button>
+    <button type="button" id="paystack-btn">Pay with Paystack</button>
   </form>
 
   <script src="https://js.paystack.co/v1/inline.js"></script>
@@ -152,7 +142,6 @@
         "FREESHIP": 0
       };
 
-      // Populate item list and subtotal
       itemList.innerHTML = '';
       cart.forEach(item => {
         subtotal += item.price * item.quantity;
@@ -214,17 +203,25 @@
       deliverySelect.addEventListener('change', updateTotals);
       updateTotals();
 
-      document.getElementById('checkout-form').addEventListener('submit', async function (e) {
+      // Payment button click handler
+      document.getElementById('paystack-btn').addEventListener('click', async function (e) {
         e.preventDefault();
+
+        // Manual form validation
+        const form = document.getElementById('checkout-form');
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
 
         if (cart.length === 0) {
           alert('Your cart is empty.');
           return;
         }
 
-        const name = this.name.value.trim();
-        const email = this.email.value.trim();
-        const phone = this.phone.value.trim();
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const phone = form.phone.value.trim();
         const code = promoInput.value.trim().toUpperCase();
         const shippingCost = parseFloat(deliverySelect.value) || 0;
         const finalShipping = (code === "FREESHIP") ? 0 : shippingCost;
