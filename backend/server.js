@@ -27,7 +27,6 @@ const client = require('twilio')(accountSid, authToken);
 app.post('/confirm-order', async (req, res) => {
   const { fullName, email, phone, address, orderSummary } = req.body;
 
-  // Email setup
   const mailOptions = {
     from: process.env.EMAIL_USER || 'sbclassic11@gmail.com',
     to: email,
@@ -41,8 +40,8 @@ app.post('/confirm-order', async (req, res) => {
 
     // Send WhatsApp confirmation message
     await client.messages.create({
-      from: 'whatsapp:+14155238886', // Twilio WhatsApp Sandbox number (replace with your own if available)
-      to: `whatsapp:${phone}`,       // customer phone, must be WhatsApp-enabled and in full format e.g. +233xxxxxxxxx
+      from: 'whatsapp:+14155238886', // Twilio WhatsApp Sandbox number
+      to: `whatsapp:${phone}`,       // customer's WhatsApp phone number with country code
       body: `Hi ${fullName}, thanks for your SB CLASSIC order! We have received it and will process it shortly.`
     });
 
