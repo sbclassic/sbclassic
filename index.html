@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SB CLASSIC – Style with Class</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<style>
+  <style>
   * {
     box-sizing: border-box;
   }
@@ -18,14 +18,16 @@
     font-size: 15px;
   }
 
+  /* ===== HEADER (NAVBAR) ===== */
   header {
     background-color: #191970;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     padding: 10px 20px;
     max-width: 1200px;
     margin: auto;
-    flex-wrap: wrap;
   }
 
   .logo {
@@ -48,7 +50,6 @@
     font-weight: 700;
     font-size: 24px;
     color: #f8f8ff;
-    font-family: 'Poppins', sans-serif;
     margin-bottom: 6px;
   }
 
@@ -67,12 +68,12 @@
     transition: color 0.3s;
   }
 
-  nav a:focus,
-  nav a:hover {
+  nav a:hover,
+  nav a:focus {
     color: #2a2a9f;
-    outline: none;
   }
 
+  /* ===== HERO SECTION ===== */
   .hero {
     background-image: url('images/hero-sbclassic.png');
     background-size: cover;
@@ -80,9 +81,10 @@
     height: 40vh;
     min-height: 250px;
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
   }
 
+  /* ===== PRODUCT SECTION ===== */
   .section {
     max-width: 1200px;
     margin: auto;
@@ -162,11 +164,11 @@
     outline: none;
   }
 
+  /* ===== FOOTER ===== */
   footer {
     background-color: #fafafa;
     color: #444;
     padding: 40px 20px;
-    font-family: 'Poppins', sans-serif;
     font-size: 14px;
     line-height: 1.7;
     border-top: 1px solid #e2e2e2;
@@ -222,6 +224,7 @@
     outline: none;
   }
 
+  /* ===== WHATSAPP BUTTON ===== */
   .whatsapp-chat {
     position: fixed;
     bottom: 20px;
@@ -235,6 +238,7 @@
     cursor: pointer;
   }
 
+  /* ===== RESPONSIVENESS ===== */
   @media (max-width: 768px) {
     nav {
       justify-content: center;
