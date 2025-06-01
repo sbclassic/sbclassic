@@ -13,33 +13,33 @@
   }
 
   header {
-    background: #191970;
-    color: #f8f8ff;
-    padding: 25px 20px;
-    text-align: center;
+     background: #191970;
+     color: #f8f8ff;
+     padding: 25px 20px;
+     text-align: center;
   }
 
   .header-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
   }
 
-  .logo {
-    font-size: 2rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    margin-bottom: 10px;
+   .logo {
+     font-size: 2rem;
+     font-weight: 600;
+     letter-spacing: 1.5px;
+     margin-bottom: 10px;
   }
 
-  nav {
+   nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
   }
 
-  nav a {
+   nav a {
     color: #f8f8ff;
     text-decoration: none;
     font-weight: 500;
@@ -47,102 +47,86 @@
     text-transform: uppercase;
   }
 
-  nav a:hover {
+   nav a:hover {
     text-decoration: underline;
   }
+    .container {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      color: #191970; /* Midnight Blue */
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 30px;
+    }
 
-  .container {
-    padding: 40px 20px;
-    max-width: 1000px;
-    margin: auto;
-  }
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
 
-  h2 {
-    text-align: center;
-    color: #191970;
-    font-size: 1.8rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    margin-bottom: 30px;
-  }
+.product {
+  width: 400px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 20px;
+}
 
-  .products {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
+.product img {
+  width: 100%;
+  height: auto;
+}
 
-  .product {
-    width: 400px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    overflow: hidden;
-    text-align: center;
-    padding-bottom: 20px;
-  }
+.product h3 {
+  margin: 12px 0 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2c2c2c;
+}
 
-  .product img {
-    width: 100%;
-    height: auto;
-  }
+.product p.price {
+  color: #191970;
+  font-weight: bold;
+  margin: 5px 0;
+}
 
-  .product h3 {
-    margin: 12px 0 6px;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #2c2c2c;
-  }
-
-  .product p.price {
-    color: #191970;
-    font-weight: bold;
-    margin: 5px 0;
-  }
-
-  .product button {
-    background-color: #191970;
-    color: #ffffff;
-    border: none;
-    padding: 10px 15px;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    transition: background 0.3s ease;
-  }
-
-  footer {
-    background: #ffffff;
-    color: #2c2c2c;
-    text-align: center;
-    padding: 25px 10px;
-    font-size: 0.95rem;
-  }
-
-  footer p.contact-info {
-    color: #191970; /* Updated color */
-    margin-bottom: 8px;
-    font-weight: 500;
-  }
-
-  footer p.social-links {
-    margin: 10px 0;
-  }
-
-  footer p.social-links a {
-    color: #191970;
-    margin: 0 8px;
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-  footer p.social-links a:hover {
-    text-decoration: underline;
-  }
-</style>
+.product button {
+  background-color: #191970;
+  color: #ffffff;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+    
+    footer {
+      background: #ffffff;
+      color: #2c2c2c;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 0.95rem;
+    }
+    .social-links a {
+      color: #191970;
+      margin: 0 8px;
+      text-decoration: none;
+    }
+    .social-links a:hover {
+      text-decoration: underline;
+    }
 
 <footer>
   <p class="contact-info">CONTACT: +233260928990 | sbclassics@icloud.com</p>
@@ -1208,8 +1192,6 @@
     <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
     <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
   </p>
-  
-  <hr />
   
   <!-- Live Social Media Feeds -->
     <div class="social-feeds">
