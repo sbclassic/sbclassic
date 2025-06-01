@@ -797,19 +797,89 @@
         <div class="elfsight-app-497d8bff-82e2-4023-b8a6-a46c744474b8" data-elfsight-app-lazy></div>
       </div>
 
-      <!-- Floating WhatsApp Chat Preview -->
-<div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; font-family: Arial, sans-serif;">
-  <div onclick="window.open('https://wa.me/233260928990','_blank')" style="background-color: white; border: 1px solid #ddd; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); width: 280px; cursor: pointer;">
-    <div style="display: flex; align-items: center; padding: 12px;">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 40px; height: 40px; margin-right: 10px; border-radius: 50%;">
-      <div>
-        <div style="font-weight: bold; color: #191970;">SB CLASSIC</div>
-        <div style="font-size: 12px; color: #888;">Typically replies within minutes</div>
-      </div>
-    </div>
-    <div style="padding: 10px 12px; background-color: #f0f0f0; border-top: 1px solid #ddd; border-radius: 0 0 15px 15px; font-size: 14px; color: #444;">
-      👋 Hi there! How can we help you?
-    </div>
+      <!-- SB CLASSIC: Floating Help Widget -->
+<style>
+  .help-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 280px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 9999;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+  }
+
+  .help-header {
+    background-color: #191970;
+    color: white;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  .help-body {
+    padding: 12px;
+    font-size: 14px;
+    color: #444;
+  }
+
+  .whatsapp-button {
+    display: flex;
+    align-items: center;
+    background-color: #25D366;
+    color: white;
+    padding: 10px;
+    margin: 0 12px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    justify-content: center;
+    transition: background-color 0.3s;
+  }
+
+  .whatsapp-button:hover {
+    background-color: #1ebe5d;
+  }
+
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 12px;
+    gap: 16px;
+  }
+
+  .social-icons a img {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media (max-width: 500px) {
+    .help-widget {
+      width: 90%;
+      right: 5%;
+    }
+  }
+</style>
+
+<div class="help-widget">
+  <div class="help-header">Need help?</div>
+  <div class="help-body">
+    SB CLASSIC typically replies within minutes.
+  </div>
+  <a class="whatsapp-button" href="https://wa.me/233260928990" target="_blank">
+    Chat on WhatsApp
+  </a>
+  <div class="social-icons">
+    <a href="https://t.me/sbclassics" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
+    </a>
+    <a href="https://instagram.com/sb_classic_" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+    </a>
   </div>
 </div>
 
