@@ -197,20 +197,25 @@
   </header>
 
   <div class="container">
-    <h2>Accessories</h2>
-    <div class="products">
-      <!-- Sample Product -->
-      <div class="product">
-        <img src="accessories/sample_accessory.jpeg" alt="Accessory Name" />
-        <h3>Stylish Sunglasses</h3>
-        <p class="price">GHS 350</p>
-        <button onclick="addToCart({ 
-          id: 'sunglasses', 
-          name: 'Stylish Sunglasses', 
-          price: 350, 
-          image: 'accessories/sample_accessory.jpeg' 
-        })">Add to Cart</button>
-      </div>
+  <h2>Accessories</h2>
+  <div class="products">
+    <!-- Android Glasses Product -->
+    <div class="product">
+      <video width="100%" controls>
+        <source src="accessories/android_dark_plain_lenses_glasses.MP4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <h3>Android Glasses (Dark & Plain Lenses)</h3>
+      <p class="price">GHS 740</p>
+      <button onclick="addToCart({ 
+        id: 'android-glasses', 
+        name: 'Android Glasses (Dark & Plain Lenses)', 
+        price: 740, 
+        image: 'accessories/android_dark_plain_lenses_glasses.MP4' 
+      })">Add to Cart</button>
+    </div>
+  </div>
+</div>
 
       <!-- Add more products here -->
     </div>
