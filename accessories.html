@@ -205,13 +205,22 @@
         <source src="accessories/android_dark_plain_lenses_glasses.MP4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-      <h3>Android Glasses (Dark & Plain Lenses)</h3>
+      <h3> Stylish Android Glasses (Dark & Plain Lenses)</h3>
       <p class="price">GHS 740</p>
+      
+      <label for="color-android-glasses">Color:</label>
+      <select id="color-android-glasses">
+        <option value="Dark Lenses">Dark Lenses</option>
+        <option value="Plain Lenses">Plain Lenses</option>
+      </select>
+      
       <button onclick="addToCart({ 
         id: 'android-glasses', 
         name: 'Android Glasses (Dark & Plain Lenses)', 
         price: 740, 
-        image: 'accessories/android_dark_plain_lenses_glasses.MP4' 
+        image: 'accessories/android_dark_plain_lenses_glasses.MP4', 
+        quantity: 1,
+        color: document.getElementById('color-android-glasses').value 
       })">Add to Cart</button>
     </div>
   </div>
