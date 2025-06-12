@@ -108,8 +108,7 @@
     const paystackBtn = document.getElementById("paystackBtn");
     const flutterwaveBtn = document.getElementById("flutterwaveBtn");
     const totalDisplay = document.getElementById("total-display");
-
-    let cartTotalGHS = parseFloat(localStorage.getItem("cartTotal")) || 0;
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     const conversionRates = {
       GHS: 1,
@@ -129,6 +128,11 @@
       XOF: "CFA "
     };
 
+    // Dynamically calculate total based on cart items
+    function calculateTotalGHS() {
+      return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    }
+
     function updateUI() {
       const selected = paymentMethod.value;
 
@@ -136,14 +140,13 @@
         currencySection.classList.add("hidden");
         paystackBtn.classList.remove("hidden");
         flutterwaveBtn.classList.add("hidden");
-        totalDisplay.textContent = `Total: ₵${cartTotalGHS.toFixed(2)}`;
       } else {
         currencySection.classList.remove("hidden");
         paystackBtn.classList.add("hidden");
         flutterwaveBtn.classList.remove("hidden");
-        updateCurrencyTotal();
       }
 
+      updateCurrencyTotal();
       renderCartDetails();
     }
 
@@ -151,23 +154,20 @@
       const curr = currencySelect.value;
       const rate = conversionRates[curr] || 1;
       const symbol = currencySymbols[curr] || "₵";
-      const converted = cartTotalGHS * rate;
+      const converted = calculateTotalGHS() * rate;
       totalDisplay.textContent = `Total: ${symbol}${converted.toFixed(2)}`;
-      renderCartDetails();
     }
 
     function renderCartDetails() {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
       const container = document.getElementById("cart-details");
+      const curr = currencySelect.value;
+      const rate = conversionRates[curr] || 1;
+      const symbol = currencySymbols[curr] || "₵";
 
       if (!cart.length) {
         container.innerHTML = "<p>Your cart is empty.</p>";
         return;
       }
-
-      const curr = currencySelect.value;
-      const rate = conversionRates[curr] || 1;
-      const symbol = currencySymbols[curr] || "₵";
 
       let html = "<strong>Order Summary:</strong><ul>";
       cart.forEach(item => {
@@ -181,15 +181,18 @@
 
     function payWithPaystack() {
       const email = emailInput.value;
+      const total = calculateTotalGHS();
       if (!email) return alert("Please enter your email.");
+
       const handler = PaystackPop.setup({
         key: "pk_live_a09356e2ab5cf6afa40e5ea77de1d06ac4f86f99",
         email: email,
-        amount: Math.round(cartTotalGHS * 100),
+        amount: Math.round(total * 100),
         currency: "GHS",
-        callback: function (response) {
+        ref: "SB-" + Date.now(),
+        callback: function () {
           localStorage.removeItem("cart");
-          window.location.href = "thankyou.html?ref=" + response.reference;
+          window.location.href = "thankyou.html";
         },
         onClose: function () {
           alert("Payment window closed.");
@@ -201,8 +204,10 @@
     function payWithFlutterwave() {
       const email = emailInput.value;
       const curr = currencySelect.value;
+      const total = calculateTotalGHS();
+      const convertedAmount = (total * conversionRates[curr]).toFixed(2);
+
       if (!email) return alert("Please enter your email.");
-      const convertedAmount = (cartTotalGHS * conversionRates[curr]).toFixed(2);
 
       FlutterwaveCheckout({
         public_key: "FLWPUBK-7f5de74a7c6fce74a6aa6d25c4ad9180-X",
@@ -214,7 +219,7 @@
         callback: function (data) {
           if (data.status === "successful") {
             localStorage.removeItem("cart");
-            window.location.href = "thankyou.html?tx=" + data.transaction_id;
+            window.location.href = "thankyou.html";
           }
         },
         onclose: function () {
@@ -231,6 +236,7 @@
     paymentMethod.addEventListener("change", updateUI);
     currencySelect.addEventListener("change", updateCurrencyTotal);
 
+    // Init on page load
     updateUI();
   </script>
 </body>
