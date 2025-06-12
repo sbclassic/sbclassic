@@ -1,114 +1,58 @@
-<!-- Your cart page script -->
 <script>
-function getCart() {
-  return JSON.parse(localStorage.getItem('cart')) || [];
-}
+  document.addEventListener('DOMContentLoaded', () => {
+    // Auto-fill missing data attributes (in case you forget)
+    document.querySelectorAll('.product').forEach((productDiv, index) => {
+      if (!productDiv.dataset.id || !productDiv.dataset.name || !productDiv.dataset.price || !productDiv.dataset.image) {
+        const name = productDiv.querySelector('h3')?.textContent.trim() || `Product ${index + 1}`;
+        const priceText = productDiv.querySelector('.price')?.textContent || '';
+        const price = parseFloat(priceText.replace(/[^\d.]/g, '').replace(/,/g, '')) || 0;
+        const image = productDiv.querySelector('img')?.getAttribute('src') || '';
 
-function saveCart(cart) {
-  localStorage.setItem('cart', JSON.stringify(cart));
-}
+        productDiv.dataset.id = name.toLowerCase().replace(/\s+/g, '-') + '-' + index;
+        productDiv.dataset.name = name;
+        productDiv.dataset.price = price.toFixed(2);
+        productDiv.dataset.image = image;
+      }
+    });
 
-function removeItem(productId) {
-  let cart = getCart();
-  cart = cart.filter(item => item.id !== productId);
-  saveCart(cart);
-  renderCart();
-}
+    // Add to cart logic
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const productDiv = btn.closest('.product');
+        const quantityInput = productDiv.querySelector('.quantity-input');
+        const sizeSelect = productDiv.querySelector('.size-select');
 
-function updateQuantity(productId, change) {
-  const cart = getCart();
-  const item = cart.find(i => i.id === productId);
-  if (item) {
-    item.quantity += change;
-    if (item.quantity <= 0) {
-      removeItem(productId);
-      return;
-    }
-  }
-  saveCart(cart);
-  renderCart();
-}
+        let quantity = parseInt(quantityInput?.value);
+        if (isNaN(quantity) || quantity < 1) quantity = 1;
 
-function clearCart() {
-  localStorage.removeItem('cart');
-  renderCart();
-}
+        const selectedSize = sizeSelect ? sizeSelect.value : null;
 
-function renderCart() {
-  const cartItemsDiv = document.getElementById('cart-items');
-  const checkoutLink = document.getElementById('checkout-link');
-  const cartTotalDiv = document.getElementById('cart-total');
-  const currencySelect = document.getElementById('currency'); // Optional dropdown
-  const selectedCurrency = currencySelect ? currencySelect.value : 'GHS';
+        const product = {
+          id: productDiv.dataset.id,
+          name: productDiv.dataset.name,
+          price: parseFloat(productDiv.dataset.price),
+          image: productDiv.dataset.image,
+          size: selectedSize,
+          quantity: quantity
+        };
 
-  const cart = getCart();
-  cartItemsDiv.innerHTML = '';
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  if (cart.length === 0) {
-    cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
-    checkoutLink.style.display = 'none';
-    cartTotalDiv.textContent = '';
-    localStorage.setItem('cartTotal', '0');
-    return;
-  }
+        const existingProduct = cart.find(item => item.id === product.id && item.size === product.size);
+        if (existingProduct) {
+          existingProduct.quantity += quantity;
+        } else {
+          cart.push(product);
+        }
 
-  let total = 0;
+        localStorage.setItem('cart', JSON.stringify(cart));
 
-  cart.forEach(item => {
-    const itemDiv = document.createElement('div');
-    itemDiv.className = 'cart-item';
+        // ✅ Immediately update the total in localStorage
+        const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        localStorage.setItem('cartTotal', total.toFixed(2));
 
-    total += item.price * item.quantity;
-
-    itemDiv.innerHTML = `
-      <img src="${item.image}" alt="${item.name}" />
-      <div>
-        <h3>${item.name}</h3>
-        <p>GHS ${item.price.toFixed(2)} × ${item.quantity} = GHS ${(item.price * item.quantity).toFixed(2)}</p>
-        <button onclick="updateQuantity('${item.id}', -1)">➖</button>
-        <button onclick="updateQuantity('${item.id}', 1)">➕</button>
-        <button onclick="removeItem('${item.id}')">❌ Remove</button>
-      </div>
-    `;
-    cartItemsDiv.appendChild(itemDiv);
+        alert(`✅ ${quantity} x "${product.name}" (Size: ${product.size || 'N/A'}) added to cart!`);
+      });
+    });
   });
-
-  // Store total in localStorage for checkout page
-  localStorage.setItem('cartTotal', total.toFixed(2));
-
-  // Currency conversion
-  const conversionRates = {
-    GHS: 1,
-    USD: 1 / 11.5,
-    NGN: 1 / 0.048,
-    EUR: 1 / 12.5,
-    GBP: 1 / 14.2,
-    XOF: 1 / 0.0091
-  };
-
-  const currencySymbols = {
-    GHS: '₵',
-    USD: '$',
-    NGN: '₦',
-    EUR: '€',
-    GBP: '£',
-    XOF: 'CFA '
-  };
-
-  const rate = conversionRates[selectedCurrency] || 1;
-  const symbol = currencySymbols[selectedCurrency] || '₵';
-  const convertedTotal = total * rate;
-
-  cartTotalDiv.textContent = `Total: ${symbol}${convertedTotal.toFixed(2)}`;
-  checkoutLink.style.display = 'inline-block';
-}
-
-// Optional: React to currency changes
-const currencyDropdown = document.getElementById('currency');
-if (currencyDropdown) {
-  currencyDropdown.addEventListener('change', renderCart);
-}
-
-// Initial load
-renderCart();
 </script>
