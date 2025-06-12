@@ -25,7 +25,7 @@
       display: block;
       margin-top: 15px;
     }
-    input, select, textarea {
+    input, select {
       width: 100%;
       padding: 10px;
       margin-top: 5px;
@@ -42,13 +42,16 @@
       cursor: pointer;
       width: 100%;
     }
-    #payBtn {
+    #paystackBtn {
       background-color: #191970;
       color: white;
     }
-    #clear-btn {
-      background-color: #888;
+    #flutterwaveBtn {
+      background-color: #f57c00;
       color: white;
+    }
+    .hidden {
+      display: none;
     }
     #total-display {
       font-size: 18px;
@@ -70,151 +73,151 @@
   <h1>Checkout 💳</h1>
   <form id="checkout-form" onsubmit="return false">
     <label>Full Name:</label>
-    <input type="text" id="fullname" placeholder="e.g. John Doe" required>
+    <input type="text" id="fullname" placeholder="e.g. John Doe" required />
 
     <label>Phone Number:</label>
-    <input type="tel" id="phone" placeholder="e.g. 0551234567" required>
+    <input type="tel" id="phone" placeholder="e.g. 0551234567" required />
 
     <label>Delivery Location:</label>
-    <textarea id="delivery" placeholder="e.g. East Legon, Accra – near A&C Mall" required></textarea>
+    <input type="text" id="delivery" placeholder="e.g. East Legon, Accra – near A&C Mall" required />
 
     <label>Select Currency:</label>
     <select id="currency">
       <option value="GHS">GHS (₵)</option>
       <option value="USD">USD ($)</option>
       <option value="NGN">NGN (₦)</option>
-      <option value="EUR">EUR (€)</option>
-      <option value="GBP">GBP (£)</option>
       <option value="XOF">XOF (CFA)</option>
     </select>
 
     <label>Select Payment Method:</label>
-    <select id="payment-method">
+    <select id="paymentMethod">
       <option value="paystack">Paystack</option>
       <option value="flutterwave">Flutterwave</option>
     </select>
 
-    <div id="total-display">Loading...</div>
+    <div id="total-display">Total: ₵0.00</div>
     <div id="cart-details"></div>
 
-    <button id="payBtn" onclick="handlePayment()">Pay Now</button>
-    <button id="clear-btn" type="button" onclick="clearCart()">🧹 Clear Cart</button>
+    <button id="paystackBtn" class="btn" onclick="payWithPaystack()">Pay with Paystack</button>
+    <button id="flutterwaveBtn" class="btn hidden" onclick="payWithFlutterwave()">Pay with Flutterwave</button>
   </form>
 
   <script>
-    const paystackKey = "pk_live_a09356e2ab5cf6afa40e5ea77de1d06ac4f86f99";
-    const flutterwaveKey = "FLWPUBK-7f5de74a7c6fce74a6aa6d25c4ad9180-X";
-
-    const rates = {
+    const conversionRates = {
       GHS: 1,
       USD: 1 / 11.5,
       NGN: 1 / 0.048,
-      EUR: 1 / 12.5,
-      GBP: 1 / 14.2,
       XOF: 1 / 0.0091
     };
 
-    const symbols = {
-      GHS: "₵", USD: "$", NGN: "₦", EUR: "€", GBP: "£", XOF: "CFA "
+    const currencySymbols = {
+      GHS: "₵",
+      USD: "$",
+      NGN: "₦",
+      XOF: "CFA "
     };
 
-    function getCart() {
-      return JSON.parse(localStorage.getItem("cart")) || [];
-    }
+    const fullnameInput = document.getElementById("fullname");
+    const phoneInput = document.getElementById("phone");
+    const deliveryInput = document.getElementById("delivery");
+    const currencySelect = document.getElementById("currency");
+    const methodSelect = document.getElementById("paymentMethod");
+    const paystackBtn = document.getElementById("paystackBtn");
+    const flutterwaveBtn = document.getElementById("flutterwaveBtn");
+    const totalDisplay = document.getElementById("total-display");
+    const cartDetails = document.getElementById("cart-details");
 
-    function clearCart() {
-      localStorage.removeItem("cart");
-      localStorage.setItem("cartTotal", "0");
-      renderSummary();
-      alert("🧹 Cart cleared.");
-    }
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    function renderSummary() {
-      const cart = getCart();
-      const currency = document.getElementById("currency").value;
-      const rate = rates[currency] || 1;
-      const symbol = symbols[currency] || "₵";
-
-      const detailsDiv = document.getElementById("cart-details");
-      const totalDiv = document.getElementById("total-display");
-
-      if (!cart.length) {
-        detailsDiv.innerHTML = "<p>Your cart is empty.</p>";
-        totalDiv.textContent = "";
-        return;
-      }
+    function updateCartDisplay() {
+      const currency = currencySelect.value;
+      const symbol = currencySymbols[currency] || "₵";
+      const rate = conversionRates[currency] || 1;
 
       let total = 0;
-      let html = "<strong>Order Summary:</strong><ul>";
+      let summary = "<strong>Order Summary:</strong><ul>";
+
       cart.forEach(item => {
-        const subtotal = item.price * item.quantity;
-        total += subtotal;
-        html += `<li>${item.name} (Size: ${item.size}) × ${item.quantity} = ${symbol}${(subtotal * rate).toFixed(2)}</li>`;
+        const itemTotal = item.price * item.quantity * rate;
+        total += itemTotal;
+        summary += `<li>${item.name} (Size: ${item.size}) × ${item.quantity} = ${symbol}${itemTotal.toFixed(2)}</li>`;
       });
-      html += "</ul>";
 
-      detailsDiv.innerHTML = html;
-      totalDiv.textContent = `Total: ${symbol}${(total * rate).toFixed(2)}`;
+      summary += "</ul>";
+      cartDetails.innerHTML = summary;
+      totalDisplay.textContent = `Total: ${symbol}${total.toFixed(2)}`;
 
-      // Save raw GHS total to use in payment
-      localStorage.setItem("cartTotal", total.toFixed(2));
+      localStorage.setItem("cartTotal", (total / rate).toFixed(2));
     }
 
-    function handlePayment() {
-      const name = document.getElementById("fullname").value;
-      const phone = document.getElementById("phone").value;
-      const delivery = document.getElementById("delivery").value;
-      const currency = document.getElementById("currency").value;
-      const method = document.getElementById("payment-method").value;
-      const email = `${phone}@sbclassic.com`; // fallback email using phone
-      const cartTotalGHS = parseFloat(localStorage.getItem("cartTotal")) || 0;
-      const rate = rates[currency] || 1;
-      const amount = Math.round(cartTotalGHS * rate * 100);
-      const ref = "SB-" + Date.now();
-
+    function updatePaymentUI() {
+      const method = methodSelect.value;
       if (method === "paystack") {
-        const handler = PaystackPop.setup({
-          key: paystackKey,
-          email,
-          amount,
-          currency,
-          ref,
-          callback: () => {
+        paystackBtn.classList.remove("hidden");
+        flutterwaveBtn.classList.add("hidden");
+      } else {
+        paystackBtn.classList.add("hidden");
+        flutterwaveBtn.classList.remove("hidden");
+      }
+    }
+
+    function payWithPaystack() {
+      const email = "sbclassic11@gmail.com";
+      const amount = parseFloat(localStorage.getItem("cartTotal")) || 0;
+      const reference = "SB-" + Date.now();
+
+      let handler = PaystackPop.setup({
+        key: "pk_live_a09356e2ab5cf6afa40e5ea77de1d06ac4f86f99",
+        email: email,
+        amount: Math.round(amount * 100),
+        currency: "GHS",
+        ref: reference,
+        callback: function() {
+          localStorage.removeItem("cart");
+          window.location.href = "thankyou.html";
+        },
+        onClose: function() {
+          alert("Payment was cancelled.");
+        }
+      });
+
+      handler.openIframe();
+    }
+
+    function payWithFlutterwave() {
+      const email = "sbclassic11@gmail.com";
+      const currency = currencySelect.value;
+      const baseAmount = parseFloat(localStorage.getItem("cartTotal")) || 0;
+      const convertedAmount = (baseAmount * conversionRates[currency]).toFixed(2);
+
+      FlutterwaveCheckout({
+        public_key: "FLWPUBK-7f5de74a7c6fce74a6aa6d25c4ad9180-X",
+        tx_ref: "SB-" + Date.now(),
+        amount: convertedAmount,
+        currency: currency,
+        customer: {
+          email
+        },
+        callback: function(data) {
+          if (data.status === "successful") {
             localStorage.removeItem("cart");
             window.location.href = "thankyou.html";
-          },
-          onClose: () => alert("Payment window closed.")
-        });
-        handler.openIframe();
-      }
-
-      if (method === "flutterwave") {
-        FlutterwaveCheckout({
-          public_key: flutterwaveKey,
-          tx_ref: ref,
-          amount: amount / 100,
-          currency,
-          customer: { email, name, phonenumber: phone },
-          callback: function (data) {
-            if (data.status === "successful") {
-              localStorage.removeItem("cart");
-              window.location.href = "thankyou.html";
-            }
-          },
-          onclose: function () {
-            alert("Payment cancelled.");
-          },
-          customizations: {
-            title: "SB CLASSIC",
-            description: "Order Payment",
-            logo: "https://sbclassic.github.io/sbclassic/logo.png"
           }
-        });
-      }
+        },
+        onclose: function() {
+          alert("Payment cancelled.");
+        }
+      });
     }
 
-    document.getElementById("currency").addEventListener("change", renderSummary);
-    document.addEventListener("DOMContentLoaded", renderSummary);
+    document.addEventListener("DOMContentLoaded", () => {
+      updateCartDisplay();
+      updatePaymentUI();
+    });
+
+    methodSelect.addEventListener("change", updatePaymentUI);
+    currencySelect.addEventListener("change", updateCartDisplay);
   </script>
+
 </body>
 </html>
