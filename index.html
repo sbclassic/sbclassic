@@ -798,67 +798,21 @@ footer .social-links a:hover {
 <script src="https://static.elfsight.com/platform/platform.js" async></script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // ✅ Only fill in data-* if missing
-    document.querySelectorAll('.product').forEach((productDiv, index) => {
-      const name = productDiv.querySelector('h3')?.textContent.trim() || `Product ${index + 1}`;
-      const priceText = productDiv.querySelector('.price')?.textContent || '';
-      const cleanPrice = priceText.replace(/[^\d.]/g, '').replace(/,/g, '');
-      const price = parseFloat(cleanPrice) || 0;
-      const image = productDiv.querySelector('img')?.getAttribute('src') || '';
+  function addToCart(product) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-      if (!productDiv.dataset.id) {
-        productDiv.dataset.id = name.toLowerCase().replace(/\s+/g, '-') + '-' + index;
-      }
-      if (!productDiv.dataset.name) {
-        productDiv.dataset.name = name;
-      }
-      if (!productDiv.dataset.price) {
-        productDiv.dataset.price = price.toFixed(2);
-      }
-      if (!productDiv.dataset.image) {
-        productDiv.dataset.image = image;
-      }
-    });
+    const existing = cart.find(item => item.id === product.id && item.size === product.size);
+    if (existing) {
+      existing.quantity += product.quantity;
+    } else {
+      cart.push(product);
+    }
 
-    // ✅ Add to cart logic
-    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const productDiv = btn.closest('.product');
-        const quantityInput = productDiv.querySelector('.quantity-input');
-        const sizeSelect = productDiv.querySelector('.size-select');
+    localStorage.setItem('cart', JSON.stringify(cart));
 
-        let quantity = parseInt(quantityInput?.value);
-        if (isNaN(quantity) || quantity < 1) quantity = 1;
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    localStorage.setItem('cartTotal', total.toFixed(2));
 
-        const selectedSize = sizeSelect ? sizeSelect.value : 'N/A';
-
-        const product = {
-          id: productDiv.dataset.id,
-          name: productDiv.dataset.name,
-          price: parseFloat(productDiv.dataset.price),
-          image: productDiv.dataset.image,
-          size: selectedSize,
-          quantity: quantity
-        };
-
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        const existing = cart.find(item => item.id === product.id && item.size === product.size);
-        if (existing) {
-          existing.quantity += quantity;
-        } else {
-          cart.push(product);
-        }
-
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-        // ✅ Also update total
-        const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-        localStorage.setItem('cartTotal', total.toFixed(2));
-
-        alert(`✅ ${quantity} x "${product.name}" (Size: ${product.size}) added to cart!`);
-      });
-    });
-  });
+    alert(`✅ ${product.quantity} x "${product.name}" (Size: ${product.size}) added to cart!`);
+  }
 </script>
