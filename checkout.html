@@ -1,286 +1,137 @@
-<!-- COMPLETE FILE STARTS HERE -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Checkout 💳 – SB CLASSIC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bundles – Sonia Benjoye Digital Bookstore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Playfair+Display&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 30px;
-      background-color: #fff;
-      color: #444;
-    }
-    h1 {
+      margin: 0;
+      font-family: 'Libre Baskerville', serif;
+      background-color: #f9f7f6;
       color: #2b2b2b;
-      margin-bottom: 10px;
     }
-    form {
-      max-width: 600px;
-      margin: auto;
-    }
-    label {
-      display: block;
-      margin-top: 10px;
-    }
-    input, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      box-sizing: border-box;
-    }
-    .promo-section {
-      margin-top: 20px;
+    header {
+      background-color: #fff;
       display: flex;
-      gap: 10px;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #ddd;
     }
-    .promo-section input {
-      flex: 1;
-    }
-    .summary {
-      margin-top: 20px;
-      padding: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .summary div {
-      margin: 5px 0;
-    }
-    button {
-      margin-top: 20px;
-      background-color: #191970;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      font-weight: bold;
+    .menu-icon {
+      font-size: 1.6rem;
       cursor: pointer;
+      color: #2b2b2b;
+      margin-right: 1rem;
     }
-    button:hover {
-      background-color: #2a2a9f;
+    .logo {
+      flex: 1;
+      text-align: center;
     }
-    .message {
-      color: green;
-      margin-top: 10px;
+    .logo img {
+      max-width: 240px;
+      height: auto;
     }
-    .error {
-      color: red;
-      margin-top: 10px;
+    .overlay-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 80%;
+      max-width: 300px;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+      transition: left 0.3s ease-in-out;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      z-index: 9999;
     }
-    .delivery-note {
-      font-size: 0.85em;
-      color: #666;
-      margin-top: 5px;
+    .overlay-menu.open {
+      left: 0;
+    }
+    .overlay-menu a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #191970;
+      margin: 1rem 0;
+      font-size: 1.1rem;
+    }
+    .close-btn {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #191970;
+    }
+    .overlay-header {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      color: #191970;
+    }
+    .section {
+      max-width: 700px;
+      margin: auto;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .section p {
+      font-style: italic;
+      color: #555;
+      margin-top: 1rem;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #777;
     }
   </style>
 </head>
 <body>
 
-  <h1>Checkout 💳</h1>
+<header>
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  <div class="logo">
+    <img src="sb_digital_logo.PNG" alt="Sonia Benjoye Logo">
+  </div>
+</header>
 
-  <form id="checkout-form">
-    <label>Full Name</label>
-    <input type="text" name="name" required />
+<div class="overlay-menu" id="navMenu">
+  <div class="close-btn" onclick="toggleMenu()">✕</div>
+  <div class="overlay-header">Menu</div>
+  <a href="index.html">📘 Books</a>
+  <a href="ebook.html">📖 Ebook</a>
+  <a href="audiobook.html">🎧 Audiobook</a>
+  <a href="bundles.html">📦 Bundles</a>
+  <a href="about.html">👤 About Me</a>
+  <a href="community.html">💬 Community</a>
+  <a href="https://sbclassic.github.io/sbclassic" target="_blank">💼 SB CLASSIC</a>
+  <a href="mailto:benjoye21@gmail.com">📩 Contact</a>
+</div>
 
-    <label>Email Address</label>
-    <input type="email" name="email" required />
+<div class="section">
+  <h2>📦 Bundle Deals</h2>
+  <p>✨ Bundle offers will be available soon. Combine the ebook and audiobook at a discounted price and enjoy the full experience of The Paradox of Passion.</p>
+</div>
 
-    <label>Phone Number</label>
-    <input type="tel" name="phone" required />
+<footer>
+  Contact: <a href="mailto:benjoye21@gmail.com">benjoye21@gmail.com</a><br/>
+  &copy; 2025 Sonia Benjoye. All rights reserved.
+</footer>
 
-    <label for="delivery">Delivery Option</label>
-    <select id="delivery" required>
-      <option value="70">Standard Delivery – Accra (GHS 70–95 depending on exact location)</option>
-      <option value="60">Nationwide Delivery (GHS 60–80 depending on item value)</option>
-      <option value="0">International Delivery – Contact us for a quote</option>
-    </select>
-    <p class="delivery-note">
-      Delivery fee shown is a base value used for calculation and may vary depending on your exact location or order details.
-    </p>
-
-    <div class="promo-section">
-      <input type="text" id="promo-code" placeholder="Enter promo code" />
-      <button type="button" id="apply-promo">Apply</button>
-    </div>
-    <div id="promo-message" class="message" style="display:none;"></div>
-    <div id="promo-error" class="error" style="display:none;"></div>
-
-    <div class="summary">
-      <h3>Order Summary</h3>
-      <div id="item-list"></div>
-      <div id="summary-subtotal"></div>
-      <div id="summary-discount" style="display:none;"></div>
-      <div id="summary-delivery"></div>
-      <div id="summary-total"></div>
-    </div>
-
-    <button type="submit" id="paystack-btn">Pay with Paystack</button>
-  </form>
-
-  <script src="https://js.paystack.co/v1/inline.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      let subtotal = 0;
-      let discountAmount = 0;
-
-      const itemList = document.getElementById('item-list');
-      const subtotalDisplay = document.getElementById('summary-subtotal');
-      const discountDisplay = document.getElementById('summary-discount');
-      const deliveryDisplay = document.getElementById('summary-delivery');
-      const totalDisplay = document.getElementById('summary-total');
-      const promoInput = document.getElementById('promo-code');
-      const applyPromoBtn = document.getElementById('apply-promo');
-      const promoMessage = document.getElementById('promo-message');
-      const promoError = document.getElementById('promo-error');
-      const deliverySelect = document.getElementById('delivery');
-
-      const promoCodes = {
-        "SB10": 10,
-        "FREESHIP": 0
-      };
-
-      function renderCart() {
-        itemList.innerHTML = '';
-        subtotal = 0;
-        cart.forEach(item => {
-          const itemSubtotal = item.price * item.quantity;
-          subtotal += itemSubtotal;
-
-          const itemDiv = document.createElement('div');
-          itemDiv.innerHTML = `
-            <div>
-              <strong>${item.name}</strong><br>
-              ${item.size ? 'Size: ' + item.size + '<br>' : ''}
-              ${item.color ? 'Color: ' + item.color + '<br>' : ''}
-              GHS ${item.price.toFixed(2)} x ${item.quantity} = GHS ${itemSubtotal.toFixed(2)}
-            </div>
-          `;
-          itemList.appendChild(itemDiv);
-        });
-        subtotalDisplay.textContent = 'Subtotal: GHS ' + subtotal.toFixed(2);
-      }
-
-      function updateTotals() {
-        const code = promoInput.value.trim().toUpperCase();
-        let deliveryFee = parseFloat(deliverySelect.value);
-
-        if (deliverySelect.value === "0") {
-          deliveryDisplay.textContent = 'Delivery: International delivery – please contact us for a quote';
-          deliveryFee = 0;
-        } else {
-          if (code === "FREESHIP") {
-            deliveryFee = 0;
-          }
-          deliveryDisplay.textContent = 'Delivery: GHS ' + deliveryFee.toFixed(2);
-        }
-
-        let total = subtotal - discountAmount + deliveryFee;
-
-        if (discountAmount > 0) {
-          discountDisplay.style.display = 'block';
-          discountDisplay.textContent = 'Discount: -GHS ' + discountAmount.toFixed(2);
-        } else {
-          discountDisplay.style.display = 'none';
-        }
-
-        totalDisplay.textContent = 'Total: GHS ' + total.toFixed(2);
-      }
-
-      function applyPromoCode() {
-        const code = promoInput.value.trim().toUpperCase();
-        promoMessage.style.display = 'none';
-        promoError.style.display = 'none';
-        discountAmount = 0;
-
-        if (!code) {
-          promoError.textContent = 'Please enter a promo code.';
-          promoError.style.display = 'block';
-        } else if (promoCodes.hasOwnProperty(code)) {
-          if (code === "FREESHIP") {
-            promoMessage.textContent = 'Promo applied: Free Delivery!';
-          } else {
-            discountAmount = (promoCodes[code] / 100) * subtotal;
-            promoMessage.textContent = `Promo applied: ${promoCodes[code]}% off!`;
-          }
-          promoMessage.style.display = 'block';
-        } else {
-          promoError.textContent = 'Invalid promo code.';
-          promoError.style.display = 'block';
-        }
-
-        updateTotals();
-      }
-
-      applyPromoBtn.addEventListener('click', applyPromoCode);
-      deliverySelect.addEventListener('change', updateTotals);
-
-      renderCart();
-      updateTotals();
-
-      document.getElementById('checkout-form').addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        if (cart.length === 0) {
-          alert('Your cart is empty.');
-          return;
-        }
-
-        const name = this.name.value.trim();
-        const email = this.email.value.trim();
-        const phone = this.phone.value.trim();
-        const code = promoInput.value.trim().toUpperCase();
-        const deliveryOption = deliverySelect.value;
-
-        if (deliveryOption === "0") {
-          alert('For international delivery, please contact us directly to arrange shipping and payment.');
-          return;
-        }
-
-        let deliveryCost = parseFloat(deliveryOption);
-        const finalDelivery = (code === "FREESHIP") ? 0 : deliveryCost;
-        const totalAmount = subtotal - discountAmount + finalDelivery;
-
-        if (totalAmount <= 0) {
-          alert('Total amount must be greater than zero.');
-          return;
-        }
-
-        const amountInKobo = Math.round(totalAmount * 100);
-
-        const orderDetails = cart.map(item => {
-          return `${item.name} (Qty: ${item.quantity}, Size: ${item.size || 'N/A'}, Color: ${item.color || 'N/A'})`;
-        }).join(' | ');
-
-        const handler = PaystackPop.setup({
-          key: 'pk_live_5e37f9b952133486b9b05a6798a5e921afa25bc6',
-          email: email,
-          amount: amountInKobo,
-          currency: 'GHS',
-          metadata: {
-            custom_fields: [
-              { display_name: "Customer Name", value: name },
-              { display_name: "Phone Number", value: phone },
-              { display_name: "Delivery Option", value: deliveryOption === "0" ? 'International delivery' : `GHS ${finalDelivery.toFixed(2)}` },
-              { display_name: "Promo Code", value: code || 'N/A' },
-              { display_name: "Order Details", value: orderDetails }
-            ]
-          },
-          callback: function (response) {
-            alert('Payment successful! Reference: ' + response.reference);
-            localStorage.removeItem('cart');
-            sessionStorage.setItem('orderReference', response.reference);
-            window.location.href = 'thankyou.html';
-          },
-          onClose: function () {
-            alert('Payment window closed.');
-          }
-        });
-
-        handler.openIframe();
-      });
-    });
-  </script>
+<script>
+  function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("open");
+  }
+</script>
 
 </body>
 </html>
