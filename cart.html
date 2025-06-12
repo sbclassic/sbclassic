@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Checkout 💳 – SB CLASSIC</title>
   <script src="https://js.paystack.co/v1/inline.js"></script>
   <script src="https://checkout.flutterwave.com/v3.js"></script>
@@ -59,6 +59,13 @@
       margin-top: 20px;
       text-align: center;
     }
+    #cart-details {
+      margin-top: 20px;
+      font-size: 15px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+    }
   </style>
 </head>
 <body>
@@ -87,6 +94,7 @@
     </div>
 
     <div id="total-display">Loading total...</div>
+    <div id="cart-details"></div>
 
     <button id="paystackBtn" class="btn" onclick="payWithPaystack()">Pay with Paystack</button>
     <button id="flutterwaveBtn" class="btn hidden" onclick="payWithFlutterwave()">Pay with Flutterwave</button>
@@ -101,7 +109,6 @@
     const flutterwaveBtn = document.getElementById("flutterwaveBtn");
     const totalDisplay = document.getElementById("total-display");
 
-    // Get cart total from localStorage
     let cartTotalGHS = parseFloat(localStorage.getItem("cartTotal")) || 0;
 
     const conversionRates = {
@@ -136,6 +143,8 @@
         flutterwaveBtn.classList.remove("hidden");
         updateCurrencyTotal();
       }
+
+      renderCartDetails();
     }
 
     function updateCurrencyTotal() {
@@ -144,6 +153,30 @@
       const symbol = currencySymbols[curr] || "₵";
       const converted = cartTotalGHS * rate;
       totalDisplay.textContent = `Total: ${symbol}${converted.toFixed(2)}`;
+      renderCartDetails();
+    }
+
+    function renderCartDetails() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const container = document.getElementById("cart-details");
+
+      if (!cart.length) {
+        container.innerHTML = "<p>Your cart is empty.</p>";
+        return;
+      }
+
+      const curr = currencySelect.value;
+      const rate = conversionRates[curr] || 1;
+      const symbol = currencySymbols[curr] || "₵";
+
+      let html = "<strong>Order Summary:</strong><ul>";
+      cart.forEach(item => {
+        const line = `<li>${item.name} (Size: ${item.size}) × ${item.quantity} = ${symbol}${(item.price * item.quantity * rate).toFixed(2)}</li>`;
+        html += line;
+      });
+      html += "</ul>";
+
+      container.innerHTML = html;
     }
 
     function payWithPaystack() {
@@ -155,6 +188,7 @@
         amount: Math.round(cartTotalGHS * 100),
         currency: "GHS",
         callback: function (response) {
+          localStorage.removeItem("cart");
           window.location.href = "thankyou.html?ref=" + response.reference;
         },
         onClose: function () {
@@ -179,6 +213,7 @@
         customer: { email },
         callback: function (data) {
           if (data.status === "successful") {
+            localStorage.removeItem("cart");
             window.location.href = "thankyou.html?tx=" + data.transaction_id;
           }
         },
@@ -193,11 +228,9 @@
       });
     }
 
-    // Event listeners
     paymentMethod.addEventListener("change", updateUI);
     currencySelect.addEventListener("change", updateCurrencyTotal);
 
-    // Initial UI setup
     updateUI();
   </script>
 </body>
