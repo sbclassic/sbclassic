@@ -49,6 +49,11 @@
       background-color: #f57c00;
       color: white;
     }
+    #clearBtn {
+      background-color: #888;
+      color: white;
+      margin-top: 10px;
+    }
     .hidden {
       display: none;
     }
@@ -107,6 +112,7 @@
 
     <button id="paystackBtn" class="btn" onclick="payWithPaystack()">Pay with Paystack</button>
     <button id="flutterwaveBtn" class="btn hidden" onclick="payWithFlutterwave()">Pay with Flutterwave</button>
+    <button id="clearBtn" class="btn" type="button" onclick="clearCart()">🧹 Clear Cart</button>
   </form>
 
   <script>
@@ -187,6 +193,14 @@
       });
       html += "</ul>";
       cartDetails.innerHTML = html;
+    }
+
+    function clearCart() {
+      localStorage.removeItem("cart");
+      localStorage.setItem("cartTotal", "0");
+      cartTotalGHS = 0;
+      updateUI();
+      alert("🧹 Cart cleared successfully.");
     }
 
     function payWithPaystack() {
