@@ -789,8 +789,8 @@ footer .social-links a:hover {
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // Auto-fill missing data attributes (in case you forget)
     document.querySelectorAll('.product').forEach((productDiv, index) => {
-      // Auto-fill missing data attributes
       if (!productDiv.dataset.id || !productDiv.dataset.name || !productDiv.dataset.price || !productDiv.dataset.image) {
         const name = productDiv.querySelector('h3')?.textContent.trim() || `Product ${index + 1}`;
         const priceText = productDiv.querySelector('.price')?.textContent || '';
@@ -804,7 +804,7 @@ footer .social-links a:hover {
       }
     });
 
-    // Handle Add to Cart logic
+    // Add to cart logic
     document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const productDiv = btn.closest('.product');
@@ -835,6 +835,11 @@ footer .social-links a:hover {
         }
 
         localStorage.setItem('cart', JSON.stringify(cart));
+
+        // ✅ Immediately update the total in localStorage
+        const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        localStorage.setItem('cartTotal', total.toFixed(2));
+
         alert(`✅ ${quantity} x "${product.name}" (Size: ${product.size || 'N/A'}) added to cart!`);
       });
     });
