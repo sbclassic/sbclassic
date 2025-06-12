@@ -1,114 +1,152 @@
-<!-- Your cart page script -->
-<script>
-function getCart() {
-  return JSON.parse(localStorage.getItem('cart')) || [];
-}
-
-function saveCart(cart) {
-  localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-function removeItem(productId) {
-  let cart = getCart();
-  cart = cart.filter(item => item.id !== productId);
-  saveCart(cart);
-  renderCart();
-}
-
-function updateQuantity(productId, change) {
-  const cart = getCart();
-  const item = cart.find(i => i.id === productId);
-  if (item) {
-    item.quantity += change;
-    if (item.quantity <= 0) {
-      removeItem(productId);
-      return;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart 🛒 – SB CLASSIC</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
     }
-  }
-  saveCart(cart);
-  renderCart();
-}
+    nav {
+      margin-bottom: 20px;
+    }
+    .cart-item {
+      border: 1px solid #ccc;
+      padding: 12px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .cart-item img {
+      width: 100px;
+      height: auto;
+    }
+    .cart-controls {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    #checkout-link {
+      display: none;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #191970;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+    #clear-cart-btn {
+      margin-top: 15px;
+      padding: 10px 16px;
+      background-color: #444;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
 
-function clearCart() {
-  localStorage.removeItem('cart');
-  renderCart();
-}
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="checkout.html">Checkout 💳</a>
+  </nav>
 
-function renderCart() {
-  const cartItemsDiv = document.getElementById('cart-items');
-  const checkoutLink = document.getElementById('checkout-link');
-  const cartTotalDiv = document.getElementById('cart-total');
-  const currencySelect = document.getElementById('currency'); // Optional dropdown
-  const selectedCurrency = currencySelect ? currencySelect.value : 'GHS';
+  <h1>Your Cart 🛒</h1>
+  <div id="cart-items"></div>
 
-  const cart = getCart();
-  cartItemsDiv.innerHTML = '';
+  <button id="clear-cart-btn" onclick="clearCart()">🧹 Clear Cart</button>
 
-  if (cart.length === 0) {
-    cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
-    checkoutLink.style.display = 'none';
-    cartTotalDiv.textContent = '';
-    localStorage.setItem('cartTotal', '0');
-    return;
-  }
+  <div id="cart-total" style="margin-top: 10px; font-weight: bold;"></div>
 
-  let total = 0;
+  <!-- ✅ Working checkout link -->
+  <a href="checkout.html" id="checkout-link">Proceed to Checkout 💳</a>
 
-  cart.forEach(item => {
-    const itemDiv = document.createElement('div');
-    itemDiv.className = 'cart-item';
+  <script>
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart')) || [];
+    }
 
-    total += item.price * item.quantity;
+    function saveCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
 
-    itemDiv.innerHTML = `
-      <img src="${item.image}" alt="${item.name}" />
-      <div>
-        <h3>${item.name}</h3>
-        <p>GHS ${item.price.toFixed(2)} × ${item.quantity} = GHS ${(item.price * item.quantity).toFixed(2)}</p>
-        <button onclick="updateQuantity('${item.id}', -1)">➖</button>
-        <button onclick="updateQuantity('${item.id}', 1)">➕</button>
-        <button onclick="removeItem('${item.id}')">❌ Remove</button>
-      </div>
-    `;
-    cartItemsDiv.appendChild(itemDiv);
-  });
+    function removeItem(productId) {
+      let cart = getCart();
+      cart = cart.filter(item => item.id !== productId);
+      saveCart(cart);
+      renderCart();
+    }
 
-  // Store total in localStorage for checkout page
-  localStorage.setItem('cartTotal', total.toFixed(2));
+    function updateQuantity(productId, change) {
+      const cart = getCart();
+      const item = cart.find(i => i.id === productId);
+      if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+          removeItem(productId);
+          return;
+        }
+      }
+      saveCart(cart);
+      renderCart();
+    }
 
-  // Currency conversion
-  const conversionRates = {
-    GHS: 1,
-    USD: 1 / 11.5,
-    NGN: 1 / 0.048,
-    EUR: 1 / 12.5,
-    GBP: 1 / 14.2,
-    XOF: 1 / 0.0091
-  };
+    function clearCart() {
+      localStorage.removeItem('cart');
+      renderCart();
+    }
 
-  const currencySymbols = {
-    GHS: '₵',
-    USD: '$',
-    NGN: '₦',
-    EUR: '€',
-    GBP: '£',
-    XOF: 'CFA '
-  };
+    function renderCart() {
+      const cartItemsDiv = document.getElementById('cart-items');
+      const checkoutLink = document.getElementById('checkout-link');
+      const cartTotalDiv = document.getElementById('cart-total');
 
-  const rate = conversionRates[selectedCurrency] || 1;
-  const symbol = currencySymbols[selectedCurrency] || '₵';
-  const convertedTotal = total * rate;
+      const cart = getCart();
+      cartItemsDiv.innerHTML = '';
 
-  cartTotalDiv.textContent = `Total: ${symbol}${convertedTotal.toFixed(2)}`;
-  checkoutLink.style.display = 'inline-block';
-}
+      if (cart.length === 0) {
+        cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
+        checkoutLink.style.display = 'none';
+        cartTotalDiv.textContent = '';
+        localStorage.setItem('cartTotal', '0');
+        return;
+      }
 
-// Optional: React to currency changes
-const currencyDropdown = document.getElementById('currency');
-if (currencyDropdown) {
-  currencyDropdown.addEventListener('change', renderCart);
-}
+      let total = 0;
 
-// Initial load
-renderCart();
-</script>
+      cart.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+
+        total += item.price * item.quantity;
+
+        itemDiv.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" />
+          <div>
+            <h3>${item.name}</h3>
+            <p>GHS ${item.price.toFixed(2)} × ${item.quantity} = GHS ${(item.price * item.quantity).toFixed(2)}</p>
+            <button onclick="updateQuantity('${item.id}', -1)">➖</button>
+            <button onclick="updateQuantity('${item.id}', 1)">➕</button>
+            <button onclick="removeItem('${item.id}')">❌ Remove</button>
+          </div>
+        `;
+        cartItemsDiv.appendChild(itemDiv);
+      });
+
+      localStorage.setItem('cartTotal', total.toFixed(2));
+
+      cartTotalDiv.textContent = `Total: GHS ${total.toFixed(2)}`;
+      checkoutLink.style.display = 'inline-block';
+    }
+
+    document.addEventListener('DOMContentLoaded', renderCart);
+  </script>
+</body>
+</html>
