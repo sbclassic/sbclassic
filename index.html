@@ -802,22 +802,29 @@ footer .social-links a:hover {
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Auto-fill missing data attributes (in case you forget)
+    // ✅ Only fill in data-* if missing
     document.querySelectorAll('.product').forEach((productDiv, index) => {
-      if (!productDiv.dataset.id || !productDiv.dataset.name || !productDiv.dataset.price || !productDiv.dataset.image) {
-        const name = productDiv.querySelector('h3')?.textContent.trim() || `Product ${index + 1}`;
-        const priceText = productDiv.querySelector('.price')?.textContent || '';
-        const price = parseFloat(priceText.replace(/[^\d.]/g, '').replace(/,/g, '')) || 0;
-        const image = productDiv.querySelector('img')?.getAttribute('src') || '';
+      const name = productDiv.querySelector('h3')?.textContent.trim() || `Product ${index + 1}`;
+      const priceText = productDiv.querySelector('.price')?.textContent || '';
+      const cleanPrice = priceText.replace(/[^\d.]/g, '').replace(/,/g, '');
+      const price = parseFloat(cleanPrice) || 0;
+      const image = productDiv.querySelector('img')?.getAttribute('src') || '';
 
+      if (!productDiv.dataset.id) {
         productDiv.dataset.id = name.toLowerCase().replace(/\s+/g, '-') + '-' + index;
+      }
+      if (!productDiv.dataset.name) {
         productDiv.dataset.name = name;
+      }
+      if (!productDiv.dataset.price) {
         productDiv.dataset.price = price.toFixed(2);
+      }
+      if (!productDiv.dataset.image) {
         productDiv.dataset.image = image;
       }
     });
 
-    // Add to cart logic
+    // ✅ Add to cart logic
     document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const productDiv = btn.closest('.product');
@@ -827,7 +834,7 @@ footer .social-links a:hover {
         let quantity = parseInt(quantityInput?.value);
         if (isNaN(quantity) || quantity < 1) quantity = 1;
 
-        const selectedSize = sizeSelect ? sizeSelect.value : null;
+        const selectedSize = sizeSelect ? sizeSelect.value : 'N/A';
 
         const product = {
           id: productDiv.dataset.id,
@@ -840,20 +847,20 @@ footer .social-links a:hover {
 
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        const existingProduct = cart.find(item => item.id === product.id && item.size === product.size);
-        if (existingProduct) {
-          existingProduct.quantity += quantity;
+        const existing = cart.find(item => item.id === product.id && item.size === product.size);
+        if (existing) {
+          existing.quantity += quantity;
         } else {
           cart.push(product);
         }
 
         localStorage.setItem('cart', JSON.stringify(cart));
 
-        // ✅ Immediately update the total in localStorage
+        // ✅ Also update total
         const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
         localStorage.setItem('cartTotal', total.toFixed(2));
 
-        alert(`✅ ${quantity} x "${product.name}" (Size: ${product.size || 'N/A'}) added to cart!`);
+        alert(`✅ ${quantity} x "${product.name}" (Size: ${product.size}) added to cart!`);
       });
     });
   });
