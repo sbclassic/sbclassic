@@ -2,149 +2,123 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Checkout – SB CLASSIC</title>
-  <script src="https://js.paystack.co/v1/inline.js"></script>
-  <script src="https://checkout.flutterwave.com/v3.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout 💳 – SB CLASSIC</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 30px;
       background-color: #fff;
-      color: #2b2b2b;
+      color: #444;
     }
     h1 {
-      color: #191970;
-      font-size: 24px;
-      margin-bottom: 20px;
-      text-align: center;
+      color: #2b2b2b;
+      margin-bottom: 10px;
     }
-    .section {
-      max-width: 700px;
+    form {
+      max-width: 600px;
       margin: auto;
     }
     label {
       display: block;
-      margin: 15px 0 5px;
-      font-weight: bold;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      box-sizing: border-box;
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-    textarea {
-      resize: vertical;
-      height: 100px;
-    }
-    .btn {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
       margin-top: 15px;
     }
-    #paystackBtn {
-      background-color: #191970;
-      color: white;
-    }
-    #flutterwaveBtn {
-      background-color: #f57c00;
-      color: white;
-    }
-    .hidden {
-      display: none;
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      box-sizing: border-box;
     }
     .summary-box {
       border: 1px solid #ccc;
+      background-color: #f9f9f9;
       padding: 15px;
-      margin-bottom: 20px;
-      background: #f9f9f9;
+      margin-top: 20px;
     }
     .summary-item {
-      margin-bottom: 10px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 5px;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed #ddd;
     }
-    .total {
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    button, .pay-btn {
+      padding: 12px 16px;
+      border: none;
+      background-color: #191970;
+      color: white;
       font-weight: bold;
-      font-size: 18px;
-      text-align: right;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover, .pay-btn:hover {
+      background-color: #2a2a9f;
+    }
+    #cart-total {
       margin-top: 10px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="section">
-    <h1>Complete Your Order</h1>
+  <h1>Checkout</h1>
+  <form id="checkout-form">
+    <label>Full Name:</label>
+    <input type="text" name="name" required>
 
-    <div id="cart-summary" class="summary-box"></div>
+    <label>Phone Number:</label>
+    <input type="tel" name="phone" required>
 
-    <label for="email">Your Email:</label>
-    <input type="email" id="email" placeholder="e.g. you@example.com" required />
+    <label>Delivery Details (Location, Landmark, Region):</label>
+    <textarea name="location" required placeholder="e.g. East Legon, Accra – near A&C Mall"></textarea>
 
-    <label for="delivery">Delivery Location or Instructions:</label>
-    <textarea id="delivery" placeholder="e.g. East Legon, Accra. Call on arrival."></textarea>
-
-    <label for="paymentMethod">Select Payment Method:</label>
-    <select id="paymentMethod">
-      <option value="paystack">Paystack (GHS)</option>
-      <option value="flutterwave">Flutterwave (Multi-Currency)</option>
+    <label>Select Currency:</label>
+    <select id="currency">
+      <option value="GHS">GHS (₵)</option>
+      <option value="USD">USD ($)</option>
+      <option value="NGN">NGN (₦)</option>
+      <option value="EUR">EUR (€)</option>
+      <option value="GBP">GBP (£)</option>
+      <option value="XOF">CFA (XOF)</option>
     </select>
 
-    <div id="currency-section" class="hidden">
-      <label for="currency">Choose Currency (Flutterwave):</label>
-      <select id="currency">
-        <option value="GHS">GHS – Ghana Cedi</option>
-        <option value="USD">USD – US Dollar</option>
-        <option value="NGN">NGN – Nigerian Naira</option>
-        <option value="EUR">EUR – Euro</option>
-        <option value="GBP">GBP – British Pound</option>
-        <option value="XOF">XOF – CFA Franc</option>
-      </select>
+    <label>Select Payment Method:</label>
+    <select id="payment-method">
+      <option value="paystack">Paystack</option>
+      <option value="flutterwave">Flutterwave</option>
+    </select>
+
+    <div id="cart-summary" class="summary-box"></div>
+    <div id="cart-total"></div>
+
+    <div class="buttons">
+      <button type="button" onclick="payNow()">Pay Now</button>
+      <button type="button" onclick="clearCart()">🧹 Clear Cart</button>
     </div>
-
-    <div class="total" id="total-display">Total: ₵0.00</div>
-
-    <button id="paystackBtn" class="btn" onclick="payWithPaystack()">Pay with Paystack</button>
-    <button id="flutterwaveBtn" class="btn hidden" onclick="payWithFlutterwave()">Pay with Flutterwave</button>
-  </div>
+  </form>
 
   <script>
-    const emailInput = document.getElementById("email");
-    const paymentMethod = document.getElementById("paymentMethod");
-    const currencySection = document.getElementById("currency-section");
-    const currencySelect = document.getElementById("currency");
-    const paystackBtn = document.getElementById("paystackBtn");
-    const flutterwaveBtn = document.getElementById("flutterwaveBtn");
-    const totalDisplay = document.getElementById("total-display");
     const cartSummary = document.getElementById("cart-summary");
+    const totalDisplay = document.getElementById("cart-total");
 
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const totalGHS = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    const conversionRates = {
-      GHS: 1,
-      USD: 1 / 11.5,
-      NGN: 1 / 0.048,
-      EUR: 1 / 12.5,
-      GBP: 1 / 14.2,
-      XOF: 1 / 0.0091
-    };
     const currencySymbols = {
-      GHS: "₵",
-      USD: "$",
-      NGN: "₦",
-      EUR: "€",
-      GBP: "£",
-      XOF: "CFA "
+      GHS: '₵', USD: '$', NGN: '₦',
+      EUR: '€', GBP: '£', XOF: 'CFA '
+    };
+    const conversionRates = {
+      GHS: 1, USD: 1 / 11.5, NGN: 1 / 0.048,
+      EUR: 1 / 12.5, GBP: 1 / 14.2, XOF: 1 / 0.0091
     };
 
     function renderCartSummary() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const currency = document.getElementById("currency").value || "GHS";
+      const rate = conversionRates[currency] || 1;
+      const symbol = currencySymbols[currency] || '₵';
+
       if (cart.length === 0) {
         cartSummary.innerHTML = "<p>Your cart is empty.</p>";
         totalDisplay.textContent = "Total: ₵0.00";
@@ -152,97 +126,81 @@
       }
 
       let html = "";
+      let total = 0;
+
       cart.forEach(item => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+
         html += `
           <div class="summary-item">
             <strong>${item.name}</strong><br/>
             Size: ${item.size || "N/A"}<br/>
             Quantity: ${item.quantity}<br/>
-            Subtotal: ₵${(item.price * item.quantity).toFixed(2)}
+            Subtotal: ${symbol}${(subtotal * rate).toFixed(2)}
           </div>
         `;
       });
-      cartSummary.innerHTML = html;
 
-      const symbol = currencySymbols["GHS"];
-      totalDisplay.textContent = `Total: ${symbol}${totalGHS.toFixed(2)}`;
+      cartSummary.innerHTML = html;
+      totalDisplay.textContent = `Total: ${symbol}${(total * rate).toFixed(2)}`;
+      localStorage.setItem("cartTotal", total.toFixed(2));
     }
 
-    function updateUI() {
-      const method = paymentMethod.value;
+    function clearCart() {
+      localStorage.removeItem("cart");
+      renderCartSummary();
+      alert("🧹 Cart cleared!");
+    }
+
+    document.getElementById("currency").addEventListener("change", renderCartSummary);
+
+    function payNow() {
+      const method = document.getElementById("payment-method").value;
+      const name = document.querySelector('[name="name"]').value;
+      const phone = document.querySelector('[name="phone"]').value;
+      const location = document.querySelector('[name="location"]').value;
+      const total = parseFloat(localStorage.getItem("cartTotal") || "0");
+      const ref = "SB" + Math.floor(Math.random() * 1000000000);
+      sessionStorage.setItem("orderReference", ref);
+
+      if (!name || !phone || !location || total <= 0) {
+        alert("Please complete the form and make sure cart has items.");
+        return;
+      }
+
       if (method === "paystack") {
-        currencySection.classList.add("hidden");
-        paystackBtn.classList.remove("hidden");
-        flutterwaveBtn.classList.add("hidden");
-        totalDisplay.textContent = `Total: ₵${totalGHS.toFixed(2)}`;
+        PaystackPop.setup({
+          key: 'pk_live_a09356e2ab5cf6afa40e5ea77de1d06ac4f86f99',
+          email: phone + "@checkout.com",
+          amount: total * 100,
+          currency: "GHS",
+          ref: ref,
+          callback: function () {
+            localStorage.removeItem("cart");
+            window.location.href = "thankyou.html";
+          }
+        }).openIframe();
       } else {
-        currencySection.classList.remove("hidden");
-        paystackBtn.classList.add("hidden");
-        flutterwaveBtn.classList.remove("hidden");
-        updateCurrencyDisplay();
+        FlutterwaveCheckout({
+          public_key: "FLWPUBK-7f5de74a7c6fce74a6aa6d25c4ad9180-X",
+          tx_ref: ref,
+          amount: total,
+          currency: document.getElementById("currency").value,
+          customer: { name: name, phone_number: phone, email: phone + "@checkout.com" },
+          callback: function () {
+            localStorage.removeItem("cart");
+            window.location.href = "thankyou.html";
+          },
+          customizations: { title: "SB CLASSIC", description: "Order Payment" }
+        });
       }
     }
 
-    function updateCurrencyDisplay() {
-      const selected = currencySelect.value;
-      const rate = conversionRates[selected] || 1;
-      const symbol = currencySymbols[selected] || "₵";
-      const converted = totalGHS * rate;
-      totalDisplay.textContent = `Total: ${symbol}${converted.toFixed(2)}`;
-    }
-
-    function payWithPaystack() {
-      const email = emailInput.value;
-      if (!email) return alert("Please enter your email.");
-      PaystackPop.setup({
-        key: "pk_live_a09356e2ab5cf6afa40e5ea77de1d06ac4f86f99",
-        email: email,
-        amount: Math.round(totalGHS * 100),
-        currency: "GHS",
-        callback: function (response) {
-          window.location.href = "thankyou.html?ref=" + response.reference;
-        },
-        onClose: function () {
-          alert("Payment window closed.");
-        }
-      }).openIframe();
-    }
-
-    function payWithFlutterwave() {
-      const email = emailInput.value;
-      const curr = currencySelect.value;
-      if (!email) return alert("Please enter your email.");
-      const convertedAmount = (totalGHS * conversionRates[curr]).toFixed(2);
-
-      FlutterwaveCheckout({
-        public_key: "FLWPUBK-7f5de74a7c6fce74a6aa6d25c4ad9180-X",
-        tx_ref: "SBCLASSIC-" + Date.now(),
-        amount: convertedAmount,
-        currency: curr,
-        payment_options: "card, mobilemoneyghana, ussd",
-        customer: { email },
-        callback: function (data) {
-          if (data.status === "successful") {
-            window.location.href = "thankyou.html?tx=" + data.transaction_id;
-          }
-        },
-        onclose: function () {
-          alert("Payment cancelled.");
-        },
-        customizations: {
-          title: "SB CLASSIC Checkout",
-          description: "Payment for your order",
-          logo: "https://sbclassic.github.io/sbclassic/logo.png"
-        }
-      });
-    }
-
-    paymentMethod.addEventListener("change", updateUI);
-    currencySelect.addEventListener("change", updateCurrencyDisplay);
-
-    // Initial render
     renderCartSummary();
-    updateUI();
   </script>
+
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script src="https://checkout.flutterwave.com/v3.js"></script>
 </body>
 </html>
