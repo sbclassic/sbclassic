@@ -2,136 +2,247 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bundles – Sonia Benjoye Digital Bookstore</title>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Playfair+Display&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout – SB CLASSIC</title>
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script src="https://checkout.flutterwave.com/v3.js"></script>
   <style>
     body {
-      margin: 0;
-      font-family: 'Libre Baskerville', serif;
-      background-color: #f9f7f6;
-      color: #2b2b2b;
-    }
-    header {
+      font-family: Arial, sans-serif;
+      margin: 30px;
       background-color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 1rem 1.5rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid #ddd;
-    }
-    .menu-icon {
-      font-size: 1.6rem;
-      cursor: pointer;
       color: #2b2b2b;
-      margin-right: 1rem;
     }
-    .logo {
-      flex: 1;
+    h1 {
+      color: #191970;
+      font-size: 24px;
+      margin-bottom: 20px;
       text-align: center;
-    }
-    .logo img {
-      max-width: 240px;
-      height: auto;
-    }
-    .overlay-menu {
-      position: fixed;
-      top: 0;
-      left: -100%;
-      width: 80%;
-      max-width: 300px;
-      height: 100%;
-      background-color: #fff;
-      box-shadow: 2px 0 10px rgba(0,0,0,0.2);
-      transition: left 0.3s ease-in-out;
-      padding: 2rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      z-index: 9999;
-    }
-    .overlay-menu.open {
-      left: 0;
-    }
-    .overlay-menu a {
-      text-decoration: none;
-      font-weight: bold;
-      color: #191970;
-      margin: 1rem 0;
-      font-size: 1.1rem;
-    }
-    .close-btn {
-      position: absolute;
-      top: 1.2rem;
-      right: 1.5rem;
-      font-size: 1.4rem;
-      cursor: pointer;
-      color: #191970;
-    }
-    .overlay-header {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 2rem;
-      color: #191970;
     }
     .section {
       max-width: 700px;
       margin: auto;
-      padding: 2rem 1.5rem;
-      text-align: center;
     }
-    .section p {
-      font-style: italic;
-      color: #555;
-      margin-top: 1rem;
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
     }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: #777;
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+    .btn {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    #paystackBtn {
+      background-color: #191970;
+      color: white;
+    }
+    #flutterwaveBtn {
+      background-color: #f57c00;
+      color: white;
+    }
+    .hidden {
+      display: none;
+    }
+    .summary-box {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      background: #f9f9f9;
+    }
+    .summary-item {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5px;
+    }
+    .total {
+      font-weight: bold;
+      font-size: 18px;
+      text-align: right;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
+  <div class="section">
+    <h1>Complete Your Order</h1>
 
-<header>
-  <div class="menu-icon" onclick="toggleMenu()">☰</div>
-  <div class="logo">
-    <img src="sb_digital_logo.PNG" alt="Sonia Benjoye Logo">
+    <div id="cart-summary" class="summary-box"></div>
+
+    <label for="email">Your Email:</label>
+    <input type="email" id="email" placeholder="e.g. you@example.com" required />
+
+    <label for="delivery">Delivery Location or Instructions:</label>
+    <textarea id="delivery" placeholder="e.g. East Legon, Accra. Call on arrival."></textarea>
+
+    <label for="paymentMethod">Select Payment Method:</label>
+    <select id="paymentMethod">
+      <option value="paystack">Paystack (GHS)</option>
+      <option value="flutterwave">Flutterwave (Multi-Currency)</option>
+    </select>
+
+    <div id="currency-section" class="hidden">
+      <label for="currency">Choose Currency (Flutterwave):</label>
+      <select id="currency">
+        <option value="GHS">GHS – Ghana Cedi</option>
+        <option value="USD">USD – US Dollar</option>
+        <option value="NGN">NGN – Nigerian Naira</option>
+        <option value="EUR">EUR – Euro</option>
+        <option value="GBP">GBP – British Pound</option>
+        <option value="XOF">XOF – CFA Franc</option>
+      </select>
+    </div>
+
+    <div class="total" id="total-display">Total: ₵0.00</div>
+
+    <button id="paystackBtn" class="btn" onclick="payWithPaystack()">Pay with Paystack</button>
+    <button id="flutterwaveBtn" class="btn hidden" onclick="payWithFlutterwave()">Pay with Flutterwave</button>
   </div>
-</header>
 
-<div class="overlay-menu" id="navMenu">
-  <div class="close-btn" onclick="toggleMenu()">✕</div>
-  <div class="overlay-header">Menu</div>
-  <a href="index.html">📘 Books</a>
-  <a href="ebook.html">📖 Ebook</a>
-  <a href="audiobook.html">🎧 Audiobook</a>
-  <a href="bundles.html">📦 Bundles</a>
-  <a href="about.html">👤 About Me</a>
-  <a href="community.html">💬 Community</a>
-  <a href="https://sbclassic.github.io/sbclassic" target="_blank">💼 SB CLASSIC</a>
-  <a href="mailto:benjoye21@gmail.com">📩 Contact</a>
-</div>
+  <script>
+    const emailInput = document.getElementById("email");
+    const paymentMethod = document.getElementById("paymentMethod");
+    const currencySection = document.getElementById("currency-section");
+    const currencySelect = document.getElementById("currency");
+    const paystackBtn = document.getElementById("paystackBtn");
+    const flutterwaveBtn = document.getElementById("flutterwaveBtn");
+    const totalDisplay = document.getElementById("total-display");
+    const cartSummary = document.getElementById("cart-summary");
 
-<div class="section">
-  <h2>📦 Bundle Deals</h2>
-  <p>✨ Bundle offers will be available soon. Combine the ebook and audiobook at a discounted price and enjoy the full experience of The Paradox of Passion.</p>
-</div>
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const totalGHS = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const conversionRates = {
+      GHS: 1,
+      USD: 1 / 11.5,
+      NGN: 1 / 0.048,
+      EUR: 1 / 12.5,
+      GBP: 1 / 14.2,
+      XOF: 1 / 0.0091
+    };
+    const currencySymbols = {
+      GHS: "₵",
+      USD: "$",
+      NGN: "₦",
+      EUR: "€",
+      GBP: "£",
+      XOF: "CFA "
+    };
 
-<footer>
-  Contact: <a href="mailto:benjoye21@gmail.com">benjoye21@gmail.com</a><br/>
-  &copy; 2025 Sonia Benjoye. All rights reserved.
-</footer>
+    function renderCartSummary() {
+      if (cart.length === 0) {
+        cartSummary.innerHTML = "<p>Your cart is empty.</p>";
+        totalDisplay.textContent = "Total: ₵0.00";
+        return;
+      }
 
-<script>
-  function toggleMenu() {
-    document.getElementById("navMenu").classList.toggle("open");
-  }
-</script>
+      let html = "";
+      cart.forEach(item => {
+        html += `
+          <div class="summary-item">
+            <strong>${item.name}</strong><br/>
+            Size: ${item.size || "N/A"}<br/>
+            Quantity: ${item.quantity}<br/>
+            Subtotal: ₵${(item.price * item.quantity).toFixed(2)}
+          </div>
+        `;
+      });
+      cartSummary.innerHTML = html;
 
+      const symbol = currencySymbols["GHS"];
+      totalDisplay.textContent = `Total: ${symbol}${totalGHS.toFixed(2)}`;
+    }
+
+    function updateUI() {
+      const method = paymentMethod.value;
+      if (method === "paystack") {
+        currencySection.classList.add("hidden");
+        paystackBtn.classList.remove("hidden");
+        flutterwaveBtn.classList.add("hidden");
+        totalDisplay.textContent = `Total: ₵${totalGHS.toFixed(2)}`;
+      } else {
+        currencySection.classList.remove("hidden");
+        paystackBtn.classList.add("hidden");
+        flutterwaveBtn.classList.remove("hidden");
+        updateCurrencyDisplay();
+      }
+    }
+
+    function updateCurrencyDisplay() {
+      const selected = currencySelect.value;
+      const rate = conversionRates[selected] || 1;
+      const symbol = currencySymbols[selected] || "₵";
+      const converted = totalGHS * rate;
+      totalDisplay.textContent = `Total: ${symbol}${converted.toFixed(2)}`;
+    }
+
+    function payWithPaystack() {
+      const email = emailInput.value;
+      if (!email) return alert("Please enter your email.");
+      PaystackPop.setup({
+        key: "pk_live_a09356e2ab5cf6afa40e5ea77de1d06ac4f86f99",
+        email: email,
+        amount: Math.round(totalGHS * 100),
+        currency: "GHS",
+        callback: function (response) {
+          window.location.href = "thankyou.html?ref=" + response.reference;
+        },
+        onClose: function () {
+          alert("Payment window closed.");
+        }
+      }).openIframe();
+    }
+
+    function payWithFlutterwave() {
+      const email = emailInput.value;
+      const curr = currencySelect.value;
+      if (!email) return alert("Please enter your email.");
+      const convertedAmount = (totalGHS * conversionRates[curr]).toFixed(2);
+
+      FlutterwaveCheckout({
+        public_key: "FLWPUBK-7f5de74a7c6fce74a6aa6d25c4ad9180-X",
+        tx_ref: "SBCLASSIC-" + Date.now(),
+        amount: convertedAmount,
+        currency: curr,
+        payment_options: "card, mobilemoneyghana, ussd",
+        customer: { email },
+        callback: function (data) {
+          if (data.status === "successful") {
+            window.location.href = "thankyou.html?tx=" + data.transaction_id;
+          }
+        },
+        onclose: function () {
+          alert("Payment cancelled.");
+        },
+        customizations: {
+          title: "SB CLASSIC Checkout",
+          description: "Payment for your order",
+          logo: "https://sbclassic.github.io/sbclassic/logo.png"
+        }
+      });
+    }
+
+    paymentMethod.addEventListener("change", updateUI);
+    currencySelect.addEventListener("change", updateCurrencyDisplay);
+
+    // Initial render
+    renderCartSummary();
+    updateUI();
+  </script>
 </body>
 </html>
