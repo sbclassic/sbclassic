@@ -57,8 +57,19 @@
   </footer>
 
   <script>
-    const ref = sessionStorage.getItem("orderReference");
-    document.getElementById("order-ref").textContent = ref || "N/A";
+    // Function to extract query parameter
+    function getQueryParam(key) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(key);
+    }
+
+    // First check URL for ?ref or ?tx
+    const paystackRef = getQueryParam("ref");
+    const flutterwaveRef = getQueryParam("tx");
+    const sessionRef = sessionStorage.getItem("orderReference");
+
+    const finalRef = paystackRef || flutterwaveRef || sessionRef || "N/A";
+    document.getElementById("order-ref").textContent = finalRef;
   </script>
 </body>
 </html>
