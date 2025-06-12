@@ -276,12 +276,18 @@ footer .social-links a:hover {
 
       <!-- Product Cards -->
       
-<div class="product">
+<div class="product" 
+     data-id="denim-jacket" 
+     data-name="Casual - Fashionable - Denim - Jacket" 
+     data-price="1140.00" 
+     data-image="clothes/casual_fashionable_denim_jacket_camel.JPG">
+     
   <img src="clothes/casual_fashionable_denim_jacket_camel.JPG" alt="Casual Fashionable Denim Jacket" />
   <h3>Casual - Fashionable - Denim - Jacket</h3>
   <p class="price">GHS 1,140</p>
-  <label for="size-denim-jacket">Size:</label>
-  <select id="size-denim-jacket">
+
+  <label>Size:</label>
+  <select class="size-select">
     <option value="S">S</option>
     <option value="M">M</option>
     <option value="L">L</option>
@@ -292,14 +298,9 @@ footer .social-links a:hover {
     <option value="XXXXXL">XXXXXL</option>
     <option value="XXXXXXXL">XXXXXXXL</option>
   </select>
-  <button onclick="addToCart({
-    id: 'denim-jacket',
-    name: 'Casual - Fashionable - Denim - Jacket',
-    price: 1140,
-    image: 'clothes/casual_fashionable_denim_jacket_camel.JPG',
-    quantity: 1,
-    size: document.getElementById('size-denim-jacket').value
-  })">Add to Cart</button>
+  <label>Quantity:</label>
+  <input type="number" class="quantity-input" min="1" value="1" />
+  <button class="btn add-to-cart-btn">Add to Cart</button>
 </div>
 
 <!-- 1. Elegant 2pcs Set – Apricot (Clothes) -->
