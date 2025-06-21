@@ -129,6 +129,31 @@
       background-color: #000050;
     }
 
+    footer {
+      background: #ffffff;
+      color: #2c2c2c;
+      text-align: center;
+      padding: 25px 15px;
+      border-top: 1px solid #ccc;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    footer p.social-links {
+      margin: 10px 0;
+    }
+
+    footer p.social-links a {
+      color: #191970;
+      margin: 0 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer p.social-links a:hover {
+      text-decoration: underline;
+    }
+
     @media (min-width: 1600px) {
       .container {
         max-width: 90%;
@@ -139,31 +164,44 @@
       }
     }
   </style>
-
-    footer {
-      background: #ffffff; /* white footer background */
-      color: #2c2c2c; /* charcoal text */
-      text-align: center;
-      padding: 25px 15px;
-      border-top: 1px solid #ccc;
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
-    footer p.social-links {
-      margin: 10px 0;
-    }
-    footer p.social-links a {
-      color: #191970; /* midnight blue links */
-      margin: 0 8px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    footer p.social-links a:hover {
-      text-decoration: underline;
-    }
-    
-  </style>
 </head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <div class="logo">SB CLASSIC</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="clothes.html">Clothes</a>
+        <a href="shoes.html">Shoes</a>
+        <a href="accessories.html">Accessories</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <h2>Our Shoe Collection</h2>
+    <div class="products">
+      <div class="product">
+        <img src="images/shoe1.jpg" alt="Shoe 1">
+        <h3>Classic Loafers</h3>
+        <p class="price>₵289</p>
+        <button>Add to Cart</button>
+      </div>
+      <!-- Repeat more products here -->
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 SB CLASSIC. All rights reserved.</p>
+    <p class="social-links">
+      <a href="https://instagram.com/realclassysonia" target="_blank">Instagram</a>
+      <a href="mailto:info@sbclassic.com">Email</a>
+    </p>
+  </footer>
+
+</body>
+</html>
 <!-- Chaty Floating Widget -->
     <script id="pixel-chaty" async="true" src="https://cdn.chaty.app/pixel.js?id=Xx1mvajc"></script>
 </body>
