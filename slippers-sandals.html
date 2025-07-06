@@ -2,257 +2,121 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SLIPPERS & SANDALS – SB CLASSIC</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #ffffff;
-      color: #2c2c2c;
-    }
-    header {
-      background: #191970;
-      color: #f8f8ff;
-      padding: 25px 20px;
-      text-align: center;
-    }
-    .header-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .logo {
-      font-size: 2rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      margin-bottom: 10px;
-    }
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    nav a {
-      color: #f8f8ff;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .container {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h2 {
-      text-align: center;
-      color: #191970;
-      font-weight: 700;
-      font-size: 2.2rem;
-      margin-bottom: 30px;
-    }
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin-top: 10px;
-    }
-    .product {
-      width: 250px;
-      background-color: #ffffff;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      overflow: hidden;
-      text-align: center;
-      padding-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      color: #2c2c2c;
-      transition: transform 0.3s ease;
-    }
-    .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-    }
-    .product img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-bottom: 1px solid #eee;
-    }
-    .product h3 {
-      margin: 15px 0 8px;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-    .product p.price {
-      color: #191970;
-      font-weight: 700;
-      margin: 5px 0;
-      font-size: 1.1rem;
-    }
-    .product button {
-      background-color: #191970;
-      color: #f8f8ff;
-      border: none;
-      padding: 10px 20px;
-      margin-top: 12px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: background 0.3s ease;
-    }
-    .product button:hover {
-      background-color: #000050;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SB Classic - Slippers & Sandals</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-<header>
-  <div class="header-content">
-    <div class="logo">SB CLASSIC</div>
+  <header>
+    <h1>SB CLASSIC</h1>
     <nav>
       <a href="index.html">HOME</a>
       <a href="clothes.html">CLOTHES</a>
       <a href="shoes.html">SHOES</a>
-      <a href="slippers-sandals.html">SLIPPERS</a>
+      <a href="slippers-sandals.html">SLIPPERS & SANDALS</a>
       <a href="accessories.html">ACCESSORIES</a>
       <a href="contact.html">CONTACT</a>
       <a href="cart.html">🛒 CART (<span id="cart-count">0</span>)</a>
     </nav>
-  </div>
-</header>
+  </header>
 
-<div class="container">
-  <h2>Slippers & Sandals</h2>
-  <div class="products">
-    <!-- PRODUCT 1 -->
-    <div class="product">
-      <img src="https://imgur.com/BYkWBWb/black.jpg" alt="Classic Designer Slides" id="slide-image">
-      <h3>Classic Designer Slides</h3>
-      <p class="price">₵1,190</p>
-      <label>Color:
-        <select onchange="document.getElementById('slide-image').src=this.value">
-          <option value="https://imgur.com/TJ2oq1t/white.jpg">White</option>
-          <option value="https://imgur.com/BYkWBWb/black.jpg">Black</option>
-          <option value="https://imgur.com/undefined/white1.jpg">White1</option>
-          <option value="https://imgur.com/L9gdNFr/black1.jpg">Black1</option>
-          <option value="https://imgur.com/GTPVdZw/white2.jpg">White2</option>
-          <option value="https://imgur.com/UZ9W9LO/black2.jpg">Black2</option>
-          <option value="https://imgur.com/TJ2oq1t/white3.jpg">White3</option>
-          <option value="https://imgur.com/BYkWBWb/black3.jpg">Black3</option>
-          <option value="https://imgur.com/L9gdNFr/black4.jpg">Black4</option>
-          <option value="https://imgur.com/4gAnMRT/white4.jpg">White4</option>
-          <option value="https://imgur.com/uclLcrX/black5.jpg">Black5</option>
-          <option value="https://imgur.com/0URMoox/white5.jpg">White5</option>
-          <option value="https://imgur.com/7TgQIVW/black6.jpg">Black6</option>
-          <option value="https://imgur.com/obJs1zs/mixed.jpg">Mixed</option>
-        </select>
-      </label><br>
-      <label>Size:
-        <select id="slide-size">
-          <option value="38">38</option><option value="39">39</option><option value="40">40</option>
-          <option value="41">41</option><option value="42">42</option><option value="43">43</option>
-          <option value="44">44</option><option value="45">45</option><option value="46">46</option>
-        </select>
-      </label><br>
-      <label>Qty:
-        <input type="number" id="slide-qty" value="1" min="1" />
-      </label><br>
-      <button onclick="addToCart({name: 'Classic Designer Slides', price: 1190, image: document.getElementById('slide-image').src, size: document.getElementById('slide-size').value, color: 'Selected', quantity: parseInt(document.getElementById('slide-qty').value)})">Add to Cart</button>
+  <main>
+    <h2>Slippers & Sandals</h2>
+    <div class="products">
+      <div class="product">
+        <img src="https://i.imgur.com/TJ2oq1t.jpg" alt="Classic Designer Slides" id="classic-designer-slides-image">
+        <h3>Classic Designer Slides</h3>
+        <p class="price">₵1,190</p>
+        <label>Color:
+          <select onchange="document.getElementById('classic-designer-slides-image').src=this.value">
+            <option value="https://i.imgur.com/TJ2oq1t.jpg">White</option>
+            <option value="https://i.imgur.com/BYkWBWb.jpg">Black</option>
+            <option value="https://i.imgur.com/L9gdNFr.jpg">Black1</option>
+            <option value="https://i.imgur.com/GTPVdZw.jpg">White2</option>
+            <option value="https://i.imgur.com/UZ9W9LO.jpg">Black2</option>
+            <option value="https://i.imgur.com/4gAnMRT.jpg">White4</option>
+            <option value="https://i.imgur.com/uclLcrX.jpg">Black5</option>
+            <option value="https://i.imgur.com/0URMoox.jpg">White5</option>
+            <option value="https://i.imgur.com/7TgQIVW.jpg">Black6</option>
+            <option value="https://i.imgur.com/obJs1zs.jpg">Mixed</option>
+          </select>
+        </label><br>
+        <label>Size:
+          <select id="classic-designer-slides-size">
+            <option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option>
+          </select>
+        </label><br>
+        <label>Qty:
+          <input type="number" id="classic-designer-slides-qty" value="1" min="1" />
+        </label><br>
+        <button onclick="addToCart({
+          name: 'Classic Designer Slides', 
+          price: 1190,
+          image: document.getElementById('classic-designer-slides-image').src,
+          size: document.getElementById('classic-designer-slides-size').value,
+          color: 'Selected',
+          quantity: parseInt(document.getElementById('classic-designer-slides-qty').value)
+        })">Add to Cart</button>
+      </div>
+
+      <div class="product">
+        <img src="https://i.imgur.com/5mqoRws.jpg" alt="Elegant Men’s Slippers/Sandals" id="elegant-mens-slipperssandals-image">
+        <h3>Elegant Men’s Slippers/Sandals</h3>
+        <p class="price">₵1,290</p>
+        <label>Color:
+          <select onchange="document.getElementById('elegant-mens-slipperssandals-image').src=this.value">
+            <option value="https://i.imgur.com/5mqoRws.jpg">Blackl</option>
+            <option value="https://i.imgur.com/UPkJ4Py.jpg">Black1</option>
+            <option value="https://i.imgur.com/RpxREdR.jpg">Black2</option>
+            <option value="https://i.imgur.com/3ZX0ltK.jpg">Black3</option>
+            <option value="https://i.imgur.com/sE0Sl88.jpg">Blue</option>
+            <option value="https://i.imgur.com/lbUlzR1.jpg">Blue1</option>
+            <option value="https://i.imgur.com/odD3H81.jpg">Black4</option>
+            <option value="https://i.imgur.com/iXrSx3h.jpg">Ash</option>
+            <option value="https://i.imgur.com/954C6q3.jpg">Black5</option>
+            <option value="https://i.imgur.com/4ne6f4H.jpg">Ash1</option>
+            <option value="https://i.imgur.com/C223y6x.jpg">Ash2</option>
+          </select>
+        </label><br>
+        <label>Size:
+          <select id="elegant-mens-slipperssandals-size">
+            <option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option>
+          </select>
+        </label><br>
+        <label>Qty:
+          <input type="number" id="elegant-mens-slipperssandals-qty" value="1" min="1" />
+        </label><br>
+        <button onclick="addToCart({
+          name: 'Elegant Men’s Slippers/Sandals', 
+          price: 1290,
+          image: document.getElementById('elegant-mens-slipperssandals-image').src,
+          size: document.getElementById('elegant-mens-slipperssandals-size').value,
+          color: 'Selected',
+          quantity: parseInt(document.getElementById('elegant-mens-slipperssandals-qty').value)
+        })">Add to Cart</button>
+      </div>
     </div>
+  </main>
 
-    <!-- PRODUCT 2 -->
-    <div class="product">
-      <img src="https://imgur.com/5mqoRws/black.jpg" alt="Elegant Men's Slippers" id="elegant-image">
-      <h3>Elegant Men's Slippers</h3>
-      <p class="price">₵1,290</p>
-      <label>Color:
-        <select onchange="document.getElementById('elegant-image').src=this.value">
-          <option value="https://imgur.com/5mqoRws/black.jpg">Black</option>
-          <option value="https://imgur.com/UPkJ4Py/black1.jpg">Black1</option>
-          <option value="https://imgur.com/RpxREdR/black2.jpg">Black2</option>
-          <option value="https://imgur.com/3ZX0ltK/black3.jpg">Black3</option>
-          <option value="https://imgur.com/sE0Sl88/blue.jpg">Blue</option>
-          <option value="https://imgur.com/lbUlzR1/blue1.jpg">Blue1</option>
-          <option value="https://imgur.com/odD3H81/black4">Black4</option>
-          <option value="https://imgur.com/iXrSx3h/ash.jpg">Ash</option>
-          <option value="https://imgur.com/954C6q3/black5.jpg">Black5</option>
-          <option value="https://imgur.com/4ne6f4H/ash1.jpg">Ash1</option>
-          <option value="https://imgur.com/C223y6x/ash2.jpg">Ash2</option>
-        </select>
-      </label><br>
-      <label>Size:
-        <select id="elegant-size">
-          <option value="38">38</option><option value="39">39</option><option value="40">40</option>
-          <option value="41">41</option><option value="42">42</option><option value="43">43</option>
-          <option value="44">44</option><option value="45">45</option><option value="46">46</option>
-        </select>
-      </label><br>
-      <label>Qty:
-        <input type="number" id="elegant-qty" value="1" min="1" />
-      </label><br>
-      <button onclick="addToCart({name: 'Elegant Men\'s Slippers', price: 1290, image: document.getElementById('elegant-image').src, size: document.getElementById('elegant-size').value, color: 'Selected', quantity: parseInt(document.getElementById('elegant-qty').value)})">Add to Cart</button>
-    </div>
-
-  </div>
-</div>
-
-<footer style="text-align:center; padding:20px;">
-  <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
-  <p>
-    FOLLOW US:
-    <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
-    <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
-    <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
-    <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
-    <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
-  </p>
-  <p>© 2025 SB CLASSIC. All rights reserved.</p>
-</footer>
-
-<script>
-function getCart() {
-  return JSON.parse(localStorage.getItem('cart')) || [];
-}
-
-function saveCart(cart) {
-  localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-function updateCartCount() {
-  const cart = getCart();
-  const count = cart.reduce((total, item) => total + item.quantity, 0);
-  document.getElementById('cart-count').textContent = count;
-}
-
-function addToCart(product) {
-  let cart = getCart();
-  const existing = cart.find(item =>
-    item.name === product.name &&
-    item.size === product.size &&
-    item.color === product.color
-  );
-  if (existing) {
-    existing.quantity += product.quantity;
-  } else {
-    cart.push(product);
-  }
-  saveCart(cart);
-  updateCartCount();
-  alert(`${product.name} added to cart!`);
-}
-
-updateCartCount();
-</script>
-
+  <script>
+    function getCart() {
+      return JSON.parse(localStorage.getItem("cart") || "[]");
+    }
+    function saveCart(cart) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+    function updateCartCount() {
+      const cart = getCart();
+      document.getElementById("cart-count").innerText = cart.reduce((sum, item) => sum + item.quantity, 0);
+    }
+    function addToCart(product) {
+      const cart = getCart();
+      cart.push(product);
+      saveCart(cart);
+      updateCartCount();
+      alert("Added to cart!");
+    }
+    updateCartCount();
+  </script>
 </body>
 </html>
