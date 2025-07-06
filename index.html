@@ -25,7 +25,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 40px;
+      padding: 20px 40px;
       border-bottom: 1px solid #eee;
     }
 
@@ -47,50 +47,40 @@
       color: #777;
     }
 
-    .hero {
-      background: url('images/hero-sbclassic.png') no-repeat center center/cover;
-      height: 88vh;
-      width: 100%;
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 2px;
     }
 
-    .section {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-      margin-top: 60px;
-    }
-
-    .category {
+    .grid-item {
       position: relative;
-      width: 100%;
       overflow: hidden;
     }
 
-    .category img {
+    .grid-item img {
       width: 100%;
-      height: 75vh;
+      height: 90vh;
       object-fit: cover;
-      object-position: center;
       display: block;
       transition: transform 0.3s ease;
     }
 
-    .category:hover img {
+    .grid-item:hover img {
       transform: scale(1.01);
     }
 
-    .category-title {
+    .label {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: rgba(0, 0, 0, 0.35);
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.4);
       color: #fff;
-      font-size: 24px;
-      font-weight: 600;
-      padding: 12px 32px;
+      padding: 10px 20px;
+      font-size: 16px;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
     }
 
     footer {
@@ -99,36 +89,16 @@
       font-size: 14px;
       color: #555;
       border-top: 1px solid #ddd;
-      margin-top: 60px;
-    }
-
-    .mobile-menu {
-      display: none;
+      margin-top: 40px;
     }
 
     @media (max-width: 768px) {
-      nav {
-        display: none;
+      .grid {
+        grid-template-columns: 1fr;
       }
 
-      .mobile-menu {
-        display: block;
-        font-size: 20px;
-        cursor: pointer;
-      }
-
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .category img {
-        height: 50vh;
-      }
-
-      .category-title {
-        font-size: 18px;
-        padding: 8px 16px;
+      .grid-item img {
+        height: 60vh;
       }
     }
   </style>
@@ -146,37 +116,34 @@
       <a href="about.html">ABOUT</a>
       <a href="contact.html">CONTACT</a>
     </nav>
-    <div class="mobile-menu">☰</div>
   </header>
 
-  <section class="hero"></section>
-
-  <section class="section">
-    <div class="category">
+  <div class="grid">
+    <div class="grid-item">
       <a href="clothes.html">
         <img src="https://imgur.com/aCJ29WT.jpg" alt="Clothes">
-        <div class="category-title">Clothes</div>
+        <div class="label">Clothes</div>
       </a>
     </div>
-    <div class="category">
+    <div class="grid-item">
       <a href="shoes.html">
         <img src="https://imgur.com/b5tYse1.jpg" alt="Shoes">
-        <div class="category-title">Shoes</div>
+        <div class="label">Shoes</div>
       </a>
     </div>
-    <div class="category">
+    <div class="grid-item">
       <a href="slippers-sandals.html">
         <img src="https://imgur.com/DaEVj7L.jpg" alt="Slippers & Sandals">
-        <div class="category-title">Slippers & Sandals</div>
+        <div class="label">Slippers & Sandals</div>
       </a>
     </div>
-    <div class="category">
+    <div class="grid-item">
       <a href="accessories.html">
         <img src="https://imgur.com/dCYK4aA.jpg" alt="Accessories">
-        <div class="category-title">Accessories</div>
+        <div class="label">Accessories</div>
       </a>
     </div>
-  </section>
+  </div>
 
   <footer>
     <p>&copy; 2025 SB CLASSIC – Style with Class. All rights reserved.</p>
