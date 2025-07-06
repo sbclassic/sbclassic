@@ -59,45 +59,6 @@
         })">Add to Cart</button>
       </div>
 
-      <main>
-    <h2>Slippers & Sandals</h2>
-    <div class="products">
-      <div class="product">
-        <img src="https://i.imgur.com/TJ2oq1t.jpg" alt="Classic Designer Slides" id="classic-designer-slides-image">
-        <h3>Classic Designer Slides</h3>
-        <p class="price">₵1,190</p>
-        <label>Color:
-          <select onchange="document.getElementById('classic-designer-slides-image').src=this.value">
-            <option value="https://i.imgur.com/TJ2oq1t.jpg">White</option>
-            <option value="https://i.imgur.com/BYkWBWb.jpg">Black</option>
-            <option value="https://i.imgur.com/L9gdNFr.jpg">Black1</option>
-            <option value="https://i.imgur.com/GTPVdZw.jpg">White2</option>
-            <option value="https://i.imgur.com/UZ9W9LO.jpg">Black2</option>
-            <option value="https://i.imgur.com/4gAnMRT.jpg">White4</option>
-            <option value="https://i.imgur.com/uclLcrX.jpg">Black5</option>
-            <option value="https://i.imgur.com/0URMoox.jpg">White5</option>
-            <option value="https://i.imgur.com/7TgQIVW.jpg">Black6</option>
-            <option value="https://i.imgur.com/obJs1zs.jpg">Mixed</option>
-          </select>
-        </label><br>
-        <label>Size:
-          <select id="classic-designer-slides-size">
-            <option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option>
-          </select>
-        </label><br>
-        <label>Qty:
-          <input type="number" id="classic-designer-slides-qty" value="1" min="1" />
-        </label><br>
-        <button onclick="addToCart({
-          name: 'Classic Designer Slides', 
-          price: 1190,
-          image: document.getElementById('classic-designer-slides-image').src,
-          size: document.getElementById('classic-designer-slides-size').value,
-          color: 'Selected',
-          quantity: parseInt(document.getElementById('classic-designer-slides-qty').value)
-        })">Add to Cart</button>
-      </div>
-
       <div class="product">
         <img src="https://i.imgur.com/5mqoRws.jpg" alt="Elegant Men’s Slippers/Sandals" id="elegant-mens-slipperssandals-image">
         <h3>Elegant Men’s Slippers/Sandals</h3>
