@@ -1,142 +1,185 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SB CLASSIC – Style with Class</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Poppins', sans-serif;
-      background: #ffffff;
-      color: #222;
+      background-color: #fff;
+      color: #111;
     }
+
     header {
-      background: #fff;
-      padding: 20px;
-      border-bottom: 1px solid #eee;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-left: 5%;
-      padding-right: 5%;
+      padding: 20px 40px;
+      border-bottom: 1px solid #eee;
     }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
+
+    .logo img {
+      height: 50px;
     }
+
     nav a {
-      margin-left: 20px;
+      margin: 0 15px;
       text-decoration: none;
-      color: #000;
+      color: #111;
       font-weight: 500;
+      font-size: 14px;
+      transition: color 0.3s;
     }
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 10px;
-      padding: 20px 5%;
+
+    nav a:hover {
+      color: #777;
     }
+
+    .hero {
+      background: url('images/hero-sbclassic.png') no-repeat center center/cover;
+      height: 90vh;
+      width: 100%;
+    }
+
+    .section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding: 60px 0;
+    }
+
     .category {
       position: relative;
+      width: 100%;
       overflow: hidden;
     }
+
     .category img {
       width: 100%;
-      height: 100%;
+      height: 65vh;
       object-fit: cover;
+      object-position: center top;
       display: block;
+      transition: transform 0.3s ease;
     }
-    .category a {
+
+    .category:hover img {
+      transform: scale(1.01);
+    }
+
+    .category-title {
       position: absolute;
-      bottom: 10px;
-      left: 10px;
-      background: rgba(0, 0, 0, 0.7);
-      color: #fff;
-      padding: 8px 15px;
-      font-size: 1rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.4);
+      color: white;
+      font-size: 26px;
       font-weight: 600;
-      text-decoration: none;
-      border-radius: 4px;
+      padding: 12px 24px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
+
     footer {
-      background-color: #f8f8f8;
-      padding: 20px 5%;
       text-align: center;
-      font-size: 0.9rem;
-      margin-top: 40px;
+      padding: 40px 20px;
+      font-size: 14px;
+      color: #555;
+      border-top: 1px solid #ddd;
     }
-    .social-links a {
-      margin: 0 5px;
-      text-decoration: none;
-      color: #222;
+
+    .mobile-menu {
+      display: none;
     }
-    .policy-links a {
-      margin: 0 5px;
-      text-decoration: none;
-      color: #222;
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: block;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .category img {
+        height: 50vh;
+      }
+
+      .category-title {
+        font-size: 18px;
+        padding: 8px 16px;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">SB CLASSIC</div>
+    <div class="logo">
+      <img src="logo.png" alt="SB CLASSIC">
+    </div>
     <nav>
-      <a href="clothes.html">Clothes</a>
-      <a href="shoes.html">Shoes</a>
-      <a href="slippers-sandals.html">Slippers</a>
-      <a href="accessories.html">Accessories</a>
-      <a href="cart.html">Cart 🛒</a>
+      <a href="clothes.html">CLOTHES</a>
+      <a href="shoes.html">SHOES</a>
+      <a href="slippers-sandals.html">SLIPPERS & SANDALS</a>
+      <a href="accessories.html">ACCESSORIES</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
     </nav>
+    <div class="mobile-menu">☰</div>
   </header>
 
-  <main>
-    <div class="categories">
-      <div class="category">
-        <img src="https://i.imgur.com/fMdcyxG.jpg" alt="Clothes">
-        <a href="clothes.html">CLOTHES</a>
-      </div>
-      <div class="category">
-        <img src="https://i.imgur.com/Nm9WoRh.jpg" alt="Shoes">
-        <a href="shoes.html">SHOES</a>
-      </div>
-      <div class="category">
-        <img src="https://i.imgur.com/UsVgfKp.jpg" alt="Slippers">
-        <a href="slippers-sandals.html">SLIPPERS</a>
-      </div>
-      <div class="category">
-        <img src="https://i.imgur.com/Eb2p1bG.jpg" alt="Accessories">
-        <a href="accessories.html">ACCESSORIES</a>
-      </div>
-    </div>
-  </main>
+  <section class="hero"></section>
 
-  <div class="policy-links">
-    <p>
-      <a href="refund.html">Refund Policy</a> |
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="faqs.html">FAQs</a> |
-      <a href="shipping.html">Shipping Policy</a> |
-      <a href="terms.html">Terms and Conditions</a>
-    </p>
-  </div>
+  <section class="section">
+    <div class="category">
+      <a href="clothes.html">
+        <img src="https://imgur.com/aCJ29WT.jpg" alt="Clothes">
+        <div class="category-title">Clothes</div>
+      </a>
+    </div>
+    <div class="category">
+      <a href="shoes.html">
+        <img src="https://imgur.com/b5tYse1.jpg" alt="Shoes">
+        <div class="category-title">Shoes</div>
+      </a>
+    </div>
+    <div class="category">
+      <a href="slippers-sandals.html">
+        <img src="https://imgur.com/DaEVj7L.jpg" alt="Slippers & Sandals">
+        <div class="category-title">Slippers & Sandals</div>
+      </a>
+    </div>
+    <div class="category">
+      <a href="accessories.html">
+        <img src="https://imgur.com/dCYK4aA.jpg" alt="Accessories">
+        <div class="category-title">Accessories</div>
+      </a>
+    </div>
+  </section>
 
   <footer>
-    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
-    <p class="social-links">
-      FOLLOW US ON:
-      <a href="https://instagram.com/sb_classic_">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_">Facebook</a> |
-      <a href="https://t.me/sbclassics">Telegram</a> |
-      <a href="https://wa.me/233260928990">WhatsApp</a> |
-      <a href="https://www.tiktok.com/@sb.classic">TikTok</a>
-    </p>
-    <p>© 2025 SB CLASSIC. All rights reserved.</p>
+    <p>&copy; 2025 SB CLASSIC – Style with Class. All rights reserved.</p>
   </footer>
 </body>
 </html>
