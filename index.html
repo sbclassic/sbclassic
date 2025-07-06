@@ -61,25 +61,32 @@
     .category {
       position: relative;
       width: 100%;
+      overflow: hidden;
     }
 
     .category img {
       width: 100%;
-      height: auto;
+      height: 60vh;
+      object-fit: cover;
       display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .category:hover img {
+      transform: scale(1.02);
     }
 
     .category-title {
       position: absolute;
-      bottom: 20px;
-      left: 30px;
+      bottom: 30px;
+      left: 40px;
       color: white;
-      font-size: 28px;
+      font-size: 24px;
       font-weight: bold;
       background: rgba(0, 0, 0, 0.3);
       padding: 10px 20px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
     }
 
     footer {
@@ -108,6 +115,17 @@
       header {
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      .category img {
+        height: 45vh;
+      }
+
+      .category-title {
+        font-size: 18px;
+        left: 20px;
+        bottom: 20px;
+        padding: 6px 12px;
       }
     }
   </style>
