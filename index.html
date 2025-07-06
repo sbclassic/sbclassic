@@ -4,76 +4,82 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SB CLASSIC – Style with Class</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
     body {
       font-family: 'Poppins', sans-serif;
-      background: #fff;
-      color: #111;
+      background: #ffffff;
+      color: #222;
     }
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 10;
-      background: white;
+      background: #fff;
       padding: 20px;
+      border-bottom: 1px solid #eee;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #eee;
+      padding-left: 5%;
+      padding-right: 5%;
     }
     .logo {
       font-size: 1.5rem;
-      font-weight: 600;
-      color: #000;
+      font-weight: 700;
     }
     nav a {
       margin-left: 20px;
       text-decoration: none;
       color: #000;
       font-weight: 500;
-      font-size: 0.9rem;
     }
-    .grid {
+    .categories {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      margin-top: 100px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      padding: 20px 5%;
     }
-    .panel {
-      height: 90vh;
-      overflow: hidden;
+    .category {
       position: relative;
-      cursor: pointer;
+      overflow: hidden;
     }
-    .panel img {
+    .category img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease;
+      display: block;
     }
-    .panel:hover img {
-      transform: scale(1.05);
-    }
-    .panel-title {
+    .category a {
       position: absolute;
-      bottom: 30px;
-      left: 20px;
-      color: white;
-      font-size: 1.4rem;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 8px 15px;
+      font-size: 1rem;
       font-weight: 600;
-      text-shadow: 1px 1px 2px #000;
+      text-decoration: none;
+      border-radius: 4px;
     }
-    @media (max-width: 768px) {
-      .panel-title {
-        font-size: 1.1rem;
-      }
+    footer {
+      background-color: #f8f8f8;
+      padding: 20px 5%;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+    .social-links a {
+      margin: 0 5px;
+      text-decoration: none;
+      color: #222;
+    }
+    .policy-links a {
+      margin: 0 5px;
+      text-decoration: none;
+      color: #222;
     }
   </style>
 </head>
@@ -89,23 +95,48 @@
     </nav>
   </header>
 
-  <div class="grid">
-    <div class="panel" onclick="location.href='clothes.html'">
-      <img src="https://imgur.com/3Q1yArY.jpg" alt="Clothes">
-      <div class="panel-title">CLOTHES</div>
+  <main>
+    <div class="categories">
+      <div class="category">
+        <img src="https://i.imgur.com/fMdcyxG.jpg" alt="Clothes">
+        <a href="clothes.html">CLOTHES</a>
+      </div>
+      <div class="category">
+        <img src="https://i.imgur.com/Nm9WoRh.jpg" alt="Shoes">
+        <a href="shoes.html">SHOES</a>
+      </div>
+      <div class="category">
+        <img src="https://i.imgur.com/UsVgfKp.jpg" alt="Slippers">
+        <a href="slippers-sandals.html">SLIPPERS</a>
+      </div>
+      <div class="category">
+        <img src="https://i.imgur.com/Eb2p1bG.jpg" alt="Accessories">
+        <a href="accessories.html">ACCESSORIES</a>
+      </div>
     </div>
-    <div class="panel" onclick="location.href='shoes.html'">
-      <img src="https://imgur.com/Yk8Tx4Z.jpg" alt="Shoes">
-      <div class="panel-title">SHOES</div>
-    </div>
-    <div class="panel" onclick="location.href='slippers-sandals.html'">
-      <img src="https://imgur.com/5mqoRws.jpg" alt="Slippers">
-      <div class="panel-title">SLIPPERS</div>
-    </div>
-    <div class="panel" onclick="location.href='accessories.html'">
-      <img src="https://imgur.com/JwCanF8.jpg" alt="Accessories">
-      <div class="panel-title">ACCESSORIES</div>
-    </div>
+  </main>
+
+  <div class="policy-links">
+    <p>
+      <a href="refund.html">Refund Policy</a> |
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="faqs.html">FAQs</a> |
+      <a href="shipping.html">Shipping Policy</a> |
+      <a href="terms.html">Terms and Conditions</a>
+    </p>
   </div>
+
+  <footer>
+    <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
+    <p class="social-links">
+      FOLLOW US ON:
+      <a href="https://instagram.com/sb_classic_">Instagram</a> |
+      <a href="https://facebook.com/sb.classic_">Facebook</a> |
+      <a href="https://t.me/sbclassics">Telegram</a> |
+      <a href="https://wa.me/233260928990">WhatsApp</a> |
+      <a href="https://www.tiktok.com/@sb.classic">TikTok</a>
+    </p>
+    <p>© 2025 SB CLASSIC. All rights reserved.</p>
+  </footer>
 </body>
 </html>
