@@ -3,868 +3,162 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google-site-verification" content="IntNXfwm0Na4tSh1yQgEZNTsFyOCXDr2RteBHllka4k" />
   <title>SB CLASSIC – Style with Class</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <!-- Chatway Live Chat Widget -->
-  <script id="chatway" async src="https://cdn.chatway.app/widget.js?id=8HtUqztxVRRq"></script>
 
   <style>
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
     body {
-      margin: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: #ffffff;
-      color: #333;
-      font-size: 15px;
+      background-color: #fff;
+      color: #111;
     }
 
     header {
-      background-color: #191970;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      padding: 20px 40px;
+      border-bottom: 1px solid #eee;
     }
 
     .logo img {
-      height: 80px;
-      width: auto;
-    }
-
-    .nav-container {
-      flex: 1;
-      text-align: center;
-    }
-
-    .nav-title {
-      font-weight: 700;
-      font-size: 24px;
-      color: #f8f8ff;
-      font-family: 'Poppins', sans-serif;
-      margin-bottom: 6px;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
+      height: 50px;
     }
 
     nav a {
-      font-size: 14px;
-      color: #f8f8ff;
+      margin: 0 15px;
       text-decoration: none;
-      font-weight: 600;
+      color: #111;
+      font-weight: 500;
+      font-size: 14px;
       transition: color 0.3s;
     }
 
+    nav a:hover {
+      color: #777;
+    }
+
     .hero {
-      background-image: url('images/hero-sbclassic.png');
-      background-size: cover;
-      background-position: center;
-      height: 40vh;
-      min-height: 250px;
-      max-width: 1200px;
-      margin: auto;
+      background: url('images/hero-sbclassic.png') no-repeat center center/cover;
+      height: 90vh;
+      width: 100%;
     }
 
     .section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
-    .section h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 28px;
+    .category {
+      position: relative;
+      width: 100%;
     }
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-
-     .product {
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 16px;
-      text-align: center;
-      font-size: 14px;
-    }
-
-    .product img {
+    .category img {
       width: 100%;
       height: auto;
+      display: block;
     }
 
-    .quantity-input {
-      width: 60px;
-      padding: 4px;
-      margin-top: 4px;
-    }
-
-    .btn {
-      margin-top: 10px;
-      padding: 8px 12px;
-      font-size: 13px;
-      background-color: #191970;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .cart-buttons {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .cart-buttons a {
-      text-decoration: none;
-      margin: 0 10px;
-      padding: 10px 16px;
-      background-color: #2c2c2c;
+    .category-title {
+      position: absolute;
+      bottom: 20px;
+      left: 30px;
       color: white;
-      border-radius: 4px;
+      font-size: 28px;
       font-weight: bold;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     footer {
-      background-color: #fafafa;
-      color: #444;
-      padding: 40px 20px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 14px;
-      line-height: 1.7;
-      border-top: 1px solid #e2e2e2;
       text-align: center;
-    }
-
-    footer h2 {
-      font-size: 20px;
-      margin-bottom: 12px;
-      color: #191970;
-      font-weight: 600;
-    }
-
-    footer ul {
-      padding-left: 20px;
-      list-style-type: disc;
-      text-align: left;
-      max-width: 600px;
-      margin: 0 auto 20px;
+      padding: 40px 20px;
+      font-size: 14px;
       color: #555;
+      border-top: 1px solid #ddd;
     }
 
-    footer p {
-      margin-bottom: 10px;
-      color: #555;
-    }
-
-    footer p strong {
-      color: #000;
-      font-weight: 700;
-    }
-
-    footer .highlight {
-      color: #191970;
-      font-weight: 700;
-    }
-
-    footer .social-links {
-      margin-top: 10px;
-    }
-
-    footer .social-links a {
-      color: #191970;
-      font-weight: 700;
-      margin: 0 5px;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    footer .social-links a:hover {
-      color: #000;
-    }
-
-    .whatsapp-chat {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 999;
-    }
-
-    .whatsapp-chat img {
-      width: 60px;
-      height: 60px;
-      cursor: pointer;
+    .mobile-menu {
+      display: none;
     }
 
     @media (max-width: 768px) {
       nav {
-        justify-content: center;
+        display: none;
       }
 
-      .logo img {
-        height: 40px;
-      }
-
-      .section h2 {
+      .mobile-menu {
+        display: block;
         font-size: 20px;
+        cursor: pointer;
       }
-    }
 
-    @media (min-width: 1600px) {
-      .section, .hero, header {
-        max-width: 90%;
+      header {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
 <body>
-  
-  <!-- HEADER -->
   <header>
-  <div class="logo">
-    <img src="logo.png" alt="SB CLASSIC Logo" style="height: 100px; auto;">
-  </div>
-  <div class="nav-container">
-    <div class="nav-title">SB CLASSIC</div>
-   <nav>
-     <a href="index.html">HOME</a>
-     <a href="clothes.html">CLOTHES</a>
-     <a href="shoes.html">SHOES</a>
-     <a href="slippers-sandals.html">SLIPPERS & SANDALS</a>
-     <a href="accessories.html">ACCESSORIES</a>
-     <a href="about.html">ABOUT</a>
-     <a href="contact.html">CONTACT</a>
-     <a href="cart.html">🛒 CART</a>
-   </nav>
-  </div>
-</header>
+    <div class="logo">
+      <img src="logo.png" alt="SB CLASSIC">
+    </div>
+    <nav>
+      <a href="clothes.html">CLOTHES</a>
+      <a href="shoes.html">SHOES</a>
+      <a href="slippers-sandals.html">SLIPPERS & SANDALS</a>
+      <a href="accessories.html">ACCESSORIES</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+    <div class="mobile-menu">☰</div>
+  </header>
 
-<!-- Promo Banner -->
-<div id="promo-banner" style="
-  background-color: #191970; 
-  color: white; 
-  text-align: center; 
-  padding: 12px; 
-  font-weight: bold;
-  font-size: 1.2rem;
-  ">
-  🎉 Get 10% OFF site-wide! Use code <span style="text-decoration: underline;">SB10</span> at checkout.
-</div>
-
-  <!-- HERO IMAGE ONLY -->
   <section class="hero"></section>
 
-      <!-- Product Cards -->
-      
-<div class="product" 
-     data-id="denim-jacket" 
-     data-name="Casual - Fashionable - Denim - Jacket" 
-     data-price="1140.00" 
-     data-image="clothes/casual_fashionable_denim_jacket_camel.JPG">
-     
-  <img src="clothes/casual_fashionable_denim_jacket_camel.JPG" alt="Casual Fashionable Denim Jacket" />
-  <h3>Casual - Fashionable - Denim - Jacket</h3>
-  <p class="price">GHS 1,140</p>
-
-  <label>Size:</label>
-  <select class="size-select">
-    <option value="S">S</option>
-    <option value="M">M</option>
-    <option value="L">L</option>
-    <option value="XL">XL</option>
-    <option value="XXL">XXL</option>
-    <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option>
-    <option value="XXXXXL">XXXXXL</option>
-    <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<!-- 1. Elegant 2pcs Set – Apricot (Clothes) -->
-<div class="product" data-id="1" data-name="Elegant 2pcs Set – Apricot" data-price="1890" data-image="clothes/elegant_2pcs_set_apricot.jpeg" data-type="clothes">
-  <img src="clothes/elegant_2pcs_set_apricot.jpeg" alt="Elegant 2pcs Set – Apricot" />
-  <div>Elegant 2pcs Set – Apricot</div>
-  <p>GHS 1,890</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <option value="S">S</option>
-    <option value="M">M</option>
-    <option value="L">L</option>
-    <option value="XL">XL</option>
-    <option value="XXL">XXL</option>
-    <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option>
-    <option value="XXXXXL">XXXXXL</option>
-    <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<!-- 2. Luxury Leather Jacket Brown (Clothes) -->
-<div class="product" data-id="2" data-name="Luxury Leather Jacket Brown" data-price="1299" data-image="clothes/luxury_leather_jacket_brown.jpeg" data-type="clothes">
-  <img src="clothes/luxury_leather_jacket_brown.jpeg" alt="Luxury Leather Jacket Brown" />
-  <h3>Luxury - Leather - Jacket - Brown</h3>
-  <p>GHS 1,190</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Same size options as above -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<!-- 3. Luxury Jacket Coffee (Clothes) -->
-<div class="product" data-id="3" data-name="Luxury Jacket Coffee" data-price="1299" data-image="clothes/luxury_jacket_coffee.jpeg" data-type="clothes">
-  <img src="clothes/luxury_jacket_coffee.jpeg" alt="Luxury Jacket Coffee" />
-  <h3>Luxury - Jacket - Coffee</h3>
-  <p>GHS 1,190</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<!-- 4. Fashion Elegant 3pcs Suit Set Brown1 (Clothes) -->
-<div class="product" data-id="4" data-name="Fashion Elegant 3pcs Suit Set Brown1" data-price="2480" data-image="clothes/fashion_elegant_3pcs_set_suit_brown1.jpeg" data-type="clothes">
-  <img src="clothes/fashion_elegant_3pcs_set_suit_brown1.jpeg" alt="Fashion Elegant 3pcs Suit Set Brown1" />
-  <h3>Fashion - Elegant - 3pcs - Suit - Set - Brown1</h3>
-  <p>GHS 2,290</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<!-- 5. Fashion Sweater Mixed (Clothes) -->
-<div class="product" data-id="5" data-name="Fashion Sweater Mixed" data-price="899" data-image="clothes/fashion_sweater_mixed.jpeg" data-type="clothes">
-  <img src="clothes/fashion_sweater_mixed.jpeg" alt="Fashion Sweater Mixed" />
-  <h3>Fashion - Sweater - Mixed</h3>
-  <p>GHS 849</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<!-- 6. Luxury Prada Half Shoe Black (Shoes) -->
-<div class="product" data-id="6" data-name="Luxury Prada Half Shoe Black" data-price="1790" data-image="shoes/luxury_prada_halfshoe_black.jpeg" data-type="shoes">
-  <img src="shoes/luxury_prada_halfshoe_black.jpeg" alt="Luxury Prada Half - Shoe - Black" />
-  <h3>Luxury Prada Half - Shoe - Black</h3>
-  <p>GHS 1,699</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Shoe sizes -->
-    <option value="38">38</option> <option value="39">39</option> <option value="40">40</option>
-    <option value="41">41</option> <option value="42">42</option> <option value="43">43</option>
-    <option value="44">44</option> <option value="45">45</option> <option value="46">46</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<!-- 7. Luxury Jeans SeaBlue (Clothes) -->
-<div class="product" data-id="7" data-name="Luxury Jeans SeaBlue" data-price="999" data-image="clothes/luxury_jeans_seablue.jpeg" data-type="clothes">
-  <img src="clothes/luxury_jeans_seablue.jpeg" alt="Luxury Jeans SeaBlue" />
-  <h3>Luxury - Jeans - SeaBlue</h3>
-  <p>GHS 930</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<!-- 8. Dior Boot Khaki (Shoes) -->
-<div class="product" data-id="8" data-name="Dior Boot Khaki" data-price="1970" data-image="shoes/dior_boot_khaki.jpeg" data-type="shoes">
-  <img src="shoes/dior_boot_khaki.jpeg" alt="Dior Boot - Khaki" />
-  <h3>Dior Boot - Khaki</h3>
-  <p>GHS 1,940</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Shoe sizes -->
-    <option value="38">38</option> <option value="39">39</option> <option value="40">40</option>
-    <option value="41">41</option> <option value="42">42</option> <option value="43">43</option>
-    <option value="44">44</option> <option value="45">45</option> <option value="46">46</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<!-- 9. Versace Sneaker – Black (Shoes) -->
-<div class="product" data-id="9" data-name="Versace Sneaker – Black" data-price="1899" data-image="shoes/versace_sneaker_black.jpeg" data-type="shoes">
-  <img src="shoes/versace_sneaker_black.jpeg" alt="Versace Sneaker Black" />
-  <h3>Versace Sneaker – Black</h3>
-  <p>GHS 1,790</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Shoe sizes -->
-    <option value="38">38</option> <option value="39">39</option> <option value="40">40</option>
-    <option value="41">41</option> <option value="42">42</option> <option value="43">43</option>
-    <option value="44">44</option> <option value="45">45</option> <option value="46">46</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<!-- 10. Luxury Louis Vuitton Dress Shoe - Black (Shoes) -->
-<div class="product" data-id="10" data-name="Luxury Louis Vuitton Dress Shoe - Black" data-price="1990" data-image="shoes/luxury_louis_vuitton_dress_shoe_black.jpeg" data-type="shoes">
-  <img src="shoes/luxury_louis_vuitton_dress_shoe_black.jpeg" alt="Luxury Louis Vuitton Dress Shoe - Black" />
-  <h3>Luxury Louis Vuitton Dress Shoe - Black</h3>
-  <p>GHS 1,899</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Shoe sizes -->
-    <option value="38">38</option> <option value="39">39</option> <option value="40">40</option>
-    <option value="41">41</option> <option value="42">42</option> <option value="43">43</option>
-    <option value="44">44</option> <option value="45">45</option> <option value="46">46</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<div class="product">
-  <img src="clothes/classy_fashion_polo_black.jpg" alt="Classy Fashion Polo Black" />
-  <h3>Classy - Fashion - Polo - Black</h3>
-  <p class="price">GHS 740</p>
-  <label for="size-classy-fashion-polo-black">Size:</label>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<div class="product">
-  <img src="clothes/classy_fashion_polo_white.jpg" alt="Classy Fashion Polo White" />
-  <h3>Classy - Fashion - Polo - White</h3>
-  <p class="price">GHS 740</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<div class="product">
-  <img src="clothes/classy_fashion_polo_orange.jpg" alt="Classy Fashion Polo Orange" />
-  <h3>Classy - Fashion - Polo - Orange</h3>
-  <p class="price">GHS 740</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<div class="product">
-  <img src="clothes/classy_knitted_sweatjacket_army_green.JPG" alt="Classy Knitted SweatJacket Army Green" />
-  <h3>Classy - Knitted - SweatJacket - Army Green</h3>
-  <p class="price">GHS 899</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<div class="product">
-  <img src="clothes/classy_knitted_sweatjacket_khaki.JPG" alt="Classy Knitted SweatJacket Khaki" />
-  <h3>Classy - Knitted - SweatJacket - Khaki</h3>
-  <p class="price">GHS 899</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<div class="product">
-  <img src="clothes/classy_slimfit_tshirt_apricot.JPG" alt="Classy Slim Fit T-Shirt Apricot" />
-  <h3>Classy - Slim Fit - T-Shirt - Apricot</h3>
-  <p class="price">GHS 780</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-  <button onclick="addToCart({ id: 'classy-slimfit-tshirt-apricot', name: 'Classy - Slim Fit - T-Shirt - Apricot', price: 780, image: 'clothes/classy_slimfit_tshirt_apricot.JPG', quantity: 1, size: document.getElementById('size-classy-slimfit-tshirt-apricot').value })">Add to Cart</button>
-</div>
-
-<div class="product">
-  <img src="clothes/classy_slimfit_tshirt_black.JPG" alt="Classy Slim Fit T-Shirt Black" />
-  <h3>Classy - Slim Fit - T-Shirt - Black</h3>
-  <p class="price">GHS 780</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<div class="product">
-  <img src="clothes/classy_slimfit_tshirt_black1.JPG" alt="Classy Slim Fit T-Shirt Black1" />
-  <h3>Classy - Slim Fit - T-Shirt - Black1</h3>
-  <p class="price">GHS 780</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<div class="product">
-  <img src="clothes/classy_slimfit_tshirt_black3.JPG" alt="Classy Slim Fit T-Shirt Black3" />
-  <h3>Classy - Slim Fit - T-Shirt - Black3</h3>
-  <p class="price">GHS 780</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<div class="product">
-  <img src="clothes/classy_slimfit_tshirt_black4.JPG" alt="Classy Slim Fit T-Shirt Black4" />
-  <h3>Classy - Slim Fit - T-Shirt - Black4</h3>
-  <p class="price">GHS 780</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<div class="product">
-  <img src="clothes/classy_slimfit_tshirt_blue.JPG" alt="Classy Slim Fit T-Shirt Blue" />
-  <h3>Classy - Slim Fit - T-Shirt - Blue</h3>
-  <p class="price">GHS 780</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<div class="product">
-  <img src="clothes/classy_slimfit_tshirt_caramel.JPG" alt="Classy Slim Fit T-Shirt Caramel" />
-  <h3>Classy - Slim Fit - T-Shirt - Caramel</h3>
-  <p class="price">GHS 780</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<div class="product">
-  <img src="clothes/classy_slimfit_tshirt_orange.JPG" alt="Classy Slim Fit T-Shirt Orange" />
-  <h3>Classy - Slim Fit - T-Shirt - Orange</h3>
-  <p class="price">GHS 780</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<div class="product">
-  <img src="clothes/classy_slimfit_tshirt_orange2.JPG" alt="Classy Slim Fit T-Shirt Orange2" />
-  <h3>Classy - Slim Fit - T-Shirt - Orange2</h3>
-  <p class="price">GHS 780</p>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-
-<div class="product">
-  <img src="clothes/classy_slimfit_tshirt_sea_blue.JPG" alt="Classy Slim Fit T-Shirt Sea Blie" />
-  <h3>Classy - Slim Fit - T-Shirt - Sea Blie</h3>
-  <label>Size:</label>
-  <select class="size-select">
-    <!-- Sizes -->
-    <option value="S">S</option> <option value="M">M</option> <option value="L">L</option>
-    <option value="XL">XL</option> <option value="XXL">XXL</option> <option value="XXXL">XXXL</option>
-    <option value="XXXXL">XXXXL</option> <option value="XXXXXL">XXXXXL</option> <option value="XXXXXXXL">XXXXXXXL</option>
-  </select>
-  <label>Quantity:</label>
-  <input type="number" class="quantity-input" min="1" value="1" />
-  <button class="btn add-to-cart-btn">Add to Cart</button>
-</div>
-        
-    <div class="cart-buttons">
-      <a href="cart.html" id="view-cart-btn" style="display:none;">View Cart</a>
-      <a href="checkout.html" id="checkout-btn" style="display:none;">Checkout</a>
+  <section class="section">
+    <div class="category">
+      <a href="clothes.html">
+        <img src="https://imgur.com/aCJ29WT.jpg" alt="Clothes">
+        <div class="category-title">Clothes</div>
+      </a>
+    </div>
+    <div class="category">
+      <a href="shoes.html">
+        <img src="https://imgur.com/rPi1EgF.jpg" alt="Shoes">
+        <div class="category-title">Shoes</div>
+      </a>
+    </div>
+    <div class="category">
+      <a href="slippers-sandals.html">
+        <img src="https://imgur.com/7dcGfp3.jpg" alt="Slippers & Sandals">
+        <div class="category-title">Slippers & Sandals</div>
+      </a>
+    </div>
+    <div class="category">
+      <a href="accessories.html">
+        <img src="https://imgur.com/dCYK4aA.jpg" alt="Accessories">
+        <div class="category-title">Accessories</div>
+      </a>
     </div>
   </section>
 
-  <!-- Policies Section -->
-<div class="policy-links" style="text-align: center; padding: 30px 0; background-color: #f8f8f8;">
-  <h3 style="margin-bottom: 15px;">Our Policies</h3>
-  <p>
-    <a href="refund.html">Refund Policy</a> |
-    <a href="privacy.html">Privacy Policy</a> |
-    <a href="faqs.html">FAQs</a> |
-    <a href="shipping.html">Shipping Policy</a> |
-    <a href="terms.html">Terms and Conditions</a>
-  </p>
-</div>
-
-<!-- Main Footer -->
-<footer>
-  <div class="container">
-    <h2>About SB CLASSIC</h2>
-    <p>Welcome to SB CLASSIC — your destination for timeless style and sophistication.</p>
-    <p>SB CLASSIC is a Ghana-based men’s fashion brand committed to helping you look sharp, feel confident, and stand out — effortlessly.</p>
-    <p>We specialize in premium suits, shirts, shoes, and accessories, carefully sourced from trusted international suppliers and tailored for the modern gentleman.</p>
-
-    <p>🌍 WHAT WE OFFER:</p>
-    <ul>
-      <li>High-quality, ready-to-wear men’s fashion</li>
-      <li>Local & nationwide delivery across Ghana</li>
-      <li>International shipping available</li>
-      <li>Easy and secure checkout</li>
-      <li>Friendly customer service & order tracking</li>
-    </ul>
-
-    <p>Our slogan: <strong>Style with Class</strong> — and we live by it.</p>
-
-    <p><strong>CONTACT:</strong> <span class="highlight">+233260928990</span> | <span class="highlight">sbclassics@icloud.com</span></p>
-
-    <p class="social-links">
-      <strong>FOLLOW US ON:</strong>
-      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
-      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
-      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
-    </p>
-
-    <hr />
-
-     <!-- Live Social Media Feeds -->
-     <div class="social-feeds">
-
-     <!-- SB CLASSIC Instagram Feed -->
-     <div class='sk-instagram-feed' data-embed-id='25562709'></div>
-     <script src='https://widgets.sociablekit.com/instagram-feed/widget.js' defer></script>
-
-      <!-- Facebook Feed -->
-      <div class="social-widget">
-        <div class="elfsight-app-a7ea45f0-29ff-46cf-9fee-5554fe6c1139" data-elfsight-app-lazy></div>
-      </div>
-
-      <!-- TikTok Feed -->
-      <div class="social-widget">
-        <div class="elfsight-app-86d33010-82e6-4762-baa7-2f00f98df3d4" data-elfsight-app-lazy></div>
-      </div>
-
-      <script id="pixel-chaty" async="true" src="https://cdn.chaty.app/pixel.js?id=Xx1mvajc"></script>
-
-    </div>
-
-    <p>© 2025 SB CLASSIC. All rights reserved.</p>
-  </div>
-</footer>
-
-<!-- Elfsight Platform Script -->
-<script src="https://static.elfsight.com/platform/platform.js" async></script>
-
-<script>
-  // Define addToCart function for direct onclick use
-  function addToCart(product) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    const existing = cart.find(item => item.id === product.id && item.size === product.size);
-    if (existing) {
-      existing.quantity += product.quantity;
-    } else {
-      cart.push(product);
-    }
-
-    localStorage.setItem('cart', JSON.stringify(cart));
-
-    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    localStorage.setItem('cartTotal', total.toFixed(2));
-
-    alert(`✅ ${product.quantity} x "${product.name}" (Size: ${product.size}) added to cart!`);
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // Fill in missing data-* attributes
-    document.querySelectorAll('.product').forEach((productDiv, index) => {
-      const name = productDiv.querySelector('h3')?.textContent.trim() || `Product ${index + 1}`;
-      const priceText = productDiv.querySelector('.price')?.textContent || '';
-      const cleanPrice = priceText.replace(/[^\d.]/g, '').replace(/,/g, '');
-      const price = parseFloat(cleanPrice) || 0;
-      const image = productDiv.querySelector('img')?.getAttribute('src') || '';
-
-      if (!productDiv.dataset.id) {
-        productDiv.dataset.id = name.toLowerCase().replace(/\s+/g, '-') + '-' + index;
-      }
-      if (!productDiv.dataset.name) {
-        productDiv.dataset.name = name;
-      }
-      if (!productDiv.dataset.price) {
-        productDiv.dataset.price = price.toFixed(2);
-      }
-      if (!productDiv.dataset.image) {
-        productDiv.dataset.image = image;
-      }
-    });
-
-    // Attach click events to buttons with .add-to-cart-btn class
-    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const productDiv = btn.closest('.product');
-        const quantityInput = productDiv.querySelector('.quantity-input');
-        const sizeSelect = productDiv.querySelector('.size-select');
-
-        let quantity = parseInt(quantityInput?.value);
-        if (isNaN(quantity) || quantity < 1) quantity = 1;
-
-        const selectedSize = sizeSelect ? sizeSelect.value : 'N/A';
-
-        const product = {
-          id: productDiv.dataset.id,
-          name: productDiv.dataset.name,
-          price: parseFloat(productDiv.dataset.price),
-          image: productDiv.dataset.image,
-          size: selectedSize,
-          quantity: quantity
-        };
-
-        addToCart(product); // ✅ Use the same function for consistency
-      });
-    });
-  });
-</script>
+  <footer>
+    <p>&copy; 2025 SB CLASSIC – Style with Class. All rights reserved.</p>
+  </footer>
+</body>
+</html>
