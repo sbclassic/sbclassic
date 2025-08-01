@@ -98,6 +98,27 @@
       margin-top: 40px;
     }
 
+    /* ✅ Floating Download Button */
+    .floating-download-button {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #00c853;
+      color: white;
+      padding: 14px 20px;
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0, 200, 83, 0.4);
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+
+    .floating-download-button:hover {
+      background-color: #00b248;
+    }
+
     @media (max-width: 768px) {
       .grid {
         grid-template-columns: 1fr;
@@ -193,7 +214,7 @@
     </div>
   </div>
 
-  <!-- ✅ Download Button -->
+  <!-- ✅ Centered Download Button Above Footer -->
   <div style="text-align: center; margin-top: 40px;">
     <a href="download.html"
        style="display: inline-block;
@@ -208,6 +229,9 @@
       📱 Download SB Classic App
     </a>
   </div>
+
+  <!-- ✅ Floating Download Button -->
+  <a href="download.html" class="floating-download-button">📱 Download App</a>
 
   <footer>
     <p>&copy; 2025 SB CLASSIC – Style with Class. All rights reserved.</p>
