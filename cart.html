@@ -13,7 +13,40 @@
       color: #333;
     }
 
-    h1 { margin-bottom: 20px; }
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .currency-box {
+      margin: 15px 0 20px;
+      padding: 15px;
+      background: #f7f7f7;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .currency-box label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    #display-currency {
+      width: 100%;
+      max-width: 320px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      background: #fff;
+    }
+
+    .exchange-note {
+      margin: 8px 0 0;
+      color: #666;
+      font-size: 12px;
+      line-height: 1.5;
+    }
 
     .cart-item {
       display: flex;
@@ -36,7 +69,19 @@
       font-size: 16px;
     }
 
-    .cart-item p { margin: 6px 0; }
+    .cart-item p {
+      margin: 6px 0;
+    }
+
+    .cart-item-details {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .item-converted-price {
+      color: #666;
+      font-size: 13px;
+    }
 
     button {
       margin: 5px 5px 5px 0;
@@ -50,6 +95,12 @@
       font-weight: bold;
     }
 
+    #converted-total {
+      margin-top: 8px;
+      font-size: 16px;
+      color: #444;
+    }
+
     #checkout-link {
       display: none;
       margin-top: 20px;
@@ -59,7 +110,6 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 5px;
-      display: inline-block;
     }
 
     #clear-cart-btn {
@@ -70,15 +120,38 @@
       border: none;
       border-radius: 5px;
     }
+
+    #cart-message {
+      margin-top: 12px;
+      color: #a00000;
+    }
   </style>
 </head>
 
 <body>
   <h1>Your Cart 🛒</h1>
 
+  <div class="currency-box">
+    <label for="display-currency">Choose display currency</label>
+
+    <select id="display-currency">
+      <option value="NGN">Nigerian Naira (NGN ₦)</option>
+      <option value="GHS">Ghanaian Cedi (GHS GH₵)</option>
+      <option value="USD">US Dollar (USD $)</option>
+      <option value="XOF">West African CFA Franc (XOF CFA)</option>
+    </select>
+
+    <p class="exchange-note">
+      Prices in other currencies are estimates for display only.
+      Your order total and payment amount remain in Nigerian naira.
+    </p>
+  </div>
+
   <div id="cart-items"></div>
 
   <div id="cart-total"></div>
+  <div id="converted-total"></div>
+  <div id="cart-message" role="status" aria-live="polite"></div>
 
   <button id="clear-cart-btn" onclick="clearCart()">
     🧹 Clear Cart
@@ -91,22 +164,86 @@
   </a>
 
   <script>
-    const NAIRA_PRICING_VERSION = "sbclassic-naira-v1";
+    const NAIRA_PRICING_VERSION = "sbclassic-naira-v2";
+
+    /*
+      Indicative display rates.
+      These are NOT the business's selling-price formula.
+      Update these rates when necessary.
+      NGN remains the actual cart and checkout currency.
+    */
+    const NGN_PER_UNIT = {
+      NGN: 1,
+      GHS: 114.15,
+      USD: 1330,
+      XOF: 2.26
+    };
+
+    const CURRENCY_INFO = {
+      NGN: {
+        symbol: "₦",
+        locale: "en-NG",
+        decimals: 0
+      },
+      GHS: {
+        symbol: "GH₵",
+        locale: "en-GH",
+        decimals: 2
+      },
+      USD: {
+        symbol: "$",
+        locale: "en-US",
+        decimals: 2
+      },
+      XOF: {
+        symbol: "CFA ",
+        locale: "fr-SN",
+        decimals: 0
+      }
+    };
 
     function getCart() {
-      return JSON.parse(localStorage.getItem("cart")) || [];
+      try {
+        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        return Array.isArray(cart) ? cart : [];
+      } catch (error) {
+        return [];
+      }
     }
 
     function saveCart(cart) {
       localStorage.setItem("cart", JSON.stringify(cart));
     }
 
-    /*
-      Your pricing rule:
-      NGN price = (old GHS price - 100) × 100
+    function getSelectedCurrency() {
+      const selector = document.getElementById("display-currency");
 
-      Existing cart prices are converted once.
-      The marker prevents converting them again.
+      return selector && CURRENCY_INFO[selector.value]
+        ? selector.value
+        : "NGN";
+    }
+
+    function formatMoney(amount, currency) {
+      const info = CURRENCY_INFO[currency] || CURRENCY_INFO.NGN;
+
+      return info.symbol + Number(amount).toLocaleString(info.locale, {
+        minimumFractionDigits: info.decimals,
+        maximumFractionDigits: info.decimals
+      });
+    }
+
+    function convertFromNaira(nairaAmount, currency) {
+      const rate = NGN_PER_UNIT[currency] || 1;
+      return Number(nairaAmount) / rate;
+    }
+
+    /*
+      Pricing rule for original Ghana cedi prices:
+      NGN = (original GHS price - 100) × 100
+
+      Prices explicitly marked NGN are never converted again.
+      Prices of 10,000 NGN or more without a currency marker
+      are treated as already-converted naira prices.
     */
     function convertCartPricesOnce() {
       const convertedVersion =
@@ -119,25 +256,36 @@
       const cart = getCart();
 
       cart.forEach(item => {
-        const oldPrice = Number(item.price);
+        const price = Number(
+          String(item.price ?? "").replace(/,/g, "")
+        );
 
-        if (Number.isFinite(oldPrice) && oldPrice > 100) {
-          item.price = Math.round((oldPrice - 100) * 100);
+        if (!Number.isFinite(price) || price <= 0) {
+          return;
+        }
+
+        if (item.priceCurrency === "NGN") {
+          return;
+        }
+
+        if (price >= 10000) {
+          item.price = price;
+          item.priceCurrency = "NGN";
+          return;
+        }
+
+        if (price > 100) {
+          item.price = Math.round((price - 100) * 100);
           item.priceCurrency = "NGN";
         }
       });
 
       saveCart(cart);
+
       localStorage.setItem(
         "sbclassicPricingVersion",
         NAIRA_PRICING_VERSION
       );
-    }
-
-    function formatNaira(amount) {
-      return "₦" + Number(amount).toLocaleString("en-NG", {
-        maximumFractionDigits: 0
-      });
     }
 
     function removeItem(productId) {
@@ -151,17 +299,20 @@
 
     function updateQuantity(productId, change) {
       const cart = getCart();
+
       const item = cart.find(
-        i => String(i.id) === String(productId)
+        entry => String(entry.id) === String(productId)
       );
 
-      if (item) {
-        item.quantity = Number(item.quantity || 1) + change;
+      if (!item) {
+        return;
+      }
 
-        if (item.quantity <= 0) {
-          removeItem(productId);
-          return;
-        }
+      item.quantity = Number(item.quantity || 1) + change;
+
+      if (item.quantity <= 0) {
+        removeItem(productId);
+        return;
       }
 
       saveCart(cart);
@@ -172,33 +323,50 @@
       localStorage.removeItem("cart");
       localStorage.removeItem("cartTotal");
       localStorage.removeItem("sbclassicPricingVersion");
+
+      const message = document.getElementById("cart-message");
+      message.textContent = "";
+
       renderCart();
     }
 
     function renderCart() {
       const cartItemsDiv = document.getElementById("cart-items");
       const cartTotalDiv = document.getElementById("cart-total");
+      const convertedTotalDiv = document.getElementById("converted-total");
       const checkoutLink = document.getElementById("checkout-link");
+      const message = document.getElementById("cart-message");
 
       const cart = getCart();
+      const currency = getSelectedCurrency();
+
       cartItemsDiv.innerHTML = "";
+      message.textContent = "";
+      convertedTotalDiv.textContent = "";
 
       if (cart.length === 0) {
         cartItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
         cartTotalDiv.textContent = "";
         checkoutLink.style.display = "none";
+
         localStorage.setItem("cartTotal", "0");
         return;
       }
 
-      let total = 0;
+      let totalNGN = 0;
 
       cart.forEach(item => {
-        const quantity = Number(item.quantity || 1);
-        const price = Number(item.price || 0);
-        const itemTotal = price * quantity;
+        const quantity = Math.max(1, Number(item.quantity || 1));
+        const priceNGN = Number(item.price || 0);
 
-        total += itemTotal;
+        if (!Number.isFinite(priceNGN) || priceNGN <= 0) {
+          message.textContent =
+            "One or more products have an invalid price. Please remove the affected item and add it again.";
+          return;
+        }
+
+        const itemTotalNGN = priceNGN * quantity;
+        totalNGN += itemTotalNGN;
 
         const itemDiv = document.createElement("div");
         itemDiv.className = "cart-item";
@@ -208,6 +376,7 @@
         img.alt = item.name || "SB CLASSIC product";
 
         const details = document.createElement("div");
+        details.className = "cart-item-details";
 
         const name = document.createElement("h3");
         name.textContent = item.name || "Product";
@@ -217,37 +386,96 @@
 
         const priceLine = document.createElement("p");
         priceLine.textContent =
-          formatNaira(price) + " × " + quantity +
-          " = " + formatNaira(itemTotal);
+          formatMoney(priceNGN, currency) +
+          " × " + quantity +
+          " = " + formatMoney(itemTotalNGN, currency);
+
+        details.append(name, size, priceLine);
+
+        if (currency !== "NGN") {
+          const originalCurrencyLine = document.createElement("p");
+          originalCurrencyLine.className = "item-converted-price";
+          originalCurrencyLine.textContent =
+            "Naira price: " + formatMoney(priceNGN, "NGN");
+
+          details.appendChild(originalCurrencyLine);
+        }
 
         const buttons = document.createElement("div");
 
         const minus = document.createElement("button");
+        minus.type = "button";
         minus.textContent = "➖";
+        minus.setAttribute("aria-label", "Decrease quantity");
         minus.onclick = () => updateQuantity(item.id, -1);
 
         const plus = document.createElement("button");
+        plus.type = "button";
         plus.textContent = "➕";
+        plus.setAttribute("aria-label", "Increase quantity");
         plus.onclick = () => updateQuantity(item.id, 1);
 
         const remove = document.createElement("button");
+        remove.type = "button";
         remove.textContent = "❌ Remove";
         remove.onclick = () => removeItem(item.id);
 
         buttons.append(minus, plus, remove);
-        details.append(name, size, priceLine, buttons);
+        details.appendChild(buttons);
+
         itemDiv.append(img, details);
         cartItemsDiv.appendChild(itemDiv);
       });
 
-      localStorage.setItem("cartTotal", String(total));
+      localStorage.setItem("cartTotal", String(totalNGN));
 
-      cartTotalDiv.textContent = "Total: " + formatNaira(total);
+      cartTotalDiv.textContent =
+        "Total: " + formatMoney(totalNGN, currency);
+
+      if (currency !== "NGN") {
+        const estimatedTotal = convertFromNaira(totalNGN, currency);
+
+        convertedTotalDiv.textContent =
+          "Estimated total in " + currency + ": " +
+          formatMoney(estimatedTotal, currency) +
+          ". Pay in NGN at checkout.";
+      }
+
       checkoutLink.style.display = "inline-block";
     }
 
-    convertCartPricesOnce();
-    document.addEventListener("DOMContentLoaded", renderCart);
+    document
+      .getElementById("display-currency")
+      .addEventListener("change", function () {
+        localStorage.setItem("sbclassicDisplayCurrency", this.value);
+        renderCart();
+      });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const savedCurrency =
+        localStorage.getItem("sbclassicDisplayCurrency");
+
+      const selector = document.getElementById("display-currency");
+
+      if (savedCurrency && CURRENCY_INFO[savedCurrency]) {
+        selector.value = savedCurrency;
+      }
+
+      convertCartPricesOnce();
+      renderCart();
+    });
+
+    // Preserve the selected display currency on this page.
+    (function restoreCurrencyPreference() {
+      const savedCurrency =
+        localStorage.getItem("sbclassicDisplayCurrency");
+
+      const selector = document.getElementById("display-currency");
+
+      if (savedCurrency && CURRENCY_INFO[savedCurrency]) {
+        selector.value = savedCurrency;
+      }
+    })();
   </script>
 </body>
-</html>
+  </html>
