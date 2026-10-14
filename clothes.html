@@ -2910,3 +2910,46 @@
     });
   });
 </script>
+
+  <script>
+(function () {
+  // Convert displayed clothing prices to Nigerian naira.
+  function convertClothingPrices() {
+    document.querySelectorAll('.product p.price').forEach(function (element) {
+      var text = element.textContent.trim();
+      var match = text.match(/^(GHS|GHC|₵)\s*([\d,]+(?:\.\d+)?)$/i);
+
+      if (match) {
+        var originalPrice = parseFloat(match[2].replace(/,/g, ''));
+        var nairaPrice = Math.round((originalPrice - 100) * 100);
+
+        if (nairaPrice > 0) {
+          element.textContent = '₦' + nairaPrice.toLocaleString('en-NG');
+        }
+      }
+    });
+  }
+
+  // Make sure the prices added to the cart are also in naira.
+  var originalAddToCart = window.addToCart;
+
+  if (typeof originalAddToCart === 'function') {
+    window.addToCart = function (product, quantity) {
+      var updatedProduct = Object.assign({}, product);
+
+      if (updatedProduct.priceCurrency !== 'NGN') {
+        var originalPrice = Number(updatedProduct.price);
+
+        if (Number.isFinite(originalPrice) && originalPrice > 100) {
+          updatedProduct.price = Math.round((originalPrice - 100) * 100);
+          updatedProduct.priceCurrency = 'NGN';
+        }
+      }
+
+      return originalAddToCart(updatedProduct, quantity);
+    };
+  }
+
+  convertClothingPrices();
+})();
+  </script>
