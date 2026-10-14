@@ -1799,3 +1799,55 @@
     });
   });
 </script>
+
+    <script>
+(function () {
+  function convertShoesPrices() {
+    document.querySelectorAll('.product').forEach(function (card) {
+      var priceElement = card.querySelector('p.price');
+      if (!priceElement) return;
+
+      var text = priceElement.textContent.trim();
+      var match = text.match(/^(GHS|GHC|₵)\s*([\d,]+(?:\.\d+)?)$/i);
+
+      if (match) {
+        var originalPrice = parseFloat(match[2].replace(/,/g, ''));
+        var nairaPrice = Math.round((originalPrice - 100) * 100);
+
+        if (nairaPrice > 0) {
+          priceElement.textContent = '₦' + nairaPrice.toLocaleString('en-NG');
+
+          card.dataset.price = String(nairaPrice);
+          card.dataset.priceCurrency = 'NGN';
+        }
+      }
+    });
+
+    var originalAddToCart = window.addToCart;
+
+    if (typeof originalAddToCart === 'function' &&
+        !originalAddToCart.sbNairaWrapped) {
+      var wrappedAddToCart = function (product, quantity) {
+        var updatedProduct = Object.assign({}, product);
+
+        var card = Array.from(document.querySelectorAll('.product'))
+          .find(function (item) {
+            return item.dataset.name === updatedProduct.name;
+          });
+
+        if (card && card.dataset.priceCurrency === 'NGN') {
+          updatedProduct.price = Number(card.dataset.price);
+          updatedProduct.priceCurrency = 'NGN';
+        }
+
+        return originalAddToCart(updatedProduct, quantity);
+      };
+
+      wrappedAddToCart.sbNairaWrapped = true;
+      window.addToCart = wrappedAddToCart;
+    }
+  }
+
+  convertShoesPrices();
+})();
+    </script>
