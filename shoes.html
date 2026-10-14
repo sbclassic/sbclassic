@@ -1802,52 +1802,205 @@
 
     <script>
 (function () {
-  function convertShoesPrices() {
-    document.querySelectorAll('.product').forEach(function (card) {
-      var priceElement = card.querySelector('p.price');
+  const RATES = {
+    NGN: 1,
+    GHS: 114.15,
+    USD: 1330,
+    XOF: 2.26
+  };
+
+  const CURRENCIES = {
+    NGN: { symbol: "₦", locale: "en-NG", decimals: 0 },
+    GHS: { symbol: "GH₵", locale: "en-GH", decimals: 2 },
+    USD: { symbol: "$", locale: "en-US", decimals: 2 },
+    XOF: { symbol: "CFA ", locale: "fr-SN", decimals: 0 }
+  };
+
+  function money(amount, currency) {
+    const info = CURRENCIES[currency] || CURRENCIES.NGN;
+
+    return info.symbol + Number(amount).toLocaleString(info.locale, {
+      minimumFractionDigits: info.decimals,
+      maximumFractionDigits: info.decimals
+    });
+  }
+
+  function prepareProducts() {
+    document.querySelectorAll(".product").forEach(function (card) {
+      const priceElement = card.querySelector("p.price");
       if (!priceElement) return;
 
-      var text = priceElement.textContent.trim();
-      var match = text.match(/^(GHS|GHC|₵)\s*([\d,]+(?:\.\d+)?)$/i);
+      const rawPrice = String(card.dataset.price || "").replace(/,/g, "");
+      const price = Number(rawPrice);
 
-      if (match) {
-        var originalPrice = parseFloat(match[2].replace(/,/g, ''));
-        var nairaPrice = Math.round((originalPrice - 100) * 100);
+      if (!Number.isFinite(price) || price <= 0) return;
 
-        if (nairaPrice > 0) {
-          priceElement.textContent = '₦' + nairaPrice.toLocaleString('en-NG');
+      let nairaPrice;
 
-          card.dataset.price = String(nairaPrice);
-          card.dataset.priceCurrency = 'NGN';
-        }
+      if (card.dataset.priceCurrency === "NGN" || price >= 10000) {
+        nairaPrice = Math.round(price);
+      } else if (price > 100) {
+        nairaPrice = Math.round((price - 100) * 100);
+      } else {
+        return;
       }
+
+      card.dataset.price = String(nairaPrice);
+      card.dataset.priceCurrency = "NGN";
+      priceElement.dataset.nairaPrice = String(nairaPrice);
+    });
+  }
+
+  function addCurrencySelector() {
+    if (document.getElementById("sb-display-currency")) return;
+
+    const box = document.createElement("div");
+    box.style.cssText =
+      "margin:15px 0;padding:12px;border:1px solid #ddd;" +
+      "border-radius:5px;background:#f8f8f8;";
+
+    const label = document.createElement("label");
+    label.htmlFor = "sb-display-currency";
+    label.textContent = "Display currency: ";
+    label.style.fontWeight = "bold";
+
+    const select = document.createElement("select");
+    select.id = "sb-display-currency";
+    select.style.cssText = "padding:9px;margin:6px;max-width:100%;";
+
+    [
+      ["NGN", "Nigerian Naira (₦)"],
+      ["GHS", "Ghanaian Cedi (GH₵)"],
+      ["USD", "US Dollar ($)"],
+      ["XOF", "West African CFA Franc (CFA)"]
+    ].forEach(function (entry) {
+      const option = document.createElement("option");
+      option.value = entry[0];
+      option.textContent = entry[1];
+      select.appendChild(option);
     });
 
-    var originalAddToCart = window.addToCart;
+    const note = document.createElement("p");
+    note.textContent =
+      "Other currency prices are estimates. Orders are charged in NGN.";
+    note.style.cssText = "font-size:12px;color:#666;margin-bottom:0;";
 
-    if (typeof originalAddToCart === 'function' &&
-        !originalAddToCart.sbNairaWrapped) {
-      var wrappedAddToCart = function (product, quantity) {
-        var updatedProduct = Object.assign({}, product);
+    box.append(label, select, note);
 
-        var card = Array.from(document.querySelectorAll('.product'))
-          .find(function (item) {
-            return item.dataset.name === updatedProduct.name;
-          });
+    const products = document.querySelector(".products") ||
+      document.querySelector("#products");
 
-        if (card && card.dataset.priceCurrency === 'NGN') {
-          updatedProduct.price = Number(card.dataset.price);
-          updatedProduct.priceCurrency = 'NGN';
-        }
+    if (products && products.parentNode) {
+      products.parentNode.insertBefore(box, products);
+    } else {
+      document.body.insertBefore(box, document.body.firstChild);
+    }
 
-        return originalAddToCart(updatedProduct, quantity);
-      };
+    const saved = localStorage.getItem("sbclassicDisplayCurrency");
+    if (CURRENCIES[saved]) select.value = saved;
 
-      wrappedAddToCart.sbNairaWrapped = true;
-      window.addToCart = wrappedAddToCart;
+    select.addEventListener("change", function () {
+      localStorage.setItem("sbclassicDisplayCurrency", select.value);
+      renderPrices();
+    });
+  }
+
+  function renderPrices() {
+    const selector = document.getElementById("sb-display-currency");
+    const currency = selector ? selector.value : "NGN";
+
+    document.querySelectorAll(".product").forEach(function (card) {
+      const priceElement = card.querySelector("p.price");
+      if (!priceElement) return;
+
+      const nairaPrice = Number(priceElement.dataset.nairaPrice);
+      if (!Number.isFinite(nairaPrice) || nairaPrice <= 0) return;
+
+      priceElement.textContent = money(
+        nairaPrice / (RATES[currency] || 1),
+        currency
+      );
+    });
+  }
+
+  function addFeedbackArea() {
+    if (document.getElementById("sb-cart-feedback")) return;
+
+    const feedback = document.createElement("p");
+    feedback.id = "sb-cart-feedback";
+    feedback.setAttribute("role", "status");
+    feedback.setAttribute("aria-live", "polite");
+    feedback.style.cssText = "padding:10px;margin:10px 0;color:#194619;";
+
+    const heading = document.querySelector("h1");
+
+    if (heading && heading.parentNode) {
+      heading.parentNode.insertBefore(feedback, heading.nextSibling);
+    } else {
+      document.body.insertBefore(feedback, document.body.firstChild);
     }
   }
 
-  convertShoesPrices();
+  function fixCartAndPopups() {
+    const originalAddToCart = window.addToCart;
+
+    if (typeof originalAddToCart !== "function" ||
+        originalAddToCart.sbClassicCurrencyFix) {
+      return;
+    }
+
+    const fixedAddToCart = function (product, quantity) {
+      const updatedProduct = Object.assign({}, product);
+
+      const card = Array.from(document.querySelectorAll(".product"))
+        .find(function (item) {
+          return item.dataset.name === updatedProduct.name;
+        });
+
+      if (card) {
+        const price = Number(card.dataset.price);
+
+        if (Number.isFinite(price) && price > 0) {
+          updatedProduct.price = price;
+          updatedProduct.priceCurrency = "NGN";
+        }
+      }
+
+      const previousAlert = window.alert;
+
+      window.alert = function (message) {
+        const feedback = document.getElementById("sb-cart-feedback");
+        if (feedback) feedback.textContent = String(message || "");
+      };
+
+      try {
+        const result = originalAddToCart.call(
+          window,
+          updatedProduct,
+          quantity
+        );
+
+        const feedback = document.getElementById("sb-cart-feedback");
+
+        if (feedback) {
+          feedback.textContent =
+            (updatedProduct.name || "Product") + " added to your cart.";
+        }
+
+        return result;
+      } finally {
+        window.alert = previousAlert;
+      }
+    };
+
+    fixedAddToCart.sbClassicCurrencyFix = true;
+    window.addToCart = fixedAddToCart;
+  }
+
+  prepareProducts();
+  addCurrencySelector();
+  addFeedbackArea();
+  fixCartAndPopups();
+  renderPrices();
 })();
     </script>
