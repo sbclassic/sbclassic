@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: #ffffff;
+      background: #fff;
       color: #2c2c2c;
     }
 
@@ -44,7 +44,7 @@
       color: #f8f8ff;
       text-decoration: none;
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: .95rem;
       text-transform: uppercase;
     }
 
@@ -76,25 +76,25 @@
 
     .product {
       width: 250px;
-      background-color: #ffffff;
+      max-width: 100%;
+      background: #fff;
       border: 1px solid #ccc;
       border-radius: 6px;
       overflow: hidden;
       text-align: center;
       padding-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,.1);
       color: #2c2c2c;
-      transition: transform 0.3s ease;
+      transition: transform .3s ease;
     }
 
     .product:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 14px rgba(0,0,0,.15);
     }
 
-    .product img {
+    .product video {
       width: 100%;
-      height: auto;
       display: block;
       border-bottom: 1px solid #eee;
     }
@@ -112,45 +112,99 @@
       font-size: 1.1rem;
     }
 
+    .product label {
+      display: inline-block;
+      margin: 8px 4px;
+    }
+
+    .product select,
+    .product input {
+      padding: 7px;
+      font: inherit;
+      max-width: 100%;
+    }
+
     .product button {
-      background-color: #191970;
+      display: block;
+      background: #191970;
       color: #f8f8ff;
       border: none;
       padding: 10px 20px;
-      margin-top: 12px;
+      margin: 12px auto 0;
       cursor: pointer;
       border-radius: 5px;
       font-weight: 600;
       font-size: 1rem;
-      transition: background 0.3s ease;
+      transition: background .3s ease;
     }
 
     .product button:hover {
-      background-color: #000050;
+      background: #000050;
+    }
+
+    .currency-panel {
+      text-align: center;
+      margin: 0 auto 25px;
+      padding: 14px;
+      background: #f8f8ff;
+      border: 1px solid #e0e0ee;
+      border-radius: 6px;
+      max-width: 500px;
+    }
+
+    .currency-panel label {
+      font-weight: 600;
+      margin-right: 8px;
+    }
+
+    .currency-panel select {
+      padding: 8px 12px;
+      border: 1px solid #191970;
+      border-radius: 5px;
+      background: #fff;
+      font: inherit;
+    }
+
+    #sb-cart-feedback {
+      display: none;
+      max-width: 600px;
+      margin: 0 auto 20px;
+      padding: 12px 16px;
+      border-radius: 5px;
+      text-align: center;
+      background: #edf8ed;
+      color: #176b2c;
+      border: 1px solid #b9e2c1;
+    }
+
+    #sb-cart-feedback.error {
+      background: #fff0f0;
+      color: #a32020;
+      border-color: #efc0c0;
     }
 
     footer {
-      background: #ffffff;
+      background: #fff;
       color: #2c2c2c;
       text-align: center;
       padding: 25px 15px;
       border-top: 1px solid #ccc;
-      font-size: 0.9rem;
-      line-height: 1.4;
+      font-size: .9rem;
+      line-height: 1.6;
     }
 
     footer p.social-links {
       margin: 10px 0;
     }
 
-    footer p.social-links a {
+    footer a {
       color: #191970;
-      margin: 0 8px;
+      margin: 0 4px;
       text-decoration: none;
       font-weight: 600;
     }
 
-    footer p.social-links a:hover {
+    footer a:hover {
       text-decoration: underline;
     }
 
@@ -162,77 +216,100 @@
       height: 60px;
       z-index: 1000;
       border-radius: 50%;
-      background-color: #25d366;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      background: #25d366;
+      box-shadow: 0 2px 8px rgba(0,0,0,.3);
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: background-color 0.3s ease;
-    }
-
-    .whatsapp-chat:hover {
-      background-color: #1ebe57;
     }
 
     .whatsapp-chat img {
       width: 35px;
       height: 35px;
     }
+
+    @media (max-width: 600px) {
+      nav { gap: 12px; }
+      nav a { font-size: .85rem; }
+      h2 { font-size: 1.8rem; }
+      .container { padding: 25px 12px; }
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="header-content">
-      <div class="logo">SB CLASSIC</div>
-      <nav>
-        <a href="index.html">HOME</a>
-        <a href="clothes.html">CLOTHES</a>
-        <a href="shoes.html">SHOES</a>
-        <a href="slippers-sandals.html">Slippers & Sandals</a>
-        <a href="accessories.html">ACCESSORIES</a>
-        <a href="contact.html">CONTACT</a>
-        <a href="cart.html">🛒 CART (<span id="cart-count">0</span>)</a>
-      </nav>
-    </div>
-  </header>
+<header>
+  <div class="header-content">
+    <div class="logo">SB CLASSIC</div>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="clothes.html">CLOTHES</a>
+      <a href="shoes.html">SHOES</a>
+      <a href="slippers-sandals.html">Slippers & Sandals</a>
+      <a href="accessories.html">ACCESSORIES</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="cart.html">🛒 CART (<span id="cart-count">0</span>)</a>
+    </nav>
+  </div>
+</header>
 
-  <div class="container">
+<div class="container">
   <h2>Accessories</h2>
+
+  <div class="currency-panel">
+    <label for="sb-display-currency">Display prices in:</label>
+    <select id="sb-display-currency">
+      <option value="NGN">Nigerian Naira (NGN ₦)</option>
+      <option value="GHS">Ghanaian Cedi (GHS ₵)</option>
+      <option value="USD">US Dollar (USD $)</option>
+      <option value="XOF">West African CFA Franc (XOF)</option>
+    </select>
+    <div style="font-size:12px;margin-top:7px;color:#666;">
+      Foreign currency amounts are estimates. Orders are charged in NGN.
+    </div>
+  </div>
+
+  <div id="sb-cart-feedback" role="status" aria-live="polite"></div>
+
   <div class="products">
-    <!-- Android Glasses Product -->
-    <div class="product">
-      <video width="100%" controls>
+    <div class="product"
+         data-name="Stylish Android Glasses"
+         data-price="64000"
+         data-price-currency="NGN"
+         data-image="accessories/android_dark_plain_lenses_glasses.MP4">
+
+      <video controls preload="metadata" playsinline>
         <source src="accessories/android_dark_plain_lenses_glasses.MP4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-      <h3> Stylish Android Glasses</h3>
-      <p class="price">GHS 740</p>
-      
+
+      <h3>Stylish Android Glasses</h3>
+      <p class="price" data-naira-price="64000">₦64,000</p>
+
       <label for="color-android-glasses">Color:</label>
       <select id="color-android-glasses">
         <option value="Dark Lenses">Dark Lenses</option>
         <option value="Plain Lenses">Plain Lenses</option>
       </select>
-      
-      <button onclick="addToCart({ 
-        id: 'android-glasses', 
-        name: 'Android Glasses', 
-        price: 740, 
-        image: 'accessories/android_dark_plain_lenses_glasses.MP4', 
-        quantity: 1,
-        color: document.getElementById('color-android-glasses').value 
-      })">Add to Cart</button>
+
+      <label for="qty-android-glasses">Qty:</label>
+      <input id="qty-android-glasses"
+             class="quantity-input"
+             type="number"
+             value="1"
+             min="1"
+             step="1"
+             style="width:55px;" />
+
+      <button type="button" class="add-to-cart-btn" id="add-android-glasses">
+        Add to Cart
+      </button>
     </div>
   </div>
 </div>
 
-      <!-- Add more products here -->
-    </div>
-  </div>
-
-  <footer>
-  <div class="policies-links" style="margin-bottom: 1em;">
+<footer>
+  <div class="policies-links" style="margin-bottom:1em;">
     <strong>Our Policies:</strong>
     <a href="refund-policy.html">Refund Policy</a> |
     <a href="privacy-policy.html">Privacy Policy</a> |
@@ -242,6 +319,7 @@
   </div>
 
   <p>CONTACT: +233260928990 | sbclassics@icloud.com</p>
+
   <p class="social-links">
     FOLLOW US ON:
     <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener">Instagram</a> |
@@ -250,91 +328,176 @@
     <a href="https://wa.me/233260928990" target="_blank" rel="noopener">WhatsApp</a> |
     <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener">TikTok</a>
   </p>
-  
+
   <hr />
 
-      <script id="pixel-chaty" async="true" src="https://cdn.chaty.app/pixel.js?id=Xx1mvajc"></script>
-
-    </div>
-    
-    <p>© 2025 SB CLASSIC. All rights reserved.</p>
-  </div>
+  <p>© 2025 SB CLASSIC. All rights reserved.</p>
 </footer>
 
-  <script>
-    function getCart() {
-      return JSON.parse(localStorage.getItem('cart')) || [];
-    }
-
-    function saveCart(cart) {
-      localStorage.setItem('cart', JSON.stringify(cart));
-    }
-
-    function updateCartCount() {
-      const cart = getCart();
-      const count = cart.reduce((total, item) => total + item.quantity, 0);
-      document.getElementById('cart-count').textContent = count;
-    }
-
-    function addToCart(product) {
-      let cart = getCart();
-      const existing = cart.find(item => item.id === product.id);
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        product.quantity = 1;
-        cart.push(product);
-      }
-      saveCart(cart);
-      updateCartCount();
-      alert(`${product.name} added to cart!`);
-    }
-
-    updateCartCount();
-  </script>
-  
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const productCards = document.querySelectorAll('.product');
-
-    productCards.forEach(card => {
-      const addBtn = card.querySelector('.add-to-cart-btn');
-      const qtyInput = card.querySelector('.quantity-input') || { value: 1 };
-
-      addBtn?.addEventListener('click', () => {
-        const product = {
-          id: card.dataset.name.toLowerCase().replace(/\s+/g, '-'),
-          name: card.dataset.name,
-          price: parseFloat(card.dataset.price),
-          image: card.dataset.image
-        };
-
-        const quantity = parseInt(qtyInput.value) || 1;
-        addToCart(product, quantity);
-      });
-    });
-  });
-</script>
-</body>
-</html>
+<script id="pixel-chaty" async src="https://cdn.chaty.app/pixel.js?id=Xx1mvajc"></script>
 
 <script>
 (function () {
-  document.querySelectorAll('.product').forEach(function (card) {
-    var priceElement = card.querySelector('p.price');
+  'use strict';
+
+  var RATES = {
+    NGN: 1,
+    GHS: 114.15,
+    USD: 1330,
+    XOF: 2.26
+  };
+
+  var SYMBOLS = {
+    NGN: '₦',
+    GHS: '₵',
+    USD: '$',
+    XOF: 'FCFA '
+  };
+
+  var CURRENCY_KEY = 'sbclassicDisplayCurrency';
+  var CART_KEY = 'cart';
+
+  function formatMoney(amount, currency) {
+    var value = amount / RATES[currency];
+    var decimals = currency === 'USD' ? 2 : 0;
+
+    return SYMBOLS[currency] + value.toLocaleString('en-US', {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals
+    });
+  }
+
+  function getCart() {
+    try {
+      var cart = JSON.parse(localStorage.getItem(CART_KEY));
+      return Array.isArray(cart) ? cart : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function saveCart(cart) {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  }
+
+  function updateCartCount() {
+    var countElement = document.getElementById('cart-count');
+    if (!countElement) return;
+
+    var count = getCart().reduce(function (total, item) {
+      return total + (Number(item.quantity) || 0);
+    }, 0);
+
+    countElement.textContent = count;
+  }
+
+  function showMessage(message, isError) {
+    var box = document.getElementById('sb-cart-feedback');
+    if (!box) return;
+
+    box.textContent = message;
+    box.classList.toggle('error', Boolean(isError));
+    box.style.display = 'block';
+
+    if (box.hideTimer) clearTimeout(box.hideTimer);
+
+    box.hideTimer = setTimeout(function () {
+      box.style.display = 'none';
+    }, 4000);
+  }
+
+  function renderPrices(currency) {
+    var priceElement = document.querySelector('.product .price');
     if (!priceElement) return;
 
-    var text = priceElement.textContent.trim();
-    var match = text.match(/^(GHS|GHC|₵)\s*([\d,]+(?:\.\d+)?)$/i);
+    var nairaPrice = Number(priceElement.dataset.nairaPrice);
+    if (!Number.isFinite(nairaPrice)) return;
 
-    if (match) {
-      var originalPrice = parseFloat(match[2].replace(/,/g, ''));
-      var nairaPrice = Math.round((originalPrice - 100) * 100);
+    priceElement.textContent = formatMoney(nairaPrice, currency);
 
-      if (nairaPrice > 0) {
-        priceElement.textContent = '₦' + nairaPrice.toLocaleString('en-NG');
-      }
+    var oldNote = document.querySelector('.currency-estimate-note');
+    if (oldNote) oldNote.remove();
+
+    if (currency !== 'NGN') {
+      var note = document.createElement('small');
+      note.className = 'currency-estimate-note';
+      note.style.display = 'block';
+      note.style.color = '#666';
+      note.style.fontSize = '11px';
+      note.textContent = 'NGN ' + nairaPrice.toLocaleString('en-NG');
+      priceElement.insertAdjacentElement('afterend', note);
     }
+  }
+
+  var selector = document.getElementById('sb-display-currency');
+  var savedCurrency = localStorage.getItem(CURRENCY_KEY) || 'NGN';
+
+  if (!Object.prototype.hasOwnProperty.call(RATES, savedCurrency)) {
+    savedCurrency = 'NGN';
+  }
+
+  selector.value = savedCurrency;
+  renderPrices(savedCurrency);
+
+  selector.addEventListener('change', function () {
+    var currency = selector.value;
+
+    if (!Object.prototype.hasOwnProperty.call(RATES, currency)) {
+      currency = 'NGN';
+    }
+
+    localStorage.setItem(CURRENCY_KEY, currency);
+    renderPrices(currency);
   });
+
+  document.getElementById('add-android-glasses').addEventListener('click', function () {
+    var quantityInput = document.getElementById('qty-android-glasses');
+    var quantity = Number(quantityInput.value);
+
+    if (!Number.isInteger(quantity) || quantity < 1) {
+      showMessage('Please enter a valid quantity of at least 1.', true);
+      quantityInput.focus();
+      return;
+    }
+
+    var color = document.getElementById('color-android-glasses').value;
+    var product = {
+      id: 'android-glasses-' + color.toLowerCase().replace(/\s+/g, '-'),
+      name: 'Stylish Android Glasses',
+      price: 64000,
+      priceCurrency: 'NGN',
+      image: 'accessories/android_dark_plain_lenses_glasses.MP4',
+      quantity: quantity,
+      color: color
+    };
+
+    var cart = getCart();
+
+    var existing = cart.find(function (item) {
+      return item.id === product.id ||
+        (
+          item.name === product.name &&
+          item.color === product.color &&
+          item.size === product.size
+        );
+    });
+
+    if (existing) {
+      existing.quantity = (Number(existing.quantity) || 0) + quantity;
+      existing.price = product.price;
+      existing.priceCurrency = 'NGN';
+    } else {
+      cart.push(product);
+    }
+
+    saveCart(cart);
+    updateCartCount();
+    showMessage(product.name + ' (x' + quantity + ') added to your cart.');
+  });
+
+  updateCartCount();
 })();
 </script>
+
+</body>
+        </html>
