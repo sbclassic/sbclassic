@@ -1,241 +1,670 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact Us – SB CLASSIC</title>
-  <style>
-    body {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Contact SB CLASSIC for men's fashion enquiries, product information, orders and delivery options. Shop online with delivery across Nigeria and internationally.">
+  <title>Contact Us | SB CLASSIC - Style With Class</title>  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">  <style>
+    :root {
+      --black: #111111;
+      --cream: #f7f4ee;
+      --gold: #b99a61;
+      --white: #ffffff;
+      --muted: #777777;
+    }
+
+    * {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #fff;
-      color: #000;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .announcement {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 10px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     header {
-      background: #191970;
-      color: #ffffff;
-      padding: 25px 20px;
-      text-align: center;
-    }
-
-    .header-content {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px 6%;
+      border-bottom: 1px solid #eeeeee;
+      background: var(--white);
     }
 
-    .logo {
-      font-size: 2rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      margin-bottom: 10px;
-      color: #ffffff;
+    .logo img {
+      display: block;
+      max-width: 150px;
+      height: 45px;
+      width: auto;
+      object-fit: contain;
     }
 
     nav {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
+      gap: 12px 20px;
     }
 
     nav a {
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
       text-transform: uppercase;
+      transition: color 0.2s;
     }
 
     nav a:hover {
-      text-decoration: underline;
+      color: var(--gold);
+    }
+
+    .page-banner {
+      background: var(--black);
+      color: var(--white);
+      padding: 75px 20px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: #e0c38d;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .page-banner h1 {
+      margin-top: 12px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 6vw, 62px);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .page-banner p {
+      max-width: 620px;
+      margin: 18px auto 0;
+      color: #dddddd;
+      font-size: 14px;
     }
 
     .container {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 65px 25px;
     }
 
-    h1 {
-      color: #191970;
+    .intro {
+      max-width: 720px;
+      margin: 0 auto 45px;
       text-align: center;
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+    .section-label {
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
     }
 
-    input, textarea {
-      padding: 12px;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+    h2 {
+      margin: 12px 0 18px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 600;
+      line-height: 1.3;
     }
 
-    button {
-      background: #d4af37;
-      color: #0a0a23;
-      padding: 14px;
-      font-size: 1.1rem;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
+    .intro p {
+      color: #555555;
+      font-size: 14px;
     }
 
-    button:hover {
-      background-color: #b8962a;
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
     }
 
-    .contact-info {
-      margin-top: 30px;
-      font-size: 1.1rem;
+    .contact-card {
+      padding: 30px;
+      background: var(--cream);
+      border: 1px solid #eee9df;
     }
 
-    .contact-info a {
-      color: #d4af37;
-      text-decoration: none;
+    .contact-card .number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 18px;
+      background: var(--black);
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
     }
 
-    footer {
-      background: #fff;
-      color: #2b2b2b;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 0.95rem;
-      border-top: 1px solid #ddd;
+    .contact-card h3 {
+      margin-bottom: 10px;
+      font-family: 'Playfair Display', serif;
+      font-size: 23px;
     }
 
-    footer a {
-      color: #191970;
-      text-decoration: none;
+    .contact-card p {
+      margin-bottom: 15px;
+      color: #666666;
+      font-size: 13px;
     }
 
-    footer a:hover {
+    .contact-link {
+      display: inline-block;
+      margin: 3px 0;
+      color: #8c6c35;
+      font-size: 12px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-link:hover {
       text-decoration: underline;
     }
 
-    .policies-links strong {
-      display: block;
-      margin-bottom: 8px;
-      color: #2b2b2b;
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .contact-button {
+      display: inline-block;
+      padding: 11px 15px;
+      background: var(--black);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+
+    .contact-button:hover {
+      background: #8c6c35;
+    }
+
+    .social-section {
+      margin-top: 55px;
+      padding: 45px 25px;
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .social-section h2 {
+      font-size: 32px;
+    }
+
+    .social-section p {
+      max-width: 620px;
+      margin: 0 auto 25px;
+      color: #dddddd;
+      font-size: 14px;
     }
 
     .social-links {
-      margin-top: 10px;
-    }
-
-    #whatsapp-chat {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
-      color: white;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
       display: flex;
       justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      z-index: 1000;
-      transition: background-color 0.3s ease;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    #whatsapp-chat:hover {
-      background-color: #1ebe57;
+    .social-links a {
+      display: inline-block;
+      padding: 12px 18px;
+      border: 1px solid #b99a61;
+      color: #e0c38d;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: all 0.2s;
     }
 
-    #whatsapp-chat svg {
-      width: 30px;
-      height: 30px;
-      fill: white;
+    .social-links a:hover {
+      background: var(--gold);
+      color: var(--black);
     }
-  </style>
-</head>
-<body>
 
-  <header>
-    <div class="header-content">
-      <div class="logo">SB CLASSIC</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="clothes.html">Clothes</a>
-        <a href="shoes.html">Shoes</a>
-        <a href="accessories.html">Accessories</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+    .help-section {
+      margin-top: 45px;
+      padding: 30px;
+      border: 1px solid #e8e3d9;
+      text-align: center;
+    }
 
-  <div class="container">
-    <h1>Contact Us</h1>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+    .help-section h2 {
+      font-size: 28px;
+    }
 
-    <div class="contact-info">
-      <p><strong>Phone:</strong> <a href="tel:+233260928990">+233260928990</a></p>
-      <p><strong>Email:</strong> <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a></p>
-    </div>
+    .help-section p {
+      max-width: 650px;
+      margin: 0 auto 18px;
+      color: #555555;
+      font-size: 14px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 24px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+
+    .button:hover {
+      background: #d8c49e;
+    }
+
+    footer {
+      padding: 40px 20px 25px;
+      background: #f5f3ef;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 27px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .tagline {
+      margin: 5px 0 25px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .footer-links,
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin: 20px 0;
+    }
+
+    .footer-links a,
+    .footer-socials a {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .footer-links a:hover,
+    .footer-socials a:hover {
+      color: var(--gold);
+    }
+
+    .policies {
+      margin: 25px 0;
+      padding-top: 20px;
+      border-top: 1px solid #dddddd;
+    }
+
+    .policies strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+
+    .policies a {
+      display: inline-block;
+      margin: 5px 8px;
+      color: #555555;
+      font-size: 11px;
+    }
+
+    .footer-contact {
+      margin-top: 20px;
+      font-size: 12px;
+    }
+
+    .footer-contact a {
+      color: #8c6c35;
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+
+    .copyright {
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid #dddddd;
+      color: #777777;
+      font-size: 11px;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        padding: 18px 12px;
+      }
+
+      nav {
+        gap: 12px 15px;
+      }
+
+      nav a {
+        font-size: 9px;
+      }
+
+      .page-banner {
+        padding: 55px 20px;
+      }
+
+      .container {
+        padding: 45px 18px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-card {
+        padding: 25px;
+      }
+
+      .social-section {
+        padding: 40px 18px;
+      }
+
+      .help-section {
+        padding: 25px 18px;
+      }
+    }
+  </style></head><body>  <div class="announcement">
+    Timeless Style. Modern Confidence. | SB CLASSIC
+  </div>  <header>
+    <a class="logo" href="index.html" aria-label="SB CLASSIC Home">
+      <img src="logo.PNG" alt="SB CLASSIC">
+    </a><nav aria-label="Main navigation">
+  <a href="index.html">Home</a>
+  <a href="clothes.html">Clothes</a>
+  <a href="shoes.html">Shoes</a>
+  <a href="slippers-sandals.html">Slippers &amp; Sandals</a>
+  <a href="accessories.html">Accessories</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+  </header>  <main><section class="page-banner">
+  <span class="eyebrow">We're Here to Help</span>
+  <h1>Get in Touch</h1>
+  <p>
+    Have a question about a product, an order, or delivery?
+    We'd be happy to hear from you.
+  </p>
+</section>
+
+<section class="container">
+
+  <div class="intro">
+    <span class="section-label">Contact SB CLASSIC</span>
+    <h2>Let's Talk Fashion</h2>
+    <p>
+      Whether you're looking for a particular item, need more
+      information before placing an order, or want to ask about
+      delivery to your location, you can reach us through our
+      available contact channels. We're here to help make your
+      shopping experience as convenient as possible.
+    </p>
   </div>
 
-  <footer>
-    <div class="policies-links">
-      <strong>Our Policies:</strong>
-      <a href="refund-policy.html">Refund Policy</a> |
-      <a href="privacy-policy.html">Privacy Policy</a> |
-      <a href="faqs.html">FAQs</a> |
-      <a href="shipping.html">Shipping Policy</a> |
-      <a href="terms.html">Terms and Conditions</a>
+  <div class="contact-grid">
+
+    <div class="contact-card">
+      <span class="number">01</span>
+      <h3>Call Us</h3>
+      <p>
+        Call our Nigerian contact number for questions about
+        products, orders, availability, and delivery.
+      </p>
+      <a class="contact-link" href="tel:+2347043214846">
+        +234 704 321 4846
+      </a>
+      <div class="contact-actions">
+        <a class="contact-button" href="tel:+2347043214846">
+          Call Now
+        </a>
+      </div>
     </div>
 
-    <p style="margin-top: 15px;">CONTACT: +233260928990 | sbclassics@icloud.com</p>
+    <div class="contact-card">
+      <span class="number">02</span>
+      <h3>WhatsApp Us</h3>
+      <p>
+        Message us on WhatsApp to enquire about products,
+        place an order, or ask about delivery options.
+      </p>
+      <a class="contact-link"
+         href="https://wa.me/233205950479"
+         target="_blank"
+         rel="noopener noreferrer">
+        +233 20 595 0479
+      </a>
+      <div class="contact-actions">
+        <a class="contact-button"
+           href="https://wa.me/233205950479?text=Hello%20SB%20CLASSIC%2C%20I%20would%20like%20to%20make%20an%20enquiry."
+           target="_blank"
+           rel="noopener noreferrer">
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
 
-    <p class="social-links">
-      FOLLOW US ON:
-      <a href="https://instagram.com/sb_classic_" target="_blank">Instagram</a> |
-      <a href="https://facebook.com/sb.classic_" target="_blank">Facebook</a> |
-      <a href="https://t.me/sbclassics" target="_blank">Telegram</a> |
-      <a href="https://wa.me/233260928990" target="_blank">WhatsApp</a> |
-      <a href="https://www.tiktok.com/@sb.classic" target="_blank">TikTok</a>
+    <div class="contact-card">
+      <span class="number">03</span>
+      <h3>Email Us</h3>
+      <p>
+        Send us your questions about products, orders,
+        availability, or general enquiries.
+      </p>
+      <a class="contact-link"
+         href="mailto:sbclassic11@gmail.com">
+        sbclassic11@gmail.com
+      </a>
+    </div>
+
+    <div class="contact-card">
+      <span class="number">04</span>
+      <h3>Instagram</h3>
+      <p>
+        Follow our page to explore our fashion content
+        and contact us through Instagram.
+      </p>
+      <a class="contact-link"
+         href="https://instagram.com/sb.classic_"
+         target="_blank"
+         rel="noopener noreferrer">
+        Visit @sb.classic_
+      </a>
+    </div>
+
+    <div class="contact-card">
+      <span class="number">05</span>
+      <h3>Facebook</h3>
+      <p>
+        Connect with SB CLASSIC on Facebook for updates
+        and another way to get in touch.
+      </p>
+      <a class="contact-link"
+         href="https://facebook.com/sb.classic_"
+         target="_blank"
+         rel="noopener noreferrer">
+        Visit Our Facebook Page
+      </a>
+    </div>
+
+    <div class="contact-card">
+      <span class="number">06</span>
+      <h3>TikTok</h3>
+      <p>
+        Discover our fashion content and connect with
+        us on TikTok.
+      </p>
+      <a class="contact-link"
+         href="https://www.tiktok.com/@sb.classic"
+         target="_blank"
+         rel="noopener noreferrer">
+        Visit @sb.classic
+      </a>
+    </div>
+
+  </div>
+
+  <section class="social-section">
+    <span class="eyebrow">Stay Connected</span>
+    <h2>Follow SB CLASSIC</h2>
+    <p>
+      Stay connected with our brand through social media.
+      Follow us for fashion updates and contact us with
+      questions about products and orders.
     </p>
 
-    <hr />
-    
-    <script id="pixel-chaty" async="true" src="https://cdn.chaty.app/pixel.js?id=Xx1mvajc"></script>
-    
-    <!-- Live Social Media Feeds -->
-    <div class="social-feeds">
-      <div class="social-widget">
-        <div class="elfsight-app-497d8bff-82e2-4023-b8a6-a46c744474b8" data-elfsight-app-lazy></div>
-      </div>
-      <div class="social-widget">
-        <div class="elfsight-app-a7ea45f0-29ff-46cf-9fee-5554fe6c1139" data-elfsight-app-lazy></div>
-      </div>
-      <div class="social-widget">
-        <div class="elfsight-app-86d33010-82e6-4762-baa7-2f00f98df3d4" data-elfsight-app-lazy></div>
-      </div>
-      <div class="social-widget">
-        <div class="elfsight-app-dabc56b0-a4a1-4a35-ac15-a02a61e1081b" data-elfsight-app-lazy></div>
-      </div>
+    <div class="social-links">
+      <a href="https://instagram.com/sb.classic_"
+         target="_blank"
+         rel="noopener noreferrer">INSTAGRAM</a>
+
+      <a href="https://facebook.com/sb.classic_"
+         target="_blank"
+         rel="noopener noreferrer">FACEBOOK</a>
+
+      <a href="https://t.me/sbclassics"
+         target="_blank"
+         rel="noopener noreferrer">TELEGRAM</a>
+
+      <a href="https://www.tiktok.com/@sb.classic"
+         target="_blank"
+         rel="noopener noreferrer">TIKTOK</a>
     </div>
+  </section>
 
-    <p>© 2025 SB CLASSIC. All rights reserved.</p>
-  </footer>
+  <section class="help-section">
+    <span class="section-label">Shopping With Us</span>
+    <h2>Need Help With an Order?</h2>
+    <p>
+      Contact us to enquire about product availability,
+      ordering, or delivery options. We offer delivery
+      across Nigeria and internationally.
+    </p>
 
-  <!-- Elfsight Platform Script -->
-  <script src="https://static.elfsight.com/platform/platform.js" async></script>
+    <div class="contact-actions" style="justify-content:center;">
+      <a class="button"
+         href="mailto:sbclassic11@gmail.com?subject=SB%20CLASSIC%20Enquiry">
+        Send an Email
+      </a>
 
-</body>
+      <a class="button"
+         href="https://wa.me/233205950479?text=Hello%20SB%20CLASSIC%2C%20I%20need%20help%20with%20an%20order."
+         target="_blank"
+         rel="noopener noreferrer">
+        WhatsApp Us
+      </a>
+    </div>
+  </section>
+
+</section>
+
+  </main>  <footer><div class="footer-brand">SB CLASSIC</div>
+<p class="tagline">Style With Class</p>
+
+<div class="footer-links">
+  <a href="index.html">Home</a>
+  <a href="clothes.html">Clothing</a>
+  <a href="shoes.html">Shoes</a>
+  <a href="slippers-sandals.html">Slippers &amp; Sandals</a>
+  <a href="accessories.html">Accessories</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<div class="footer-socials">
+  <a href="https://instagram.com/sb.classic_"
+     target="_blank"
+     rel="noopener noreferrer">Instagram</a>
+
+  <a href="https://facebook.com/sb.classic_"
+     target="_blank"
+     rel="noopener noreferrer">Facebook</a>
+
+  <a href="https://t.me/sbclassics"
+     target="_blank"
+     rel="noopener noreferrer">Telegram</a>
+
+  <a href="https://www.tiktok.com/@sb.classic"
+     target="_blank"
+     rel="noopener noreferrer">TikTok</a>
+</div>
+
+<div class="policies">
+  <strong>Our Policies</strong>
+  <a href="refund-policy.html">Refund Policy</a>
+  <a href="privacy-policy.html">Privacy Policy</a>
+  <a href="faqs.html">FAQs</a>
+  <a href="shipping.html">Shipping Policy</a>
+  <a href="terms.html">Terms and Conditions</a>
+</div>
+
+<div class="footer-contact">
+  <p>
+    Email:
+    <a href="mailto:sbclassic11@gmail.com">sbclassic11@gmail.com</a>
+  </p>
+  <p>
+    Call:
+    <a href="tel:+2347043214846">+234 704 321 4846</a>
+  </p>
+  <p>
+    WhatsApp:
+    <a href="https://wa.me/233205950479"
+       target="_blank"
+       rel="noopener noreferrer">+233 20 595 0479</a>
+  </p>
+</div>
+
+<div class="copyright">
+  <p>&copy; 2026 SB CLASSIC. All rights reserved.</p>
+  <p>Timeless fashion. Confidence in every look.</p>
+</div>
+
+  </footer></body>
 </html>
