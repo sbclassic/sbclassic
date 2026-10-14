@@ -1,25 +1,27 @@
 name: Deploy SB Classic Payments Worker
 
 on:
-push:
-branches:
-- main
-paths:
-- "worker/**"
-- ".github/workflows/deploy-worker.yml"
 workflow_dispatch:
 
 jobs:
 deploy:
 runs-on: ubuntu-latest
 steps:
-- name: Checkout repository
-uses: actions/checkout@v4
+- uses: actions/checkout@v4
 
-  - name: Deploy Worker to Cloudflare
-    uses: cloudflare/wrangler-action@v3
+  - uses: actions/setup-node@v4
     with:
-      apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      workingDirectory: worker
-      command: deploy
+      node-version: 20
+
+  - name: Show worker files
+    run: |
+      pwd
+      ls -la
+      ls -la worker
+      cat worker/wrangler.toml
+
+  - name: Deploy and show full error
+    run: npx wrangler@3.90.0 deploy --config worker/wrangler.toml
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
