@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#111111">
   <meta name="description" content="Discover SB CLASSIC, where timeless style meets modern elegance. Shop premium men's clothing, shoes, slippers, sandals and accessories.">
-  <title>SB CLASSIC | Style With Class</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <title>SB CLASSIC | Style With Class</title>  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <style>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">  <style>
     :root {
       --black: #111111;
       --cream: #f7f4ee;
@@ -188,6 +183,22 @@
       color: var(--black);
     }
 
+    /* Paystack payment button */
+    .button-payment {
+      background: var(--white);
+      color: var(--black);
+      border: 1px solid var(--white);
+    }
+
+    .button-payment:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .nav-payment {
+      color: var(--gold);
+    }
+
     /* Intro section */
     .intro {
       padding: 75px 20px 65px;
@@ -350,6 +361,29 @@
       font-weight: 600;
     }
 
+    .footer-payment {
+      margin: 25px 0;
+    }
+
+    .footer-payment p {
+      margin-bottom: 14px;
+      color: #666666;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .footer-payment .button {
+      background: var(--black);
+      color: var(--white);
+      border: 1px solid var(--black);
+    }
+
+    .footer-payment .button:hover {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
+    }
+
     .copyright {
       padding-top: 20px;
       border-top: 1px solid #dddddd;
@@ -487,199 +521,192 @@
         align-items: flex-start;
       }
     }
-  </style>
-</head>
-
-<body>
-
-  <div class="announcement">
+  </style></head><body>  <div class="announcement">
     Timeless Style. Modern Confidence. &nbsp; | &nbsp; SB CLASSIC
-  </div>
-
-  <header>
+  </div>  <header>
     <a class="logo" href="index.html" aria-label="SB CLASSIC Home">
       <img src="logo.PNG" alt="SB CLASSIC">
+    </a><nav aria-label="Main navigation">
+  <a href="clothes.html">CLOTHES</a>
+  <a href="shoes.html">SHOES</a>
+  <a href="slippers-sandals.html">SLIPPERS &amp; SANDALS</a>
+  <a href="accessories.html">ACCESSORIES</a>
+  <a href="about.html">ABOUT</a>
+  <a href="contact.html">CONTACT</a>
+  <a class="nav-payment" href="https://paystack.shop/pay/sbclassic" target="_blank" rel="noopener noreferrer">PAY FOR YOUR ORDER</a>
+</nav>
+
+  </header>  <main><section class="hero">
+  <div class="hero-content">
+    <span class="eyebrow">Discover SB CLASSIC</span>
+
+    <h1>Make Every <span>Look</span> Count.</h1>
+
+    <p>
+      Discover timeless style with a modern edge.
+      From standout outfits to statement footwear and
+      essential accessories, find your signature look at SB CLASSIC.
+    </p>
+
+    <div class="hero-buttons">
+      <a class="button button-primary" href="clothes.html">
+        Shop Clothing
+      </a>
+
+      <a class="button button-outline" href="shoes.html">
+        Explore Shoes
+      </a>
+
+      <a class="button button-payment" href="https://paystack.shop/pay/sbclassic" target="_blank" rel="noopener noreferrer">
+        Pay For Your Order
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="intro">
+  <span class="section-label">Style With Class</span>
+
+  <h2>Defined by Style. Made for You.</h2>
+
+  <p>
+    Your style tells your story. Explore carefully selected fashion
+    essentials designed to bring confidence, character and class to
+    every look. Whether your style is classic, contemporary or bold,
+    your next favourite piece starts here.
+  </p>
+</section>
+
+<section class="collections">
+  <div class="section-heading">
+    <span class="section-label">Find Your Look</span>
+    <h2>Explore Our Collections</h2>
+  </div>
+
+  <div class="collection-grid">
+
+    <a class="collection-card" href="clothes.html">
+      <img src="https://imgur.com/aCJ29WT.jpg" alt="Clothing collection" loading="lazy">
+      <div class="collection-label">
+        <span>Dress With Confidence</span>
+        <h3>Clothing</h3>
+      </div>
     </a>
 
-    <nav aria-label="Main navigation">
-      <a href="clothes.html">CLOTHES</a>
-      <a href="shoes.html">SHOES</a>
-      <a href="slippers-sandals.html">SLIPPERS &amp; SANDALS</a>
-      <a href="accessories.html">ACCESSORIES</a>
-      <a href="about.html">ABOUT</a>
-      <a href="contact.html">CONTACT</a>
-    </nav>
-  </header>
-
-  <main>
-
-    <section class="hero">
-      <div class="hero-content">
-        <span class="eyebrow">Discover SB CLASSIC</span>
-
-        <h1>Make Every <span>Look</span> Count.</h1>
-
-        <p>
-          Discover timeless style with a modern edge.
-          From standout outfits to statement footwear and
-          essential accessories, find your signature look at SB CLASSIC.
-        </p>
-
-        <div class="hero-buttons">
-          <a class="button button-primary" href="clothes.html">
-            Shop Clothing
-          </a>
-
-          <a class="button button-outline" href="shoes.html">
-            Explore Shoes
-          </a>
-        </div>
+    <a class="collection-card" href="shoes.html">
+      <img src="https://imgur.com/b5tYse1.jpg" alt="Shoes collection" loading="lazy">
+      <div class="collection-label">
+        <span>Step Into Style</span>
+        <h3>Shoes</h3>
       </div>
-    </section>
+    </a>
 
-    <section class="intro">
-      <span class="section-label">Style With Class</span>
-
-      <h2>Defined by Style. Made for You.</h2>
-
-      <p>
-        Your style tells your story. Explore carefully selected fashion
-        essentials designed to bring confidence, character and class to
-        every look. Whether your style is classic, contemporary or bold,
-        your next favourite piece starts here.
-      </p>
-    </section>
-
-    <section class="collections">
-      <div class="section-heading">
-        <span class="section-label">Find Your Look</span>
-        <h2>Explore Our Collections</h2>
+    <a class="collection-card" href="slippers-sandals.html">
+      <img src="https://imgur.com/DaEVj7L.jpg" alt="Slippers and sandals collection" loading="lazy">
+      <div class="collection-label">
+        <span>Everyday Comfort</span>
+        <h3>Slippers &amp; Sandals</h3>
       </div>
+    </a>
 
-      <div class="collection-grid">
-
-        <a class="collection-card" href="clothes.html">
-          <img src="https://imgur.com/aCJ29WT.jpg" alt="Clothing collection" loading="lazy">
-          <div class="collection-label">
-            <span>Dress With Confidence</span>
-            <h3>Clothing</h3>
-          </div>
-        </a>
-
-        <a class="collection-card" href="shoes.html">
-          <img src="https://imgur.com/b5tYse1.jpg" alt="Shoes collection" loading="lazy">
-          <div class="collection-label">
-            <span>Step Into Style</span>
-            <h3>Shoes</h3>
-          </div>
-        </a>
-
-        <a class="collection-card" href="slippers-sandals.html">
-          <img src="https://imgur.com/DaEVj7L.jpg" alt="Slippers and sandals collection" loading="lazy">
-          <div class="collection-label">
-            <span>Everyday Comfort</span>
-            <h3>Slippers &amp; Sandals</h3>
-          </div>
-        </a>
-
-        <a class="collection-card" href="accessories.html">
-          <img src="https://imgur.com/dCYK4aA.jpg" alt="Fashion accessories collection" loading="lazy">
-          <div class="collection-label">
-            <span>Complete The Look</span>
-            <h3>Accessories</h3>
-          </div>
-        </a>
-
-        <a class="collection-card" href="clothes.html">
-          <img src="https://imgur.com/cIVmYTK.png" alt="New fashion arrivals" loading="lazy">
-          <div class="collection-label">
-            <span>Fresh Arrivals</span>
-            <h3>New Drops</h3>
-          </div>
-        </a>
-
-        <a class="collection-card" href="clothes.html">
-          <img src="https://imgur.com/3GoC1wU.png" alt="SB Classic essentials" loading="lazy">
-          <div class="collection-label">
-            <span>Everyday Must-Haves</span>
-            <h3>SB Essentials</h3>
-          </div>
-        </a>
-
-        <a class="collection-card" href="shoes.html">
-          <img src="https://imgur.com/5VQU9O9.png" alt="Street style collection" loading="lazy">
-          <div class="collection-label">
-            <span>Own Your Style</span>
-            <h3>Street Looks</h3>
-          </div>
-        </a>
-
-        <a class="collection-card" href="slippers-sandals.html">
-          <img src="https://imgur.com/nqP9NB1.png" alt="The Black Edit collection" loading="lazy">
-          <div class="collection-label">
-            <span>Bold. Timeless. Essential.</span>
-            <h3>The Black Edit</h3>
-          </div>
-        </a>
-
-        <a class="collection-card" href="accessories.html">
-          <img src="https://imgur.com/OCMscxg.png" alt="Featured SB Classic products" loading="lazy">
-          <div class="collection-label">
-            <span>Selected For You</span>
-            <h3>Featured</h3>
-          </div>
-        </a>
-
-        <a class="collection-card" href="clothes.html">
-          <img src="https://imgur.com/WbJFVUj.png" alt="SB Signature collection" loading="lazy">
-          <div class="collection-label">
-            <span>Signature Style</span>
-            <h3>SB Signature</h3>
-          </div>
-        </a>
-
+    <a class="collection-card" href="accessories.html">
+      <img src="https://imgur.com/dCYK4aA.jpg" alt="Fashion accessories collection" loading="lazy">
+      <div class="collection-label">
+        <span>Complete The Look</span>
+        <h3>Accessories</h3>
       </div>
-    </section>
+    </a>
 
-    <section class="app-promo">
-      <span class="section-label">Your Style, One Tap Away</span>
+    <a class="collection-card" href="clothes.html">
+      <img src="https://imgur.com/cIVmYTK.png" alt="New fashion arrivals" loading="lazy">
+      <div class="collection-label">
+        <span>Fresh Arrivals</span>
+        <h3>New Drops</h3>
+      </div>
+    </a>
 
-      <h2>Shop SB CLASSIC On The Go</h2>
+    <a class="collection-card" href="clothes.html">
+      <img src="https://imgur.com/3GoC1wU.png" alt="SB Classic essentials" loading="lazy">
+      <div class="collection-label">
+        <span>Everyday Must-Haves</span>
+        <h3>SB Essentials</h3>
+      </div>
+    </a>
 
-      <p>
-        Take SB CLASSIC with you. Explore your favourite styles and enjoy
-        a more convenient shopping experience through our mobile app.
-      </p>
+    <a class="collection-card" href="shoes.html">
+      <img src="https://imgur.com/5VQU9O9.png" alt="Street style collection" loading="lazy">
+      <div class="collection-label">
+        <span>Own Your Style</span>
+        <h3>Street Looks</h3>
+      </div>
+    </a>
 
-      <a class="button button-primary" href="download.html">
-        Download SB CLASSIC App
-      </a>
-    </section>
+    <a class="collection-card" href="slippers-sandals.html">
+      <img src="https://imgur.com/nqP9NB1.png" alt="The Black Edit collection" loading="lazy">
+      <div class="collection-label">
+        <span>Bold. Timeless. Essential.</span>
+        <h3>The Black Edit</h3>
+      </div>
+    </a>
 
-  </main>
+    <a class="collection-card" href="accessories.html">
+      <img src="https://imgur.com/OCMscxg.png" alt="Featured SB Classic products" loading="lazy">
+      <div class="collection-label">
+        <span>Selected For You</span>
+        <h3>Featured</h3>
+      </div>
+    </a>
 
-  <footer>
-    <div class="footer-brand">SB CLASSIC</div>
-    <p class="footer-tagline">Style With Class</p>
+    <a class="collection-card" href="clothes.html">
+      <img src="https://imgur.com/WbJFVUj.png" alt="SB Signature collection" loading="lazy">
+      <div class="collection-label">
+        <span>Signature Style</span>
+        <h3>SB Signature</h3>
+      </div>
+    </a>
 
-    <div class="footer-links">
-      <a href="clothes.html">Clothing</a>
-      <a href="shoes.html">Shoes</a>
-      <a href="slippers-sandals.html">Slippers &amp; Sandals</a>
-      <a href="accessories.html">Accessories</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </div>
+  </div>
+</section>
 
-    <div class="copyright">
-      <p>&copy; 2026 SB CLASSIC. All rights reserved.</p>
-      <p>Timeless fashion. Confidence in every look.</p>
-    </div>
-  </footer>
+<section class="app-promo">
+  <span class="section-label">Your Style, One Tap Away</span>
 
-  <a href="download.html" class="floating-download-button">
-    Download App
+  <h2>Shop SB CLASSIC On The Go</h2>
+
+  <p>
+    Take SB CLASSIC with you. Explore your favourite styles and enjoy
+    a more convenient shopping experience through our mobile app.
+  </p>
+
+  <a class="button button-primary" href="download.html">
+    Download SB CLASSIC App
   </a>
+</section>
 
-</body>
+  </main>  <footer>
+    <div class="footer-brand">SB CLASSIC</div>
+    <p class="footer-tagline">Style With Class</p><div class="footer-links">
+  <a href="clothes.html">Clothing</a>
+  <a href="shoes.html">Shoes</a>
+  <a href="slippers-sandals.html">Slippers &amp; Sandals</a>
+  <a href="accessories.html">Accessories</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<div class="footer-payment">
+  <p>Already placed an order? Complete your payment securely through Paystack.</p>
+  <a class="button" href="https://paystack.shop/pay/sbclassic" target="_blank" rel="noopener noreferrer">
+    Pay For Your Order
+  </a>
+</div>
+
+<div class="copyright">
+  <p>&copy; 2026 SB CLASSIC. All rights reserved.</p>
+  <p>Timeless fashion. Confidence in every look.</p>
+</div>
+
+  </footer>  <a href="download.html" class="floating-download-button">
+    Download App
+  </a></body>
 </html>
