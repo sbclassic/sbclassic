@@ -781,14 +781,21 @@
     var priceElement = card.querySelector('.price');
     if (!priceElement) return;
 
-    /*
-      These two product prices have already been calculated using:
-      (original GHS price - 100) x 100 = NGN price.
-      Keep the cart's stored price in NGN.
-    */
-    var nairaPrice = Number(card.dataset.price);
-    card.dataset.priceCurrency = 'NGN';
-    priceElement.dataset.nairaPrice = String(nairaPrice);
+ var rawPrice = Number(String(card.dataset.price || '').replace(/,/g, ''));
+if (!Number.isFinite(rawPrice) || rawPrice <= 0) return;
+
+var nairaPrice;
+if (card.dataset.priceCurrency === 'NGN' || rawPrice >= 10000) {
+  nairaPrice = Math.round(rawPrice);
+} else if (rawPrice > 90) {
+  nairaPrice = Math.round((rawPrice - 90) * 100);
+} else {
+  return;
+}
+
+card.dataset.price = String(nairaPrice);
+card.dataset.priceCurrency = 'NGN';
+priceElement.dataset.nairaPrice = String(nairaPrice);
 
     var button = card.querySelector('.add-to-cart-btn');
     if (button) {
