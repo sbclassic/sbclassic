@@ -1,153 +1,799 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Frequently Asked Questions (FAQs) – SB CLASSIC</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Find answers to frequently asked questions about SB CLASSIC orders, payments, delivery, tracking, returns, and customer support.">
+
+  <title>FAQs | SB CLASSIC - Style With Class</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
   <style>
-  body {
-    font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 0 20px;
-    line-height: 1.6;
-    color: #444; /* Standard dark grey */
-    background: #fff;
-  }
-  h1 {
-    text-align: center;
-    color: #2b2b2b; /* Charcoal grey for elegance */
-    margin-bottom: 20px;
-  }
-  h2 {
-    color: #2b2b2b;
-    margin-top: 30px;
-  }
-  p, li {
-    margin-bottom: 10px;
-  }
-  ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  ul li {
-    margin-bottom: 25px;
-  }
-  hr {
-    border: 0;
-    height: 1px;
-    background: #ccc;
-    margin: 20px 0;
-  }
-  .question {
-    font-weight: bold;
-    color: #191970; /* Midnight Blue for emphasis */
-    margin-bottom: 6px;
-  }
-  .contact-list {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  .contact-list li {
-    margin-bottom: 6px;
-  }
-  a {
-    color: #191970;
-    text-decoration: none;
-  }
-  a:hover {
-    color: #2a2a9f;
-    text-decoration: underline;
-  }
-  .contact-list {
-    list-style-type: none;
-    padding-left: 0;
-  }
+    :root {
+      --black: #111111;
+      --cream: #f7f4ee;
+      --gold: #b99a61;
+      --white: #ffffff;
+      --muted: #777777;
+      --text: #555555;
+      --border: #e8e3d9;
+      --light-gold: #e0c38d;
+    }
 
-  .contact-list li {
-    margin-bottom: 6px;
-  }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  .contact-list a {
-    color: #191970;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 25px;
+    }
 
-  .contact-list a:hover {
-    color: #2a2a9f;
-  }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    .announcement {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 10px 15px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px 6%;
+      border-bottom: 1px solid #eeeeee;
+      background: var(--white);
+    }
+
+    .logo {
+      flex-shrink: 0;
+    }
+
+    .logo img {
+      display: block;
+      max-width: 150px;
+      height: 45px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 20px;
+    }
+
+    nav a {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    /* Page banner */
+
+    .page-banner {
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+      color: var(--white);
+      padding: 78px 20px 82px;
+      text-align: center;
+    }
+
+    .page-banner::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 70px;
+      height: 2px;
+      background: var(--gold);
+      transform: translateX(-50%);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--light-gold);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .page-banner h1 {
+      margin: 14px auto 0;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(38px, 5.5vw, 60px);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .page-banner p {
+      max-width: 620px;
+      margin: 18px auto 0;
+      color: #dddddd;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    /* FAQ content */
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 68px 25px 80px;
+    }
+
+    .intro {
+      max-width: 740px;
+      margin: 0 auto 45px;
+      text-align: center;
+    }
+
+    .section-label {
+      display: inline-block;
+      color: #987744;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    .intro h2 {
+      margin: 12px 0 18px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 39px);
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .intro p {
+      color: var(--text);
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .faq-card {
+      padding: 27px 30px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      transition: border-color 0.25s ease;
+    }
+
+    .faq-card:hover {
+      border-left-color: var(--black);
+    }
+
+    .faq-question {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 13px;
+    }
+
+    .faq-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 40px;
+      width: 40px;
+      height: 40px;
+      background: var(--black);
+      color: var(--light-gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .faq-question h2 {
+      padding-top: 3px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 2.8vw, 25px);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .faq-answer {
+      padding-left: 56px;
+    }
+
+    .faq-answer p {
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.95;
+    }
+
+    .faq-answer a {
+      color: #85632f;
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-color: #c9b48d;
+      text-underline-offset: 3px;
+      overflow-wrap: anywhere;
+      transition: color 0.2s ease;
+    }
+
+    .faq-answer a:hover {
+      color: var(--black);
+    }
+
+    /* Customer support contact list */
+
+    .contact-list {
+      display: grid;
+      gap: 0;
+      margin-top: 8px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .contact-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      padding: 10px 0;
+      border-bottom: 1px solid #e6dfd2;
+      color: var(--text);
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .contact-icon {
+      flex: 0 0 23px;
+      width: 23px;
+      color: #987744;
+      text-align: center;
+    }
+
+    /* Footer */
+
+    footer {
+      padding: 42px 20px 25px;
+      background: #f5f3ef;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 27px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .tagline {
+      margin: 5px 0 25px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .footer-links,
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin: 20px 0;
+    }
+
+    .footer-links a,
+    .footer-socials a {
+      font-size: 12px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover,
+    .footer-socials a:hover {
+      color: #987744;
+    }
+
+    .policies {
+      margin: 25px 0;
+      padding-top: 20px;
+      border-top: 1px solid #dddddd;
+    }
+
+    .policies strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+
+    .policies a {
+      display: inline-block;
+      margin: 5px 8px;
+      color: #555555;
+      font-size: 11px;
+      transition: color 0.2s ease;
+    }
+
+    .policies a:hover {
+      color: #987744;
+    }
+
+    .footer-contact {
+      margin-top: 20px;
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .footer-contact p {
+      margin: 5px 0;
+    }
+
+    .footer-contact a {
+      color: #85632f;
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+
+    .copyright {
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px solid #dddddd;
+      color: #777777;
+      font-size: 11px;
+    }
+
+    .copyright p + p {
+      margin-top: 4px;
+    }
+
+    /* Responsive layout */
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        padding: 18px 12px;
+        gap: 18px;
+      }
+
+      nav {
+        gap: 12px 15px;
+      }
+
+      nav a {
+        font-size: 9px;
+      }
+
+      .page-banner {
+        padding: 58px 20px 62px;
+      }
+
+      .page-banner h1 {
+        font-size: clamp(35px, 9vw, 46px);
+      }
+
+      .page-banner p {
+        font-size: 13px;
+      }
+
+      .container {
+        padding: 45px 17px 55px;
+      }
+
+      .intro {
+        margin-bottom: 32px;
+      }
+
+      .intro p {
+        font-size: 13px;
+        line-height: 1.9;
+      }
+
+      .faq-list {
+        gap: 13px;
+      }
+
+      .faq-card {
+        padding: 23px 18px;
+      }
+
+      .faq-question {
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .faq-number {
+        flex-basis: 36px;
+        width: 36px;
+        height: 36px;
+        font-size: 15px;
+      }
+
+      .faq-question h2 {
+        font-size: 21px;
+      }
+
+      .faq-answer {
+        padding-left: 48px;
+      }
+
+      .faq-answer p {
+        font-size: 13px;
+        line-height: 1.9;
+      }
+
+      .contact-list li {
+        font-size: 12px;
+        gap: 8px;
+      }
+
+      footer {
+        padding: 35px 17px 22px;
+      }
+
+      .footer-links,
+      .footer-socials {
+        gap: 12px 15px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .announcement {
+        font-size: 9px;
+        letter-spacing: 1.3px;
+      }
+
+      .faq-card {
+        padding: 20px 14px;
+      }
+
+      .faq-question {
+        gap: 10px;
+      }
+
+      .faq-question h2 {
+        font-size: 19px;
+      }
+
+      .faq-answer {
+        padding-left: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
-  <h1>Frequently Asked Questions (FAQs)</h1>
+</head>
 
-  <ul>
-    <li>
-      <p class="question">1. How do I place an order?</p>
-      <p>Simply browse our products, select your desired items, choose the quantity, and click “Add to Cart.” When ready, proceed to checkout to complete your purchase.</p>
-      <hr />
-    </li>
+<body>
 
-    <li>
-      <p class="question">2. What payment methods do you accept?</p>
-      <p>We currently accept payments via Paystack, allowing you to pay securely with cards, mobile money, and other supported methods.</p>
-      <hr />
-    </li>
+  <div class="announcement">
+    Timeless Style. Modern Confidence. | SB CLASSIC
+  </div>
 
-    <li>
-      <p class="question">3. How long does order processing take?</p>
-      <p>Orders are processed within 1–2 business days after payment confirmation.</p>
-      <hr />
-    </li>
+  <header>
+    <a class="logo" href="index.html" aria-label="SB CLASSIC Home">
+      <img src="logo.PNG" alt="SB CLASSIC">
+    </a>
 
-    <li>
-      <p class="question">4. How long does delivery take?</p>
-      <p>Delivery usually takes between 2 to 14 business days, depending on your location.</p>
-      <hr />
-    </li>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="clothes.html">Clothes</a>
+      <a href="shoes.html">Shoes</a>
+      <a href="slippers-sandals.html">Slippers &amp; Sandals</a>
+      <a href="accessories.html">Accessories</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-    <li>
-      <p class="question">5. Can I track my order?</p>
-      <p>Yes! After your order is processed and shipped, you will receive a tracking number via email or WhatsApp to monitor your delivery status.</p>
-      <hr />
-    </li>
+  <main>
 
-    <li>
-      <p class="question">6. Do you ship internationally?</p>
-      <p>Yes, we offer international shipping. Shipping fees and delivery times vary based on the destination.</p>
-      <hr />
-    </li>
+    <section class="page-banner">
+      <span class="eyebrow">Your Questions, Answered</span>
+      <h1>Frequently Asked Questions</h1>
+      <p>
+        Find helpful information about shopping with SB CLASSIC,
+        from placing your order to payment, delivery, and customer support.
+      </p>
+    </section>
 
-    <li>
-      <p class="question">7. What is your return/refund policy?</p>
-      <p>Please refer to our <a href="refund.html">Refund Policy</a> page for detailed information on returns and refunds.</p>
-      <hr />
-    </li>
+    <section class="container">
 
-    <li>
-      <p class="question">8. How can I contact customer support?</p>
-      <ul>
-      <ul class="contact-list">
-        <li>📧 Email: <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a></li>
-        <li>📞 Phone: +233260928990</li>
-        <li>📱 WhatsApp: <a href="https://wa.me/233260928990" target="_blank">+233260928990</a></li>
-        <li>📷 Instagram: <a href="https://instagram.com/sb_classic_" target="_blank">@sb_classic_</a></li>
-        <li>📢 Telegram Channel: <a href="https://t.me/sbclassics" target="_blank">@sbclassics</a></li>
-      </ul>
-      <hr />
-    </li>
+      <div class="intro">
+        <span class="section-label">The SB CLASSIC Guide</span>
+        <h2>How Can We Help You?</h2>
+        <p>
+          Explore our frequently asked questions for information about
+          orders, payments, delivery, returns, and contacting our team.
+        </p>
+      </div>
 
-    <li>
-      <p class="question">9. Are your products genuine and sourced internationally?</p>
-      <p>Yes, all our products are carefully sourced from trusted international suppliers to ensure premium quality.</p>
-      <hr />
-    </li>
+      <div class="faq-list">
 
-    <li>
-      <p class="question">10. Can I change or cancel my order after placing it?</p>
-      <p>Please contact us immediately if you wish to change or cancel your order. We process orders quickly, so prompt communication is essential.</p>
-      <hr />
-    </li>
-  </ul>
+        <section class="faq-card">
+          <div class="faq-question">
+            <span class="faq-number">01</span>
+            <h2>How do I place an order?</h2>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Simply browse our products, select your desired items,
+              choose the quantity, and click “Add to Cart.” When ready,
+              proceed to checkout to complete your purchase.
+            </p>
+          </div>
+        </section>
+
+        <section class="faq-card">
+          <div class="faq-question">
+            <span class="faq-number">02</span>
+            <h2>What payment methods do you accept?</h2>
+          </div>
+          <div class="faq-answer">
+            <p>
+              We currently accept payments via Paystack, allowing you
+              to pay securely with cards, mobile money, and other
+              supported methods.
+            </p>
+          </div>
+        </section>
+
+        <section class="faq-card">
+          <div class="faq-question">
+            <span class="faq-number">03</span>
+            <h2>How long does order processing take?</h2>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Orders are processed within 1–2 business days after
+              payment confirmation.
+            </p>
+          </div>
+        </section>
+
+        <section class="faq-card">
+          <div class="faq-question">
+            <span class="faq-number">04</span>
+            <h2>How long does delivery take?</h2>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Delivery usually takes between 2 to 14 business days,
+              depending on your location.
+            </p>
+          </div>
+        </section>
+
+        <section class="faq-card">
+          <div class="faq-question">
+            <span class="faq-number">05</span>
+            <h2>Can I track my order?</h2>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Yes! After your order is processed and shipped, you will
+              receive a tracking number via email or WhatsApp to monitor
+              your delivery status.
+            </p>
+          </div>
+        </section>
+
+        <section class="faq-card">
+          <div class="faq-question">
+            <span class="faq-number">06</span>
+            <h2>Do you ship internationally?</h2>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Yes, we offer international shipping. Shipping fees and
+              delivery times vary based on the destination.
+            </p>
+          </div>
+        </section>
+
+        <section class="faq-card">
+          <div class="faq-question">
+            <span class="faq-number">07</span>
+            <h2>What is your return/refund policy?</h2>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Please refer to our
+              <a href="refund.html">Refund Policy</a>
+              page for detailed information on returns and refunds.
+            </p>
+          </div>
+        </section>
+
+        <section class="faq-card">
+          <div class="faq-question">
+            <span class="faq-number">08</span>
+            <h2>How can I contact customer support?</h2>
+          </div>
+          <div class="faq-answer">
+
+            <ul class="contact-list">
+              <li>
+                <span class="contact-icon" aria-hidden="true">✉</span>
+                <span>
+                  Email:
+                  <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a>
+                </span>
+              </li>
+
+              <li>
+                <span class="contact-icon" aria-hidden="true">☎</span>
+                <span>
+                  Phone: +233260928990
+                </span>
+              </li>
+
+              <li>
+                <span class="contact-icon" aria-hidden="true">◉</span>
+                <span>
+                  WhatsApp:
+                  <a href="https://wa.me/233260928990" target="_blank" rel="noopener noreferrer">+233260928990</a>
+                </span>
+              </li>
+
+              <li>
+                <span class="contact-icon" aria-hidden="true">◎</span>
+                <span>
+                  Instagram:
+                  <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener noreferrer">@sb_classic_</a>
+                </span>
+              </li>
+
+              <li>
+                <span class="contact-icon" aria-hidden="true">↗</span>
+                <span>
+                  Telegram Channel:
+                  <a href="https://t.me/sbclassics" target="_blank" rel="noopener noreferrer">@sbclassics</a>
+                </span>
+              </li>
+            </ul>
+
+          </div>
+        </section>
+
+        <section class="faq-card">
+          <div class="faq-question">
+            <span class="faq-number">09</span>
+            <h2>Are your products genuine and sourced internationally?</h2>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Yes, all our products are carefully sourced from trusted
+              international suppliers to ensure premium quality.
+            </p>
+          </div>
+        </section>
+
+        <section class="faq-card">
+          <div class="faq-question">
+            <span class="faq-number">10</span>
+            <h2>Can I change or cancel my order after placing it?</h2>
+          </div>
+          <div class="faq-answer">
+            <p>
+              Please contact us immediately if you wish to change or
+              cancel your order. We process orders quickly, so prompt
+              communication is essential.
+            </p>
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+
+    <div class="footer-brand">SB CLASSIC</div>
+    <p class="tagline">Style With Class</p>
+
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="clothes.html">Clothing</a>
+      <a href="shoes.html">Shoes</a>
+      <a href="slippers-sandals.html">Slippers &amp; Sandals</a>
+      <a href="accessories.html">Accessories</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="footer-socials">
+      <a href="https://instagram.com/sb.classic_" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.facebook.com/sbclassicss" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://t.me/sbclassics" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener noreferrer">TikTok</a>
+    </div>
+
+    <div class="policies">
+      <strong>Our Policies</strong>
+      <a href="refund-policy.html">Refund Policy</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="faqs.html" aria-current="page">FAQs</a>
+      <a href="shipping.html">Shipping Policy</a>
+      <a href="terms.html">Terms and Conditions</a>
+    </div>
+
+    <div class="footer-contact">
+      <p>
+        Email:
+        <a href="mailto:sbclassic11@gmail.com">sbclassic11@gmail.com</a>
+      </p>
+
+      <p>
+        Call:
+        <a href="tel:+2347043214846">+234 704 321 4846</a>
+      </p>
+
+      <p>
+        WhatsApp:
+        <a href="https://wa.me/233205950479" target="_blank" rel="noopener noreferrer">+233 20 595 0479</a>
+      </p>
+    </div>
+
+    <div class="copyright">
+      <p>&copy; 2026 SB CLASSIC. All rights reserved.</p>
+      <p>Timeless fashion. Confidence in every look.</p>
+    </div>
+
+  </footer>
 
 </body>
 </html>
