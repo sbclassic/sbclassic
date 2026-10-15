@@ -1,29 +1,26 @@
 
 const ALLOWED_ORIGIN = "https://sbclassic.github.io";
+const SITE_BASE = "https://sbclassic.github.io/sbclassic";
 const CALLBACK_URL =
-  "https://sbclassic.github.io/sbclassic/checkout.html?payment=return";
+  `${SITE_BASE}/checkout.html?payment=return`;
 
-// Prices in naira. Add all your current products here before going live.
-// Names must match the product names stored in your cart exactly.
-const CATALOG = {
-  "Classic Designer Slides": 109000,
-  "Stylish Android Glasses": 64000,
-  "Elegant 2pcs Sets": 179000,
-  "Simple Classy Jackets": 74900,
-  "Versace Sneaker Black/White": 178000,
-  "Luxury LV Dress Shoe": 179900,
-  "Luxury Prada Half Shoe": 159900
-};
+const PRODUCT_PAGES = [
+  { path: "/shoes.html", type: "cedi100" },
+  { path: "/slippers-sandals.html", type: "mixed100" },
+  { path: "/clothes.html", type: "cedi90" },
+  { path: "/accessories.html", type: "naira" }
+];
 
 function reply(data, status = 200, origin = "") {
   return new Response(JSON.stringify(data), {
     status,
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json; charset=utf-8",
       "Access-Control-Allow-Origin":
         origin === ALLOWED_ORIGIN ? ALLOWED_ORIGIN : "null",
       "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type",
+      "Cache-Control": "no-store",
       "Vary": "Origin"
     }
   });
@@ -31,6 +28,100 @@ function reply(data, status = 200, origin = "") {
 
 function clean(value, max = 300) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
+}
+
+function decodeEntities(value) {
+  return value
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&nbsp;/g, " ");
+}
+
+function addProduct(catalog, name, rawPrice, type) {
+  name = decodeEntities(clean(name, 180));
+  const raw = Number(String(rawPrice).replace(/,/g, ""));
+
+  if (!name || !Number.isFinite(raw) || raw <= 0) return;
+
+  let priceNGN;
+
+  if (type === "naira" || (type === "mixed100" && raw >= 10000)) {
+    priceNGN = Math.round(raw);
+  } else if (type === "cedi90") {
+    priceNGN = Math.round((raw - 90) * 100);
+  } else {
+    priceNGN = Math.round((raw - 100) * 100);
+  }
+
+  if (!Number.isSafeInteger(priceNGN) || priceNGN <= 0) return;
+
+  if (!catalog[name]) catalog[name] = [];
+  if (!catalog[name].includes(priceNGN)) catalog[name].push(priceNGN);
+}
+
+function parseDataProducts(html, type, catalog) {
+  const pattern =
+    /data-name=["']([^"']+)["'][\s\S]{0,300}?data-price=["']([\d,]+(?:\.\d+)?)/gi;
+
+  for (const match of html.matchAll(pattern)) {
+    addProduct(catalog, match[1], match[2], type);
+  }
+}
+
+function parseClothingProducts(html, catalog) {
+  const pattern =
+    /name:\s*(?:'((?:\\.|[^'\\])*)'|"((?:\\.|[^"\\])*)")\s*,\s*price:\s*([\d,]+(?:\.\d+)?)/g;
+
+  for (const match of html.matchAll(pattern)) {
+    const name = (match[1] ?? match[2] ?? "")
+      .replace(/\\'/g, "'")
+      .replace(/\\"/g, '"')
+      .replace(/\\\\/g, "\\");
+
+    addProduct(catalog, name, match[3], "cedi90");
+  }
+}
+
+async function buildCatalog() {
+  const catalog = Object.create(null);
+
+  const pages = await Promise.all(
+    PRODUCT_PAGES.map(async page => {
+      const response = await fetch(SITE_BASE + page.path, {
+        headers: { "Accept": "text/html" }
+      });
+
+      if (!response.ok) {
+        throw new Error(`Could not load product page ${page.path}`);
+      }
+
+      return {
+        ...page,
+        html: await response.text()
+      };
+    })
+  );
+
+  for (const page of pages) {
+    if (page.type === "cedi90") {
+      parseClothingProducts(page.html, catalog);
+    } else {
+      parseDataProducts(page.html, page.type, catalog);
+    }
+  }
+
+  if (Object.keys(catalog).length === 0) {
+    throw new Error("The product catalog could not be built.");
+  }
+
+  return catalog;
+}
+
+function validEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 export default {
@@ -55,11 +146,36 @@ export default {
       return reply({ error: "Origin not allowed." }, 403, origin);
     }
 
-    if (!env.PAYSTACK_SECRET_KEY) {
-      return reply({ error: "Payment service is not configured." }, 503, origin);
+    // Inspect the catalog without starting a payment.
+    if (request.method === "GET" && url.pathname === "/catalog") {
+      try {
+        const catalog = await buildCatalog();
+        const products = Object.entries(catalog).map(([name, pricesNGN]) => ({
+          name,
+          pricesNGN
+        }));
+
+        return reply({
+          productNameCount: products.length,
+          products
+        }, 200, origin);
+      } catch {
+        return reply({
+          error: "Could not read the live product catalog."
+        }, 503, origin);
+      }
     }
 
-    // Create a Paystack checkout with a server-calculated amount.
+    if (url.pathname !== "/initialize" && url.pathname !== "/verify") {
+      return reply({ error: "Not found." }, 404, origin);
+    }
+
+    if (!env.PAYSTACK_SECRET_KEY) {
+      return reply({
+        error: "Payment service is not configured."
+      }, 503, origin);
+    }
+
     if (request.method === "POST" && url.pathname === "/initialize") {
       let body;
 
@@ -76,18 +192,27 @@ export default {
       const delivery = clean(customer.delivery, 500);
       const items = Array.isArray(body.items) ? body.items : [];
 
-      if (
-        !name || !phone || !delivery ||
-        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-      ) {
-        return reply(
-          { error: "Enter your name, valid email, phone and delivery address." },
-          400, origin
-        );
+      if (!name || !validEmail(email) || !phone || !delivery) {
+        return reply({
+          error: "Enter your name, valid email, phone and delivery address."
+        }, 400, origin);
       }
 
-      if (!items.length || items.length > 50) {
-        return reply({ error: "Your cart is empty or invalid." }, 400, origin);
+      if (items.length < 1 || items.length > 50) {
+        return reply({
+          error: "Your cart is empty or contains too many items."
+        }, 400, origin);
+      }
+
+      let catalog;
+
+      try {
+        // Re-read the live product pages for every new checkout.
+        catalog = await buildCatalog();
+      } catch {
+        return reply({
+          error: "We could not verify the current product prices. Please try again later."
+        }, 503, origin);
       }
 
       let totalNGN = 0;
@@ -96,7 +221,8 @@ export default {
       for (const item of items) {
         const productName = clean(item.name, 180);
         const quantity = Number(item.quantity || 1);
-        const priceNGN = CATALOG[productName];
+        const priceNGN = Number(item.priceNGN ?? item.price);
+        const allowedPrices = catalog[productName];
 
         if (
           !productName ||
@@ -104,23 +230,22 @@ export default {
           quantity < 1 ||
           quantity > 20
         ) {
-          return reply({ error: "Invalid product or quantity." }, 400, origin);
-        }
-
-        if (!Number.isSafeInteger(priceNGN) || priceNGN <= 0) {
           return reply({
-            error: `“${productName}” is not enabled for online checkout yet.`
+            error: "A product name or quantity is invalid."
           }, 400, origin);
         }
 
-        // Reject a browser-submitted price that differs from the catalog.
-        if (Number(item.priceNGN ?? item.price) !== priceNGN) {
+        if (!allowedPrices || !allowedPrices.includes(priceNGN)) {
           return reply({
-            error: `The price for “${productName}” needs updating. Remove it from your cart and add it again.`
+            error: `The current price for "${productName}" could not be matched to the live catalog. Remove it from your cart and add it again.`
           }, 400, origin);
         }
 
         totalNGN += priceNGN * quantity;
+
+        if (!Number.isSafeInteger(totalNGN)) {
+          return reply({ error: "Invalid order total." }, 400, origin);
+        }
 
         verifiedItems.push({
           name: productName,
@@ -131,12 +256,12 @@ export default {
         });
       }
 
-      if (!Number.isSafeInteger(totalNGN) || totalNGN < 1) {
+      if (totalNGN < 1) {
         return reply({ error: "Invalid order total." }, 400, origin);
       }
 
       const reference =
-        "SBCLASSIC-" + crypto.randomUUID().replaceAll("-", "");
+        "SBCLASSIC-" + crypto.randomUUID().replace(/-/g, "");
 
       const payload = {
         email,
@@ -153,22 +278,30 @@ export default {
         }
       };
 
-      const response = await fetch(
-        "https://api.paystack.co/transaction/initialize",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${env.PAYSTACK_SECRET_KEY}`,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(payload)
-        }
-      );
+      let response;
+      let result;
 
-      const result = await response.json();
+      try {
+        response = await fetch(
+          "https://api.paystack.co/transaction/initialize",
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${env.PAYSTACK_SECRET_KEY}`,
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          }
+        );
 
-      if (!response.ok || !result.status ||
-          !result.data?.authorization_url) {
+        result = await response.json();
+      } catch {
+        return reply({
+          error: "Could not connect to Paystack. Please try again."
+        }, 502, origin);
+      }
+
+      if (!response.ok || !result.status || !result.data?.authorization_url) {
         return reply({
           error: result.message || "Paystack could not start payment."
         }, 502, origin);
@@ -176,11 +309,11 @@ export default {
 
       return reply({
         authorizationUrl: result.data.authorization_url,
-        reference
+        reference,
+        amountNGN: totalNGN
       }, 200, origin);
     }
 
-    // Verify the transaction with Paystack after the customer returns.
     if (request.method === "GET" && url.pathname === "/verify") {
       const reference = clean(url.searchParams.get("reference"), 120);
 
@@ -188,26 +321,41 @@ export default {
         return reply({ error: "Invalid payment reference." }, 400, origin);
       }
 
-      const response = await fetch(
-        "https://api.paystack.co/transaction/verify/" +
-          encodeURIComponent(reference),
-        {
-          headers: {
-            Authorization: `Bearer ${env.PAYSTACK_SECRET_KEY}`
-          }
-        }
-      );
+      let response;
+      let result;
 
-      const result = await response.json();
+      try {
+        response = await fetch(
+          "https://api.paystack.co/transaction/verify/" +
+            encodeURIComponent(reference),
+          {
+            headers: {
+              Authorization: `Bearer ${env.PAYSTACK_SECRET_KEY}`
+            }
+          }
+        );
+
+        result = await response.json();
+      } catch {
+        return reply({
+          error: "Could not connect to Paystack to verify payment."
+        }, 502, origin);
+      }
 
       if (!response.ok || !result.status || !result.data) {
-        return reply({ error: "Could not verify payment." }, 502, origin);
+        return reply({
+          error: "Could not verify payment."
+        }, 502, origin);
       }
 
       const tx = result.data;
 
       return reply({
-        verified: tx.status === "success" && tx.currency === "NGN",
+        verified:
+          tx.status === "success" &&
+          tx.currency === "NGN" &&
+          Number.isSafeInteger(Number(tx.amount)) &&
+          Number(tx.amount) > 0,
         status: tx.status,
         currency: tx.currency,
         amountNGN: Number(tx.amount) / 100,
@@ -215,7 +363,6 @@ export default {
       }, 200, origin);
     }
 
-    return reply({ error: "Not found." }, 404, origin);
+    return reply({ error: "Method not allowed." }, 405, origin);
   }
 };
-    
