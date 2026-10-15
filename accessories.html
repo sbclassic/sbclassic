@@ -1,1 +1,969 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+  <title>ACCESSORIES – SB CLASSIC</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #111111;
+      --black-soft: #1b1b1b;
+      --cream: #f8f5ef;
+      --cream-dark: #eee7db;
+      --gold: #c5a46d;
+      --gold-dark: #a8874d;
+      --text: #242424;
+      --muted: #77716a;
+      --white: #ffffff;
+      --border: #e5ded2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    button,
+    select,
+    input {
+      font: inherit;
+    }
+
+    a {
+      transition: color 0.3s ease, background 0.3s ease;
+    }
+
+    /* HEADER */
+
+    header {
+      background: var(--black);
+      color: var(--cream);
+      padding: 25px 20px;
+      text-align: center;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--cream);
+      margin: 0 0 8px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px 25px;
+      margin-top: 5px;
+    }
+
+    nav a {
+      color: var(--cream);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.82rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 5px 0;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+      color: var(--gold);
+    }
+
+    nav a:hover::after,
+    nav a:focus-visible::after {
+      width: 100%;
+    }
+
+    /* PAGE INTRODUCTION */
+
+    .page-intro {
+      background: var(--black-soft);
+      color: var(--cream);
+      padding: 43px 20px 38px;
+      text-align: center;
+      border-bottom: 1px solid rgba(197, 164, 109, 0.35);
+    }
+
+    .page-intro .eyebrow {
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+    }
+
+    .page-intro h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.1rem, 5vw, 3.3rem);
+      line-height: 1.2;
+      font-weight: 600;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    .page-intro .intro-text {
+      color: #d5cec2;
+      max-width: 600px;
+      margin: 15px auto 0;
+      font-size: 0.93rem;
+      line-height: 1.9;
+    }
+
+    .gold-line {
+      width: 65px;
+      height: 2px;
+      background: var(--gold);
+      margin: 20px auto 0;
+    }
+
+    /* MAIN CONTENT */
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 22px 65px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--black);
+      font-weight: 600;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 8px auto 0;
+    }
+
+    /* CURRENCY SELECTOR */
+
+    .currency-panel {
+      text-align: center;
+      margin: 0 auto 30px;
+      padding: 18px 20px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--gold);
+      border-radius: 3px;
+      max-width: 540px;
+      box-shadow: 0 5px 18px rgba(17, 17, 17, 0.04);
+    }
+
+    .currency-panel label {
+      display: inline-block;
+      color: var(--black);
+      font-weight: 600;
+      margin: 5px 8px 5px 0;
+      font-size: 0.9rem;
+    }
+
+    .currency-panel select {
+      max-width: 100%;
+      padding: 9px 12px;
+      border: 1px solid var(--gold);
+      border-radius: 2px;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 0.88rem;
+    }
+
+    .currency-note {
+      font-size: 11px;
+      margin-top: 8px;
+      color: var(--muted);
+    }
+
+    /* PRODUCT GRID */
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 340px));
+      gap: 28px;
+      justify-content: center;
+      align-items: stretch;
+      margin-top: 25px;
+    }
+
+    .product {
+      width: 100%;
+      min-width: 0;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      text-align: center;
+      padding-bottom: 25px;
+      box-shadow: 0 5px 18px rgba(17, 17, 17, 0.05);
+      transition: transform 0.35s ease, box-shadow 0.35s ease,
+                  border-color 0.35s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+      box-shadow: 0 14px 30px rgba(17, 17, 17, 0.11);
+    }
+
+    .product-media {
+      width: 100%;
+      background: var(--cream-dark);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .product video {
+      width: 100%;
+      display: block;
+      aspect-ratio: 4 / 4.3;
+      object-fit: contain;
+      background: #f1ede6;
+    }
+
+    .product h3 {
+      margin: 20px 15px 7px;
+      color: var(--black);
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.35rem;
+      line-height: 1.5;
+    }
+
+    .product-description {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin: 0 18px 10px;
+    }
+
+    .product p.price {
+      color: var(--gold-dark);
+      font-weight: 700;
+      margin: 8px 0 14px;
+      font-size: 1.3rem;
+      letter-spacing: 0.3px;
+    }
+
+    .product-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      padding: 0 18px;
+    }
+
+    .option-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 260px;
+    }
+
+    .option-row label {
+      color: var(--text);
+      font-size: 0.87rem;
+      font-weight: 500;
+      text-align: left;
+    }
+
+    .option-row select,
+    .option-row input {
+      width: 155px;
+      max-width: 65%;
+      padding: 9px 10px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: var(--white);
+      color: var(--text);
+      font-size: 0.85rem;
+    }
+
+    .option-row select:focus,
+    .option-row input:focus,
+    .currency-panel select:focus {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    .product button {
+      display: block;
+      width: calc(100% - 36px);
+      max-width: 270px;
+      background: var(--black);
+      color: var(--cream);
+      border: 1px solid var(--black);
+      padding: 13px 18px;
+      margin: 20px auto 0;
+      cursor: pointer;
+      border-radius: 2px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: background 0.3s ease, color 0.3s ease,
+                  border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .product button:hover,
+    .product button:focus-visible {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
+    }
+
+    .product button:active {
+      transform: scale(0.98);
+    }
+
+    /* CART MESSAGE */
+
+    #sb-cart-feedback {
+      display: none;
+      max-width: 600px;
+      margin: 0 auto 25px;
+      padding: 14px 18px;
+      border-radius: 3px;
+      text-align: center;
+      background: #edf8ed;
+      color: #176b2c;
+      border: 1px solid #b9e2c1;
+      font-size: 0.9rem;
+    }
+
+    #sb-cart-feedback.error {
+      background: #fff0f0;
+      color: #a32020;
+      border-color: #efc0c0;
+    }
+
+    .currency-estimate-note {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: -8px;
+      margin-bottom: 12px;
+    }
+
+    /* POLICIES */
+
+    .policies-section {
+      background: var(--cream-dark);
+      border-top: 1px solid var(--border);
+      padding: 28px 18px;
+      text-align: center;
+    }
+
+    .policies-section h2 {
+      color: var(--black);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      margin: 0 0 15px;
+    }
+
+    .policies-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px 18px;
+    }
+
+    .policies-links a {
+      color: var(--black-soft);
+      text-decoration: none;
+      font-size: 0.83rem;
+      font-weight: 500;
+    }
+
+    .policies-links a:hover {
+      color: var(--gold-dark);
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: var(--black);
+      color: #d8d1c6;
+      text-align: center;
+      padding: 34px 18px;
+      border-top: 2px solid var(--gold);
+      font-size: 0.85rem;
+      line-height: 1.9;
+    }
+
+    footer p {
+      margin: 8px 0;
+      overflow-wrap: anywhere;
+    }
+
+    footer a {
+      color: var(--gold);
+      margin: 0 5px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      color: var(--white);
+      text-decoration: underline;
+    }
+
+    footer hr {
+      border: 0;
+      border-top: 1px solid #39352e;
+      max-width: 500px;
+      margin: 20px auto;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      color: var(--cream);
+      letter-spacing: 2px;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    /* WHATSAPP BUTTON */
+
+    .whatsapp-chat {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      z-index: 1000;
+      border-radius: 50%;
+      background: #25d366;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.22);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .whatsapp-chat:hover {
+      background: #1ebe57;
+      transform: scale(1.06);
+    }
+
+    .whatsapp-chat img {
+      width: 33px;
+      height: 33px;
+      object-fit: contain;
+    }
+
+    /* RESPONSIVE LAYOUT */
+
+    @media (max-width: 600px) {
+      header {
+        padding: 22px 14px;
+      }
+
+      .logo {
+        font-size: 1.9rem;
+        letter-spacing: 2px;
+      }
+
+      nav {
+        gap: 10px 15px;
+      }
+
+      nav a {
+        font-size: 0.72rem;
+      }
+
+      .page-intro {
+        padding: 34px 16px 30px;
+      }
+
+      .page-intro .eyebrow {
+        font-size: 0.68rem;
+        letter-spacing: 2px;
+      }
+
+      .page-intro .intro-text {
+        font-size: 0.85rem;
+      }
+
+      .container {
+        padding: 35px 14px 45px;
+      }
+
+      .section-heading h2 {
+        font-size: 1.9rem;
+      }
+
+      .products {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
+        max-width: 390px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .product h3 {
+        font-size: 1.25rem;
+      }
+
+      .product video {
+        aspect-ratio: 4 / 3.8;
+      }
+
+      .currency-panel {
+        padding: 15px 12px;
+      }
+
+      .currency-panel label {
+        display: block;
+        margin: 0 0 8px;
+      }
+
+      .currency-panel select {
+        width: 100%;
+      }
+
+      .policies-links {
+        gap: 10px 14px;
+      }
+
+      footer {
+        padding: 28px 13px;
+      }
+
+      .whatsapp-chat {
+        width: 51px;
+        height: 51px;
+        right: 14px;
+        bottom: 14px;
+      }
+
+      .whatsapp-chat img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-content">
+    <div class="logo">SB CLASSIC</div>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="clothes.html">Clothes</a>
+      <a href="shoes.html">Shoes</a>
+      <a href="slippers-sandals.html">Slippers &amp; Sandals</a>
+      <a href="accessories.html" aria-current="page">Accessories</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-intro">
+  <p class="eyebrow">The Finishing Touch</p>
+  <h1>Accessories</h1>
+  <p class="intro-text">
+    Complete your look with carefully selected accessories.
+    Discover stylish details that bring confidence, character and class
+    to your everyday style.
+  </p>
+  <div class="gold-line"></div>
+</section>
+
+<main class="container">
+
+  <div class="section-heading">
+    <h2>Explore Our Collection</h2>
+    <p>Small details. Distinctive style. The SB CLASSIC touch.</p>
+  </div>
+
+  <div class="currency-panel">
+    <label for="sb-display-currency">Display prices in:</label>
+
+    <select id="sb-display-currency">
+      <option value="NGN">Nigerian Naira (NGN ₦)</option>
+      <option value="GHS">Ghanaian Cedi (GHS ₵)</option>
+      <option value="USD">US Dollar (USD $)</option>
+      <option value="XOF">West African CFA Franc (XOF)</option>
+    </select>
+
+    <div class="currency-note">
+      Foreign currency amounts are estimates. Orders are charged in NGN.
+    </div>
+  </div>
+
+  <div id="sb-cart-feedback" role="status" aria-live="polite"></div>
+
+  <div class="products">
+
+    <article class="product"
+      data-name="Stylish Android Glasses"
+      data-price="64000"
+      data-price-currency="NGN"
+      data-image="accessories/android_dark_plain_lenses_glasses.MP4">
+
+      <div class="product-media">
+        <video controls preload="metadata" playsinline>
+          <source
+            src="accessories/android_dark_plain_lenses_glasses.MP4"
+            type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <h3>Stylish Android Glasses</h3>
+
+      <p class="product-description">
+        A modern accessory for a distinctive look.
+      </p>
+
+      <p class="price" data-naira-price="64000">₦64,000</p>
+
+      <div class="product-options">
+
+        <div class="option-row">
+          <label for="color-android-glasses">Colour</label>
+          <select id="color-android-glasses">
+            <option value="Dark Lenses">Dark Lenses</option>
+            <option value="Plain Lenses">Plain Lenses</option>
+          </select>
+        </div>
+
+        <div class="option-row">
+          <label for="qty-android-glasses">Quantity</label>
+          <input
+            id="qty-android-glasses"
+            class="quantity-input"
+            type="number"
+            value="1"
+            min="1"
+            step="1"
+            inputmode="numeric">
+        </div>
+
+      </div>
+
+      <button type="button" class="add-to-cart-btn" id="add-android-glasses">
+        Add to Cart
+      </button>
+
+    </article>
+
+  </div>
+</main>
+
+<section class="policies-section">
+  <h2>Shopping With Confidence</h2>
+
+  <div class="policies-links">
+    <a href="refund-policy.html">Refund Policy</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="faqs.html">FAQs</a>
+    <a href="shipping.html">Shipping Policy</a>
+    <a href="terms.html">Terms and Conditions</a>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-brand">SB CLASSIC</p>
+  <p>Style with class.</p>
+
+  <p>
+    CONTACT:
+    <a href="https://wa.me/233260928990" target="_blank" rel="noopener">
+      +233260928990
+    </a>
+    |
+    <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a>
+  </p>
+
+  <p class="social-links">
+    FOLLOW US ON:
+    <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener">Instagram</a> |
+    <a href="https://facebook.com/sb.classic_" target="_blank" rel="noopener">Facebook</a> |
+    <a href="https://t.me/sbclassics" target="_blank" rel="noopener">Telegram</a> |
+    <a href="https://wa.me/233260928990" target="_blank" rel="noopener">WhatsApp</a> |
+    <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener">TikTok</a>
+  </p>
+
+  <hr>
+
+  <p>© 2026 SB CLASSIC. All rights reserved.</p>
+</footer>
+
+<a
+  class="whatsapp-chat"
+  href="https://wa.me/233260928990"
+  target="_blank"
+  rel="noopener"
+  aria-label="Chat with SB CLASSIC on WhatsApp">
+
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+    alt="">
+</a>
+
+<script>
+(function () {
+  'use strict';
+
+  var RATES = {
+    NGN: 1,
+    GHS: 114.15,
+    USD: 1330,
+    XOF: 2.26
+  };
+
+  var SYMBOLS = {
+    NGN: '₦',
+    GHS: '₵',
+    USD: '$',
+    XOF: 'FCFA '
+  };
+
+  var CURRENCY_KEY = 'sbclassicDisplayCurrency';
+  var CART_KEY = 'cart';
+
+  function readStorage(key, fallback) {
+    try {
+      var value = localStorage.getItem(key);
+      return value === null ? fallback : value;
+    } catch (error) {
+      return fallback;
+    }
+  }
+
+  function writeStorage(key, value) {
+    try {
+      localStorage.setItem(key, value);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function formatMoney(amount, currency) {
+    var value = amount / RATES[currency];
+    var decimals = currency === 'USD' ? 2 : 0;
+
+    return SYMBOLS[currency] + value.toLocaleString('en-US', {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals
+    });
+  }
+
+  function getCart() {
+    try {
+      var cart = JSON.parse(readStorage(CART_KEY, '[]'));
+      return Array.isArray(cart) ? cart : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function saveCart(cart) {
+    return writeStorage(CART_KEY, JSON.stringify(cart));
+  }
+
+  function updateCartCount() {
+    var countElement = document.getElementById('cart-count');
+    if (!countElement) return;
+
+    var count = getCart().reduce(function (total, item) {
+      return total + Math.max(0, Number(item.quantity) || 0);
+    }, 0);
+
+    countElement.textContent = count;
+  }
+
+  function showMessage(message, isError) {
+    var box = document.getElementById('sb-cart-feedback');
+    if (!box) return;
+
+    box.textContent = message;
+    box.classList.toggle('error', Boolean(isError));
+    box.style.display = 'block';
+
+    if (box.hideTimer) {
+      clearTimeout(box.hideTimer);
+    }
+
+    box.hideTimer = setTimeout(function () {
+      box.style.display = 'none';
+    }, 4500);
+  }
+
+  function renderPrices(currency) {
+    var priceElement = document.querySelector('.product .price');
+    if (!priceElement) return;
+
+    var nairaPrice = Number(priceElement.dataset.nairaPrice);
+    if (!Number.isFinite(nairaPrice) || nairaPrice <= 0) return;
+
+    priceElement.textContent = formatMoney(nairaPrice, currency);
+
+    var oldNote = document.querySelector('.currency-estimate-note');
+    if (oldNote) oldNote.remove();
+
+    if (currency !== 'NGN') {
+      var note = document.createElement('small');
+      note.className = 'currency-estimate-note';
+      note.textContent = 'NGN ' + nairaPrice.toLocaleString('en-NG');
+      priceElement.insertAdjacentElement('afterend', note);
+    }
+  }
+
+  var currencySelector = document.getElementById('sb-display-currency');
+  var savedCurrency = readStorage(CURRENCY_KEY, 'NGN');
+
+  if (!Object.prototype.hasOwnProperty.call(RATES, savedCurrency)) {
+    savedCurrency = 'NGN';
+  }
+
+  currencySelector.value = savedCurrency;
+  renderPrices(savedCurrency);
+
+  currencySelector.addEventListener('change', function () {
+    var currency = currencySelector.value;
+
+    if (!Object.prototype.hasOwnProperty.call(RATES, currency)) {
+      currency = 'NGN';
+      currencySelector.value = currency;
+    }
+
+    writeStorage(CURRENCY_KEY, currency);
+    renderPrices(currency);
+  });
+
+  document.getElementById('add-android-glasses').addEventListener('click', function () {
+    var quantityInput = document.getElementById('qty-android-glasses');
+    var quantity = Number(quantityInput.value);
+
+    if (!Number.isInteger(quantity) || quantity < 1) {
+      showMessage('Please enter a valid quantity of at least 1.', true);
+      quantityInput.focus();
+      return;
+    }
+
+    var color = document.getElementById('color-android-glasses').value;
+
+    var product = {
+      id: 'android-glasses-' + color.toLowerCase().replace(/\s+/g, '-'),
+      name: 'Stylish Android Glasses',
+      price: 64000,
+      priceCurrency: 'NGN',
+      currency: 'NGN',
+      image: 'accessories/android_dark_plain_lenses_glasses.MP4',
+      quantity: quantity,
+      color: color
+    };
+
+    var cart = getCart();
+
+    var existing = cart.find(function (item) {
+      return item.id === product.id ||
+        (
+          item.name === product.name &&
+          item.color === product.color
+        );
+    });
+
+    if (existing) {
+      existing.quantity = (Number(existing.quantity) || 0) + quantity;
+      existing.price = product.price;
+      existing.priceCurrency = 'NGN';
+      existing.currency = 'NGN';
+      existing.image = product.image;
+    } else {
+      cart.push(product);
+    }
+
+    if (!saveCart(cart)) {
+      showMessage(
+        'Your browser could not save the cart. Please check your browser settings and try again.',
+        true
+      );
+      return;
+    }
+
+    updateCartCount();
+    showMessage(product.name + ' (x' + quantity + ') added to your cart.', false);
+  });
+
+  updateCartCount();
+})();
+</script>
+
+</body>
+</html>
+
