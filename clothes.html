@@ -3057,83 +3057,185 @@
     if (document.getElementById("sb-cart-feedback")) return;
 
     const feedback = document.createElement("p");
-    feedback.id = "sb-cart-feedback";
-    feedback.setAttribute("role", "status");
-    feedback.setAttribute("aria-live", "polite");
-    feedback.style.cssText =
-      "padding:10px;margin:10px 0;color:#194619;";
 
-    const heading = document.querySelector("h1");
+<script>
+(function () {
+  // Display rates are estimates based on the custom NGN prices.
+  const RATES = {
+    NGN: 1,
+    GHS: 115,
+    USD: 1375,
+    XOF: 2.35
+  };
 
-    if (heading && heading.parentNode) {
-      heading.parentNode.insertBefore(feedback, heading.nextSibling);
-    } else {
-      document.body.insertBefore(feedback, document.body.firstChild);
-    }
+  const CURRENCIES = {
+    NGN: { symbol: "₦", locale: "en-NG", decimals: 0 },
+    GHS: { symbol: "GH₵", locale: "en-GH", decimals: 2 },
+    USD: { symbol: "$", locale: "en-US", decimals: 2 },
+    XOF: { symbol: "CFA ", locale: "fr-SN", decimals: 0 }
+  };
+
+  function formatMoney(amount, currency) {
+    const info = CURRENCIES[currency] || CURRENCIES.NGN;
+
+    return info.symbol + Number(amount).toLocaleString(info.locale, {
+      minimumFractionDigits: info.decimals,
+      maximumFractionDigits: info.decimals
+    });
   }
 
-  function fixCartAndPopups() {
+  // Custom SB CLASSIC pricing:
+  // Subtract GH₵90 from each original cedi price, then multiply by 100.
+  function prepareProducts() {
+    document.querySelectorAll(".product").forEach(function (card) {
+      const priceElement = card.querySelector("p.price");
+      if (!priceElement) return;
+
+      // Preserve the original displayed price before changing it.
+      if (!priceElement.dataset.originalCediPrice) {
+        const match = priceElement.textContent.match(/[\d,]+(?:\.\d+)?/);
+        if (!match) return;
+
+        const originalPrice = Number(match[0].replace(/,/g, ""));
+        if (!Number.isFinite(originalPrice) || originalPrice <= 90) return;
+
+        priceElement.dataset.originalCediPrice = String(originalPrice);
+      }
+
+      const originalCedis = Number(priceElement.dataset.originalCediPrice);
+      const nairaPrice = Math.round((originalCedis - 90) * 100);
+
+      if (!Number.isFinite(nairaPrice) || nairaPrice <= 0) return;
+
+      card.dataset.nairaPrice = String(nairaPrice);
+      card.dataset.price = String(nairaPrice);
+      card.dataset.priceCurrency = "NGN";
+      priceElement.dataset.nairaPrice = String(nairaPrice);
+    });
+  }
+
+  function addCurrencySelector() {
+    if (document.getElementById("sb-display-currency")) return;
+
+    const box = document.createElement("div");
+    box.style.cssText =
+      "margin:15px 0;padding:12px;border:1px solid #ddd;" +
+      "border-radius:5px;background:#f8f8f8;text-align:center;";
+
+    const label = document.createElement("label");
+    label.htmlFor = "sb-display-currency";
+    label.textContent = "Display currency: ";
+    label.style.fontWeight = "bold";
+
+    const select = document.createElement("select");
+    select.id = "sb-display-currency";
+    select.style.cssText = "padding:9px;margin:6px;max-width:100%;";
+
+    [
+      ["NGN", "Nigerian Naira (₦)"],
+      ["GHS", "Ghanaian Cedi (GH₵)"],
+      ["USD", "US Dollar ($)"],
+      ["XOF", "West African CFA Franc (CFA)"]
+    ].forEach(function (entry) {
+      const option = document.createElement("option");
+      option.value = entry[0];
+      option.textContent = entry[1];
+      select.appendChild(option);
+    });
+
+    const note = document.createElement("p");
+    note.textContent =
+      "Foreign currency prices are estimates. Orders are charged in NGN.";
+    note.style.cssText = "font-size:12px;color:#666;margin-bottom:0;";
+
+    box.append(label, select, note);
+
+    const products = document.querySelector(".products");
+
+    if (products && products.parentNode) {
+      products.parentNode.insertBefore(box, products);
+    }
+
+    const savedCurrency = localStorage.getItem("sbclassicDisplayCurrency");
+
+    if (CURRENCIES[savedCurrency]) {
+      select.value = savedCurrency;
+    }
+
+    select.addEventListener("change", function () {
+      localStorage.setItem("sbclassicDisplayCurrency", select.value);
+      renderPrices();
+    });
+  }
+
+  function renderPrices() {
+    const selector = document.getElementById("sb-display-currency");
+    const currency = selector ? selector.value : "NGN";
+
+    document.querySelectorAll(".product").forEach(function (card) {
+      const priceElement = card.querySelector("p.price");
+      if (!priceElement) return;
+
+      const nairaPrice = Number(priceElement.dataset.nairaPrice);
+      if (!Number.isFinite(nairaPrice) || nairaPrice <= 0) return;
+
+      priceElement.textContent = formatMoney(
+        nairaPrice / RATES[currency],
+        currency
+      );
+    });
+  }
+
+  // Ensure Add to Cart stores the custom price in naira,
+  // regardless of the currency currently selected for display.
+  function fixCartPrices() {
     const originalAddToCart = window.addToCart;
 
-    if (typeof originalAddToCart === "function" &&
-        !originalAddToCart.sbClassicCurrencyFix) {
-      const fixedAddToCart = function (product, quantity) {
-        const updatedProduct = Object.assign({}, product);
-
-        const card = Array.from(document.querySelectorAll(".product"))
-          .find(function (item) {
-            return item.dataset.name === updatedProduct.name;
-          });
-
-        if (card) {
-          const price = Number(card.dataset.price);
-
-          if (Number.isFinite(price) && price > 0) {
-            updatedProduct.price = price;
-            updatedProduct.priceCurrency = "NGN";
-          }
-        }
-
-        const previousAlert = window.alert;
-
-        window.alert = function (message) {
-          const feedback = document.getElementById("sb-cart-feedback");
-
-          if (feedback) {
-            feedback.textContent = String(message || "");
-          }
-        };
-
-        try {
-          const result = originalAddToCart.call(
-            window,
-            updatedProduct,
-            quantity
-          );
-
-          const feedback = document.getElementById("sb-cart-feedback");
-
-          if (feedback) {
-            feedback.textContent =
-              (updatedProduct.name || "Product") +
-              " added to your cart.";
-          }
-
-          return result;
-        } finally {
-          window.alert = previousAlert;
-        }
-      };
-
-      fixedAddToCart.sbClassicCurrencyFix = true;
-      window.addToCart = fixedAddToCart;
+    if (
+      typeof originalAddToCart !== "function" ||
+      originalAddToCart.sbClassicCurrencyFix
+    ) {
+      return;
     }
+
+    function fixedAddToCart(product, quantity) {
+      const updatedProduct = Object.assign({}, product);
+
+      const card = Array.from(document.querySelectorAll(".product")).find(
+        function (item) {
+          const heading = item.querySelector("h3");
+          const image = item.querySelector("img");
+
+          return (
+            (heading &&
+              heading.textContent.trim() ===
+                String(updatedProduct.name || "").trim()) ||
+            (image &&
+              updatedProduct.image &&
+              image.getAttribute("src") === updatedProduct.image)
+          );
+        }
+      );
+
+      if (card) {
+        const nairaPrice = Number(card.dataset.nairaPrice);
+
+        if (Number.isFinite(nairaPrice) && nairaPrice > 0) {
+          updatedProduct.price = nairaPrice;
+          updatedProduct.priceCurrency = "NGN";
+        }
+      }
+
+      return originalAddToCart.call(this, updatedProduct, quantity);
+    }
+
+    fixedAddToCart.sbClassicCurrencyFix = true;
+    window.addToCart = fixedAddToCart;
   }
 
   prepareProducts();
   addCurrencySelector();
-  addFeedbackArea();
-  fixCartAndPopups();
+  fixCartPrices();
   renderPrices();
 })();
 </script>
