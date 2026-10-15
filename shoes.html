@@ -1826,30 +1826,36 @@
   }
 
   function prepareProducts() {
-    document.querySelectorAll(".product").forEach(function (card) {
-      const priceElement = card.querySelector("p.price");
-      if (!priceElement) return;
+document.querySelectorAll(".product").forEach(function (card) {
+const priceElement = card.querySelector("p.price");
+if (!priceElement) return;
 
-      const rawPrice = String(card.dataset.price || "").replace(/,/g, "");
-      const price = Number(rawPrice);
+  const rawPrice = String(card.dataset.price || "").replace(/,/g, "");
+  let price = Number(rawPrice);
 
-      if (!Number.isFinite(price) || price <= 0) return;
-
-      let nairaPrice;
-
-      if (card.dataset.priceCurrency === "NGN" || price >= 10000) {
-        nairaPrice = Math.round(price);
-      } else if (price > 90) {
-        nairaPrice = Math.round((price - 90) * 100);
-      } else {
-        return;
-      }
-
-      card.dataset.price = String(nairaPrice);
-      card.dataset.priceCurrency = "NGN";
-      priceElement.dataset.nairaPrice = String(nairaPrice);
-    });
+  if (!Number.isFinite(price) || price <= 0) {
+    const visiblePrice = priceElement.textContent.replace(/[₵₦,\s]/g, "");
+    price = Number(visiblePrice);
   }
+
+  if (!Number.isFinite(price) || price <= 0) return;
+
+  let nairaPrice;
+
+  if (card.dataset.priceCurrency === "NGN" || price >= 10000) {
+    nairaPrice = Math.round(price);
+  } else if (price > 90) {
+    nairaPrice = Math.round((price - 90) * 100);
+  } else {
+    return;
+  }
+
+  card.dataset.price = String(nairaPrice);
+  card.dataset.priceCurrency = "NGN";
+  priceElement.dataset.nairaPrice = String(nairaPrice);
+});
+
+}
 
   function addCurrencySelector() {
     if (document.getElementById("sb-display-currency")) return;
