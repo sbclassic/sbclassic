@@ -1,55 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SLIPPERS & SANDALS – SB CLASSIC</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLIPPERS &amp; SANDALS – SB CLASSIC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: #ffffff;
+      background: #fff;
       color: #2c2c2c;
     }
+
     header {
       background: #191970;
       color: #f8f8ff;
       padding: 25px 20px;
       text-align: center;
     }
+
     .header-content {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
+
     .logo {
       font-size: 2rem;
       font-weight: 600;
       letter-spacing: 1.5px;
       margin-bottom: 10px;
     }
+
     nav {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
     }
+
     nav a {
       color: #f8f8ff;
       text-decoration: none;
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: .95rem;
       text-transform: uppercase;
     }
+
     nav a:hover {
       text-decoration: underline;
     }
+
     .container {
       padding: 40px 20px;
       max-width: 1000px;
       margin: auto;
     }
+
     h2 {
       text-align: center;
       color: #191970;
@@ -57,56 +66,66 @@
       font-size: 2.2rem;
       margin-bottom: 30px;
     }
+
     .products {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
     }
+
     .product {
       width: 250px;
-      background-color: #ffffff;
+      max-width: 100%;
+      background: #fff;
       border: 1px solid #ccc;
       border-radius: 6px;
       overflow: hidden;
       text-align: center;
       padding-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,.1);
       color: #2c2c2c;
-      transition: transform 0.3s ease;
+      transition: transform .3s ease;
     }
+
     .product:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 14px rgba(0,0,0,.15);
     }
+
     .product img {
       width: 100%;
       height: auto;
       border-bottom: 1px solid #eee;
     }
+
     .product h3 {
       margin: 15px 0 8px;
       font-weight: 600;
       font-size: 1.1rem;
     }
+
     .product p.price {
       color: #191970;
       font-weight: 700;
       margin: 5px 0;
       font-size: 1.1rem;
     }
+
     .product label {
       display: inline-block;
       margin: 5px 3px;
     }
+
     .product select,
     .product input {
       max-width: 100%;
       padding: 5px;
       font-family: inherit;
     }
+
     .product button {
-      background-color: #191970;
+      background: #191970;
       color: #f8f8ff;
       border: none;
       padding: 10px 20px;
@@ -115,11 +134,12 @@
       border-radius: 5px;
       font-weight: 600;
       font-size: 1rem;
-      transition: background 0.3s ease;
     }
+
     .product button:hover {
-      background-color: #000050;
+      background: #000050;
     }
+
     .currency-panel {
       text-align: center;
       margin: 0 auto 25px;
@@ -129,10 +149,12 @@
       border-radius: 6px;
       max-width: 500px;
     }
+
     .currency-panel label {
       font-weight: 600;
       margin-right: 8px;
     }
+
     .currency-panel select {
       padding: 8px 12px;
       border: 1px solid #191970;
@@ -140,6 +162,7 @@
       background: #fff;
       font: inherit;
     }
+
     #sb-cart-feedback {
       display: none;
       max-width: 600px;
@@ -151,25 +174,28 @@
       color: #176b2c;
       border: 1px solid #b9e2c1;
     }
+
     #sb-cart-feedback.error {
       background: #fff0f0;
       color: #a32020;
       border-color: #efc0c0;
     }
+
     .policy-links a,
     footer a {
       color: #191970;
     }
+
     @media (max-width: 600px) {
       nav { gap: 12px; }
-      nav a { font-size: 0.85rem; }
+      nav a { font-size: .85rem; }
       h2 { font-size: 1.8rem; }
       .container { padding: 25px 12px; }
     }
   </style>
 </head>
-<body>
 
+<body>
 <header>
   <div class="header-content">
     <div class="logo">SB CLASSIC</div>
@@ -186,7 +212,7 @@
 </header>
 
 <div class="container">
-  <h2>Slippers & Sandals</h2>
+  <h2>Slippers &amp; Sandals</h2>
 
   <div class="currency-panel">
     <label for="sb-display-currency">Display prices in:</label>
@@ -208,17 +234,21 @@
     <!-- Product 1 -->
     <div class="product"
          data-name="Classic Designer Slides"
-         data-price="119000"
+         data-price="109000"
          data-price-currency="NGN"
          data-image="https://imgur.com/TJ2oq1t.jpg"
          data-type="slippers">
-      <img id="classic-slides-img" src="https://imgur.com/TJ2oq1t.jpg" alt="Classic Designer Slides" />
+
+      <img id="classic-slides-img"
+           src="https://imgur.com/TJ2oq1t.jpg"
+           alt="Classic Designer Slides">
+
       <h3>Classic Designer Slides</h3>
-      <p class="price" data-naira-price="119000">₦119,000</p>
+      <p class="price" data-naira-price="109000">₦109,000</p>
 
       <label>Color:
         <select class="color-select" aria-label="Classic Designer Slides colour"
-                onchange="document.getElementById('classic-slides-img').src=this.value">
+          onchange="document.getElementById('classic-slides-img').src=this.value">
           <option value="https://imgur.com/TJ2oq1t.jpg">White</option>
           <option value="https://imgur.com/BYkWBWb.jpg">Black</option>
           <option value="https://imgur.com/L9gdNFr.jpg">Black1</option>
@@ -234,32 +264,44 @@
 
       <label>Size:
         <select class="size-select" aria-label="Classic Designer Slides size">
-          <option value="38">38</option><option value="39">39</option><option value="40">40</option>
-          <option value="41">41</option><option value="42">42</option><option value="43">43</option>
-          <option value="44">44</option><option value="45">45</option><option value="46">46</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+          <option value="41">41</option>
+          <option value="42">42</option>
+          <option value="43">43</option>
+          <option value="44">44</option>
+          <option value="45">45</option>
+          <option value="46">46</option>
         </select>
       </label>
 
       <label>Qty:
-        <input type="number" class="quantity-input" value="1" min="1" step="1" />
+        <input type="number" class="quantity-input" value="1" min="1" step="1">
       </label>
+
       <button type="button" class="add-to-cart-btn">Add to Cart</button>
     </div>
 
     <!-- Product 2 -->
     <div class="product"
          data-name="Elegant Men's Slippers/Sandals"
-         data-price="129000"
+         data-price="119000"
          data-price-currency="NGN"
          data-image="https://imgur.com/5mqoRws.jpg"
          data-type="slippers">
-      <img id="elegant-men-slippers-img" src="https://imgur.com/5mqoRws.jpg" alt="Elegant Men's Slippers/Sandals" />
+
+      <img id="elegant-men-slippers-img"
+           src="https://imgur.com/5mqoRws.jpg"
+           alt="Elegant Men's Slippers/Sandals">
+
       <h3>Elegant Men's Slippers/Sandals</h3>
-      <p class="price" data-naira-price="129000">₦129,000</p>
+      <p class="price" data-naira-price="119000">₦119,000</p>
 
       <label>Color:
-        <select class="color-select" aria-label="Elegant Men's Slippers/Sandals colour"
-                onchange="document.getElementById('elegant-men-slippers-img').src=this.value">
+        <select class="color-select"
+          aria-label="Elegant Men's Slippers/Sandals colour"
+          onchange="document.getElementById('elegant-men-slippers-img').src=this.value">
           <option value="https://imgur.com/5mqoRws.jpg">Blackl</option>
           <option value="https://imgur.com/UPkJ4Py.jpg">Black1</option>
           <option value="https://imgur.com/RpxREdR.jpg">Black2</option>
@@ -276,25 +318,32 @@
 
       <label>Size:
         <select class="size-select" aria-label="Elegant Men's Slippers/Sandals size">
-          <option value="38">38</option><option value="39">39</option><option value="40">40</option>
-          <option value="41">41</option><option value="42">42</option><option value="43">43</option>
-          <option value="44">44</option><option value="45">45</option><option value="46">46</option>
+          <option value="38">38</option>
+          <option value="39">39</option>
+          <option value="40">40</option>
+          <option value="41">41</option>
+          <option value="42">42</option>
+          <option value="43">43</option>
+          <option value="44">44</option>
+          <option value="45">45</option>
+          <option value="46">46</option>
         </select>
       </label>
 
       <label>Qty:
-        <input type="number" class="quantity-input" value="1" min="1" step="1" />
+        <input type="number" class="quantity-input" value="1" min="1" step="1">
       </label>
+
       <button type="button" class="add-to-cart-btn">Add to Cart</button>
     </div>
 
   </div>
 </div>
 
-<!-- Policies Section -->
-<div class="policy-links" style="text-align: center; padding: 30px 0; background-color: #f8f8f8;">
-  <h3 style="margin-bottom: 15px;">Our Policies</h3>
-  <p style="margin: 0;">
+<div class="policy-links"
+     style="text-align:center;padding:30px 0;background-color:#f8f8f8;">
+  <h3 style="margin-bottom:15px;">Our Policies</h3>
+  <p style="margin:0;">
     <a href="refund.html">Refund Policy</a> |
     <a href="privacy.html">Privacy Policy</a> |
     <a href="faqs.html">FAQs</a> |
@@ -303,14 +352,241 @@
   </p>
 </div>
 
-<!-- Main Footer -->
-<footer style="text-align: center; padding: 30px 15px; font-size: 14px; background-color: #fff;">
-  <p style="margin: 8px 0;">CONTACT: +233260928990 | sbclassics@icloud.com</p>
-  <p style="margin: 8px 0;">
+<footer style="text-align:center;padding:30px 15px;font-size:14px;background-color:#fff;">
+  <p style="margin:8px 0;">CONTACT: +233260928990 | sbclassics@icloud.com</p>
+  <p style="margin:8px 0;">
     FOLLOW US ON:
     <a href="https://instagram.com/sb_classic_">Instagram</a> |
     <a href="https://facebook.com/sbclassicss">Facebook</a> |
     <a href="https://t.me/sbclassics">Telegram</a> |
+    <a href="https://wa.me/233260928990">WhatsApp</a> |
+    <a href="https://www.tiktok.com/@sb.classic">TikTok</a>
+  </p>
+  <p style="margin:8px 0;">© 2025 SB CLASSIC. All rights reserved.</p>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /*
+    Custom pricing:
+    (Original Ghana cedi price - GH₵100) × 100 = NGN.
+
+    GH₵1,190 -> ₦109,000
+    GH₵1,290 -> ₦119,000
+
+    Product and cart prices remain in NGN.
+  */
+
+  var RATES = {
+    NGN: 1,
+    GHS: 114.15,
+    USD: 1330,
+    XOF: 2.26
+  };
+
+  var SYMBOLS = {
+    NGN: '₦',
+    GHS: 'GH₵',
+    USD: '$',
+    XOF: 'CFA '
+  };
+
+  var CURRENCY_KEY = 'sbclassicDisplayCurrency';
+  var CART_KEY = 'cart';
+
+  function formatMoney(nairaAmount, currency) {
+    var converted = nairaAmount / RATES[currency];
+    var decimals = currency === 'USD' ? 2 : 0;
+
+    return SYMBOLS[currency] + converted.toLocaleString('en-US', {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals
+    });
+  }
+
+  function getCart() {
+    try {
+      var stored = JSON.parse(localStorage.getItem(CART_KEY));
+      return Array.isArray(stored) ? stored : [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function saveCart(cart) {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  }
+
+  function updateCartCount() {
+    var countElement = document.getElementById('cart-count');
+    if (!countElement) return;
+
+    var total = getCart().reduce(function (sum, item) {
+      return sum + (Number(item.quantity) || 0);
+    }, 0);
+
+    countElement.textContent = total;
+  }
+
+  function showMessage(message, isError) {
+    var box = document.getElementById('sb-cart-feedback');
+    if (!box) return;
+
+    box.textContent = message;
+    box.classList.toggle('error', Boolean(isError));
+    box.style.display = 'block';
+
+    if (box.hideTimer) clearTimeout(box.hideTimer);
+
+    box.hideTimer = setTimeout(function () {
+      box.style.display = 'none';
+    }, 4000);
+  }
+
+  function renderPrices(currency) {
+    document.querySelectorAll('.product').forEach(function (card) {
+      var priceElement = card.querySelector('.price');
+      if (!priceElement) return;
+
+      var nairaPrice = Number(priceElement.dataset.nairaPrice);
+      if (!Number.isFinite(nairaPrice) || nairaPrice <= 0) return;
+
+      priceElement.textContent = formatMoney(nairaPrice, currency);
+
+      var oldNote = card.querySelector('.currency-estimate-note');
+      if (oldNote) oldNote.remove();
+
+      if (currency !== 'NGN') {
+        var note = document.createElement('small');
+        note.className = 'currency-estimate-note';
+        note.style.cssText = 'display:block;color:#666;font-size:11px;';
+        note.textContent = 'NGN ' + nairaPrice.toLocaleString('en-NG');
+        priceElement.insertAdjacentElement('afterend', note);
+      }
+    });
+  }
+
+  function initializeCurrencySelector() {
+    var selector = document.getElementById('sb-display-currency');
+    if (!selector) return;
+
+    var saved = 'NGN';
+
+    try {
+      saved = localStorage.getItem(CURRENCY_KEY) || 'NGN';
+    } catch (error) {
+      saved = 'NGN';
+    }
+
+    if (!Object.prototype.hasOwnProperty.call(RATES, saved)) {
+      saved = 'NGN';
+    }
+
+    selector.value = saved;
+    renderPrices(saved);
+
+    selector.addEventListener('change', function () {
+      var currency = selector.value;
+
+      if (!Object.prototype.hasOwnProperty.call(RATES, currency)) {
+        currency = 'NGN';
+        selector.value = currency;
+      }
+
+      try {
+        localStorage.setItem(CURRENCY_KEY, currency);
+      } catch (error) {
+        // Currency selection still works for the current page.
+      }
+
+      renderPrices(currency);
+    });
+  }
+
+  function addProductToCart(card) {
+    var quantityInput = card.querySelector('.quantity-input');
+    var quantity = Number(quantityInput ? quantityInput.value : 1);
+
+    if (!Number.isInteger(quantity) || quantity < 1) {
+      showMessage('Please enter a valid quantity of at least 1.', true);
+      if (quantityInput) quantityInput.focus();
+      return;
+    }
+
+    var priceElement = card.querySelector('.price');
+    var nairaPrice = Number(priceElement.dataset.nairaPrice);
+
+    if (!Number.isFinite(nairaPrice) || nairaPrice <= 0) {
+      showMessage('The product price could not be read. Please refresh and try again.', true);
+      return;
+    }
+
+    var sizeSelect = card.querySelector('.size-select');
+    var colorSelect = card.querySelector('.color-select');
+    var image = card.querySelector('img');
+
+    var name = card.dataset.name;
+    var size = sizeSelect ? sizeSelect.value : '';
+    var color = colorSelect
+      ? colorSelect.options[colorSelect.selectedIndex].text
+      : '';
+    var imageUrl = image ? image.src : card.dataset.image;
+
+    var product = {
+      id: (name + '-' + size + '-' + color).toLowerCase().replace(/\s+/g, '-'),
+      name: name,
+      price: nairaPrice,
+      priceCurrency: 'NGN',
+      currency: 'NGN',
+      image: imageUrl,
+      size: size,
+      color: color,
+      quantity: quantity
+    };
+
+    var cart = getCart();
+
+    var existing = cart.find(function (item) {
+      return item.name === product.name &&
+        String(item.size || '') === product.size &&
+        String(item.color || '') === product.color;
+    });
+
+    if (existing) {
+      existing.quantity = (Number(existing.quantity) || 0) + quantity;
+      existing.price = nairaPrice;
+      existing.priceCurrency = 'NGN';
+      existing.currency = 'NGN';
+      existing.image = imageUrl;
+    } else {
+      cart.push(product);
+    }
+
+    saveCart(cart);
+    updateCartCount();
+
+    showMessage(name + ' (x' + quantity + ') added to your cart.', false);
+  }
+
+  document.querySelectorAll('.product').forEach(function (card) {
+    var button = card.querySelector('.add-to-cart-btn');
+
+    if (button) {
+      button.addEventListener('click', function () {
+        addProductToCart(card);
+      });
+    }
+  });
+
+  initializeCurrencySelector();
+  updateCartCount();
+})();
+</script>
+
+</body>
+  </html>egram</a> |
     <a href="https://wa.me/233260928990">WhatsApp</a> |
     <a href="https://www.tiktok.com/@sb.classic">TikTok</a>
   </p>
