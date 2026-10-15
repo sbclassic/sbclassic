@@ -1,139 +1,348 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <title>Clothes – SB CLASSIC</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+
   <style>
+    :root {
+      --black: #111111;
+      --black-soft: #1b1b1b;
+      --cream: #f8f5ef;
+      --cream-dark: #eee7db;
+      --gold: #c5a46d;
+      --gold-dark: #a8874d;
+      --text: #242424;
+      --muted: #77716a;
+      --white: #ffffff;
+      --border: #e5ded2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: #ffffff;
-      color: #2c2c2c;
-  }
-   header {
-     background: #191970;
-     color: #f8f8ff;
-     padding: 25px 20px;
-     text-align: center;
-  }
-
-  .header-content {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-  }
-
-   .logo {
-     font-size: 2rem;
-     font-weight: 600;
-     letter-spacing: 1.5px;
-     margin-bottom: 10px;
-  }
-
-   nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-
-   nav a {
-    color: #f8f8ff;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-  }
-
-   nav a:hover {
-    text-decoration: underline;
-  }
-    .container {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
     }
+
+    a {
+      transition: color 0.3s ease, background 0.3s ease;
+    }
+
+    header {
+      background: var(--black);
+      color: var(--cream);
+      padding: 25px 20px;
+      text-align: center;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+      color: var(--cream);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px 25px;
+      margin-top: 5px;
+    }
+
+    nav a {
+      color: var(--cream);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 0;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .container {
+      padding: 55px 22px;
+      max-width: 1250px;
+      margin: 0 auto;
+    }
+
     h2 {
       text-align: center;
-      color: #191970; /* Midnight Blue */
-      font-size: 1.8rem;
+      color: var(--black);
+      font-family: 'Playfair Display', serif;
       font-weight: 600;
-      letter-spacing: 0.5px;
-      margin-bottom: 30px;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      letter-spacing: 1px;
+      margin: 0 0 15px;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 65px;
+      height: 2px;
+      background: var(--gold);
+      margin: 18px auto 30px;
     }
 
     .products {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
       justify-content: center;
+      margin-top: 25px;
+      align-items: stretch;
     }
 
     .product {
-      width: 400px;
-      background-color: #ffffff;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 3px;
       overflow: hidden;
       text-align: center;
-      padding-bottom: 20px;
+      padding-bottom: 24px;
+      box-shadow: 0 5px 18px rgba(17, 17, 17, 0.05);
+      color: var(--text);
+      transition: transform 0.35s ease,
+                  box-shadow 0.35s ease,
+                  border-color 0.35s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(17, 17, 17, 0.12);
+      border-color: var(--gold);
     }
 
     .product img {
       width: 100%;
       height: auto;
+      display: block;
+      border-bottom: 1px solid var(--border);
+      background: var(--cream-dark);
+      transition: transform 0.4s ease;
     }
 
     .product h3 {
-      margin: 12px 0 6px;
-      font-size: 1rem;
-      font-weight: 500;
-      color: #2c2c2c;
+      margin: 18px 14px 9px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      line-height: 1.5;
+      color: var(--black);
+    }
+
+    .product p {
+      margin: 8px 15px;
+      color: var(--muted);
+      font-size: 0.9rem;
     }
 
     .product p.price {
-      color: #191970;
-      font-weight: bold;
-      margin: 5px 0;
+      color: var(--gold-dark);
+      font-weight: 700;
+      margin: 10px 0;
+      font-size: 1.15rem;
+      letter-spacing: 0.3px;
     }
 
     .product button {
-      background-color: #191970;
-      color: #ffffff;
-      border: none;
-      padding: 10px 15px;
-      margin-top: 10px;
+      background: var(--black);
+      color: var(--cream);
+      border: 1px solid var(--black);
+      padding: 12px 22px;
+      margin: 14px 8px 0;
       cursor: pointer;
-      border-radius: 5px;
-      font-size: 0.9rem;
-      transition: background 0.3s ease;
+      border-radius: 2px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      transition: background 0.3s ease,
+                  color 0.3s ease,
+                  border-color 0.3s ease,
+                  transform 0.3s ease;
     }
-    
+
+    .product button:hover {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    input,
+    select,
+    textarea {
+      max-width: 100%;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 1px solid var(--gold);
+      border-color: var(--gold);
+    }
+
     footer {
-      background: #ffffff;
-      color: #2c2c2c;
+      background: var(--black);
+      color: var(--cream);
       text-align: center;
-      padding: 25px 10px;
-      font-size: 0.95rem;
+      padding: 35px 20px;
+      border-top: 2px solid var(--gold);
+      font-size: 0.88rem;
+      line-height: 1.9;
     }
-    footer {
-      background: #ffffff;
-      color: #2c2c2c;
-      text-align: center;
-      padding: 25px 10px;
-      font-size: 0.95rem;
+
+    footer p {
+      margin: 8px 0;
     }
+
+    footer p.social-links {
+      margin: 16px 0;
+    }
+
+    footer p.social-links a,
     .social-links a {
-      color: #191970;
+      color: var(--gold);
       margin: 0 8px;
       text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
     }
+
+    footer p.social-links a:hover,
     .social-links a:hover {
+      color: var(--white);
       text-decoration: underline;
     }
+
+    @media (min-width: 900px) {
+      .products {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 22px 14px;
+      }
+
+      .logo {
+        font-size: 1.85rem;
+        letter-spacing: 2px;
+      }
+
+      nav {
+        gap: 10px 16px;
+      }
+
+      nav a {
+        font-size: 0.75rem;
+      }
+
+      .container {
+        padding: 38px 14px;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .product {
+        padding-bottom: 17px;
+      }
+
+      .product h3 {
+        margin: 13px 8px 7px;
+        font-size: 0.98rem;
+      }
+
+      .product p {
+        margin: 7px 8px;
+        font-size: 0.8rem;
+      }
+
+      .product p.price {
+        font-size: 1rem;
+      }
+
+      .product button {
+        width: calc(100% - 16px);
+        margin: 10px 8px 0;
+        padding: 11px 6px;
+        font-size: 0.72rem;
+        letter-spacing: 0.4px;
+      }
+
+      footer {
+        padding: 28px 14px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .products {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
+</head>
 
   <header>
   <div class="header-content">
