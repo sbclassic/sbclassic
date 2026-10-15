@@ -1,69 +1,379 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SB CLASSIC Links</title>
+  <meta name="theme-color" content="#111111" />
+  <meta name="description" content="Explore SB CLASSIC. Visit our website, download our app, follow our social media, chat with us, and discover our free bookstore." />
+  <title>SB CLASSIC | All Links</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+
   <style>
+    :root {
+      --black: #111111;
+      --cream: #f7f4ee;
+      --gold: #b99a61;
+      --white: #ffffff;
+      --muted: #777777;
+      --border: #e8e2d7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f6f6f6;
-      text-align: center;
-      padding: 40px 20px;
-      color: #2b2b2b;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: "DM Sans", sans-serif;
+      color: var(--black);
+      background: var(--cream);
     }
-    .logo {
-      width: 100px;
-      margin-bottom: 10px;
-    }
-    h1 {
-      margin-bottom: 25px;
-      font-size: 28px;
-      color: #191970;
-    }
-    .link {
-      display: block;
-      background-color: #191970;
-      color: white;
+
+    a {
+      color: inherit;
       text-decoration: none;
-      margin: 12px auto;
-      padding: 14px 22px;
-      width: 90%;
-      max-width: 350px;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background-color 0.2s;
     }
+
+    .announcement {
+      padding: 10px 15px;
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .main {
+      width: 100%;
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 52px 22px 60px;
+      flex: 1;
+      text-align: center;
+    }
+
+    .brand-logo {
+      width: 112px;
+      height: auto;
+      max-height: 100px;
+      object-fit: contain;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #8d7040;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(34px, 7vw, 46px);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .gold-line {
+      width: 45px;
+      height: 2px;
+      margin: 19px auto 22px;
+      background: var(--gold);
+    }
+
+    .tagline {
+      margin: 0 0 9px;
+      color: #555555;
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+      font-style: italic;
+    }
+
+    .description {
+      max-width: 400px;
+      margin: 0 auto 32px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .links {
+      display: grid;
+      gap: 13px;
+    }
+
+    .link {
+      min-height: 59px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 18px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      text-align: left;
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+    }
+
     .link:hover {
-      background-color: #2a2a9f;
+      background: var(--black);
+      border-color: var(--black);
+      color: var(--white);
+      transform: translateY(-2px);
     }
-    footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #777;
+
+    .link-icon {
+      width: 36px;
+      height: 36px;
+      flex: 0 0 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--cream);
+      border-radius: 3px;
+      color: var(--black);
+      font-size: 17px;
+    }
+
+    .link:hover .link-icon {
+      background: #282828;
+      color: var(--gold);
+    }
+
+    .link-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .link-title {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .link-subtitle {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .link:hover .link-subtitle {
+      color: #cccccc;
+    }
+
+    .arrow {
+      color: var(--gold);
+      font-size: 19px;
+      transition: transform 0.2s ease;
+    }
+
+    .link:hover .arrow {
+      transform: translateX(3px);
+    }
+
+    .footer {
+      padding: 23px 20px;
+      background: var(--black);
+      color: #aaaaaa;
+      text-align: center;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    .footer-brand {
+      margin-bottom: 5px;
+      color: var(--gold);
+      font-family: "Playfair Display", serif;
+      font-size: 15px;
+      letter-spacing: 1.5px;
+    }
+
+    @media (max-width: 480px) {
+      .main {
+        padding: 38px 17px 45px;
+      }
+
+      .brand-logo {
+        width: 96px;
+      }
+
+      .link {
+        gap: 12px;
+        padding: 13px 14px;
+      }
+
+      .link-title {
+        font-size: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
     }
   </style>
 </head>
+
 <body>
+  <div class="announcement">
+    Timeless Style. Modern Confidence. | SB CLASSIC
+  </div>
 
-  <!-- Logo -->
-  <img src="logo.PNG" alt="SB CLASSIC Logo" class="logo" />
+  <main class="main">
+    <img
+      src="logo.PNG"
+      alt="SB CLASSIC Logo"
+      class="brand-logo"
+    />
 
-  <!-- Brand Name -->
-  <h1>SB CLASSIC</h1>
+    <p class="eyebrow">Official Links</p>
+    <h1>SB CLASSIC</h1>
+    <div class="gold-line"></div>
 
-  <!-- Link Buttons -->
- <a href="https://sbclassic.github.io/sbclassic/download.html" class="link">📱 Download SB Classic App</a>
-  <a href="https://sbclassic.github.io/sbclassic" class="link">🌐 Visit Our Website</a>
-  <a href="https://t.me/sbclassics" class="link">📲 Join Our Telegram Channel</a>
-  <a href="https://instagram.com/sb.classic_" class="link">📸 Follow on Instagram</a>
-  <a href="https://www.tiktok.com/@sb.classic" class="link">📸 Follow Us on TikTok</a>
-  <a href="https://www.facebook.com/sbclassicss" class="link">📘 Like Our Facebook Page</a>
-  <a href="https://wa.me/233205950479" class="link">💬 Chat with Us on WhatsApp</a>
-  <a href="https://inkitt.com/soniabenjoye" class="link">📕 Visit Our Free Bookstore</a>
-  <footer>
-    © 2025 SB CLASSIC. All rights reserved.
+    <p class="tagline">Style With Class</p>
+    <p class="description">
+      Your destination for timeless fashion, modern style, and more.
+      Connect with SB CLASSIC through our official platforms.
+    </p>
+
+    <nav class="links" aria-label="SB CLASSIC official links">
+      <a
+        href="https://sbclassic.github.io/sbclassic/download.html"
+        class="link"
+      >
+        <span class="link-icon" aria-hidden="true">↓</span>
+        <span class="link-text">
+          <span class="link-title">Download SB CLASSIC App</span>
+          <span class="link-subtitle">Shop conveniently from your device</span>
+        </span>
+        <span class="arrow" aria-hidden="true">›</span>
+      </a>
+
+      <a
+        href="https://sbclassic.github.io/sbclassic"
+        class="link"
+      >
+        <span class="link-icon" aria-hidden="true">⌂</span>
+        <span class="link-text">
+          <span class="link-title">Visit Our Website</span>
+          <span class="link-subtitle">Explore our collection</span>
+        </span>
+        <span class="arrow" aria-hidden="true">›</span>
+      </a>
+
+      <a
+        href="https://t.me/sbclassics"
+        class="link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="link-icon" aria-hidden="true">➤</span>
+        <span class="link-text">
+          <span class="link-title">Join Our Telegram Channel</span>
+          <span class="link-subtitle">Stay connected with SB CLASSIC</span>
+        </span>
+        <span class="arrow" aria-hidden="true">›</span>
+      </a>
+
+      <a
+        href="https://instagram.com/sb.classic_"
+        class="link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="link-icon" aria-hidden="true">◎</span>
+        <span class="link-text">
+          <span class="link-title">Follow on Instagram</span>
+          <span class="link-subtitle">Discover our latest styles</span>
+        </span>
+        <span class="arrow" aria-hidden="true">›</span>
+      </a>
+
+      <a
+        href="https://www.tiktok.com/@sb.classic"
+        class="link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="link-icon" aria-hidden="true">♪</span>
+        <span class="link-text">
+          <span class="link-title">Follow Us on TikTok</span>
+          <span class="link-subtitle">See more from our brand</span>
+        </span>
+        <span class="arrow" aria-hidden="true">›</span>
+      </a>
+
+      <a
+        href="https://www.facebook.com/sbclassicss"
+        class="link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="link-icon" aria-hidden="true">f</span>
+        <span class="link-text">
+          <span class="link-title">Like Our Facebook Page</span>
+          <span class="link-subtitle">Follow our Facebook updates</span>
+        </span>
+        <span class="arrow" aria-hidden="true">›</span>
+      </a>
+
+      <a
+        href="https://wa.me/233205950479"
+        class="link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="link-icon" aria-hidden="true">✆</span>
+        <span class="link-text">
+          <span class="link-title">Chat with Us on WhatsApp</span>
+          <span class="link-subtitle">Contact us directly</span>
+        </span>
+        <span class="arrow" aria-hidden="true">›</span>
+      </a>
+
+      <a
+        href="https://inkitt.com/soniabenjoye"
+        class="link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="link-icon" aria-hidden="true">▤</span>
+        <span class="link-text">
+          <span class="link-title">Visit Our Free Bookstore</span>
+          <span class="link-subtitle">Discover books by Sonia Benjoye</span>
+        </span>
+        <span class="arrow" aria-hidden="true">›</span>
+      </a>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand">SB CLASSIC</div>
+    <div>Style With Class</div>
+    <p>&copy; 2026 SB CLASSIC. All rights reserved.</p>
   </footer>
-
 </body>
 </html>
