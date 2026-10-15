@@ -5,8 +5,8 @@ const CALLBACK_URL =
   `${SITE_BASE}/checkout.html?payment=return`;
 
 const PRODUCT_PAGES = [
-  { path: "/shoes.html", type: "cedi100" },
-  { path: "/slippers-sandals.html", type: "mixed100" },
+  { path: "/shoes.html", type: "cedi90" },
+  { path: "/slippers-sandals.html", type: "mixed90" },
   { path: "/clothes.html", type: "cedi90" },
   { path: "/accessories.html", type: "naira" }
 ];
