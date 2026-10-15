@@ -3083,6 +3083,32 @@
     });
   }
 
+<script>
+(function () {
+  // Display rates are estimates based on the custom NGN prices.
+  const RATES = {
+    NGN: 1,
+    GHS: 115,
+    USD: 1375,
+    XOF: 2.35
+  };
+
+  const CURRENCIES = {
+    NGN: { symbol: "₦", locale: "en-NG", decimals: 0 },
+    GHS: { symbol: "GH₵", locale: "en-GH", decimals: 2 },
+    USD: { symbol: "$", locale: "en-US", decimals: 2 },
+    XOF: { symbol: "CFA ", locale: "fr-SN", decimals: 0 }
+  };
+
+  function formatMoney(amount, currency) {
+    const info = CURRENCIES[currency] || CURRENCIES.NGN;
+
+    return info.symbol + Number(amount).toLocaleString(info.locale, {
+      minimumFractionDigits: info.decimals,
+      maximumFractionDigits: info.decimals
+    });
+  }
+
   // Custom SB CLASSIC pricing:
   // Subtract GH₵90 from each original cedi price, then multiply by 100.
   function prepareProducts() {
