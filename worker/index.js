@@ -53,7 +53,7 @@ function addProduct(catalog, name, rawPrice, type) {
   } else if (type === "cedi90") {
     priceNGN = Math.round((raw - 90) * 100);
   } else {
-    priceNGN = Math.round((raw - 100) * 100);
+    return;
   }
 
   if (!Number.isSafeInteger(priceNGN) || priceNGN <= 0) return;
