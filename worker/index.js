@@ -27,7 +27,9 @@ function reply(data, status = 200, origin = "") {
 }
 
 function clean(value, max = 300) {
-  return typeof value === "string" ? value.trim().slice(0, max) : "";
+  return typeof value === "string"
+    ? value.trim().slice(0, max)
+    : "";
 }
 
 function decodeEntities(value) {
@@ -42,15 +44,19 @@ function decodeEntities(value) {
 
 function addProduct(catalog, name, rawPrice, type) {
   name = decodeEntities(clean(name, 180));
+
   const raw = Number(String(rawPrice).replace(/,/g, ""));
 
   if (!name || !Number.isFinite(raw) || raw <= 0) return;
 
   let priceNGN;
 
-  if (type === "naira" || (type === "mixed100" && raw >= 10000)) {
+  // Preserve prices already in naira.
+  if (type === "naira" || raw >= 10000) {
     priceNGN = Math.round(raw);
-  } else if (type === "cedi90") {
+  } else if (type === "cedi90" || type === "mixed90") {
+    // SB Classic pricing rule:
+    // (original GHS price - 90) * 100
     priceNGN = Math.round((raw - 90) * 100);
   } else {
     return;
@@ -59,7 +65,10 @@ function addProduct(catalog, name, rawPrice, type) {
   if (!Number.isSafeInteger(priceNGN) || priceNGN <= 0) return;
 
   if (!catalog[name]) catalog[name] = [];
-  if (!catalog[name].includes(priceNGN)) catalog[name].push(priceNGN);
+
+  if (!catalog[name].includes(priceNGN)) {
+    catalog[name].push(priceNGN);
+  }
 }
 
 function parseDataProducts(html, type, catalog) {
@@ -71,7 +80,8 @@ function parseDataProducts(html, type, catalog) {
   }
 }
 
-function parseClothingProducts(html, catalog) {
+function parseInlineProducts(html, type, catalog) {
+  // Read products defined as name and price in JavaScript objects.
   const pattern =
     /name:\s*(?:'((?:\\.|[^'\\])*)'|"((?:\\.|[^"\\])*)")\s*,\s*price:\s*([\d,]+(?:\.\d+)?)/g;
 
@@ -81,7 +91,44 @@ function parseClothingProducts(html, catalog) {
       .replace(/\\"/g, '"')
       .replace(/\\\\/g, "\\");
 
-    addProduct(catalog, name, match[3], "cedi90");
+    addProduct(catalog, name, match[3], type);
+  }
+
+  // Handle names that append the selected option from a dropdown.
+  const dynamicPattern =
+    /name:\s*(['"])((?:\\.|(?!\1)[^\\])*)\1\s*\+\s*document\.getElementById\(['"]([^'"]+)['"]\)\.value\s*,\s*price:\s*([\d,]+(?:\.\d+)?)/g;
+
+  for (const match of html.matchAll(dynamicPattern)) {
+    const prefix = match[2]
+      .replace(/\\'/g, "'")
+      .replace(/\\"/g, '"')
+      .replace(/\\\\/g, "\\");
+
+    const selectId = match[3];
+    const rawPrice = match[4];
+
+    const selectPattern = new RegExp(
+      `<select\\b[^>]*\\bid=["']${selectId.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["'][^>]*>([\\s\\S]*?)<\\/select>`,
+      "i"
+    );
+
+    const selectMatch = html.match(selectPattern);
+
+    if (!selectMatch) continue;
+
+    const optionPattern =
+      /<option\b[^>]*\bvalue=["']([^"']+)["'][^>]*>/gi;
+
+    for (const option of selectMatch[1].matchAll(optionPattern)) {
+      const optionValue = decodeEntities(option[1]);
+
+      addProduct(
+        catalog,
+        prefix + optionValue,
+        rawPrice,
+        type
+      );
+    }
   }
 }
 
@@ -106,11 +153,9 @@ async function buildCatalog() {
   );
 
   for (const page of pages) {
-    if (page.type === "cedi90") {
-      parseClothingProducts(page.html, catalog);
-    } else {
-      parseDataProducts(page.html, page.type, catalog);
-    }
+    // Read data attributes and inline product objects.
+    parseDataProducts(page.html, page.type, catalog);
+    parseInlineProducts(page.html, page.type, catalog);
   }
 
   if (Object.keys(catalog).length === 0) {
@@ -150,10 +195,13 @@ export default {
     if (request.method === "GET" && url.pathname === "/catalog") {
       try {
         const catalog = await buildCatalog();
-        const products = Object.entries(catalog).map(([name, pricesNGN]) => ({
-          name,
-          pricesNGN
-        }));
+
+        const products = Object.entries(catalog).map(
+          ([name, pricesNGN]) => ({
+            name,
+            pricesNGN
+          })
+        );
 
         return reply({
           productNameCount: products.length,
