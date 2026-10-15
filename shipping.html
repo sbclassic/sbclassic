@@ -1,102 +1,592 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shipping Policy – SB CLASSIC</title>
+  <meta name="description" content="Read the SB CLASSIC Shipping Policy for order processing, delivery times, shipping options, shipping fees and international delivery." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+
   <style>
-  body {
-    font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 0 20px;
-    line-height: 1.6;
-    color: #444; /* Standard dark grey */
-    background: #fff;
-  }
-  h1, h2 {
-    color: #2b2b2b; /* Charcoal grey for elegance */
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  section {
-    margin-bottom: 30px;
-  }
-  hr {
-    border: 0;
-    height: 1px;
-    background: #ccc;
-    margin: 30px 0;
-  }
-  ul {
-    list-style-type: disc;
-    margin-left: 20px;
-  }
-  li {
-    margin-bottom: 10px;
-  }
-  a {
-    color: #191970; /* Midnight Blue */
-    text-decoration: none;
-  }
-  a:hover {
-    color: #2a2a9f; /* Slightly brighter blue on hover */
-    text-decoration: underline;
-  }
-  strong {
-    color: #2b2b2b;
-  }
-</style>
+    :root {
+      --black: #111111;
+      --cream: #f7f4ee;
+      --gold: #b99a61;
+      --white: #ffffff;
+      --muted: #777777;
+      --border: #e8e2d7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .announcement {
+      padding: 10px 15px;
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .site-header {
+      background: var(--white);
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 17px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo img {
+      display: block;
+      width: 150px;
+      max-height: 45px;
+      object-fit: contain;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .main-nav a {
+      color: #333333;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: color 0.2s ease;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: var(--gold);
+    }
+
+    .page-banner {
+      padding: 65px 20px 70px;
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 13px;
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .page-banner h1 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(36px, 6vw, 57px);
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .banner-line {
+      width: 48px;
+      height: 2px;
+      margin: 23px auto 0;
+      background: var(--gold);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 25px 75px;
+    }
+
+    .intro {
+      max-width: 760px;
+      margin: 0 auto 38px;
+      text-align: center;
+    }
+
+    .intro-label {
+      margin: 0 0 9px;
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .intro h2 {
+      margin: 0 0 15px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(25px, 4vw, 34px);
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .intro p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .policy-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .policy-card {
+      position: relative;
+      padding: 27px 30px 28px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 14px;
+    }
+
+    .section-number {
+      flex: 0 0 39px;
+      width: 39px;
+      height: 39px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--black);
+      color: var(--gold);
+      font-family: "Playfair Display", serif;
+      font-size: 15px;
+    }
+
+    .policy-card h3 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .policy-card p {
+      margin: 10px 0;
+      color: #555555;
+      font-size: 14px;
+    }
+
+    .policy-card ul {
+      margin: 12px 0 0;
+      padding-left: 21px;
+      color: #555555;
+      font-size: 14px;
+    }
+
+    .policy-card li {
+      margin-bottom: 9px;
+      padding-left: 3px;
+    }
+
+    .policy-card li::marker {
+      color: var(--gold);
+    }
+
+    .policy-card strong {
+      color: var(--black);
+      font-weight: 700;
+    }
+
+    .policy-card a {
+      color: var(--black);
+      text-decoration: underline;
+      text-decoration-color: var(--gold);
+      text-underline-offset: 3px;
+      overflow-wrap: anywhere;
+    }
+
+    .policy-card a:hover {
+      color: #8d7040;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding-left: 0 !important;
+    }
+
+    .contact-list li {
+      margin-bottom: 11px;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-label {
+      display: inline-block;
+      min-width: 145px;
+      color: var(--black);
+      font-weight: 700;
+    }
+
+    .site-footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 48px 25px 22px;
+    }
+
+    .footer-inner {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px;
+    }
+
+    .footer-brand h2 {
+      margin: 0 0 8px;
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    .footer-tagline {
+      margin: 0 0 17px;
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .footer-brand p,
+    .footer-column p {
+      color: #c4c4c4;
+      font-size: 12px;
+    }
+
+    .footer-column h3 {
+      margin: 4px 0 17px;
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      width: fit-content;
+      color: #dddddd;
+      font-size: 12px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      max-width: 1150px;
+      margin: 35px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #333333;
+      color: #aaaaaa;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      .header-inner {
+        flex-direction: column;
+        gap: 18px;
+        padding: 18px 15px;
+      }
+
+      .logo img {
+        width: 135px;
+      }
+
+      .main-nav {
+        justify-content: center;
+        gap: 12px 17px;
+      }
+
+      .main-nav a {
+        font-size: 10px;
+      }
+
+      .page-banner {
+        padding: 50px 18px 55px;
+      }
+
+      .container {
+        padding: 42px 16px 55px;
+      }
+
+      .intro {
+        margin-bottom: 28px;
+      }
+
+      .policy-card {
+        padding: 22px 18px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .section-number {
+        flex-basis: 34px;
+        width: 34px;
+        height: 34px;
+        font-size: 13px;
+      }
+
+      .policy-card h3 {
+        font-size: 20px;
+      }
+
+      .contact-label {
+        min-width: 0;
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .site-footer {
+        padding: 38px 20px 20px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <section>
-    <h1>Shipping Policy – SB CLASSIC</h1>
+  <div class="announcement">
+    Timeless Style. Modern Confidence. | SB CLASSIC
+  </div>
 
-    <h3>📦 Processing & Delivery Time</h3>
-    <p>At SB CLASSIC, we aim to deliver your orders quickly and efficiently.</p>
-    <ul>
-      <li><strong>Processing Time:</strong> Orders are processed within 1–2 business days.</li>
-      <li><strong>Delivery Time:</strong> Delivery typically takes 2–14 business days, depending on your location.</li>
-    </ul>
-    <p>You will receive a confirmation email or message with tracking information once your order has been shipped.</p>
-    
-    <hr />
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="SB CLASSIC Home">
+        <img src="logo.PNG" alt="SB CLASSIC logo" />
+      </a>
 
-    <h3>🌍 Delivery Options</h3>
-    <ul>
-      <li><strong>Local Delivery (Ghana):</strong> Available nationwide via reliable courier services.</li>
-      <li><strong>International Shipping:</strong> We currently offer international delivery. Shipping times and fees vary by destination.</li>
-    </ul>
-    
-    <hr />
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="clothes.html">Clothes</a>
+        <a href="shoes.html">Shoes</a>
+        <a href="slippers-sandals.html">Slippers &amp; Sandals</a>
+        <a href="accessories.html">Accessories</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <h3>🚚 Shipping Fees</h3>
-    <p>Shipping costs are calculated at checkout based on your location and the weight/volume of your order.</p>
-    
-    <hr />
-
-    <h3>❗ Delays</h3>
-    <p>While we do our best to meet delivery timelines, delays may occur due to:</p>
-    <ul>
-      <li>Courier delays</li>
-      <li>Customs processing (for international orders)</li>
-      <li>Natural events or holidays</li>
-    </ul>
-
-    <hr />
-
-    <h3>📞 Contact Us</h3>
-    <p>If you experience any issues or have questions about your order, reach out to us:</p>
-    <ul>
-      <li>📧 Email: <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a></li>
-      <li>📞 Phone: <a href="tel:+233260928990">+233260928990</a></li>
-      <li>📱 WhatsApp: <a href="https://wa.me/233260928990" target="_blank">+233260928990</a></li>
-      <li>📷 Instagram: <a href="https://instagram.com/sb_classic_" target="_blank">@sb_classic_</a></li>
-      <li>📢 Telegram Channel: <a href="https://t.me/sbclassics" target="_blank">@sbclassics</a></li>
-    </ul>
+  <section class="page-banner">
+    <p class="eyebrow">Delivery Information</p>
+    <h1>Shipping Policy</h1>
+    <div class="banner-line"></div>
   </section>
+
+  <main class="container">
+    <div class="intro">
+      <p class="intro-label">SB CLASSIC</p>
+      <h2>Shipping &amp; Delivery</h2>
+      <p>
+        At SB CLASSIC, we aim to deliver your orders quickly and efficiently.
+      </p>
+    </div>
+
+    <div class="policy-list">
+
+      <section class="policy-card">
+        <div class="section-heading">
+          <span class="section-number">01</span>
+          <h3>Processing &amp; Delivery Time</h3>
+        </div>
+
+        <p>At SB CLASSIC, we aim to deliver your orders quickly and efficiently.</p>
+
+        <ul>
+          <li><strong>Processing Time:</strong> Orders are processed within 1–2 business days.</li>
+          <li><strong>Delivery Time:</strong> Delivery typically takes 2–14 business days, depending on your location.</li>
+        </ul>
+
+        <p>
+          You will receive a confirmation email or message with tracking information once your order has been shipped.
+        </p>
+      </section>
+
+      <section class="policy-card">
+        <div class="section-heading">
+          <span class="section-number">02</span>
+          <h3>Delivery Options</h3>
+        </div>
+
+        <ul>
+          <li><strong>Local Delivery (Nigeria):</strong> Available nationwide via reliable courier services.</li>
+          <li><strong>International Shipping:</strong> We currently offer international delivery. Shipping times and fees vary by destination.</li>
+        </ul>
+      </section>
+
+      <section class="policy-card">
+        <div class="section-heading">
+          <span class="section-number">03</span>
+          <h3>Shipping Fees</h3>
+        </div>
+
+        <p>
+          Shipping costs are calculated at checkout based on your location and the weight/volume of your order.
+        </p>
+      </section>
+
+      <section class="policy-card">
+        <div class="section-heading">
+          <span class="section-number">04</span>
+          <h3>Delays</h3>
+        </div>
+
+        <p>While we do our best to meet delivery timelines, delays may occur due to:</p>
+
+        <ul>
+          <li>Courier delays</li>
+          <li>Customs processing (for international orders)</li>
+          <li>Natural events or holidays</li>
+        </ul>
+      </section>
+
+      <section class="policy-card">
+        <div class="section-heading">
+          <span class="section-number">05</span>
+          <h3>Contact Us</h3>
+        </div>
+
+        <p>
+          If you experience any issues or have questions about your order, reach out to us:
+        </p>
+
+        <ul class="contact-list">
+          <li>
+            <span class="contact-label">Email:</span>
+            <a href="mailto:sbclassics@icloud.com">sbclassics@icloud.com</a>
+          </li>
+          <li>
+            <span class="contact-label">Phone:</span>
+            <a href="tel:+233260928990">+233260928990</a>
+          </li>
+          <li>
+            <span class="contact-label">WhatsApp:</span>
+            <a href="https://wa.me/233260928990" target="_blank" rel="noopener noreferrer">+233260928990</a>
+          </li>
+          <li>
+            <span class="contact-label">Instagram:</span>
+            <a href="https://instagram.com/sb_classic_" target="_blank" rel="noopener noreferrer">@sb_classic_</a>
+          </li>
+          <li>
+            <span class="contact-label">Telegram Channel:</span>
+            <a href="https://t.me/sbclassics" target="_blank" rel="noopener noreferrer">@sbclassics</a>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h2>SB CLASSIC</h2>
+        <p class="footer-tagline">Style With Class</p>
+        <p>
+          Timeless fashion. Modern confidence. Discover styles that speak elegance, individuality and class.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="clothes.html">Shop Clothes</a>
+          <a href="shoes.html">Shop Shoes</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Customer Care</h3>
+        <div class="footer-links">
+          <a href="refund-policy.html">Returns &amp; Refunds</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="shipping.html">Shipping Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+        </div>
+
+        <p>
+          Email:
+          <a href="mailto:sbclassic11@gmail.com">sbclassic11@gmail.com</a>
+        </p>
+        <p>
+          Call:
+          <a href="tel:+2347043214846">+234 704 321 4846</a>
+        </p>
+        <p>
+          WhatsApp:
+          <a href="https://wa.me/233205950479" target="_blank" rel="noopener noreferrer">+233 20 595 0479</a>
+        </p>
+        <div class="footer-links">
+          <a href="https://instagram.com/sb.classic_" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.facebook.com/sbclassicss" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://www.tiktok.com/@sb.classic" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a href="https://t.me/sbclassics" target="_blank" rel="noopener noreferrer">Telegram</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2026 SB CLASSIC. All rights reserved.
+    </div>
+  </footer>
 </body>
 </html>
-
