@@ -1839,8 +1839,8 @@
 
       if (card.dataset.priceCurrency === "NGN" || price >= 10000) {
         nairaPrice = Math.round(price);
-      } else if (price > 100) {
-        nairaPrice = Math.round((price - 100) * 100);
+      } else if (price > 90) {
+        nairaPrice = Math.round((price - 90) * 100);
       } else {
         return;
       }
