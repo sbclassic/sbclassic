@@ -239,7 +239,7 @@
 
     /*
       Pricing rule for original Ghana cedi prices:
-      NGN = (original GHS price - 100) × 100
+      NGN = (original GHS price - 90) × 100
 
       Prices explicitly marked NGN are never converted again.
       Prices of 10,000 NGN or more without a currency marker
@@ -275,7 +275,7 @@
         }
 
         if (price > 100) {
-          item.price = Math.round((price - 100) * 100);
+          item.price = Math.round((price - 90) * 100);
           item.priceCurrency = "NGN";
         }
       });
