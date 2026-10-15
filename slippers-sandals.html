@@ -1076,22 +1076,3 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 </body>
 </html>
-
-<script>
-(function () {
-  document.querySelectorAll('.product').forEach(function (card) {
-    var priceElement = card.querySelector('p.price');
-    var originalPrice = Number(card.dataset.price);
-
-    if (!priceElement || !Number.isFinite(originalPrice)) return;
-
-    var nairaPrice = Math.round((originalPrice - 100) * 100);
-
-    if (nairaPrice > 0) {
-      card.dataset.price = String(nairaPrice);
-      card.dataset.priceCurrency = 'NGN';
-      priceElement.textContent = '₦' + nairaPrice.toLocaleString('en-NG');
-    }
-  });
-})();
-</script>
