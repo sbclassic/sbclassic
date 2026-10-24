@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://sbclassic.github.io/sbclassic/sitemap.xml
