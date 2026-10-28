@@ -85,6 +85,25 @@
     nav a:hover {
       color: var(--gold);
     }
+    
+    /* Black headline section */
+    .hero-title-bar {
+      background: #111111;
+      color: #F7F4EE;
+      text-align: center;
+      padding: 24px 16px;
+    }
+
+    .hero-title-bar h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1.15;
+      font-weight: 600;
+    }
+
+    .hero-title-bar h1 span {
+      color: #B99A61;
+    }
 
     /* Hero section */
     .hero {
@@ -537,27 +556,31 @@
   <a href="contact.html">CONTACT</a>
   <a class="nav-payment" href="https://paystack.shop/pay/sbclassic" target="_blank" rel="noopener noreferrer">PAY FOR YOUR ORDER</a>
 </nav>
-
-  </header>  <main><section class="hero">
-  <div class="hero-content">
-    <span class="eyebrow">Discover SB CLASSIC</span>
-
+ 
+</header>
+<main>
+  <section class="hero-title-bar">
     <h1>Make Every <span>Look</span> Count.</h1>
+  </section>
 
-    <div class="hero-buttons">
-      <a class="button button-primary" href="clothes.html">
-        Shop Clothing
-      </a>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-buttons">
+        <a class="button button-primary" href="clothes.html">
+          Shop Clothing
+        </a>
 
-      <a class="button button-outline" href="shoes.html">
-        Explore Shoes
-      </a>
+        <a class="button button-outline" href="shoes.html">
+          Explore Shoes
+        </a>
 
-      <a class="button button-payment" href="https://paystack.shop/pay/sbclassic" target="_blank" rel="noopener noreferrer">
-        Pay For Your Order
-      </a>
+        <a class="button button-payment" href="https://paystack.shop/pay/sbclassic" target="_blank" rel="noopener noreferrer">
+          Pay For Your Order
+        </a>
+      </div>
     </div>
-  </div>
+  </section>
+</main>
 </section>
 
 <section class="intro">
