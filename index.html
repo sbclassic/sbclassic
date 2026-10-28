@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#111111">
   <meta name="description" content="Discover SB CLASSIC, where timeless style meets modern elegance. Shop premium men's clothing, shoes, slippers, sandals and accessories.">
-  <meta name="google-site-verification" content="IntNXfwm0Na4tSh1yQgEZNTsFyOCXDr2RteBHllka4k">
-  <title>SB CLASSIC | Style With Class</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="google-site-verification" content="IntNXfwm0Na4tSh1yQgEZNTsFyOCXDr2RteBHllka4k" />
+  <title>SB CLASSIC | Style With Class</title>  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <style>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">  <style>
     :root {
       --black: #111111;
       --cream: #f7f4ee;
@@ -91,7 +86,7 @@
       color: var(--gold);
     }
 
-    /* Hero banner */
+    /* Hero section */
     .hero {
       position: relative;
       min-height: 590px;
@@ -108,35 +103,35 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: none;
-      padding: 40px 6%;
+      max-width: 1000px;
+      padding: 40px 8%;
       color: var(--white);
       text-align: center;
     }
 
-    .hero-heading {
-      max-width: 760px;
-      margin: 0 auto;
-      color: #F7F4EE;
+    .hero h1 {
+      max-width: 850px;
+      margin: 0 auto 32px;
       font-family: 'Playfair Display', serif;
-      font-size: clamp(30px, 5vw, 52px);
-      line-height: 1.15;
+      font-size: clamp(40px, 6vw, 76px);
+      line-height: 1.12;
       font-weight: 600;
+      letter-spacing: -1px;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
     }
 
-    .hero-heading span {
-      color: #B99A61;
+    .hero h1 span {
+      color: var(--gold);
     }
 
     .hero-buttons {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
       gap: 14px;
-      margin-top: 30px;
     }
 
-    /* Buttons */
     .button {
       display: inline-block;
       padding: 16px 25px;
@@ -162,6 +157,7 @@
     .button-outline {
       color: var(--white);
       border: 1px solid rgba(255, 255, 255, 0.8);
+      background: rgba(17, 17, 17, 0.35);
     }
 
     .button-outline:hover {
@@ -216,7 +212,7 @@
       line-height: 1.9;
     }
 
-    /* Collections */
+    /* Collection section */
     .collections {
       padding: 75px 5%;
     }
@@ -425,15 +421,22 @@
       .hero {
         min-height: 510px;
         height: 70vh;
-        background-position: center;
+        background-position: center center;
+        background-size: contain;
       }
 
       .hero-content {
-        padding: 35px 5%;
+        padding: 35px 6%;
       }
 
-      .hero-heading {
-        font-size: clamp(30px, 8vw, 42px);
+      .hero h1 {
+        margin-bottom: 28px;
+        font-size: clamp(38px, 10vw, 58px);
+      }
+
+      .hero-buttons {
+        justify-content: center;
+        gap: 10px;
       }
 
       .button {
@@ -498,14 +501,26 @@
         height: 220px;
       }
 
+      .hero {
+        min-height: 480px;
+      }
+
+      .hero h1 {
+        font-size: clamp(35px, 10vw, 45px);
+      }
+
       .hero-buttons {
         flex-direction: column;
         align-items: center;
       }
+
+      .hero-buttons .button {
+        width: 100%;
+        max-width: 260px;
+      }
     }
   </style>
 </head>
-
 <body>
   <div class="announcement">
     Timeless Style. Modern Confidence. &nbsp; | &nbsp; SB CLASSIC
@@ -528,10 +543,9 @@
   </header>
 
   <main>
-    <!-- Hero heading is now inside the banner -->
     <section class="hero">
       <div class="hero-content">
-        <h1 class="hero-heading">Make Every <span>Look</span> Count.</h1>
+        <h1>Make Every <span>Look</span> Count.</h1>
 
         <div class="hero-buttons">
           <a class="button button-primary" href="clothes.html">
@@ -551,9 +565,7 @@
 
     <section class="intro">
       <span class="section-label">Style With Class</span>
-
       <h2>Defined by Style. Made for You.</h2>
-
       <p>
         Your style tells your story. Explore carefully selected fashion
         essentials designed to bring confidence, character and class to
@@ -653,17 +665,12 @@
 
     <section class="app-promo">
       <span class="section-label">Your Style, One Tap Away</span>
-
       <h2>Shop SB CLASSIC On The Go</h2>
-
       <p>
         Take SB CLASSIC with you. Explore your favourite styles and enjoy
         a more convenient shopping experience through our mobile app.
       </p>
-
-      <a class="button button-primary" href="download.html">
-        Download SB CLASSIC App
-      </a>
+      <a class="button button-primary" href="download.html">Download SB CLASSIC App</a>
     </section>
   </main>
 
@@ -682,9 +689,7 @@
 
     <div class="footer-payment">
       <p>Already placed an order? Complete your payment securely through Paystack.</p>
-      <a class="button" href="https://paystack.shop/pay/sbclassic" target="_blank" rel="noopener noreferrer">
-        Pay For Your Order
-      </a>
+      <a class="button" href="https://paystack.shop/pay/sbclassic" target="_blank" rel="noopener noreferrer">Pay For Your Order</a>
     </div>
 
     <div class="copyright">
@@ -693,8 +698,6 @@
     </div>
   </footer>
 
-  <a href="download.html" class="floating-download-button">
-    Download App
-  </a>
+  <a href="download.html" class="floating-download-button">Download App</a>
 </body>
 </html>
