@@ -1,0 +1,284 @@
+
+(function () {
+  "use strict";
+
+  if (window.sbClassicProductViewerLoaded) return;
+  window.sbClassicProductViewerLoaded = true;
+
+  var style = document.createElement("style");
+  style.textContent = `
+    .product img,
+    .product video {
+      cursor: zoom-in;
+    }
+
+    .sb-viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 65px 18px 85px;
+      background: rgba(0, 0, 0, 0.94);
+      touch-action: manipulation;
+    }
+
+    .sb-viewer.is-open {
+      display: flex;
+    }
+
+    .sb-viewer-stage {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+    }
+
+    .sb-viewer-media {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      transform-origin: center center;
+      transition: transform 0.18s ease;
+    }
+
+    .sb-viewer video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .sb-viewer-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      width: 46px;
+      height: 46px;
+      border: 1px solid #b99a61;
+      border-radius: 50%;
+      background: #111;
+      color: #fff;
+      font-size: 30px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .sb-viewer-controls {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transform: translateX(-50%);
+      width: max-content;
+      max-width: calc(100% - 24px);
+    }
+
+    .sb-viewer-controls button {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 8px 13px;
+      border: 1px solid #b99a61;
+      border-radius: 3px;
+      background: #111;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .sb-viewer-controls button:hover,
+    .sb-viewer-close:hover {
+      background: #b99a61;
+      color: #111;
+    }
+
+    .sb-viewer-zoom-level {
+      min-width: 55px;
+      color: #fff;
+      text-align: center;
+      font: 13px Arial, sans-serif;
+    }
+
+    .sb-viewer-caption {
+      position: absolute;
+      top: 20px;
+      left: 65px;
+      right: 75px;
+      color: #fff;
+      text-align: center;
+      font: 14px Arial, sans-serif;
+      pointer-events: none;
+    }
+
+    @media (max-width: 480px) {
+      .sb-viewer {
+        padding: 70px 10px 80px;
+      }
+
+      .sb-viewer-controls {
+        gap: 7px;
+      }
+
+      .sb-viewer-controls button {
+        min-width: 42px;
+        min-height: 42px;
+        padding: 7px 10px;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+
+  var viewer = document.createElement("div");
+  viewer.className = "sb-viewer";
+  viewer.setAttribute("role", "dialog");
+  viewer.setAttribute("aria-modal", "true");
+  viewer.setAttribute("aria-label", "Enlarged product image");
+
+  viewer.innerHTML = `
+    <div class="sb-viewer-caption"></div>
+    <button class="sb-viewer-close" type="button"
+      aria-label="Close enlarged image">&times;</button>
+    <div class="sb-viewer-stage"></div>
+    <div class="sb-viewer-controls">
+      <button type="button" data-zoom="out"
+        aria-label="Zoom out">−</button>
+      <span class="sb-viewer-zoom-level">100%</span>
+      <button type="button" data-zoom="in"
+        aria-label="Zoom in">+</button>
+      <button type="button" data-zoom="reset">Reset</button>
+    </div>
+  `;
+
+  document.body.appendChild(viewer);
+
+  var stage = viewer.querySelector(".sb-viewer-stage");
+  var caption = viewer.querySelector(".sb-viewer-caption");
+  var zoomLabel = viewer.querySelector(".sb-viewer-zoom-level");
+  var closeButton = viewer.querySelector(".sb-viewer-close");
+
+  var zoom = 1;
+  var mediaElement = null;
+  var previousFocus = null;
+
+  function updateZoom() {
+    if (!mediaElement || mediaElement.tagName !== "IMG") return;
+
+    mediaElement.style.transform = "scale(" + zoom + ")";
+    zoomLabel.textContent = Math.round(zoom * 100) + "%";
+  }
+
+  function closeViewer() {
+    viewer.classList.remove("is-open");
+    viewer.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+
+    stage.replaceChildren();
+    mediaElement = null;
+    zoom = 1;
+
+    if (previousFocus && typeof previousFocus.focus === "function") {
+      previousFocus.focus();
+    }
+  }
+
+  function openViewer(source) {
+    previousFocus = source;
+    zoom = 1;
+    stage.replaceChildren();
+
+    caption.textContent =
+      source.alt ||
+      source.closest(".product")?.querySelector("h3")?.textContent.trim() ||
+      "SB CLASSIC product";
+
+    if (source.tagName === "VIDEO") {
+      mediaElement = source.cloneNode(true);
+      mediaElement.controls = true;
+      mediaElement.autoplay = false;
+      mediaElement.removeAttribute("autoplay");
+      mediaElement.className = "sb-viewer-media";
+    } else {
+      mediaElement = document.createElement("img");
+      mediaElement.src = source.currentSrc || source.src;
+      mediaElement.alt = source.alt || "SB CLASSIC product";
+      mediaElement.className = "sb-viewer-media";
+      mediaElement.draggable = false;
+    }
+
+    stage.appendChild(mediaElement);
+
+    viewer.classList.add("is-open");
+    viewer.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+
+    updateZoom();
+    closeButton.focus();
+  }
+
+  document.addEventListener("click", function (event) {
+    var media = event.target.closest(".product img, .product video");
+
+    if (media) {
+      if (event.target.closest("a")) return;
+
+      event.preventDefault();
+      openViewer(media);
+      return;
+    }
+
+    if (event.target === viewer || event.target === closeButton) {
+      closeViewer();
+      return;
+    }
+
+    var zoomButton = event.target.closest("[data-zoom]");
+    if (!zoomButton || !viewer.classList.contains("is-open")) return;
+
+    var action = zoomButton.getAttribute("data-zoom");
+
+    if (action === "in") {
+      zoom = Math.min(zoom + 0.25, 3);
+    } else if (action === "out") {
+      zoom = Math.max(zoom - 0.25, 1);
+    } else {
+      zoom = 1;
+    }
+
+    updateZoom();
+  });
+
+  viewer.addEventListener("click", function (event) {
+    if (event.target === stage) closeViewer();
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (!viewer.classList.contains("is-open")) return;
+
+    if (event.key === "Escape") {
+      closeViewer();
+    }
+  });
+
+  document.addEventListener("wheel", function (event) {
+    if (!viewer.classList.contains("is-open") ||
+        !mediaElement ||
+        mediaElement.tagName !== "IMG") return;
+
+    if (event.ctrlKey) {
+      event.preventDefault();
+      zoom = Math.max(1, Math.min(3, zoom + (event.deltaY < 0 ? 0.25 : -0.25)));
+      updateZoom();
+    }
+  }, { passive: false });
+
+  viewer.setAttribute("aria-hidden", "true");
+})();
